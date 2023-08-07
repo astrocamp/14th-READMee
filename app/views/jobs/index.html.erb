@@ -1,0 +1,35 @@
+
+    
+
+<div class="container mx-auto bg-gray-50">
+   <h1 class="text-center text-5xl"> 職缺列表</h1>
+
+  
+    <div class="container mx-auto w-80 rounded-lg bg-green-400  py-2 m-5 text-white">
+        <a href="<%= new_job_path %>" class="block text-white text-center">新增</a>
+    </div>
+    
+    
+    <div class=" my-5">
+        <% @jobList.each do |job| %>
+        
+        <ul class="flex justify-between  border-b-2 p-5">
+           <div>
+             <li>
+                <%= link_to job.title, job_path(job.id) %>
+            </li>
+           </div>
+
+            <div class="flex gap-2 text-white">
+                <li >
+                 <%= link_to "編輯", edit_job_path(job.id), class:"rounded-lg bg-green-400 px-8 py-2 mb-2"%>    
+                </li>
+                <li>
+                    <%= link_to "刪除", job_path(job.id), data:{turbo_method:"delete", turbo_confirm:"是否刪除"} , class:" rounded-lg bg-green-400 px-8 py-2" %>
+                </li>
+            </div>    
+        </ul>
+    <% end %>
+    </div>
+    
+</div>
