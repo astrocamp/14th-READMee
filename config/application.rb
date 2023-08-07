@@ -18,5 +18,13 @@ module READMee
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # 設定 CROS 標頭
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*' # 允許所有來源訪問，也可以指定特定的來源，例如 'http://example.com'
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
   end
 end

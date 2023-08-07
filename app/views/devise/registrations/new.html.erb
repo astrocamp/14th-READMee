@@ -1,7 +1,3 @@
-<div >
-<p class="text-2xl" >註冊</p>
-</div>
-
 <div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,7 +9,7 @@
 
   <div class="field">
     <%= f.label :password, '密碼' %> <br />
-    <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入密碼，最少 #{@minimum_password_length} 字" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入#{@minimum_password_length}}位數密碼" %>
   </div>
 
   <div class="field">
