@@ -2,7 +2,7 @@ class JobsController < ApplicationController
     before_action :find_job, only: [:edit, :update, :show, :destroy]
 
     def index
-        @jobList = Job.order(id: :desc)
+        @jobList = Job.where(deleted_at: nil).order(id: :desc)
     end
 
     def new
@@ -37,14 +37,15 @@ class JobsController < ApplicationController
 
     def destroy
         
-        if @job.destroy
-            redirect_to root_path, notice: "刪除成功"
-        end
+        # @job.destroy
+        @job.update(deleted_at: Time.current)
+        redirect_to root_path, notice: "刪除成功"
+        
     end
 
     private
     def params_job
-        params.require(:job).permit(:title, :content, :address, :num_of_people, :seniority, :salary)
+        params.require(:job).permit(:title, :content, :address, :num_of_people, :seniority, :salary, :company_name)
         
     end
     def find_job

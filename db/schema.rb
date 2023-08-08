@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_070119) do
     t.integer "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company_name"
     t.datetime "deleted_at"
     t.bigint "company_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
