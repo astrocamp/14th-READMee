@@ -15,14 +15,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_134439) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: :cascade do |t|
+    t.string "education"
+    t.string "languages"
+    t.string "skills"
     t.text "summary"
-    t.text "education"
     t.text "work_experience"
-    t.text "skills"
-    t.text "languages"
-    t.text "certifications"
-    t.text "projects"
-    t.text "social_links"
+    t.string "certifications"
+    t.string "projects"
+    t.string "social_links"
     t.string "avatar"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
