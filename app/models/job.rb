@@ -5,4 +5,5 @@ class Job < ApplicationRecord
     validates :num_of_people, presence: true
     validates :seniority, presence: true
     validates :salary, presence: true
+    validates :company_name, presence: true
 end
