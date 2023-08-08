@@ -127,6 +127,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
+    paranoia (2.6.2)
+      activerecord (>= 5.1, < 7.1)
     pg (1.5.3)
     public_suffix (5.0.3)
     puma (5.6.6)
@@ -218,6 +220,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  paranoia (~> 2.6)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.6)
