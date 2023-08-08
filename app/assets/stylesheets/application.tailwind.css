@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+.save-btn {
+  @apply  flex mr-2 px-4 py-1 w-fit rounded-full block text-white  bg-amber-500 hover:bg-amber-800;
 }
-
-*/
