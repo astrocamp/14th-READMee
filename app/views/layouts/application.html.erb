@@ -92,9 +92,6 @@
 </header>
 
 
-<footer class="sticky top-full w-full bg-white text-gray-500 py-1 px-2" >
-  <span class="text-center block">©2023 READMee Co., Ltd.</span>
-</footer>
 
 
 
@@ -109,6 +106,15 @@
     <main class="container mx-auto mt-10 px-5">
       <%= yield %>
     </main>
+      <div>
+        <%= flash[:notice] %>        
+      </div>
+
+      <footer class="  w-full bg-white text-gray-500 py-1 px-2" >
+        <span class="text-center block">©2023 READMee Co., Ltd.</span>
+      </footer>
+
+      
      <script src="./node_modules/preline/dist/preline.js"></script>
   </body>
  
