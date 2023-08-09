@@ -274,7 +274,11 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   
   # 串接 google 第三方登入
-  config.omniauth :google_oauth2, Rails.application.credentials.google[:user_number], Rails.application.credentials.google[:api_key]
+  google_api_key = Rails.application.credentials.google[:api_key]
+  user_number = Rails.application.credentials.google[:user_number]
+
+  config.omniauth :google_oauth2, user_number, google_api_key,access_type: 'offline', prompt: 'consent'
+  # config.omniauth :google_oauth2, google_api_key, user_number,access_type: 'offline', prompt: 'consent'
 
 
   # ==> Warden configuration

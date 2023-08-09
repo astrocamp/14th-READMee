@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'pages#home'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  
+  # get '/auth/google/callback', to: 'sessions#create'
 
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 end

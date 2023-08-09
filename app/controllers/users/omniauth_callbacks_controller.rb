@@ -1,27 +1,18 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  skip_before_action :verify_authenticity_token
-
+  # 新增此段第三方登入的方法
   def google_oauth2
-    user = User.from_google(from_google_params)
+    @user = User.create_from_provider_data(request.env["omniauth.auth"])
 
-    if user.present?
-      sign_out_all_scopes
-      flash[:notice] = t 'devise.omniauth_callbacks.success', kind: 'Google'
-      sign_in_and_redirect user, event: :authentication
+    if @user.persisted?
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
+      sign_in_and_redirect @user, :event => :authentication
     else
-      flash[:alert] = t 'devise.omniauth_callbacks.failure', kind: 'Google', reason: "#{auth.info.email} is not authorized."
-      redirect_to new_user_session_path
+      session["devise.google_data"] = request.env["omniauth.auth"]
+      redirect_to new_user_registration_url
     end
-   end
-
-   def from_google_params
-     @from_google_params ||= {
-       uid: auth.uid,
-       email: auth.info.email
-     }
-   end
-
-   def auth
-     @auth ||= request.env['omniauth.auth']
-   end
+  end
+  # 及這段第三方登入失敗的處理方法
+  def failure
+    redirect_to root_path
+  end
 end
