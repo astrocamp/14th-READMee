@@ -10,8 +10,8 @@
    <%= link_to "更新", edit_blog_path(blog.id)%>
    <%= link_to "刪除", blog_path(blog.id), 
                                 data: {
-                                turbo_method: 'delete',
-                                turbo_confirm: '確定要刪除?'
+                                  turbo_method: 'delete',
+                                  turbo_confirm: '確定要刪除?'
                                 } %>
   </li>
   <%end%>
