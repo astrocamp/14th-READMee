@@ -1,2 +1,0 @@
-class HomepagesController < ApplicationController
-end
