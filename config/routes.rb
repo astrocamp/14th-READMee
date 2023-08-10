@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  resources :profiles, except: [:destroy] 
+  # scope path: '@:account' do
+    resource :profile, except: [:destroy]
+  # end
 end
