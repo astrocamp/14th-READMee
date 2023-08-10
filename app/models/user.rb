@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save :set_account
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
@@ -13,5 +14,8 @@ class User < ApplicationRecord
       user.provider = provider_data.provider
       user.uid = provider_data.uid
     end
+  end
+  def set_account
+    self.account = email.split('@').first if email.present?
   end
 end
