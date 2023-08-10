@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   
-  get '/node_modules/preline/dist/preline.js', to: 'homepages#index'
+  root 'pages#index'
 
   get '/blogs', to: 'blogs#index'
   get '/blogs/new', to: 'blogs#new', as: 'new_blog'
