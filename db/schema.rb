@@ -27,12 +27,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_223303) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "real_name"
-    t.string "gender"
-    t.integer "phone"
-    t.string "address"
-    t.string "provider"
+    t.string "name" #d to account
+    t.string "real_name" #d
+    t.string "gender" #d
+    t.integer "phone" #d
+    t.string "address" #d
+    t.string "provider" 
     t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

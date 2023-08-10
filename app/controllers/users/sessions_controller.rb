@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController  
   def create
     auth_info = request.env['omniauth.auth']
     # 在这里编写处理登录成功后的逻辑，例如创建或更新用户数据
