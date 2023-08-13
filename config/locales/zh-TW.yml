@@ -5,6 +5,7 @@ zh-TW:
   devise:
     omniauth_callbacks:
       success: '%{kind} 驗證成功！歡迎回來。'
+      faile: '登入失敗，請重新嘗試。'
       user:
         failure: 'Google 登入失敗。'
     confirmations:
