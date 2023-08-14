@@ -2,11 +2,14 @@ class JobsController < ApplicationController
     before_action :find_job, only: [:edit, :update, :show, :destroy]
 
     def index
+        @company = Company.find(params[:id])
+        @jobs = @company.jobs
         @jobList = Job.where(deleted_at: nil).order(id: :desc)
     end
 
     def new
-        @job = Job.new
+        @company = Company.find(params[:id])
+        @job = @company.jobs.new
     end
 
     def show
@@ -14,11 +17,12 @@ class JobsController < ApplicationController
     end
 
     def create
-        @job = Job.new(params_job)
+        @company = Company.find(params[:id])
+        @job = @company.jobs.new(params_job)
         if @job.save
             redirect_to root_path, notice: "新增成功"
         else
-            render :new, alert: "請填寫完整"
+            render :new
         end
     end
 
@@ -27,11 +31,13 @@ class JobsController < ApplicationController
     end
 
     def update
+        @company = Company.find(params[:id])
+        @job = @company.jobs.new(params_job)
         
         if @job.update(params_job)
             redirect_to root_path, notice: "編輯成功"
         else
-            render :new, alert: "請填寫完整"
+            render :new
         end
     end
 

@@ -4,5 +4,5 @@ class Company < ApplicationRecord
     validates :phone, presence: true
     validates :about, presence: true
     validates :population, presence: true
-  has_many :jobs
+    has_many :jobs
 end

@@ -5,15 +5,27 @@ class CompaniesController < ApplicationController
     end
 
     def new
+      # 检查当前用户是否已经有关联的 Company 记录
+      if current_user.company.present?
+        redirect_to current_user.company, alert: "您已經創建了公司"
+      else
         @company = Company.new
+      end
     end
 
     def create
-      @company = Company.new(params_company)
-      if @company.save
-          redirect_to company_path(@company), notice: "新增成功"
+      # 检查当前用户是否已经有关联的 Company 记录
+      if current_user.company.present?
+        redirect_to current_user.company, alert: "您已經創建了公司"
       else
+        @company = Company.new(params_company)
+        @company.user = current_user
+        
+        if @company.save
+          redirect_to @company, notice: "公司創建成功"
+        else
           render :new
+        end
       end
     end
 
@@ -36,6 +48,6 @@ class CompaniesController < ApplicationController
     end
 
     def set_company
-      @company = Company.find(params[:id])
+      @company = current_user.company
     end
 end
