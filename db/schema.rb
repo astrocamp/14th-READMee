@@ -74,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_175331) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "component_name"
+    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
   end
 
   create_table "skills", force: :cascade do |t|
