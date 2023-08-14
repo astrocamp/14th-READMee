@@ -12,7 +12,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
   # 及這段第三方登入失敗的處理方法
-  def failure
+  def failure 
+    flash[:notice] = I18n.t 'devise.omniauth_callbacks.faile'
     redirect_to root_path
   end
 end

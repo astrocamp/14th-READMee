@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'yourname <whateveryouwant@domain.com>'
+  config.mailer_sender = 'DOJO <kevin11272@gmail.com>'
 
   # Configure the class responsible to send e-mails.
   config.mailer = 'Devise::Mailer'
@@ -279,6 +279,11 @@ Devise.setup do |config|
 
   config.omniauth :google_oauth2, user_number, google_api_key,access_type: 'offline', prompt: 'consent'
   # config.omniauth :google_oauth2, google_api_key, user_number,access_type: 'offline', prompt: 'consent'
+  # # CSRF
+  # config.omniauth_authenticity_protection = {
+  #   strategy: :null_session
+  # }
+  
 
 
   # ==> Warden configuration
