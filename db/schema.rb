@@ -10,18 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_13_032450) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_14_074412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "blogs", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_blogs_on_deleted_at"
-  end
 
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
@@ -34,6 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_032450) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "component_name"
+    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_032450) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token" 
+    t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
