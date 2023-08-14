@@ -9,6 +9,16 @@
       "name": "READMee",
       "database": "READMee_development",
       "username": "dojo11272"
+    },
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "READMee_viii",
+      "database": "READMee_development",
+      "username": "chih-ningchang"
     }
   ]
 }
