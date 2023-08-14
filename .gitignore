@@ -36,6 +36,7 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-# Ignore RuboCop configuration file
-.vscode/
+.vscode/**
+/node_modules/
+/test/
 .DS_Store

@@ -1,0 +1,31 @@
+<h1 class="text-center text-5xl">新增公司</h1>
+<div class="container mx-auto w-2/3 p-3 text-left">
+	<%= form_with(model: @company, url: company_path, data:{ turbo:false }) do |f| %>
+		<div class="my-5">
+			<%= f.label :公司名稱 %>
+			<%= f.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+		</div>
+		<div class="my-5">
+			<%= f.label :公司地址 %>
+			<%= f.text_field :address, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+		</div>
+		<div class="my-5">
+			<%= f.label :公司電話 %>
+			<%= f.text_field :phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+		</div>
+		<div class="my-5">
+			<%= f.label :關於我們 %>
+			<%= f.text_area :about, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+		</div>
+		<div class="my-5">
+			<%= f.label :人數規模 %>
+			<%= f.text_field :population, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+		</div>
+			
+	<button class="rounded-lg bg-amber-500 px-8 py-2 my-2 text-white">
+		<%= f.submit "確定"%>
+	</button>
+	
+	
+	<% end %>
+  </div>
