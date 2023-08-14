@@ -1,0 +1,155 @@
+<nav class="bg-white border-gray border-b fixed w-full z-50">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://flowbite.com/" class="flex items-center">
+            <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+        </a>
+        <div class="flex items-center md:order-2">
+            <button class="px-5 py-2 mr-5 bg-green-300">預覽</button>
+            <button class="px-5 py-2 mr-5 bg-green-300">儲存</button>
+            <button class="px-5 py-2 mr-5 bg-green-300">發佈</button>
+            <i class="fa-regular fa-file-pdf text-4xl text-gray-400"></i>
+            <i class="fa-regular fa-circle-question px-5 text-4xl text-gray-400"></i>
+            <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <span class="sr-only">Open user menu</span>
+            <img class="w-16 h-16 rounded-full" src="https://picsum.photos/300/200/?random=10" alt="user photo">
+            </button>
+            <!-- Dropdown menu -->
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+            <div class="px-4 py-3">
+                <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+            </div>
+            <ul class="py-2" aria-labelledby="user-menu-button">
+                <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                </li>
+                <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                </li>
+                <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                </li>
+                <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                </li>
+            </ul>
+            </div>
+            <button data-collapse-toggle="navbar-user" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-user" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+            </button>
+        </div>
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 text-black md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white text-black">
+                <li>
+                <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">About</a>
+                </li>
+                <li>
+                <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Services</a>
+                </li>
+                <li>
+                <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">About</a>
+                </li>
+                <li>
+                <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded">Services</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  
+  <!-- 點擊後加上class border-blue-600 border-2-->
+  <section class="bg-gray-100 w-full flex justify-between pl-32">
+  
+    <div class="bg-white max-w-screen-lg p-16 shadow-xl mr-1 mt-48 mb-16">
+        <div class=" flex">
+              <img class="inline-block w-1/3 border-2 border-blue-200" src="https://picsum.photos/300/200/?random=10">
+              <div class="inline-block w-1/3 border-2 border-blue-200">
+              <p class="text-2xl">
+                  <div id="content">
+  
+  
+                      <% if @resume.component_serial == 1 %>
+                      <p>我是第一版組件</p>
+                      <turbo-frame id="<%= dom_id @resume %>">
+                        <%= link_to '我是編輯按鈕', edit_resume_path(@resume), data: { turbo_frame: "1" }, class: 'flex mr-2 px-4 py-1 w-fit rounded-full block text-white  bg-amber-500 hover:bg-amber-800'  %>
+                        <%= @resume.basic_info %>
+                      </turbo-frame>
+                      <% elsif @resume.component_serial == 2 %>
+                      <p>我是第二版組件</p>
+                      <turbo-frame id="<%= dom_id @resume %>">
+                        <%= link_to '我是編輯按鈕', edit_resume_path(@resume), data: { turbo_frame: "1" }  %>
+                        <%= @resume.basic_info %>
+                      </turbo-frame>
+                      <% elsif @resume.component_serial == 3 %>
+                      <p>我是第三版組件</p>
+                      <turbo-frame id="<%= dom_id @resume %>">
+                        <%= link_to '我是編輯按鈕', edit_resume_path(@resume), data: { turbo_frame: "1" }  %>
+                        <%= @resume.basic_info %>
+                      </turbo-frame>
+                      <% else %>
+                        <!-- 处理其他情况 -->
+                      <% end %>
+                    </div>
+  
+              </p>
+            </div>
+            <div class="inline-block w-1/3 border-2 border-blue-200">
+            <p class="text-2xl">
+                <%= @resume.social_links %>
+            </p>
+          </div>
+        </div>
+    </div>
+    
+  </section>
+  
+  <div class="bg-gray-200 fixed top-96px right-0 bottom-0">
+      <div class="h-full overflow-y-scroll">
+          <div class="px-10 pt-10 custom-width-250">
+              <%= image_tag 'dateTime.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'project.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'skill.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'expertise.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'dateTime.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'project.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'skill.png', class: 'pb-10 w-full' %>
+              <%= image_tag 'expertise.png', class: 'pb-10 w-full' %>
+          </div>
+      </div>
+  </div>
+  
+  
+  
+  <%= button_to '点击我更新成组件1', second_page_path(id: @resume.id, component_serial: 1), method: :post %>
+  <%= button_to '点击我更新成组件3', second_page_path(id: @resume.id, component_serial: 3), method: :post %>
+  
+  
+  <div id="content">
+  
+  
+    <% if @resume.component_serial == 1 %>
+    <p>我是第一版組件</p>
+    <turbo-frame id="<%= dom_id @resume %>">
+      <%= link_to '我是編輯按鈕', edit_resume_path(@resume), data: { turbo_frame: "1" }  %>
+      <%= @resume.basic_info %>
+    </turbo-frame>
+    <% elsif @resume.component_serial == 2 %>
+    <p>我是第二版組件</p>
+    <turbo-frame id="<%= dom_id @resume %>">
+      <%= link_to '我是編輯按鈕', edit_resume_path(@resume), data: { turbo_frame: "1" }  %>
+      <%= @resume.basic_info %>
+    </turbo-frame>
+    <% elsif @resume.component_serial == 3 %>
+    <p>我是第三版組件</p>
+    <turbo-frame id="<%= dom_id @resume %>">
+      <%= link_to '我是編輯按鈕', edit_resume_path(@resume), data: { turbo_frame: "1" }  %>
+      <%= @resume.basic_info %>
+    </turbo-frame>
+    <% else %>
+      <!-- 处理其他情况 -->
+    <% end %>
+  </div>
