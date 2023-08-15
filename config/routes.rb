@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   # get '/auth/google/callback', to: 'sessions#create'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  resources :resumes
 end

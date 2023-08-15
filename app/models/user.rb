@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,:omniauthable, omniauth_providers: [:google_oauth2]
 
+  enum role: { job_seeker: 0, employer: 1, admin: 2 }
+
   # 找到user的話就登入，找不到就create新的user
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
