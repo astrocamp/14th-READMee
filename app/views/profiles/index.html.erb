@@ -1,0 +1,19 @@
+<p class= "text-2xl">會員資料</p>
+<table>
+  <thead>
+    <tr>
+      <th>使用者名稱</th>
+      <th>信箱</th>
+      <th>階級</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.account %></td>
+        <td><%= user.email %></td>
+        <td><%= user.role %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

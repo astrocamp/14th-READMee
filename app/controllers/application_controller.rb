@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :set_locale
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
 
     include Pundit::Authorization
     

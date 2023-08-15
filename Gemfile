@@ -66,3 +66,5 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem "pundit", "~> 2.3"
+
+gem "rubocop", "~> 1.56"

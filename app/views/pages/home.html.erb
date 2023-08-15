@@ -10,8 +10,6 @@
   </div>
 
   <div class= 'flex justify-end'>
-    
-
     <% unless current_user%>
     <div>
       <p class = 'text-2xl font-bold'>註冊</p>
@@ -20,6 +18,5 @@
       <%= render 'devise/registrations/new', resource: User.new, resource_name: User.new %>
     </div>
     <% end %>
-
   </div>
 </div>
