@@ -74,12 +74,6 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise", "~> 4.9"
-
-gem "omniauth-google-oauth2", "~> 1.1"
-
-end
-
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
@@ -92,13 +86,6 @@ group :development do
   gem 'rubocop-rails', '~> 2.20'
 end
 
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
-end
-
 gem 'devise', '~> 4.9'
 gem 'omniauth', '~> 2.1'
 gem 'omniauth-google-oauth2', '~> 1.1'
@@ -106,5 +93,3 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pundit', '~> 2.3'
 gem "rack-cors", "~> 2.0"
 gem "paranoia", "~> 2.6"
-gem "omniauth", "~> 2.1"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
