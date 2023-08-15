@@ -1,0 +1,18 @@
+<div class='flex gap-5 '>
+  <h2 class="text-2xl ">文章列表</h2>    
+  <%= link_to "新增文章",new_blog_path, class: 'btn-proceed' %>
+</div>
+
+<ul>
+  <% @blogs.each do |blog| %>
+  <li class="mt-12">
+   <%= link_to blog.title, blog_path(blog.id), class: "hover:border-b-4 border-amber-300" %>
+   <%= link_to "更新", edit_blog_path(blog.id)%>
+   <%= link_to "刪除", blog_path(blog.id), 
+                                data: {
+                                turbo_method: 'delete',
+                                turbo_confirm: '確定要刪除?'
+                                } %>
+  </li>
+  <%end%>
+</ul>
