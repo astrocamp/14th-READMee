@@ -5,4 +5,5 @@ class Company < ApplicationRecord
     validates :about, presence: true
     validates :population, presence: true
     has_many :jobs
+    belongs_to :user
 end

@@ -20,4 +20,6 @@ class User < ApplicationRecord
   def set_account
     self.account = email.split('@').first if email.present?
   end
+
+  has_one :company
 end

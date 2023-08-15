@@ -2,25 +2,24 @@ class JobsController < ApplicationController
     before_action :find_job, only: [:edit, :update, :show, :destroy]
 
     def index
-        @company = Company.find(params[:id])
+        @company = current_user.company
         @jobs = @company.jobs
         @jobList = Job.where(deleted_at: nil).order(id: :desc)
     end
 
     def new
-        @company = Company.find(params[:id])
-        @job = @company.jobs.new
+        @company = current_user.company
+        @job = @company.jobs.new  
     end
 
     def show
-        
     end
 
     def create
-        @company = Company.find(params[:id])
+        @company = current_user.company
         @job = @company.jobs.new(params_job)
         if @job.save
-            redirect_to root_path, notice: "新增成功"
+            redirect_to jobs_path, notice: "新增成功"
         else
             render :new
         end
@@ -31,21 +30,18 @@ class JobsController < ApplicationController
     end
 
     def update
-        @company = Company.find(params[:id])
-        @job = @company.jobs.new(params_job)
-        
         if @job.update(params_job)
-            redirect_to root_path, notice: "編輯成功"
-        else
-            render :new
+            redirect_to jobs_path(@company), notice: "編輯成功"
+          else
+            render :edit
         end
     end
 
     def destroy
         
         # @job.destroy
-        @job.update(deleted_at: Time.current)
-        redirect_to root_path, notice: "刪除成功"
+        @job.destroy
+        redirect_to jobs_path(@company), notice: "刪除成功"
         
     end
 
@@ -56,6 +52,7 @@ class JobsController < ApplicationController
     end
     def find_job
         @job = Job.find(params[:id])
+        
     end
 
 end
