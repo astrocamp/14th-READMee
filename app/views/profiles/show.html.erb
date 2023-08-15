@@ -9,7 +9,7 @@
         <p class="text-gray-600"><%= @profile.job_title %></p>
 
         <div class="mt-4">
-          <h2 class="text-lg font-semibold">Contact Information</h2>
+          <h2 class="text-lg font-semibold">聯絡資訊</h2>
           <ul class="mt-2 text-gray-700">
             <li>Email: <%= current_user.email %></li>
             <li>Phone: <%= @profile.phone %></li>
@@ -18,23 +18,31 @@
         </div>
 
         <div class="mt-4">
-          <span class="text-lg font-semibold">About me</span>
+          <span class="text-lg font-semibold">關於我</span>
           <p class="text-gray-700">
             <%= @profile.about_me %>
           </p>
         </div>
         
         <div class="mt-4">
-          <h2 class="text-lg font-semibold">Education</h2>
+          <h2 class="text-lg font-semibold">學歷</h2>
           <ul class="mt-2 text-gray-700">
             <li><%= @profile.education %></li>
           </ul>
         </div>
         <div class="mt-4">
-          <h2 class="text-lg font-semibold">Languages</h2>
+          <h2 class="text-lg font-semibold">語言</h2>
           <ul class="mt-2 text-gray-700">
             <% @profile.languages.each do |language, level| %>
               <li><%= "#{language} • #{level}" %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="mt-4">
+          <h2 class="text-lg font-semibold">技能</h2>
+          <ul class="mt-2 text-gray-700">
+            <% @profile.skills.each do |skill| %>
+              <li><%= skill.tag %></li>
             <% end %>
           </ul>
         </div>

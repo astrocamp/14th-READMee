@@ -1,7 +1,7 @@
 <h2 class="text-2xl font-semibold">建立您的個人檔案</h2>
 <article class="p-5">
-  <%= form_with(model: @profile, url: profile_path, data: { turbo: false }, method: :post) do |form| %>
+  <%= form_with(model: @profile, url: profile_path, data: { controller: "nested-form", nested_form_wrapper_selector_value: '.nested-form-wrapper', turbo: false }, method: :post) do |form| %>
     <%= render 'form', form: form %>
-    <% end %>
+  <% end %>
 </article>
 
