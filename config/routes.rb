@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   scope path: '@:account' do
-  resource :profile, except: [:destroy]
+    resource :profile, except: [:destroy]
   end 
   
   resources :resumes

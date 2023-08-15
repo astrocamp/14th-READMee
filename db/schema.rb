@@ -14,26 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_064747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "blogs", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_blogs_on_deleted_at"
-  end
-
-  create_table "resumes", force: :cascade do |t|
-    t.integer "block"
-    t.string "avatar"
-    t.text "basic_info"
-    t.text "social_links"
-    t.text "summary"
-    t.text "work_experience"
-    t.string "skills"
-    t.integer "status", default: 0
-  end
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -63,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_064747) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
     t.string "full_name"
     t.string "phone"
     t.string "address"
@@ -78,6 +57,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_14_064747) do
     t.string "github"
     t.string "website"
     t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "resumes", force: :cascade do |t|
+    t.integer "block"
+    t.string "avatar"
+    t.text "basic_info"
+    t.text "social_links"
+    t.text "summary"
+    t.text "work_experience"
+    t.string "skills"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
