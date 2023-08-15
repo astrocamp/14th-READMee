@@ -2,6 +2,7 @@
 <% resource_name ||= :user %>
 <% I18n.locale = :'zh-TW' %>
 
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +19,11 @@
   <body>
     <div class= " flex justify-end text-2xl px-5">
       
-        <% if current_user %>        
+        <% if current_user %>
+          <% if current_user.admin?%>
+            <%= link_to '後臺', user_admin_path(account: current_user.account)%>
+          <% end %>
+          <%= link_to '個人資料', user_profile_path(account: current_user.account) %> |
           <%= link_to '登出', destroy_user_session_path, data: { 'turbo-method': :delete }%>
         <% else %>
           <%= link_to '註冊', new_user_registration_path%> |  
