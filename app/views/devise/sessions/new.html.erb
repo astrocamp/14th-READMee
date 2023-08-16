@@ -2,12 +2,12 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :email, '信箱', class:'font-bold text-2xl' %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
     </div>
 
     <div class="field">
       <%= f.label :password, '密碼', class:'font-bold text-2xl' %><br />
-      <%= f.password_field :password, autocomplete: "current-password" %>
+      <%= f.password_field :password, autocomplete: "current-password",class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
     </div>
 
     <% if devise_mapping.rememberable? %>
