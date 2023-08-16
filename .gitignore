@@ -36,10 +36,13 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 
-/vscode/
-/node_modules/
-/test/
+# Ignore RuboCop configuration file
+node_modules/
+.vscode/
 .DS_Store
+/log/*
+!/log/.keep
+/test/
 /vendor/
 package-lock.json
 package.json
