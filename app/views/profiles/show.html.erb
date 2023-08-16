@@ -11,9 +11,9 @@
         <div class="mt-4">
           <h2 class="text-lg font-semibold">聯絡資訊</h2>
           <ul class="mt-2 text-gray-700">
-            <li>Email: <%= current_user.email %></li>
-            <li>Phone: <%= @profile.phone %></li>
-            <li>Address: <%= @profile.address %></li>
+            <li>電子信箱：<span><%= current_user.email %></span></li>
+            <li>電話： <%= @profile.phone %></li>
+            <li>所在地： <%= @profile.address %></li>
           </ul>
         </div>
 
@@ -47,13 +47,13 @@
           </ul>
         </div>
         <div class="mt-4">
-          <h2 class="text-lg font-semibold">Work Experience</h2>
+          <h2 class="text-lg font-semibold">工作經驗</h2>
           <div class="mt-2 text-gray-700">
             <p><%= @profile.work_experience %></p>
           </div>
         </div>
         <div class="mt-4">
-          <h2 class="text-lg font-semibold">Social Media</h2>
+          <h2 class="text-lg font-semibold">社群媒體</h2>
           <div class="grid lg:grid-cols-2 gap-3 mt-2">
             <div class="flex items-center">
               <div>
@@ -103,7 +103,6 @@
         <h2 class="text-xl font-semibold mb-2">近期履歷</h2>
     
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- 第一版履歷區塊 -->
             <div class="p-5 border border-gray-300 rounded-md bg-amber-50 flex justify-center items-center">
                 <%= link_to profile_path do %>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-800 text-white font-lg cursor-pointer p-1.5">
@@ -112,7 +111,6 @@
                 <% end %>
             </div>
 
-            <!-- 付費履歷區塊 -->
             <div class="p-5 border border-gray-300 rounded-md bg-amber-50 flex justify-center items-center">
               <%#= 之後要改成 link_to 訂閱路徑 %>
               <%= link_to profile_path do %>
@@ -122,7 +120,6 @@
               <% end %>
             </div>
             
-            <!-- 付費履歷區塊 -->
             <div class="p-5 border border-gray-300 rounded-md bg-amber-50 flex justify-center items-center">
               <%#= 之後要改成 link_to 訂閱路徑 %>
               <%= link_to profile_path do %>

@@ -1,13 +1,5 @@
-    <div class="my-5">
-      <%= form.label '個人照片', class: "font-semibold" %>
-      <span class="text-slate-400 text-sm">選填</span>
-      <%= form.file_field :avatar, class: "input block w-full text-sm text-slate-500
-          file:mr-2 file:py-2 file:px-2
-          file:rounded-full file:border-0
-          file:text-sm file:font-semibold
-          file:bg-amber-50 file:text-amber-600
-          hover:file:bg-amber-100" %>
-    </div>
+    <%= render "avatar_preview", form: form, profile: @profile %>
+
     
     <div class="my-5">
       <%= form.label '全名', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:full_name].any?}" %>
@@ -37,7 +29,7 @@
 
     <div class="my-5">
       <%= form.label '關於我', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:about_me].any?}" %>
-      <%= form.text_area :about_me, rows: 5, class: "input"  %>
+      <%= form.text_area :about_me, size: "60x10", class: "input"  %>
     </div>
 
     <div class="my-5">
@@ -57,22 +49,25 @@
 
     <div class="my-5">
       <%= form.label '技能', class: "font-semibold" %>
+      
       <template data-nested-form-target="template">
         <%= form.fields_for :skills, Skill.new, child_index: 'NEW_RECORD' do |skill_fields| %>
           <%= render "profile_skill_form", form: skill_fields %>
         <% end %>
       </template>
+      <div>
         <%= form.fields_for :skills do |skill_fields| %>
           <%= render "profile_skill_form", form: skill_fields %>
         <% end %>
-      <div data-nested-form-target="target">
-        <%= form.button '+', { data: { action: "nested-form#add" }, class: "rounded-lg py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer"} %>
+        <div data-nested-form-target="target">
+          <%= form.button '+', { data: { action: "nested-form#add" }, class: "rounded-lg py-2 px-3 m-2 bg-amber-500 text-white inline-block font-medium cursor-pointer"} %>
+        </div>
       </div>
     </div>
 
     <div class="my-5">
       <%= form.label '工作經驗', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:about_me].any?}" %>
-      <%= form.text_area :work_experience, rows: 5, class: "input"  %>
+      <%= form.text_area :work_experience, size: "60x10", class: "input"  %>
     </div>
 
     <div class="my-5">
