@@ -80,11 +80,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_175331) do
     t.text "summary"
     t.text "work_experience"
     t.string "skills"
-    t.integer "status", default: 0
+    t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "component_name"
+    t.bigint "user_id"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -119,4 +121,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_175331) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "skills", "profiles"
+  add_foreign_key "resumes", "users"
 end
