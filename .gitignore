@@ -40,5 +40,6 @@
 /node_modules/
 /test/
 .DS_Store
+/vendor/
 package-lock.json
 package.json
