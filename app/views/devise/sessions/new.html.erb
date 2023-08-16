@@ -1,25 +1,25 @@
-<div class= 'flex justify-end text-2xl'>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email, '信箱'%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, '密碼' %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+  <div class= 'flex justify-center'>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me%>
-      <%= f.label :remember_me , '記住我' %>
+      <%= f.label :email, '信箱', class:'font-bold text-2xl' %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, '密碼', class:'font-bold text-2xl' %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me%>
+        <%= f.label :remember_me , '記住我', class:'text-xl' %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "登入",data:{turbo: false}, class:'text-xl' %> <br />
+      <%= link_to "忘記密碼？", new_password_path(resource_name), class:'text-xl' %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "登入",data:{turbo: false} %> <br />
-    <%= link_to "忘記密碼？", new_password_path(resource_name) %>
   </div>
-<% end %>
-</div>

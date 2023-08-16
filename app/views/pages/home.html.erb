@@ -1,22 +1,11 @@
 <div>
-  <h1 class="font-bold text-4xl">Pages#home</h1>
+  <h1 class="font-bold text-4xl">READMee</h1>
   <div>
     <% if current_user %>
       <p>Hello <%= current_user.account %>!</p>
 
     <% else %>
       <p>您尚未登入</p>
-    <% end %>
-  </div>
-
-  <div class= 'flex justify-end'>
-    <% unless current_user%>
-    <div>
-      <p class = 'text-2xl font-bold'>註冊</p>
-    </div>
-    <div> 
-      <%= render 'devise/registrations/new', resource: User.new, resource_name: User.new %>
-    </div>
     <% end %>
   </div>
 </div>

@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
+# 管理員策略
 class AdminPolicy < ApplicationPolicy
+  # 管理員範圍
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
     def resolve
       if user.admin?
         scope.all
