@@ -10,10 +10,9 @@ module Admin
     end
 
     private
-
-    # 使用 Pundit 檢查用戶是否是 admin
-    def authorize_admin
-      authorize :admin, :access?
-    end
+      # 使用 Pundit 檢查用戶是否是 admin
+      def authorize_admin
+        authorize :admin, :access?
+      end
   end
 end

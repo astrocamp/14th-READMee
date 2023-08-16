@@ -4,20 +4,20 @@ class UserPolicy < ApplicationPolicy
     # def resolve
     #   scope.all
     # end
-    
+
     # 自定義
     def index?
       user.admin?
     end
-  
+
     def show?
       user.admin? || record == user
     end
-  
+
     def update?
       user.admin? || record == user
     end
-  
+
     def destroy?
       user.admin?
     end

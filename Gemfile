@@ -68,3 +68,11 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "pundit", "~> 2.3"
 gem "rubocop", "~> 1.56"
 gem "rubocop-rails", "~> 2.20"
+
+gem "rubocop-minitest", "~> 0.31.0"
+
+gem "rubocop-packaging", "~> 0.5.2"
+
+gem "rubocop-performance", "~> 1.19"
+
+gem "rubocop-md", "~> 1.2"

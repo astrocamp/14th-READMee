@@ -24,10 +24,10 @@ class User < ApplicationRecord
   end
 
   def set_account
-    self.account = email.split('@').first if email.present?
+    self.account = email.split("@").first if email.present?
   end
 
   def admin?
-    role == 'admin'
+    role == "admin"
   end
 end

@@ -3,14 +3,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'pages#home'
+  root "pages#home"
   # get '/auth/google/callback', to: 'sessions#create'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
   resources :users
   resources :resume
-  get '/@:account/profile/admin', to: 'profiles#index', as: :user_admin
-  get '/@:account/profile/', to: 'profiles#show', as: :user_profile
-  
+  get "/@:account/profile/admin", to: "profiles#index", as: :user_admin
+  get "/@:account/profile/", to: "profiles#show", as: :user_profile
 end

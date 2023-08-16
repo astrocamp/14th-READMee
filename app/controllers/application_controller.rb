@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = :'zh-TW'
   end
-  
+
   # 登入之後跳轉的路徑
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     user_profile_path(account: current_user.account)
   end
 end

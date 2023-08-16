@@ -69,15 +69,14 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.mailgun.org',
-    port:                 587,
-    domain:               Rails.application.credentials.mailgun[:domain], # 設定您的域名
-    user_name:            'postmaster@sandbox3b2f198bf2c44d7fa0f151e31df2d110.mailgun.org', # Mailgun 提供的帳號
-    password:             Rails.application.credentials.mailgun[:api_key], # Mailgun 提供的 API Key
-    authentication:       :plain,
+    address: "smtp.mailgun.org",
+    port: 587,
+    domain: Rails.application.credentials.mailgun[:domain], # 設定您的域名
+    user_name: "postmaster@sandbox3b2f198bf2c44d7fa0f151e31df2d110.mailgun.org", # Mailgun 提供的帳號
+    password: Rails.application.credentials.mailgun[:api_key], # Mailgun 提供的 API Key
+    authentication: :plain,
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
 end

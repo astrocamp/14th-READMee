@@ -27,7 +27,7 @@ Devise.setup do |config|
   config.mailer_sender = Rails.application.credentials.dig(:config, :mailer_sender)
 
   # Configure the class responsible to send e-mails.
-  config.mailer = 'Devise::Mailer'
+  config.mailer = "Devise::Mailer"
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -36,7 +36,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -272,19 +272,17 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  
+
   # 串接 google 第三方登入
   google_api_key = Rails.application.credentials.google[:api_key]
   user_number = Rails.application.credentials.google[:user_number]
 
-  config.omniauth :google_oauth2, user_number, google_api_key,access_type: 'offline', prompt: 'consent'
+  config.omniauth :google_oauth2, user_number, google_api_key, access_type: "offline", prompt: "consent"
   # config.omniauth :google_oauth2, google_api_key, user_number,access_type: 'offline', prompt: 'consent'
   # # CSRF
   # config.omniauth_authenticity_protection = {
   #   strategy: :null_session
   # }
-  
-
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
