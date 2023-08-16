@@ -1,21 +1,18 @@
 
 <div class="container mx-auto md:w-2/3 border-2 m-5 p-3">
-    <h1 class="text-3xl"><%= @company.name %></h1>
-    <P class="my-2">公司地址</P>
-    <div><%= @company.address %></div>
-    <P class="my-2">公司電話</P>
-    <div><%= @company.phone %></div>
-    <P class="my-2">人數規模</P>
-    <div><%= @company.population %></div>
-    <P class="my-2">關於我們</P>
-    <div><%= @company.about %></div>
-    <button class="">
-        <%=link_to "編輯", edit_company_path(@company.id), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
-    </button>
-    <button>
-        <%= link_to "查看所有職缺", jobs_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
-    </button>
-    
-   
-    
+	<h1 class="text-3xl"><%= @company.name %></h1>
+	<P class="my-2">公司地址</P>
+	<div><%= @company.address %></div>
+	<P class="my-2">公司電話</P>
+	<div><%= @company.phone %></div>
+	<P class="my-2">人數規模</P>
+	<div><%= @company.population %></div>
+	<P class="my-2">關於我們</P>
+	<div><%= @company.about %></div>
+	<button class="">
+		<%=link_to "編輯", edit_company_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+	</button>
+	<button>
+		<%= link_to "查看所有職缺", jobs_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+	</button>
 </div>

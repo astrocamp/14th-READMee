@@ -1,53 +1,51 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
-    def show
-     
-    end
+  def show
+  end
 
-    def new
-      if current_user.company.present?
-        redirect_to current_user.company, alert: "您已經創建了公司"
+  def new
+    if current_user.company.present?
+      redirect_to current_user.company, alert: "您已經創建了公司"
+    else
+      @company = Company.new
+    end
+  end
+
+  def create
+    if current_user.company.present?
+      redirect_to root_path, alert: "您已經創建了公司"
+    else
+      @company = Company.new(params_company)
+      @company.user = current_user
+        
+      if @company.save
+        redirect_to company_path, notice: "公司創建成功"
       else
-        @company = Company.new
+        render :new
       end
     end
+  end
 
-    def create
-      if current_user.company.present?
-        redirect_to root_path, alert: "您已經創建了公司"
-      else
-        @company = Company.new(params_company)
-        @company.user = current_user
-          
-        if @company.save
-          redirect_to company_path, notice: "公司創建成功"
-        else
-          render :new
-        end
-      end
+  def edit
+  end
+  
+  def update
+    if @company.update(params_company)
+      redirect_to company_path, notice: "編輯成功"
+    else
+      render :edit
     end
-
-    def edit
-     
-    end
+  end
     
-    def update
-      if @company.update(params_company)
-         redirect_to company_path(@company), notice: "編輯成功"
-      else
-         render :edit
-      end
-    end
-      
-    
-    private
-    def params_company
-        params.require(:company).permit(:name, :address, :phone, :address, :about, :population)
-    end
+  
+  private
+  def params_company
+    params.require(:company).permit(:name, :address, :phone, :address, :about, :population)
+  end
 
-    def set_company
-      @company = current_user.company
-    end
+  def set_company
+    @company = current_user.company
+  end
 end
