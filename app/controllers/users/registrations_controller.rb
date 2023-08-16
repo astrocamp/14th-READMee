@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # # POST /resource
   def create
     super do |resource|
-      resource.set_account # 调用 set_account 方法
+      resource.set_account
     end
   end
 
@@ -43,9 +43,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-    def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:account])
-    end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:account])
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])

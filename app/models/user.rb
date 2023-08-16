@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   # relationships
   has_one :profile
+  has_many :resumes
 
   # 找到user的話就登入，找不到就create新的user
   def self.create_from_provider_data(provider_data)
@@ -20,6 +21,7 @@ class User < ApplicationRecord
       user.uid = provider_data.uid
     end
   end
+  
   def set_account
     self.account = email.split('@').first if email.present?
   end
