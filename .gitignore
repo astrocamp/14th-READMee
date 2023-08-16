@@ -34,4 +34,4 @@
 !/app/assets/builds/.keep
 
 # Ignore RuboCop configuration file
-rubocop.yml
+.rubocop.yml
