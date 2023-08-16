@@ -29,7 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_13_032450) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
-
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
