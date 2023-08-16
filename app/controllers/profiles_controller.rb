@@ -2,6 +2,10 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: %i[show edit update]
 
+  def index
+    @users = User.all
+  end
+
   def show
     if current_user.job_seeker? && current_user.profile.present?
       # 顯示個人資料頁面
@@ -25,7 +29,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  
+  end
 
   def update
     if @profile.update(profile_params)
