@@ -1,6 +1,5 @@
     <%= render "avatar_preview", form: form, profile: @profile %>
 
-    
     <div class="my-5">
       <%= form.label '全名', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:full_name].any?}" %>
       <%= form.text_field :full_name, class: "input" %>
