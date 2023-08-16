@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
+  # 關聯
+  has_many :resumes
+
   # 找到user的話就登入，找不到就create新的user
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
@@ -17,6 +20,7 @@ class User < ApplicationRecord
       user.uid = provider_data.uid
     end
   end
+  
   def set_account
     self.account = email.split('@').first if email.present?
   end
