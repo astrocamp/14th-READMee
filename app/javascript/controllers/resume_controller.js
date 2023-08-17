@@ -14,17 +14,19 @@ export default class extends Controller {
 
   showBasicInfoForm(event) {
     event.preventDefault();
-    let stateFocus = true; 
-    if (stateFocus) {
+    let stateFocus = false;
+    if (!stateFocus) {
       this.basicInfoContentTarget.style.display = 'none';
       this.basicInfoFormTarget.style.display = 'block';
+    }else{
+      
     }
   }
 
   showSocialLinksForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  //如果表單沒有顯示
-    if (stateNoFocus) {
+    let stateFocus = false; 
+    if (!stateFocus) {
       this.socialLinksContentTarget.style.display = 'none';
       this.socialLinksFormTarget.style.display = 'block';
     }
@@ -32,8 +34,8 @@ export default class extends Controller {
   
   showAboutMeContentForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
+    let stateFocus = false; 
+    if (!stateFocus) {
       this.aboutMeContentTarget.style.display = 'none';
       this.aboutMeFormTarget.style.display = 'block';
     }
@@ -41,8 +43,8 @@ export default class extends Controller {
   
   showWorkExperienceContentForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
+    let stateFocus = false; 
+    if (!stateFocus) {
       this.workExperienceContentTarget.style.display = 'none';
       this.workExperienceFormTarget.style.display = 'block';
     }
@@ -50,8 +52,8 @@ export default class extends Controller {
   
   showAboutMeTitleForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
+    let stateFocus = false; 
+    if (!stateFocus) {
       this.aboutMeTitleTarget.style.display = 'none';
       this.aboutMeTitleFormTarget.style.display = 'block';
     }
@@ -59,8 +61,8 @@ export default class extends Controller {
   
   showWorkExperienceTitleForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
+    let stateFocus = false; 
+    if (!stateFocus) {
       this.workExperienceTitleTarget.style.display = 'none';
       this.workExperienceTitleFormTarget.style.display = 'block';
     }
