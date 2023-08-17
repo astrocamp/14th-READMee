@@ -50,6 +50,7 @@ class ApplicationPolicy
     end
 
     private
-      attr_reader :user, :scope
+
+    attr_reader :user, :scope
   end
 end
