@@ -68,7 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_175331) do
     t.string "avatar"
     t.text "basic_info"
     t.text "social_links"
-    t.text "summary"
     t.text "work_experience"
     t.string "skills"
     t.integer "resume_state", default: 0
@@ -76,6 +75,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_175331) do
     t.datetime "updated_at", null: false
     t.string "component_name"
     t.bigint "user_id"
+    t.text "about_me"
+    t.string "about_me_title"
+    t.string "work_experience_title"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
