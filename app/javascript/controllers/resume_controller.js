@@ -1,32 +1,76 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["basicInfo", "content", "updateContent"];
+  static targets = ["basicInfo", "socialLinks", "basicInfoContent", "socialLinksContent", "aboutMeContent", "workExperienceContent", "updateContent", "aboutMeTitle", "aboutMeTitleForm", "workExperienceTitle", "workExperienceTitleForm", "basicInfoForm", "socialLinksForm", "aboutMeForm", "skillsForm", "workExperienceForm"];
   
   connect() {
-    this.basicInfoTarget.addEventListener("click", this.showForm.bind(this));
+    this.basicInfoTarget.addEventListener("click", this.showBasicInfoForm.bind(this));
+    this.socialLinksTarget.addEventListener("click", this.showSocialLinksForm.bind(this));
+    this.aboutMeContentTarget.addEventListener("click", this.showAboutMeContentForm.bind(this));
+    this.workExperienceContentTarget.addEventListener("click", this.showWorkExperienceContentForm.bind(this));
+    this.aboutMeTitleTarget.addEventListener("click", this.showAboutMeTitleForm.bind(this));
+    this.workExperienceTitleTarget.addEventListener("click", this.showWorkExperienceTitleForm.bind(this));
   }
 
-  showForm(event) {
+  showBasicInfoForm(event) {
     event.preventDefault();
-    const contentElement = this.basicInfoTarget;
-    let stateFocus = false; // 初始狀態沒有焦點在 textarea
-
+    let stateFocus = false;
     if (!stateFocus) {
-      contentElement.innerHTML = `
-        <textarea class="w-full resize-y h-20 p-2 border rounded-md" data-resume-target="content">${contentElement.textContent.trim()}</textarea>
-      `;
+      this.basicInfoContentTarget.style.display = 'none';
+      this.basicInfoFormTarget.style.display = 'block';
+    }else{
+      
+    }
+  }
 
-      const textarea = contentElement.querySelector("textarea[data-resume-target='content']");
-      textarea.focus();
-      stateFocus = true;
+  showSocialLinksForm(event) {
+    event.preventDefault();
+    let stateFocus = false; 
+    if (!stateFocus) {
+      this.socialLinksContentTarget.style.display = 'none';
+      this.socialLinksFormTarget.style.display = 'block';
+    }
+  }
+  
+  showAboutMeContentForm(event) {
+    event.preventDefault();
+    let stateFocus = false; 
+    if (!stateFocus) {
+      this.aboutMeContentTarget.style.display = 'none';
+      this.aboutMeFormTarget.style.display = 'block';
+    }
+  }
+  
+  showWorkExperienceContentForm(event) {
+    event.preventDefault();
+    let stateFocus = false; 
+    if (!stateFocus) {
+      this.workExperienceContentTarget.style.display = 'none';
+      this.workExperienceFormTarget.style.display = 'block';
+    }
+  }  
+  
+  showAboutMeTitleForm(event) {
+    event.preventDefault();
+    let stateFocus = false; 
+    if (!stateFocus) {
+      this.aboutMeTitleTarget.style.display = 'none';
+      this.aboutMeTitleFormTarget.style.display = 'block';
+    }
+  }
+  
+  showWorkExperienceTitleForm(event) {
+    event.preventDefault();
+    let stateFocus = false; 
+    if (!stateFocus) {
+      this.workExperienceTitleTarget.style.display = 'none';
+      this.workExperienceTitleFormTarget.style.display = 'block';
     }
   }
 
   saveContent(event) {
     event.preventDefault();
     const { account, serial } = this.updateContentTarget.dataset;
-    const newContent = this.contentTarget.value;
     const token = document.querySelector("meta[name=csrf-token]").content;
     const url = `/@${account}/resumes/${serial}`;
 
@@ -37,14 +81,44 @@ export default class extends Controller {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        resume: { basic_info: newContent }
+        resume: { 
+          basic_info: this.basicInfoFormTarget.value,
+          social_links: this.socialLinksFormTarget.value,
+          about_me: this.aboutMeFormTarget.value,
+          work_experience: this.workExperienceFormTarget.value,
+          about_me_title: this.aboutMeTitleFormTarget.value,
+          work_experience_title: this.workExperienceTitleFormTarget.value,
+        }
       })
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data.message);
       const contentElement = this.basicInfoTarget;
-      contentElement.innerHTML = `<p class="text-2xl">${data.message}</p>`
+      
+      this.basicInfoContentTarget.innerText = data.message.basic_info;
+      this.basicInfoContentTarget.style.display = 'block';
+      this.basicInfoFormTarget.style.display = 'none';
+
+      this.socialLinksContentTarget.innerText = data.message.social_links;
+      this.socialLinksContentTarget.style.display = 'block';
+      this.socialLinksFormTarget.style.display = 'none';
+
+      this.aboutMeContentTarget.innerText = data.message.about_me;
+      this.aboutMeContentTarget.style.display = 'block';
+      this.aboutMeFormTarget.style.display = 'none';
+
+      this.workExperienceContentTarget.innerText = data.message.work_experience;
+      this.workExperienceContentTarget.style.display = 'block';
+      this.workExperienceFormTarget.style.display = 'none';
+
+      this.aboutMeTitleTarget.innerText = data.message.about_me_title;
+      this.aboutMeTitleTarget.style.display = 'block';
+      this.aboutMeTitleFormTarget.style.display = 'none';
+
+      this.workExperienceTitleTarget.innerText = data.message.work_experience_title;
+      this.workExperienceTitleTarget.style.display = 'block';
+      this.workExperienceTitleFormTarget.style.display = 'none';
+      
     })
     .catch(error => {
       console.error('Error:', error);
