@@ -4,35 +4,51 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>READMee</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+<head>
+  <title>READMee</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<body>
 
-  <body>
-    <div class= " flex justify-end text-2xl px-5">
-      
-        <% if current_user %>        
-          <%= link_to '登出', destroy_user_session_path, data: { 'turbo-method': :delete }%>
-        <% else %>
-          <%= link_to '註冊', new_user_registration_path%> |  
-          <%= link_to '登入', new_user_session_path %> |
-          <%- resource_class.omniauth_providers.each do |provider| %>
-            <%= button_to "GOOGLE登入", omniauth_authorize_path(resource_name, provider), 
-                                                                                data: { method: :post, turbo: false } %>
-          <% end %>
+<div class='flex justify-between'>
+  <div class='text-2xl px-5'>
+    <%= link_to '首頁', '/', class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
+  </div>
+
+  <div class='text-2xl px-5'>
+    <% if current_user %>
+      <div class='flex'>
+      <% if current_user.admin? %>
+        <%= link_to '管理後臺', user_admin_path(account: current_user.account), class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer'%>
+      <% end %>
+        <%= link_to '個人資料', user_profile_path(account: current_user.account),class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
+        <%= link_to '登出', destroy_user_session_path, data: { 'turbo-method': :delete }, class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
+      </div>
+    <% else %>
+      <div class='flex'>
+        <%= link_to '註冊', new_user_registration_path, class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>  
+        <%= link_to '登入', new_user_session_path,class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= button_to "GOOGLE登入", omniauth_authorize_path(resource_name, provider), data: { method: :post, turbo: false },class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
         <% end %>
-    </div>
-    <main class="container mx-auto mt-28 px-5">
-      <%= render 'shared/alert' %>
-      <%= render 'shared/flash' %>
-      <%= yield %>
-    </main>
-  </body>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<main class='container mx-auto mt-28 px-5'>  
+  <div class='text-red-500'>
+    <p class='notice'><%= notice %></p>
+    <p class='alert'><%= alert %></p> 
+  </div>
+  <%= yield %>
+</main>
+
+</body>
 </html>

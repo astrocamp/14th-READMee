@@ -1,18 +1,21 @@
 class ResumesController < ApplicationController
-    def index
+  def index
+  
+  end
 
-    end
-    def show
+  def show
+  
+  end
 
-    end
-    def create
+  def create
+  
+  end
 
-    end
-    def edit
+  def edit
+  
+  end
 
-    end
-    def destroy
-
-    end
-
+  def destroy
+  
+  end
 end

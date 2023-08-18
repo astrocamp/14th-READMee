@@ -20,11 +20,12 @@ zh-TW:
         invalid: '請確認帳號密碼是否正確!'
         not_found_in_database: '請確認帳號密碼是否正確!'
         already_authenticated: '您已經登入，無法執行該操作。'
-        unconfirmed: '驗證失敗，請重新登入。'
+        unconfirmed: '請至信箱確認信件'
+        unauthenticated: '尚未認證，請重新登入'
     registrations:
       signed_up: '您已成功註冊。'
       user:
-        signed_up_but_unconfirmed: '請至郵箱確認信件。'
+        signed_up_but_unconfirmed: '請至信箱確認信件。'
     sessions:
       signed_in: '您已成功登入。'
       signed_out: '您已成功登出。'
