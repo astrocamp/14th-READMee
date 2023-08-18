@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update destroy]
   before_action :authenticate_user!
-
+  before_action :set_account, only: [:edit, :update]
   def show
   end
 
@@ -33,7 +33,7 @@ class CompaniesController < ApplicationController
   
   def update
     if @company.update(params_company)
-      redirect_to company_path, notice: "編輯成功"
+      redirect_to company_path(@account), notice: "編輯成功"
     else
       render :edit
     end
@@ -47,5 +47,8 @@ class CompaniesController < ApplicationController
 
   def set_company
     @company = current_user.company
+  end
+  def set_account
+    @account = current_user.account
   end
 end

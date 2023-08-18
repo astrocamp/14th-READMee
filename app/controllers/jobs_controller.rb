@@ -1,13 +1,15 @@
 class JobsController < ApplicationController
   before_action :find_job, only: %i[edit update show destroy]
-
+  before_action :set_company
+  before_action :set_account, only: [:edit, :update, :create]
   def index
-    @company = current_user.company
+    @account = current_user.account
     @jobs = @company.jobs
     @jobList = Job.where(deleted_at: nil).order(id: :desc)
   end
 
   def new
+    @account = current_user.account
     @company = current_user.company
     @job = @company.jobs.new
   end
@@ -50,4 +52,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
   end
 
+  def set_company
+    @company = current_user.company
+  end
+  def set_account
+    @account = current_user.account
+  end
 end

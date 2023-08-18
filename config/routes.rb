@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :resumes
 
-  resource :company, except: [:index, :delete]
-  resources :jobs
+  scope '@:account' do
+    resource :company do
+      resources :jobs
+    end
+  end
 end
