@@ -14,19 +14,17 @@ export default class extends Controller {
 
   showBasicInfoForm(event) {
     event.preventDefault();
-    let stateFocus = false;
-    if (!stateFocus) {
+    let stateFocus = true; 
+    if (stateFocus) {
       this.basicInfoContentTarget.style.display = 'none';
       this.basicInfoFormTarget.style.display = 'block';
-    }else{
-      
     }
   }
 
   showSocialLinksForm(event) {
     event.preventDefault();
-    let stateFocus = false; 
-    if (!stateFocus) {
+    let stateNoFocus = true;  //如果表單沒有顯示
+    if (stateNoFocus) {
       this.socialLinksContentTarget.style.display = 'none';
       this.socialLinksFormTarget.style.display = 'block';
     }
@@ -34,8 +32,8 @@ export default class extends Controller {
   
   showAboutMeContentForm(event) {
     event.preventDefault();
-    let stateFocus = false; 
-    if (!stateFocus) {
+    let stateNoFocus = true;  
+    if (stateNoFocus) {
       this.aboutMeContentTarget.style.display = 'none';
       this.aboutMeFormTarget.style.display = 'block';
     }
@@ -43,8 +41,8 @@ export default class extends Controller {
   
   showWorkExperienceContentForm(event) {
     event.preventDefault();
-    let stateFocus = false; 
-    if (!stateFocus) {
+    let stateNoFocus = true;  
+    if (stateNoFocus) {
       this.workExperienceContentTarget.style.display = 'none';
       this.workExperienceFormTarget.style.display = 'block';
     }
@@ -52,8 +50,8 @@ export default class extends Controller {
   
   showAboutMeTitleForm(event) {
     event.preventDefault();
-    let stateFocus = false; 
-    if (!stateFocus) {
+    let stateNoFocus = true;  
+    if (stateNoFocus) {
       this.aboutMeTitleTarget.style.display = 'none';
       this.aboutMeTitleFormTarget.style.display = 'block';
     }
@@ -61,8 +59,8 @@ export default class extends Controller {
   
   showWorkExperienceTitleForm(event) {
     event.preventDefault();
-    let stateFocus = false; 
-    if (!stateFocus) {
+    let stateNoFocus = true;  
+    if (stateNoFocus) {
       this.workExperienceTitleTarget.style.display = 'none';
       this.workExperienceTitleFormTarget.style.display = 'block';
     }
@@ -118,7 +116,6 @@ export default class extends Controller {
       this.workExperienceTitleTarget.innerText = data.message.work_experience_title;
       this.workExperienceTitleTarget.style.display = 'block';
       this.workExperienceTitleFormTarget.style.display = 'none';
-      
     })
     .catch(error => {
       console.error('Error:', error);

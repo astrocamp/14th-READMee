@@ -32,16 +32,6 @@ class ResumesController < ApplicationController
     end
   end
 
-  def second
-    @component_name = params[:component_name]
-    @component_integer = params[:component_name].to_i
-    if @resume.update(component_name: @component_integer)
-      flash[:notice] = '更新組件成功'
-    else
-      flash[:alert] = '更新組件失敗'
-    end
-  end
-
   def find_resume
     @resume = current_user.resumes.find(params[:id])
   end

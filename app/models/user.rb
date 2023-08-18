@@ -10,8 +10,7 @@ class User < ApplicationRecord
   # relationships
   has_one :profile
   has_many :resumes
-
-  # 找到user的話就登入，找不到就create新的user
+  
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
       user.email = provider_data.info.email
