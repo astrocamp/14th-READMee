@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-# 處理用戶的Omniauth回調
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    # 從Google數據創建用戶
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
 
     if @user.persisted?
