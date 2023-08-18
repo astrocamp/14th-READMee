@@ -5,10 +5,10 @@ export default class extends Controller {
   static targets = ["input", "preview"];
 
   preview() {
-    let input = this.inputTarget;
-    let preview = this.previewTarget;
-    let file = input.files[0];
-    let reader = new FileReader();
+    const input = this.inputTarget;
+    const preview = this.previewTarget;
+    const file = input.files[0];
+    const reader = new FileReader();
 
     reader.onloadend = function () {
       preview.src = reader.result;
