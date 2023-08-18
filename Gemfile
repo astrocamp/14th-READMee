@@ -50,6 +50,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'rubocop-rails', '~> 2.20'
 end
 
 group :test do
@@ -64,5 +65,3 @@ gem 'omniauth', '~> 2.1'
 gem 'omniauth-google-oauth2', '~> 1.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pundit', '~> 2.3'
-gem 'rubocop', '~> 1.56'
-gem 'rubocop-rails', '~> 2.20'
