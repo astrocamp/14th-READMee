@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   scope path: '@:account' do
     resources :resumes, except: [:index, :create, :show]
   end
-
 end
