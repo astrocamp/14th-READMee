@@ -59,6 +59,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "rubocop", "~> 0.90.0"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -82,3 +83,4 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem "pundit", "~> 2.3"
+gem "rack-cors", "~> 2.0"
