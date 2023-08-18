@@ -35,4 +35,4 @@
 
 # Ignore RuboCop configuration file
 .rubocop.yml
-.vscode/**
+.vscode/
