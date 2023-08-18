@@ -46,11 +46,3 @@ node_modules/
 /vendor/
 package-lock.json
 package.json
-
-/public/packs/cache
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
