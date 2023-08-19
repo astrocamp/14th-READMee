@@ -32,7 +32,7 @@ class JobsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     @job.destroy
     redirect_to company_jobs_path, notice: '刪除成功'
   end
