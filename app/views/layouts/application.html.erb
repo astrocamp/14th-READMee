@@ -27,7 +27,7 @@
       <% if current_user.admin? %>
         <%= link_to '管理後臺', user_admin_path(account: current_user.account), class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer'%>
       <% end %>
-        <%= link_to '個人資料', user_profile_path(account: current_user.account),class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
+        <%= link_to '個人資料', profile_path(account: current_user.account),class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
         <%= link_to '登出', destroy_user_session_path, data: { 'turbo-method': :delete }, class:'font-bold  py-3 px-5 bg-amber-500 text-white inline-block font-medium cursor-pointer' %>
       </div>
     <% else %>
