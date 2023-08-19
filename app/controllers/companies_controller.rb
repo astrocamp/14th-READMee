@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: [:edit, :update]
+  before_action :set_account, only: %i[edit update]
 
   def show
     if current_user.employer? && current_user.company.present?
@@ -17,9 +17,9 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(params_company)
     @company.user = current_user
-        
+
     if @company.save
-      redirect_to company_path, notice: "公司建立成功!"
+      redirect_to company_path, notice: '公司建立成功!'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
   def edit
     @company = current_user.company
   end
-  
+
   def update
     @company = current_user.company
 
@@ -38,7 +38,7 @@ class CompaniesController < ApplicationController
       render :edit
     end
   end
-    
+
   private
 
   def params_company
