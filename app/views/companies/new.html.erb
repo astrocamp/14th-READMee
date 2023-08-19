@@ -1,2 +1,6 @@
-<h1 class="text-center text-5xl">新增公司</h1>
-<%= render 'form' %>
+<div class="container mx-auto w-2/3 p-3 text-left">
+  <%= form_with(model: @company, url: company_path, data:{ turbo:false}) do |f| %>
+    <h1 class="text-center text-5xl">新增公司</h1>
+    <%= render 'form', f: f %>
+  <% end %>
+</div>
