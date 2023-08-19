@@ -39,3 +39,7 @@
 # Ignore RuboCop configuration file
 .vscode/
 .DS_Store
+/node_modules/
+/vendor
+package-lock.json
+package.json
