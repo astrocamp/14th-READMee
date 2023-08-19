@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 .save-btn {
-  @apply rounded-lg py-3 px-5 text-white inline-block bg-amber-500 hover:bg-amber-800 cursor-pointer
+  @apply rounded-lg py-3 px-5 text-white inline-block bg-amber-500 hover:bg-amber-800 cursor-pointer;
 }
-.input {
-  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full
 
-*/
-.field_with_errors{
+.input {
+  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
+}
+
+.field_with_errors {
   border: 2px solid red;
 }

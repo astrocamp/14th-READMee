@@ -9,10 +9,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.profile
+    case resource.role
+    when 'job_seeker'
       profile_path(account: resource.account)
+    when 'employer'
+      company_path(account: resource.account)
     else
-      new_profile_path(account: resource.account)
+      root_path
     end
-  end
+  end  
 end
