@@ -1,0 +1,19 @@
+<p class= "font-bold text-4xl">會員資料</p>
+<table>
+  <thead>
+    <tr>
+      <th class= 'text-xl'>使用者名稱</th>
+      <th class= 'text-xl'>信箱</th>
+      <th class= 'text-xl'>階級</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <th class= 'mx-1 border'><%= user.account %></th>
+        <th class= 'mx-1 border'><%= user.email %></th>
+        <th class= 'mx-1 border'><%= user.role %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
