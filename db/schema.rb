@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_21_064000) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_11_070119) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.text "about"
+    t.integer "population"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "num_of_people"
+    t.string "seniority"
+    t.integer "salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
+ActiveRecord::Schema[7.0].define(version: 2023_08_13_032450) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
