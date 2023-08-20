@@ -23,11 +23,8 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
 
     if @profile.save
-      current_user.update(role: params[:user][:role].to_i) # 將選擇的角色轉換為整數並更新使用者的角色
-      p '成功'
-      # redirect_to profile_path(@profile), notice: '恭喜完成第一步！建立個人檔案成功！'
+      redirect_to profile_path(@profile), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
-      p '錯誤'
       render :new
     end
   end
@@ -55,7 +52,7 @@ class ProfilesController < ApplicationController
       :avatar, :full_name, :phone, :address, :job_title, :education,
       :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website,
       languages: {}, skills_attributes: %i[id tag _destroy]
-    ).merge(user_attributes: { role: params[:user][:role] }) # 將選擇的角色合併到 user_attributes 中
+    )
   end
   
 end
