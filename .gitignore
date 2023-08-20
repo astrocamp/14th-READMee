@@ -39,3 +39,5 @@
 # Ignore RuboCop configuration file
 .vscode/
 .DS_Store
+/node_modules/
+/test/
