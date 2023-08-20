@@ -1,4 +1,8 @@
 zh-TW:
+  user_roles:
+    job_seeker: "求職者"
+    employer: "雇主"
+    admin: "管理員"
   errors:
     messages:
       not_saved: '錯誤！請查看以下訊息：'

@@ -7,11 +7,11 @@
 }
 
 .proceed-btn {
-  @apply select-none bg-amber-300 text-black rounded-xl p-0.5
+  @apply select-none bg-amber-300 text-black rounded-xl p-0.5;
 }
 
 .input {
-  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full
+  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
 }
 :root {
   --ss-primary-color: #f59e0b !important;

@@ -49,7 +49,7 @@ class JobsController < ApplicationController
   
 
   private
-
+  
   def params_job
     params.require(:job).permit(:title, :content, :num_of_people, :seniority, :salary)
   end
