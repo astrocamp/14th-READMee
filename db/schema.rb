@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_08_11_070119) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_070119) do
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
 ActiveRecord::Schema[7.0].define(version: 2023_08_13_032450) do
-=======
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_175331) do
->>>>>>> c758ef9042d4ad0ecf7230c07d9156db59f0c250
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
