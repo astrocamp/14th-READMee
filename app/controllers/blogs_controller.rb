@@ -6,6 +6,7 @@ class BlogsController < ApplicationController
     @blogs = Blog.all.order(id: :desc)
   end
 
+
   def new
     @blog = Blog.new
   end 
@@ -19,16 +20,13 @@ class BlogsController < ApplicationController
     end
   end
 
-  def show
-    find_blog
+  def show 
   end
 
-  def edit
-    find_blog
+  def edit    
   end
 
-  def update
-    find_blog
+  def update  
     if @blog.update(blog_params)
       redirect_to blogs_path, notice: '更新文章成功'
     else
@@ -36,8 +34,7 @@ class BlogsController < ApplicationController
     end    
   end
 
-  def destroy
-    find_blog
+  def destroy   
     @blog.destroy
     redirect_to blogs_path, notice: '文章刪除成功'
   end

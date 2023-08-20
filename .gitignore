@@ -30,8 +30,6 @@
 
 /public/assets
 
-.vscode
-
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
@@ -39,5 +37,4 @@
 !/app/assets/builds/.keep
 
 # Ignore RuboCop configuration file
-.vscode/
 .DS_Store
