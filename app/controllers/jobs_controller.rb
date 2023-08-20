@@ -40,9 +40,6 @@ class JobsController < ApplicationController
   end
 
   def jobs_list
-    # @q = Job.order(id: :desc).ransack(params[:q])
-    # @jobs_list = @q.result
-
     @q = Job.ransack(params[:q])
     @jobs_list = @q.result.includes(:company).order(id: :desc)
   end
