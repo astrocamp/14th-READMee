@@ -25,6 +25,7 @@ class ProfilesController < ApplicationController
     if @profile.save
       redirect_to profile_path(@profile), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
+      flash.now[:error] = "個人檔案建立失敗，請檢查表單內容。"
       render :new
     end
   end

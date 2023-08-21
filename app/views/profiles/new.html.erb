@@ -1,6 +1,12 @@
 <script defer src="/assets/controllers/flow.js"></script>
 
+<% flash.each do |type, message| %>
+  <div class="alert alert-<%= type %>">
+    <%= message %>
+  </div>
+<% end %>
+
 <%= form_with(model: @profile, url: profile_path, data: { controller: "nested-form", nested_form_wrapper_selector_value: '.nested-form-wrapper', turbo: false }, method: :post) do |form| %>
-    <%= render 'flow', form: form %>
+  <%= render 'flow', form: form %>
 <% end %>
 
