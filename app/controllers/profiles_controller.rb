@@ -32,6 +32,7 @@ class ProfilesController < ApplicationController
   end
 
   private
+  
   def set_profile
     @profile = current_user.profile
   end
