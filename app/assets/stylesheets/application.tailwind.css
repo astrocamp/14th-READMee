@@ -17,3 +17,5 @@
 .field_with_errors {
   border: 2px solid red;
 }
+  @apply  flex mr-2 px-4 py-1 w-fit rounded-full block text-white  bg-amber-500 hover:bg-amber-800;
+}
