@@ -6,7 +6,6 @@ class BlogsController < ApplicationController
     @blogs = Blog.all.order(id: :desc)
   end
 
-
   def new
     @blog = Blog.new
   end 

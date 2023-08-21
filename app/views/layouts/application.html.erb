@@ -12,12 +12,11 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= javascript_importmap_tags %>   
   </head>
 
   <body>
    
-
   <header class="flex flex-wrap sm:justify-start sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-gray-800 dark:border-gray-700">
   <nav class="relative max-w-7xl w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
     <div class="flex items-center justify-between">
@@ -57,16 +56,11 @@
   </nav>
 </header>
 
-  <main class="container mx-auto mt-10 ">
-   <div class="text-red-600">
-   <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>    
-   </div>
-    
-    <%= yield %>
+  <main class="container mx-auto mt-10">
+    <%= yield %>  
   </main>
 
-  <footer class="bottom-0 w-full bg-white text-gray-500 py-1 px-2" >
+  <footer class="mt-40 w-full bg-white text-gray-500 py-1 px-2 " >
     <span class="text-center block">©2023 READMee Co., Ltd.</span>
   </footer>
         

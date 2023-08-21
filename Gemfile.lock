@@ -324,7 +324,9 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
-  webdrivers 
+  webdrivers
+  wicked_pdf
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 3.2.2p53
