@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
-=======
 ActiveRecord::Schema[7.0].define(version: 2023_08_21_064000) do
->>>>>>> 621886b ([style]: add the defaultuser.png and revise the show views from profile)
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -137,10 +133,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_064000) do
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
   add_foreign_key "resumes", "users"
-<<<<<<< HEAD
-  add_foreign_key "skills", "profiles"
-  add_foreign_key "resumes", "users"
 end
-=======
-end
->>>>>>> 621886b ([style]: add the defaultuser.png and revise the show views from profile)
