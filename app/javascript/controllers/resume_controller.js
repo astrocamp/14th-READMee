@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["basicInfo", "socialLinks", "basicInfoContent", "socialLinksContent", "aboutMeContent", "workExperienceContent", "updateContent", "aboutMeTitle", "aboutMeTitleForm", "workExperienceTitle", "workExperienceTitleForm", "basicInfoForm", "socialLinksForm", "aboutMeForm", "skillsForm", "workExperienceForm"];
+  static targets = ["basicInfo", "socialLinks", "basicInfoContent", "socialLinksContent", "aboutMeContent", "workExperienceContent", "updateContent", "aboutMeTitle", "aboutMeTitleForm", "workExperienceTitle", "workExperienceTitleForm", "basicInfoForm", "socialLinksForm", "aboutMeForm", "skill", "skillsForm", "workExperienceForm", "skillUl", "inputSkill", "deleteBtn"];
   
   connect() {
     this.basicInfoTarget.addEventListener("click", this.showBasicInfoForm.bind(this));
@@ -14,59 +14,41 @@ export default class extends Controller {
 
   showBasicInfoForm(event) {
     event.preventDefault();
-    let stateFocus = true; 
-    if (stateFocus) {
-      this.basicInfoContentTarget.style.display = 'none';
-      this.basicInfoFormTarget.style.display = 'block';
-    }
+    this.basicInfoContentTarget.style.display = 'none';
+    this.basicInfoFormTarget.style.display = 'block';
   }
 
   showSocialLinksForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  //如果表單沒有顯示
-    if (stateNoFocus) {
-      this.socialLinksContentTarget.style.display = 'none';
-      this.socialLinksFormTarget.style.display = 'block';
-    }
+    this.socialLinksContentTarget.style.display = 'none';
+    this.socialLinksFormTarget.style.display = 'block';
   }
   
   showAboutMeContentForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
-      this.aboutMeContentTarget.style.display = 'none';
-      this.aboutMeFormTarget.style.display = 'block';
-    }
+    this.aboutMeContentTarget.style.display = 'none';
+    this.aboutMeFormTarget.style.display = 'block';
   }
   
   showWorkExperienceContentForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
-      this.workExperienceContentTarget.style.display = 'none';
-      this.workExperienceFormTarget.style.display = 'block';
-    }
+    this.workExperienceContentTarget.style.display = 'none';
+    this.workExperienceFormTarget.style.display = 'block';
   }  
   
   showAboutMeTitleForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
-      this.aboutMeTitleTarget.style.display = 'none';
-      this.aboutMeTitleFormTarget.style.display = 'block';
-    }
+    this.aboutMeTitleTarget.style.display = 'none';
+    this.aboutMeTitleFormTarget.style.display = 'block';
   }
   
   showWorkExperienceTitleForm(event) {
     event.preventDefault();
-    let stateNoFocus = true;  
-    if (stateNoFocus) {
-      this.workExperienceTitleTarget.style.display = 'none';
-      this.workExperienceTitleFormTarget.style.display = 'block';
-    }
+    this.workExperienceTitleTarget.style.display = 'none';
+    this.workExperienceTitleFormTarget.style.display = 'block';
   }
 
-  saveContent(event) {
+  saveContent(event){
     event.preventDefault();
     const { account, serial } = this.updateContentTarget.dataset;
     const token = document.querySelector("meta[name=csrf-token]").content;
@@ -90,9 +72,7 @@ export default class extends Controller {
       })
     })
     .then(response => response.json())
-    .then(data => {
-      const contentElement = this.basicInfoTarget;
-      
+    .then(data => {      
       this.basicInfoContentTarget.innerText = data.message.basic_info;
       this.basicInfoContentTarget.style.display = 'block';
       this.basicInfoFormTarget.style.display = 'none';

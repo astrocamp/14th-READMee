@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   scope path: '@:account' do
     resource :profile, except: [:destroy]
-    resource :resumes, only: [:edit, :update]
   end 
+  
+  get '/@:account/resumes/:id/edit', to: 'resumes#edit', as: 'edit_resume_path'
+  patch '/@:account/resumes/:id', to: 'resumes#update'
 end

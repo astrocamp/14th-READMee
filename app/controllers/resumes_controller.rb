@@ -5,9 +5,23 @@ class ResumesController < ApplicationController
   before_action :find_resume, only: [:edit, :update, :second]
 
   def edit
-    @skills = JSON.parse(@resume.skills)
-    @formatted_basic_info = sanitize(@resume.basic_info).gsub("\n", '<br>').html_safe
-    @formatted_social_links = sanitize(@resume.social_links).gsub("\n", '<br>').html_safe
+    if @resume.basic_info.present?
+      @formatted_basic_info = sanitize(@resume.basic_info).gsub("\n", '<br>').html_safe
+    else
+      @formatted_basic_info = ""
+    end
+  
+    if @resume.social_links.present?
+      @formatted_social_links = sanitize(@resume.social_links).gsub("\n", '<br>').html_safe
+    else
+      @formatted_social_links = ""
+    end
+
+    if @resume.skills.present?
+      @skills = JSON.parse(@resume.skills)
+    else
+      @skills = ""
+    end
   end
 
   def update
@@ -23,8 +37,8 @@ class ResumesController < ApplicationController
               work_experience: @resume.work_experience,
               about_me_title: @resume.about_me_title,
               work_experience_title: @resume.work_experience_title
-            } 
-          } 
+            }
+          }
         }
       end
     else
