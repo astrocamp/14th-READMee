@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
-  
+  root "pages#home"  
   resources :blogs
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
