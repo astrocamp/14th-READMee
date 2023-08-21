@@ -13,3 +13,18 @@
 .input {
   @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full
 }
+:root {
+  --ss-primary-color: #f59e0b !important;
+  --ss-main-height: 40px !important;
+  --ss-font-color: #888686 !important;
+  --ss-spacing-m: 10px !important;
+}
+.ss-values .ss-value {
+  @apply p-2 mr-1 font-semibold rounded !important;
+}
+.ss-main {
+  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
+}
+.ss-arrow path {
+  @apply mr-2 !important;
+}

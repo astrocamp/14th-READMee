@@ -48,20 +48,7 @@
 
     <div class="my-5">
       <%= form.label '技能', class: "font-semibold" %>
-      
-      <template data-nested-form-target="template">
-        <%= form.fields_for :skills, Skill.new, child_index: 'NEW_RECORD' do |skill_fields| %>
-          <%= render "profile_skill_form", form: skill_fields %>
-        <% end %>
-      </template>
-      <div>
-        <%= form.fields_for :skills do |skill_fields| %>
-          <%= render "profile_skill_form", form: skill_fields %>
-        <% end %>
-        <div data-nested-form-target="target">
-          <%= form.button '+', { data: { action: "nested-form#add" }, class: "rounded-lg py-2 px-3 m-2 bg-amber-500 text-white inline-block font-medium cursor-pointer"} %>
-        </div>
-      </div>
+      <%= form.select :skill_ids, Skill.pluck(:tag, :id), {}, { data: { controller: "slimselect" }, multiple: true } %>
     </div>
 
     <div class="my-5">
