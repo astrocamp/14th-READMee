@@ -18,14 +18,29 @@
       <h1 data-resume-target="aboutMeTitle" class="text-xl font-bold py-3 h-200"><%= @resume.about_me_title%></h1>
       <input data-resume-target="aboutMeTitleForm" class="w-full resize-y h-20 p-2 border rounded-md hidden" value="<%= @resume.about_me_title%>">
       <p data-resume-target="aboutMeContent" class="overflow-auto"><%= @resume.about_me %></p>
-      <textarea data-resume-target="aboutMeForm" class="w-full resize-y h-20 p-2 border rounded-md hidden"><%= @resume.about_me %></textarea>
+      <textarea data-resume-target="aboutMeForm" class="w-full h-48 resize-y h-20 p-2 border rounded-md hidden"><%= @resume.about_me %></textarea>
     </div>
     <div class="pt-5l">
       <h1 class="text-xl font-bold py-3">技能</h1>
       <ul class="relative">
-        <div class="absolute right-0 border-2 border-gray-300 rounded-full p-2 cursor-pointer hidden">+</div>
-        <% @skills.each do |skill| %>
-          <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2"><%= skill %></li>
+        <% if @skills.present? %>
+          <% @skills.each do |skill| %>
+            <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2"><%= skill %></li>
+          <% end %>
+        <% else %>
+          <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2">請輸入技能</li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="pt-5l">
+      <h1 class="text-xl font-bold py-3">語言</h1>
+      <ul class="relative">
+        <% if @languages.present? %>
+          <% @languages.each do |language| %>
+            <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2"><%= language %></li>
+          <% end %>
+        <% else %>
+          <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2">請輸入語言</li>
         <% end %>
       </ul>
     </div>
