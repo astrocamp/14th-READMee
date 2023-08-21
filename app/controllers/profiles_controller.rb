@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_profile, only: %i[show edit update]
+  before_action :set_profile, only: [:show, :edit, :update]
 
   def show
     if current_user.job_seeker? && current_user.profile.present?
