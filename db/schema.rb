@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_08_21_064000) do
+>>>>>>> 621886b ([style]: add the defaultuser.png and revise the show views from profile)
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,8 +55,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
     t.index ["deleted_at"], name: "index_blogs_on_deleted_at"
   end
 
+  create_table "profile_skills", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_skills_on_profile_id"
+    t.index ["skill_id"], name: "index_profile_skills_on_skill_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
     t.string "full_name"
     t.string "phone"
     t.string "address"
@@ -69,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -94,10 +107,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
 
   create_table "skills", force: :cascade do |t|
     t.string "tag"
-    t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_skills_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,24 +117,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
     t.string "account"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "profile_skills", "profiles"
+  add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
   add_foreign_key "resumes", "users"
+<<<<<<< HEAD
   add_foreign_key "skills", "profiles"
   add_foreign_key "resumes", "users"
 end
+=======
+end
+>>>>>>> 621886b ([style]: add the defaultuser.png and revise the show views from profile)
