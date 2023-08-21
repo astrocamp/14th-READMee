@@ -12,7 +12,6 @@ class JobsController < ApplicationController
   end
 
   def show
-  
   end
 
   def create
@@ -25,7 +24,6 @@ class JobsController < ApplicationController
   end
 
   def edit
-  
   end
 
   def update
