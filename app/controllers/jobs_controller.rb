@@ -39,6 +39,12 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path, notice: '刪除成功'
   end
 
+  def jobs_list
+    @jobs = Job.all
+    @jobList = Job.where(deleted_at: nil).order(id: :desc)
+  end
+  
+
   private
 
   def params_job
