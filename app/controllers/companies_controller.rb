@@ -5,10 +5,13 @@ class CompaniesController < ApplicationController
   def show
     if current_user.employer? && current_user.company.present?
       @company = current_user.company
-    else
+    elsif current_user.employer?
       redirect_to new_company_path(account: current_user.account)
+    else
+      flash[:alert] = "您不是雇主!"
+      redirect_to root_path
     end
-  end
+  end  
 
   def new
     @company = Company.new

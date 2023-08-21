@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    user_profile_path(account: current_user.account)
+    root_path
   end
 end

@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    if current_user.job_seeker? && current_user.profile.present?
+    if current_user && current_user.profile.present?
       # 顯示個人資料頁面
     else
       redirect_to new_profile_path(account: current_user.account)
