@@ -8,7 +8,14 @@ class ApplicationController < ActionController::Base
     I18n.locale = :'zh-TW'
   end
 
-  def after_sign_in_path_for(_resource)
-    new_profile_path(account: current_user.account)
+  def after_sign_in_path_for(resource)
+    case resource.role
+    when 'job_seeker'
+      profile_path(account: resource.account)
+    when 'employer'
+      company_path(account: resource.account)
+    else
+      root_path
+    end
   end
 end
