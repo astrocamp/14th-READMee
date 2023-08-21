@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   has_one :profile
+  has_one :company
 
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
@@ -29,5 +30,13 @@ class User < ApplicationRecord
 
   def admin?
     role == 'admin'
+  end
+
+  def employer?
+    role == 'employer'
+  end
+
+  def job_seeker?
+    role == 'job_seeker'
   end
 end

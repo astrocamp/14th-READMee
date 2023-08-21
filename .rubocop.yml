@@ -19,7 +19,4 @@ Style/Encoding:
 
 Style/ClassAndModuleChildren:
   Enabled: true
-  EnforcedStyle: nested
-
-Style/SingleLineMethods:
-  Enabled: true
+  EnforcedStyle: compact
