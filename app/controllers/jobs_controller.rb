@@ -11,7 +11,9 @@ class JobsController < ApplicationController
     @job = @company.jobs.new
   end
 
-  def show; end
+  def show
+  
+  end
 
   def create
     @job = @company.jobs.new(params_job)
@@ -22,7 +24,9 @@ class JobsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  
+  end
 
   def update
     if @job.update(params_job)

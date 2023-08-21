@@ -25,7 +25,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  
+  end
 
   def update
     if @profile.update(profile_params)
