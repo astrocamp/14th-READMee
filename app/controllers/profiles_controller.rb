@@ -41,7 +41,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education,
-                                    :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skills_attributes: %i[id tag _destroy])
+    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education, :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skill_ids: [])
   end
 end

@@ -5,11 +5,6 @@ class Profile < ApplicationRecord
   # relationships
   belongs_to :user
   has_one_attached :avatar
-  has_many :skills, dependent: :destroy, inverse_of: :profile
-  accepts_nested_attributes_for :skills, allow_destroy: true, reject_if: :all_blank
-
-  def add_language(language, level)
-    self.languages ||= {}
-    self.languages[language] = level
-  end
+  has_many :profile_skills
+  has_many :skills, through: :profile_skills
 end
