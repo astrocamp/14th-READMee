@@ -62,10 +62,16 @@ ActiveRecord::Schema[7.0].define(version: 20_230_813_032_450) do
     t.bigint "company_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
+  create_table "profile_skills", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "skill_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_skills_on_profile_id"
+    t.index ["skill_id"], name: "index_profile_skills_on_skill_id"
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
     t.string "full_name"
     t.string "phone"
     t.string "address"
@@ -82,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_813_032_450) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -90,20 +97,25 @@ ActiveRecord::Schema[7.0].define(version: 20_230_813_032_450) do
     t.string "avatar"
     t.text "basic_info"
     t.text "social_links"
-    t.text "summary"
     t.text "work_experience"
     t.string "skills"
-    t.integer "status", default: 0
+    t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "component_name"
+    t.bigint "user_id"
+    t.text "about_me"
+    t.string "about_me_title"
+    t.string "work_experience_title"
+    t.string "language"
+    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
     t.string "tag"
-    t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_skills_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,16 +124,16 @@ ActiveRecord::Schema[7.0].define(version: 20_230_813_032_450) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
     t.string "account"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -129,6 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_813_032_450) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "companies", "users"
+  add_foreign_key "profile_skills", "profiles"
+  add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "skills", "profiles"
+  add_foreign_key "resumes", "users"
 end

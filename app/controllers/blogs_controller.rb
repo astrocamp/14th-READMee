@@ -33,7 +33,7 @@ class BlogsController < ApplicationController
     end    
   end
 
-  def destroy   
+  def destroy
     @blog.destroy
     redirect_to blogs_path, notice: '文章刪除成功'
   end
@@ -46,5 +46,5 @@ class BlogsController < ApplicationController
 
   def blog_params
     params.require(:blog).permit(:title, :content)
-  end 
+  end
 end
