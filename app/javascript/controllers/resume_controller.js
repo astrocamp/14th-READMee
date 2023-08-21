@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["basicInfo", "socialLinks", "basicInfoContent", "socialLinksContent", "aboutMeContent", "workExperienceContent", "updateContent", "aboutMeTitle", "aboutMeTitleForm", "workExperienceTitle", "workExperienceTitleForm", "basicInfoForm", "socialLinksForm", "aboutMeForm", "skill", "skillsForm", "workExperienceForm", "skillUl", "inputSkill", "deleteBtn"];
+  static targets = ["basicInfo", "socialLinks", "basicInfoContent", "socialLinksContent", "aboutMeContent", "workExperienceContent", "updateContent", "aboutMeTitle", "aboutMeTitleForm", "workExperienceTitle", "workExperienceTitleForm", "basicInfoForm", "socialLinksForm", "aboutMeForm", "skillsForm", "workExperienceForm"];
   
   connect() {
     this.basicInfoTarget.addEventListener("click", this.showBasicInfoForm.bind(this));

@@ -125,4 +125,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_165134) do
   add_foreign_key "profiles", "users"
   add_foreign_key "resumes", "users"
   add_foreign_key "skills", "profiles"
+  add_foreign_key "resumes", "users"
 end
