@@ -14,10 +14,10 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = current_user.build_profile(profile_params)
-    @resume = current_user.resumes.build()
+    @resume = current_user.resumes.build
     if @profile.save
       @resume.save
-      redirect_to profile_path(account: current_user.account), notice: "恭喜完成第一步！建立個人檔案成功！"
+      redirect_to profile_path(account: current_user), notice: "恭喜完成第一步！建立個人檔案成功！"
     else
       render :new
     end
