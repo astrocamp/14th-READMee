@@ -1,45 +1,55 @@
 import { Controller } from "@hotwired/stimulus";
 
-export default class extends Controller {
-  static targets = ["main", "part1", "part2", "part3"];
-  
+export default class extends Controller {  
   connect() {
-  
-    this.mainTarget.innerHTML = this.part1Target.innerHTML;
-    this.inputs = this.element.querySelectorAll('input');
-    this.inputs[1].focus();
+    const nextBtns = document.querySelectorAll(".next-button");
+    const backBtns = document.querySelectorAll(".back-button");
+    const part1 = document.querySelector(".part1");
+    const part2 = document.querySelector(".part2");
+    const part3 = document.querySelector(".part3");
+    let currentPage = 1;
 
-    this.inputs.forEach(input => {
-      input.addEventListener("keydown", event => {
-        if (event.key === "Enter") {
-          event.preventDefault();
+    nextBtns.forEach(nextBtn => {
+      nextBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (currentPage === 1) {
+          part1.style.display = "none";
+          part2.style.display = "block";
+          currentPage++;
+          return;
+        }
+        if (currentPage === 2) {
+          part2.style.display = "none";
+          part3.style.display = "block";
+          currentPage++;
+          return;
+        }
+      }); 
+    });
+
+    backBtns.forEach(backBtn => {
+      backBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (currentPage === 2) {
+          part2.style.display = "none";
+          part1.style.display = "block";
+          currentPage--;
+          return;
+        }
+        if (currentPage === 3) {
+          part3.style.display = "none";
+          part2.style.display = "block";
+          currentPage--;
+          return;
         }
       });
     });
-  }
 
-  nextPage2(event) {
-    this.mainTarget.innerHTML = this.part2Target.innerHTML;
-  }
-  
-
-  nextPage3(event) {
-    this.mainTarget.innerHTML = this.part3Target.innerHTML;
-  }
-
-  backPage1(event) {
-    if (document.activeElement.tagName === "INPUT") {
-      event.preventDefault();
-    }else{
-    this.mainTarget.innerHTML = this.part1Target.innerHTML;
-    }
-  }
-
-  backPage2(event) {
-    if (document.activeElement.tagName === "INPUT") {
-      event.preventDefault();
-    }else{
-    this.mainTarget.innerHTML = this.part2Target.innerHTML;
-    }
+    document.addEventListener("keydown", (event) => {
+      const activeElement = document.activeElement;
+      if (event.key === "Enter" && activeElement.matches("input[type='text'], input[type='input']")) {
+        event.preventDefault();
+      }
+    });
   }
 }

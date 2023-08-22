@@ -44,5 +44,3 @@
 !/log/.keep
 /test/ 
 /vendor/
-package-lock.json
-package.json
