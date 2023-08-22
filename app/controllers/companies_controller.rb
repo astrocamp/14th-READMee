@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: %i[edit update]
+  before_action :set_account, only: [:edit, :update]
 
   def show
     if current_user.employer? && current_user.company.present?
