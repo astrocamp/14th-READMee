@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     if current_user && current_user.profile.present?
       # 顯示個人資料頁面
     else
-      redirect_to new_profile_path(account: current_user.account)
+      redirect_to new_profile_path(current_user)
     end
   end
 
@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
 
     if @profile.save
-      redirect_to profile_path(@profile), notice: '恭喜完成第一步！建立個人檔案成功！'
+      redirect_to profile_path(current_user), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
       flash[:alert] = "個人檔案建立失敗，請檢查表單內容。"
       render :new
