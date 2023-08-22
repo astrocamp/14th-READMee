@@ -8,7 +8,6 @@ class CreateResumes < ActiveRecord::Migration[7.0]
       t.text :summary
       t.text :work_experience
       t.string :skills
-      # soft delete
       t.integer :status, default: 0
 
       t.timestamps

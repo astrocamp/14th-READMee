@@ -51,6 +51,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_064000) do
     t.index ["deleted_at"], name: "index_blogs_on_deleted_at"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.text "about"
+    t.integer "population"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "num_of_people"
+    t.string "seniority"
+    t.integer "salary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
+    t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
+    
   create_table "profile_skills", force: :cascade do |t|
     t.bigint "profile_id", null: false
     t.bigint "skill_id", null: false
@@ -129,6 +154,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_064000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "companies", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "resumes", "users"
+  add_foreign_key "skills", "profiles"
+  add_foreign_key "resumes", "users"
+end
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"

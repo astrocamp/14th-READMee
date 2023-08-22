@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .save-btn {
-  @apply rounded-lg py-3 px-5 text-white inline-block bg-amber-500 hover:bg-amber-800 cursor-pointer
+  @apply rounded-lg py-3 px-5 text-white inline-block bg-amber-500 hover:bg-amber-800 cursor-pointer;
 }
 
 .proceed-btn {
