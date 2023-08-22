@@ -16,11 +16,19 @@ class ResumesController < ApplicationController
     else
       @formatted_social_links = ""
     end
-
-    if @resume.skills.present?
-      @skills = JSON.parse(@resume.skills)
+  
+    if @resume.work_experience.present?
+      @formatted_work_experience = sanitize(@resume.work_experience).gsub("\n", '<br>').html_safe
     else
-      @skills = ""
+      @formatted_work_experience = ""
+    end
+
+    if JSON.parse(@resume.skills) == [""]
+      ["請寫入內容"]
+    end
+
+    if JSON.parse(@resume.skills) == [""]
+      ["請寫入內容"]
     end
   end
 
@@ -36,7 +44,8 @@ class ResumesController < ApplicationController
               skills: @resume.skills,
               work_experience: @resume.work_experience,
               about_me_title: @resume.about_me_title,
-              work_experience_title: @resume.work_experience_title
+              work_experience_title: @resume.work_experience_title,
+              language: @resume.language
             }
           }
         }
@@ -51,6 +60,6 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name)
+    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :language)
   end
 end
