@@ -55,8 +55,9 @@
               <% if current_user %>
                 <div class='flex' data-controller="switchRole">
                   <%= link_based_on_role(current_user) %>
-                  <button id="switchRole" data-action="switchRole#switch" data-switchRole-target="switchRole">切換身分</button>
+                  <%= link_to "切换角色", toggle_role_path(account: current_user.account), data:{method: :post, turbo: false}, class: "hover:text-amber-600 mx-1" %>
                   <%= link_to '登出', destroy_user_session_path, data: { 'turbo-method': :delete }, class:'hover:text-amber-600 mx-1'%>
+                  <%= t("user_roles.#{current_user.role}") %>
                 </div>
               <% else %>
                 <div class="flex">
@@ -73,6 +74,8 @@
       </nav>
     </header>
     <main class="container mx-auto mt-10">
+      <%= render 'shared/alert'%>
+      <%= render 'shared/notice'%>
       <%= yield %>
     </main>
     <footer class="mt-40 w-full bg-white text-gray-500 py-1 px-2 " >
