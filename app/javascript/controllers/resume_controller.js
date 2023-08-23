@@ -10,6 +10,20 @@ export default class extends Controller {
     this.workExperienceContentTarget.addEventListener("click", this.showWorkExperienceContentForm.bind(this));
     this.aboutMeTitleTarget.addEventListener("click", this.showAboutMeTitleForm.bind(this));
     this.workExperienceTitleTarget.addEventListener("click", this.showWorkExperienceTitleForm.bind(this));
+
+    this.aboutMeContentTarget.addEventListener("click", this.clickAboutMeTextareaHeight.bind(this));
+    this.aboutMeFormTarget.addEventListener("input", this.inputAboutMeTextareaHeight.bind(this));
+    this.workExperienceContentTarget.addEventListener("click", this.clickWorkExperienceTextareaHeight.bind(this));
+    this.workExperienceForm.addEventListener("input", this.inputWorkExperienceTextareaHeight.bind(this));
+  }
+
+
+
+  showAboutMeTitleForm(e) {
+    console.log(123)
+    const textarea = this.aboutMeFormTarget;
+    // textarea.style.height = "100px";
+    // textarea.style.height = e.target.scrollHeight + "px";
   }
 
   showBasicInfoForm(event) {
@@ -46,6 +60,28 @@ export default class extends Controller {
     event.preventDefault();
     this.workExperienceTitleTarget.style.display = 'none';
     this.workExperienceTitleFormTarget.style.display = 'block';
+  }
+
+  clickAboutMeTextareaHeight(e){
+    console.log(this)
+    this.aboutMeFormTarget.focus()
+    this.aboutMeFormTarget.style.height = this.aboutMeFormTarget.scrollHeight + 'px';
+  }
+
+  inputAboutMeTextareaHeight(e){
+    this.aboutMeFormTarget.style.height = '100px';
+    this.aboutMeFormTarget.style.height = e.target.scrollHeight + 'px';
+  }
+  
+  clickWorkExperienceTextareaHeight(e){
+    console.log(this)
+    this.workExperienceFormTarget.focus()
+    this.workExperienceFormTarget.style.height = this.workExperienceFormTarget.scrollHeight + 'px';
+  }
+
+  inputWorkExperienceTextareaHeight(e){
+    this.workExperienceFormTarget.style.height = '100px';
+    this.workExperienceFormTarget.style.height = e.target.scrollHeight + 'px';
   }
 
   saveContent(event){

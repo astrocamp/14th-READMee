@@ -1,9 +1,10 @@
 <div id="content" data-controller="resume">
-  <section class=" w-full flex justify-between pl-32">  
-    <div class="bg-white max-w-screen-lg p-16 shadow-2xl mr-1 mt-28 mb-16">
+  <section class="w-full flex justify-between pl-32">  
+    <div class="min-h-1000 bg-white max-w-screen-lg p-16 shadow-2xl mr-1 mt-28 mb-16">
       <div class="flex">
         <div class="inline-block custom-width-250px flex justify-center items-center">
           <img class="inline-block h-32 w-32 rounded-full" src="https://picsum.photos/200/200/?random=10">
+          <%= img_tag @profile.avatar %>
         </div>
         <div class="flex items-center inline-block w-60" data-resume-target="basicInfo">
           <p data-resume-target="basicInfoContent"><%= @formatted_basic_info %></p>
@@ -18,7 +19,7 @@
       <h1 data-resume-target="aboutMeTitle" class="text-xl font-bold py-3 h-200"><%= @resume.about_me_title%></h1>
       <input data-resume-target="aboutMeTitleForm" class="w-full resize-y h-20 p-2 border rounded-md hidden" value="<%= @resume.about_me_title%>">
       <p data-resume-target="aboutMeContent" class="overflow-auto"><%= @resume.about_me %></p>
-      <textarea data-resume-target="aboutMeForm" class="w-full h-48 resize-y h-20 p-2 border rounded-md hidden"><%= @resume.about_me %></textarea>
+      <textarea data-resume-target="aboutMeForm" data-resume-target="aboutMeForm" class="w-full h-48 resize-y h-20 p-2 border rounded-md hidden"><%= @resume.about_me %></textarea>
     </div>
     <div class="pt-5l">
       <h1 class="text-xl font-bold py-3">技能</h1>
