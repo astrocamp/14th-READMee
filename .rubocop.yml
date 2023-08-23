@@ -1,5 +1,4 @@
-# .rubocop.yml
-
+# 使用 ERB 解析器，並指定 Ruby 解析器版本
 AllCops:
   NewCops: enable
   DisplayCopNames: true
@@ -11,9 +10,6 @@ AllCops:
     - 'bin/**/*'
     - 'vendor/**/*'
     - 'config/**/*'
-
-Style/SingleLineMethods:
-  Enabled: false
 
 Layout/LineLength:
   Max: 100
