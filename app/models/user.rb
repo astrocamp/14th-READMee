@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one :company
   has_many :resumes
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
-  
+
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
       user.email = provider_data.info.email
@@ -18,7 +18,7 @@ class User < ApplicationRecord
       user.uid = provider_data.uid
     end
   end
-  
+
   def set_account
     self.account = email.split('@').first if email.present?
   end

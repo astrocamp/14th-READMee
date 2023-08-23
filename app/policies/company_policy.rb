@@ -20,7 +20,6 @@ class CompanyPolicy < ApplicationPolicy
   end
 
   private
-
   def user_employer?
     user.employer?
   end

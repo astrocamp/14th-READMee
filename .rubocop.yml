@@ -24,3 +24,6 @@ Style/Encoding:
 Style/ClassAndModuleChildren:
   Enabled: true
   EnforcedStyle: nested
+
+Style/HashSyntax:
+  Enabled: false

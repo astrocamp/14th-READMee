@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = current_user.build_profile(profile_params)
-    @resume = current_user.resumes.build()
+    @resume = current_user.resumes.build
     if @profile.save
       @resume.save
       redirect_to profile_path(current_user), notice: '恭喜完成第一步！建立個人檔案成功！'
@@ -32,7 +32,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-  
   end
 
   def update
