@@ -13,7 +13,6 @@ class ProfilesController < ApplicationController
     else
       redirect_to new_profile_path(current_user)
     end
-    
   end
 
   def new
@@ -24,6 +23,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
     @resume = current_user.resumes.build()
     if @profile.save
+      @resume.save
       redirect_to profile_path(current_user), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
       flash[:alert] = "個人檔案建立失敗，請檢查表單內容。"

@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {  
   connect() {
+    console.log('in');
     const nextBtns = document.querySelectorAll(".next-button");
     const backBtns = document.querySelectorAll(".back-button");
     const part1 = document.querySelector(".part1");
