@@ -27,3 +27,6 @@ Style/ClassAndModuleChildren:
 
 Style/HashSyntax:
   Enabled: false
+Style/SingleArgumentDig:
+  Enabled: false
+

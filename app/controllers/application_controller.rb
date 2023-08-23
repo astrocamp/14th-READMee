@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
   def not_found
     render file: Rails.root.join('public', '404.html'),
            status: 404,
