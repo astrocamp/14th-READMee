@@ -39,6 +39,7 @@ class BlogsController < ApplicationController
   end
  
   private
+  
   def find_blog
     @blog = Blog.find(params[:id])
   end 

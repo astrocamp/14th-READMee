@@ -11,9 +11,9 @@ AllCops:
     - 'bin/**/*'
     - 'vendor/**/*'
     - 'config/**/*'
-
+    
 Style/SingleLineMethods:
-  Enabled: false
+    Enabled: false
 
 Layout/LineLength:
   Max: 100
@@ -26,7 +26,5 @@ Style/ClassAndModuleChildren:
   EnforcedStyle: nested
 
 Style/HashSyntax:
-  Enabled: false
-Style/SingleArgumentDig:
   Enabled: false
 

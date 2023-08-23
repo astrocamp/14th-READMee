@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   before_action :set_account, only: [:edit, :update]
 
   def show
-    if (user_has_company?)
+    if user_has_company?
       @company = Company.find(params[:id])
       authorize @company
     else
@@ -45,6 +45,7 @@ class CompaniesController < ApplicationController
   end
 
   private
+
   def params_company
     params.require(:company).permit(:name, :address, :phone, :about, :population)
   end

@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
       @resume.save
       redirect_to profile_path(current_user), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
-      flash[:alert] = "個人檔案建立失敗，請檢查表單內容。"
+      flash[:alert] = '個人檔案建立失敗，請檢查表單內容。'
       render :new
     end
   end
@@ -43,11 +43,13 @@ class ProfilesController < ApplicationController
   end
 
   private
+
   def set_profile
     @profile = current_user.profile
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education, :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skill_ids: [])
+    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education,
+                                    :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skill_ids: [])
   end
 end
