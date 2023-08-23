@@ -33,7 +33,7 @@ export default class extends Controller {
           skills: skills_content,
           work_experience: workExperience,
           work_experience_title: `工作經驗`,
-          language: languages_content
+          languages: languages_content
         }
       })
     })

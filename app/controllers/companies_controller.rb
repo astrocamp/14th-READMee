@@ -3,20 +3,23 @@ class CompaniesController < ApplicationController
   before_action :set_account, only: [:edit, :update]
 
   def show
-    if current_user.employer? && current_user.company.present?
-      @company = current_user.company
+    if (user_has_company?)
+      @company = Company.find(params[:id])
+      authorize @company
     else
-      redirect_to new_company_path(account: current_user.account)
+      redirect_to new_company_path
     end
   end
 
   def new
     @company = Company.new
+    authorize @company
   end
 
   def create
     @company = Company.new(params_company)
     @company.user = current_user
+    authorize @company
 
     if @company.save
       redirect_to company_path, notice: '公司建立成功!'
@@ -26,11 +29,13 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    @company = current_user.company
+    @company = Company.find(params[:id])
+    authorize @company
   end
 
   def update
-    @company = current_user.company
+    @company = Company.find(params[:id])
+    authorize @company
 
     if @company.update(params_company)
       redirect_to company_path, notice: '公司資訊已更新!'

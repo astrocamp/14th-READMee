@@ -79,3 +79,4 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'pundit', '~> 2.3'
 gem "rack-cors", "~> 2.0"
 gem "paranoia", "~> 2.6"
+gem "htmlbeautifier", "~> 1.4"

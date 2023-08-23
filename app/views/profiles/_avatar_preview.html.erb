@@ -7,7 +7,6 @@
 		<% end %>
 	</div>
   <%= form.label '個人照片', class: "font-semibold" %>
-  <span class="text-slate-400 text-sm">選填</span>
   <%= form.file_field :avatar, 
 		direct_upload: true,
 		data: { previews_target: "input", action: "change->previews#preview" },
