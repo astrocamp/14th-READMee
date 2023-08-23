@@ -14,16 +14,7 @@ export default class extends Controller {
     this.aboutMeContentTarget.addEventListener("click", this.clickAboutMeTextareaHeight.bind(this));
     this.aboutMeFormTarget.addEventListener("input", this.inputAboutMeTextareaHeight.bind(this));
     this.workExperienceContentTarget.addEventListener("click", this.clickWorkExperienceTextareaHeight.bind(this));
-    this.workExperienceForm.addEventListener("input", this.inputWorkExperienceTextareaHeight.bind(this));
-  }
-
-
-
-  showAboutMeTitleForm(e) {
-    console.log(123)
-    const textarea = this.aboutMeFormTarget;
-    // textarea.style.height = "100px";
-    // textarea.style.height = e.target.scrollHeight + "px";
+    this.workExperienceFormTarget.addEventListener("input", this.inputWorkExperienceTextareaHeight.bind(this));
   }
 
   showBasicInfoForm(event) {
@@ -69,18 +60,17 @@ export default class extends Controller {
   }
 
   inputAboutMeTextareaHeight(e){
-    this.aboutMeFormTarget.style.height = '100px';
+    // this.aboutMeFormTarget.style.height = '188.4px';
     this.aboutMeFormTarget.style.height = e.target.scrollHeight + 'px';
   }
   
   clickWorkExperienceTextareaHeight(e){
-    console.log(this)
     this.workExperienceFormTarget.focus()
     this.workExperienceFormTarget.style.height = this.workExperienceFormTarget.scrollHeight + 'px';
   }
 
   inputWorkExperienceTextareaHeight(e){
-    this.workExperienceFormTarget.style.height = '100px';
+    // this.workExperienceFormTarget.style.height = '188.4px';
     this.workExperienceFormTarget.style.height = e.target.scrollHeight + 'px';
   }
 
