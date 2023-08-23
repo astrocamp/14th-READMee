@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
       @resume_id = Resume.first.id
       @resume_basic_info = Resume.first.basic_info
     else
-      redirect_to new_profile_path(current_user)
+      redirect_to new_profile_path(current_user.account)
     end
   end
 
@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
     @resume = current_user.resumes.build()
     if @profile.save
       @resume.save
-      redirect_to profile_path(current_user), notice: '恭喜完成第一步！建立個人檔案成功！'
+      redirect_to profile_path(current_user.account), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
       flash[:alert] = "個人檔案建立失敗，請檢查表單內容。"
       render :new
@@ -37,7 +37,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to profile_path, notice: '更新個人檔案成功！'
+      redirect_to profile_path(current_user.account), notice: '更新個人檔案成功！'
     else
       render :edit
     end
