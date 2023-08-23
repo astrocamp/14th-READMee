@@ -23,13 +23,20 @@ class ResumesController < ApplicationController
       @formatted_work_experience = ""
     end
 
+    
     if JSON.parse(@resume.skills) == [""]
       ["請寫入內容"]
+    else
+      @skills = JSON.parse(@resume.skills)
     end
 
-    if JSON.parse(@resume.skills) == [""]
+    if JSON.parse(@resume.languages) == [""]
       ["請寫入內容"]
+    else
+     @languages = JSON.parse(@resume.languages)    
     end
+
+  
   end
 
   def update
@@ -45,7 +52,7 @@ class ResumesController < ApplicationController
               work_experience: @resume.work_experience,
               about_me_title: @resume.about_me_title,
               work_experience_title: @resume.work_experience_title,
-              language: @resume.language
+              languages: @resume.languages
             }
           }
         }
@@ -60,6 +67,6 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :language)
+    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages)
   end
 end

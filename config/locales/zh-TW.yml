@@ -1,4 +1,10 @@
 zh-TW:
+  simple_form:
+    options:
+      user:
+        role:
+          job_seeker: "求職者"
+          employer: "雇主"
   errors:
     messages:
       not_saved: '錯誤！請查看以下訊息：'
