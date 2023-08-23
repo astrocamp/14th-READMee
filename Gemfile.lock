@@ -333,6 +333,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   htmlbeautifier (~> 1.4)
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   omniauth (~> 2.1)
