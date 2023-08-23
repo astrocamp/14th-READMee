@@ -8,7 +8,6 @@
         <div class="md:w-3/4 mt-4 md:mt-0 md:pl-4">
           <h1 class="text-2xl font-semibold" data-profileInfo-target="fullName"><%= @profile.full_name %></h1>
           <p class="text-gray-600" data-profileInfo-target="jobTitle"><%= @profile.job_title %></p>
-  
           <div class="mt-4">
             <h2 class="text-lg font-semibold">聯絡資訊</h2>
             <ul class="mt-2 text-gray-700">
@@ -17,14 +16,12 @@
               <li data-profileInfo-target="address">所在地： <%= @profile.address %></li>
             </ul>
           </div>
-  
           <div class="mt-4">
             <span class="text-lg font-semibold">關於我</span>
             <p class="text-gray-700" data-profileInfo-target="aboutMe">
               <%= @profile.about_me %>
             </p>
           </div>
-          
           <div class="mt-4">
             <h2 class="text-lg font-semibold">學歷</h2>
             <ul class="mt-2 text-gray-700">
@@ -102,7 +99,6 @@
       <div class="mt-4">
         <section class="mt-6 bg-white shadow-md rounded-lg p-6">
           <h2 class="text-xl font-semibold mb-2">近期履歷</h2>
-      
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <div class="p-5 border border-gray-300 rounded-md bg-amber-50 flex justify-center items-center">
               <% if @resume_basic_info.present? %>
@@ -126,7 +122,6 @@
                 </svg>
               <% end %>
             </div>
-            
             <div class="p-5 border border-gray-300 rounded-md bg-amber-50 flex justify-center items-center">
               <%= link_to profile_path do %>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 rounded-lg bg-gray-500 hover:bg-gray-800 text-white font-lg cursor-pointer p-1.5">

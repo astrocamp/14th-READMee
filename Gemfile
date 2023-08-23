@@ -80,3 +80,4 @@ gem 'pundit', '~> 2.3'
 gem "rack-cors", "~> 2.0"
 gem "paranoia", "~> 2.6"
 gem 'ransack'
+gem "htmlbeautifier", "~> 1.4"

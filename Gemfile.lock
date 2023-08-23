@@ -104,6 +104,7 @@ GEM
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
+    htmlbeautifier (1.4.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.2.1)
@@ -310,6 +311,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  htmlbeautifier (~> 1.4)
   importmap-rails
   jbuilder
   omniauth (~> 2.1)

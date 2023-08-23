@@ -2,11 +2,8 @@
 
 class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-
   before_action :set_locale
-
   include Pundit::Authorization
-
   protect_from_forgery with: :exception
   
   def set_locale
@@ -14,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(_resource)
-    new_profile_path(account: current_user.account)
+    root_path
   end
 
   private

@@ -7,6 +7,19 @@ module Admin
       @users = User.all
     end
 
+    def switch_role
+      if current_user
+        if current_user.job_seeker?
+          current_user.update(role: 'employer')
+        elsif current_user.employer?
+          current_user.update(role: 'job_seeker')
+        end
+        head :ok
+      else
+        head :forbidden
+      end
+    end
+
     private
 
     def authorize_admin

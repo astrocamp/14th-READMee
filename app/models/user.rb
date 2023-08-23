@@ -5,15 +5,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
-
   has_one :profile
   has_one :company
-
-  enum role: { job_seeker: 0, employer: 1, admin: 2 }
-
-  # relationships
-  has_one :profile
   has_many :resumes
+  enum role: { job_seeker: 0, employer: 1, admin: 2 }
   
   def self.create_from_provider_data(provider_data)
     where(email: provider_data.info.email).first_or_create do |user|
