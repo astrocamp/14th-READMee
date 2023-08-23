@@ -8,12 +8,12 @@ class ProfilesController < ApplicationController
 
   def show
     if current_user && current_user.profile.present?
-      # 顯示個人資料頁面
+      @resume_id = Resume.first.id
+      @resume_basic_info = Resume.first.basic_info
     else
       redirect_to new_profile_path(current_user)
     end
-    @resume_id = Resume.first.id
-    @resume_basic_info = Resume.first.basic_info
+    
   end
 
   def new
