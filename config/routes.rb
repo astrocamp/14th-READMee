@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :blogs
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :resumes
+  resources :resumes, only:[:new]
  
   scope path: '@:account' do
     namespace :admin do
