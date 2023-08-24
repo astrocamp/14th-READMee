@@ -6,7 +6,7 @@ class Job < ApplicationRecord
   validates :salary, presence: true
   belongs_to :company
 
-  def self.myjobs
+  def self.my_jobs
     where(deleted_at: nil).order(id: :desc)
   end
   

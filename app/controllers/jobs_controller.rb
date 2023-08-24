@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   
   def index
     @jobs = @company.jobs
-    @job_list = Job.myjobs
+    @job_list = Job.my_jobs
   end
 
   def new
