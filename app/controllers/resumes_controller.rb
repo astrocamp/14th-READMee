@@ -39,8 +39,8 @@ class ResumesController < ApplicationController
   def update
     if @resume.update(resume_params)
       respond_to do |format|
-        format.json do
-          render json: {
+        format.json do 
+          render json: { 
             message: {
               basic_info: @resume.basic_info,
               social_links: @resume.social_links,
