@@ -1,7 +1,7 @@
 module ApplicationHelper
   def link_based_on_role(user)
     if user.admin?
-      link_to '管理後臺', user_admin_path(account: user.account),
+      link_to '管理後臺', admin_users_path(account: user.account),
               class: 'hover:text-amber-600 mx-1'
     elsif user.employer?
       link_to '公司', company_path(account: user.account),
