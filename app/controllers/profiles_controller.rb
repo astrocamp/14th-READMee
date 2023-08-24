@@ -26,8 +26,7 @@ class ProfilesController < ApplicationController
       @resume.save
       redirect_to profile_path(current_user.account), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
-      flash[:alert] = "個人檔案建立失敗，請檢查表單內容。"
-      render :new
+      render :new, alert: "請檢查表單必填欄位。"
     end
   end
 
