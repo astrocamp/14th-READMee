@@ -1,9 +1,13 @@
 <div data-controller="profileInfo">
   <article>
     <section class="container mx-auto p-4 pt-28">
-      <div class="bg-white shadow-md rounded-lg p-6 md:flex">
+      <div class="bg-white shadow-md rounded-lg p-6 md:flex justify-center">
         <picture class="md:w-1/4">
-          <%= image_tag(@profile&.avatar, class: "rounded-full w-32 h-32 mx-auto") if @profile&.avatar.present? %>
+          <% if @profile.avatar.attached? %>
+            <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
+          <% else %>
+            <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+          <% end %>
         </picture>
         <div class="md:w-3/4 mt-4 md:mt-0 md:pl-4">
           <h1 class="text-2xl font-semibold" data-profileInfo-target="fullName"><%= @profile.full_name %></h1>
@@ -11,9 +15,25 @@
           <div class="mt-4">
             <h2 class="text-lg font-semibold">聯絡資訊</h2>
             <ul class="mt-2 text-gray-700">
-              <li data-profileInfo-target="email">電子信箱：<span><%= current_user.email %></span></li>
-              <li data-profileInfo-target="phone">電話： <%= @profile.phone %></li>
-              <li data-profileInfo-target="address">所在地： <%= @profile.address %></li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-amber-100 text-amber-600 rounded-l-lg p-0.5 inline-block mb-1">
+                  <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                </svg>
+                <span><%= current_user.email %></span>
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-amber-100 text-amber-600 rounded-l-lg p-0.5 inline-block mb-1">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                <span><%= @profile.phone %></span>
+              </li>
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 bg-amber-100 text-amber-600 rounded-l-lg p-0.5 inline-block mb-1">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <span><%= @profile.address %></span>
+              </li>
             </ul>
           </div>
           <div class="mt-4">
