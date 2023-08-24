@@ -14,5 +14,4 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/jobs_list", to: "jobs#jobs_list"
 end 
