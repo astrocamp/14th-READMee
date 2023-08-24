@@ -1,9 +1,11 @@
 class BlogsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :find_blog, only: [:show, :edit, :update, :destroy]
 
   def index
     @blogs = Blog.all.order(id: :desc)
+    @resume = Resume.first
+    
   end
 
   def new

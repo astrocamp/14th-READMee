@@ -4,6 +4,7 @@ class ResumesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_resume, only: [:edit, :update, :second]
 
+  
   def edit
     if @resume.basic_info.present?
       @formatted_basic_info = sanitize(@resume.basic_info).gsub("\n", '<br>').html_safe
