@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
     I18n.locale = :'zh-TW'
   end
 
-  def after_sign_in_path_for(_resource)
-    root_path
-  end
-
   private
 
   def not_found

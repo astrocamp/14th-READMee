@@ -14,7 +14,7 @@ module Admin
     end
 
     def authorize_admin
-      authorize :admin, access?
+      current_user.role == 'admin'
     end
   end
 end

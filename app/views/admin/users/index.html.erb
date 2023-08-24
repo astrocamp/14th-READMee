@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <td class='border px-3 text-left'>Account</td>
+    <td class='border px-3 text-left'>Email</td>
+    <td class='border px-3 text-left'>Role</td>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td class='border px-3 text-center'><%= user.account %></td>
+      <td class='border px-3 text-center'><%= user.email %></td>
+      <td class='border px-3 text-center'><%= user.role %></td>
+    </tr>
+  <% end %>
+</table>

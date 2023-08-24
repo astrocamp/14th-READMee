@@ -1,26 +1,23 @@
 <div data-controller="profileStep">
   <div data-profileStep-target="part1">
     <%= render "avatar_preview", form: form, profile: @profile %>
-    <div class="">
-      <div class="my-5">
-        <%= form.label '全名', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:full_name].any?}" %>
-        <%= form.text_field :full_name, class: "input" %>
-      </div>
-      <div class="my-5">
-        <%= form.label '聯絡電話', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:phone].any?}" %>
-        <%= form.text_field :phone, placeholder: "輸入您的手機號碼", class: "input" %>
-      </div>
-      <div class="my-5">
-        <%= form.label '地址', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:address].any?}" %>
-        <%= form.text_field :address, placeholder: "例如：台灣台北市 或 台北市大安區", class: "input" %>
-      </div>
-      <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
+    <div class="my-5">
+      <%= form.label '全名', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:full_name].any?}" %>
+      <%= form.text_field :full_name, class: "input" %>
     </div>
+    <div class="my-5">
+      <%= form.label '聯絡電話', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:phone].any?}" %>
+      <%= form.text_field :phone, placeholder: "輸入您的手機號碼", class: "input" %>
+    </div>
+    <div class="my-5">
+      <%= form.label '地址', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:address].any?}" %>
+      <%= form.text_field :address, placeholder: "例如：台灣台北市 或 台北市大安區", class: "input" %>
+    </div>
+    <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
   </div>
   <div data-profileStep-target="part2" class='hidden'>
     <div class="my-5">
       <%= form.label '職稱', class: "font-semibold" %>
-      <span class="text-slate-400 text-sm">選填</span>
       <%= form.text_field :job_title, class: "input" %>
     </div>
     <div class="my-5">
