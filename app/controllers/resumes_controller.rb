@@ -5,31 +5,31 @@ class ResumesController < ApplicationController
   before_action :find_resume, only: [:edit, :update, :second]
 
   def edit
-    @formatted_basic_info = if @resume.basic_info.present?
-                              sanitize(@resume.basic_info).gsub("\n", '<br>').html_safe
-                            else
-                              ''
-                            end
+    if @resume.basic_info.present?
+      @formatted_basic_info = sanitize(@resume.basic_info).gsub("\n", '<br>').html_safe
+    else
+      @formatted_basic_info = ""
+    end
 
-    @formatted_social_links = if @resume.social_links.present?
-                                sanitize(@resume.social_links).gsub("\n", '<br>').html_safe
-                              else
-                                ''
-                              end
+    if @resume.social_links.present?
+      @formatted_social_links = sanitize(@resume.social_links).gsub("\n", '<br>').html_safe
+    else
+      @formatted_social_links = ""
+    end
 
-    @formatted_work_experience = if @resume.work_experience.present?
-                                   sanitize(@resume.work_experience).gsub("\n", '<br>').html_safe
-                                 else
-                                   ''
-                                 end
+    if @resume.work_experience.present?
+      @formatted_work_experience = sanitize(@resume.work_experience).gsub("\n", '<br>').html_safe
+    else
+      @formatted_work_experience = ""
+    end
 
-    if JSON.parse(@resume.skills) == ['']
+    if JSON.parse(@resume.skills) == [""]
       ['請寫入內容']
     else
       @skills = JSON.parse(@resume.skills)
     end
 
-    if JSON.parse(@resume.languages) == ['']
+    if JSON.parse(@resume.languages) == [""]
       ['請寫入內容']
     else
       @languages = JSON.parse(@resume.languages)
