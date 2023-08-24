@@ -6,11 +6,8 @@ class Job < ApplicationRecord
   validates :salary, presence: true
   belongs_to :company
 
-  def self.ransackable_attributes(auth_object = nil)
-    [ "company_id", "content", "title"]
+  def self.myjobs
+    where(deleted_at: nil).order(id: :desc)
   end
-
-  def self.ransackable_associations(auth_object = nil)
-    ["company"]
-  end
+  
 end

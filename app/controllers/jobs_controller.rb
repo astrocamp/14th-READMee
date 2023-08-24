@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   
   def index
     @jobs = @company.jobs
-    @jobList = Job.where(deleted_at: nil).order(id: :desc)
+    @jobList = Job.myjobs
   end
 
   def new
