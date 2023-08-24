@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
-  before_action :set_company, :set_account, only: %i[index new create edit update jobs_list]
-  before_action :find_job, only: %i[edit update show destroy]
+  before_action :set_company, :set_account, only: [:index, :new, :create, :edit, :update]
+  before_action :find_job, only: [:edit, :update, :show, :destroy]
   
   def index
     @jobs = @company.jobs
@@ -38,12 +38,6 @@ class JobsController < ApplicationController
     @job.destroy
     redirect_to company_jobs_path, notice: '刪除成功'
   end
-
-  def jobs_list
-    @q = Job.order(id: :desc).ransack(params[:q])
-    @jobs_list = @q.result.includes(:company)
-  end
-  
 
   private
 
