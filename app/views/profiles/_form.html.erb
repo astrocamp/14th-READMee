@@ -1,5 +1,5 @@
 <div data-controller="profileStep">
-  <div class="part1">
+  <div data-profileStep-target="part1">
     <%= render "avatar_preview", form: form, profile: @profile %>
     <div class="">
       <div class="my-5">
@@ -14,10 +14,10 @@
         <%= form.label '地址', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:address].any?}" %>
         <%= form.text_field :address, placeholder: "例如：台灣台北市 或 台北市大安區", class: "input" %>
       </div>
-      <button class="next-button save-btn">下一步</button>
+      <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
     </div>
   </div>
-  <div class="hidden part2">
+  <div data-profileStep-target="part2" class='hidden'>
     <div class="my-5">
       <%= form.label '職稱', class: "font-semibold" %>
       <span class="text-slate-400 text-sm">選填</span>
@@ -31,10 +31,10 @@
       <%= form.label '關於我', class: "font-semibold #{"border-amber-500 border-b-4 border-dashed" if @profile.errors[:about_me].any?}" %>
       <%= form.text_area :about_me, size: "60x10", class: "input"  %>
     </div>
-    <button class="back-button save-btn">上一步</button>
-    <button class="next-button save-btn">下一步</button>
+    <button class="back-button save-btn" data-action="click->profileStep#backBtn">上一步</button>
+    <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
   </div>
-  <div class="hidden part3" >
+  <div data-profileStep-target="part3" class="hidden" >
     <div class="my-5">
       <%= form.label '語言', class: "inline-block font-semibold mb-2" %>
       <span class="text-slate-400 text-sm">選填</span>
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div>
-        <button class="back-button save-btn">上一步</button>
+        <button class="back-button save-btn" data-action="click->profileStep#backBtn">上一步</button>
         <%= form.submit '送出', class: "save-btn submit" %>
       </div>
     </div>
