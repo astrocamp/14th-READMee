@@ -1,6 +1,6 @@
 <div id="content" data-controller="resume">
-  <section class=" w-full flex justify-between pl-32">
-    <div class="bg-white max-w-screen-lg p-16 shadow-2xl mr-1 mt-28 mb-16">
+  <section class="w-full flex justify-between pl-16">  
+    <div class="min-h-1000 bg-white max-w-screen-lg p-16 shadow-2xl mt-28 mb-16">
       <div class="flex">
         <div class="inline-block custom-width-250px flex justify-center items-center">
           <img class="inline-block h-32 w-32 rounded-full" src="https://picsum.photos/200/200/?random=10">
@@ -18,7 +18,7 @@
         <h1 data-resume-target="aboutMeTitle" class="text-xl font-bold py-3 h-200"><%= @resume.about_me_title%></h1>
         <input data-resume-target="aboutMeTitleForm" class="w-full resize-y h-20 p-2 border rounded-md hidden" value="<%= @resume.about_me_title%>">
         <p data-resume-target="aboutMeContent" class="overflow-auto"><%= @resume.about_me %></p>
-        <textarea data-resume-target="aboutMeForm" class="w-full h-48 resize-y h-20 p-2 border rounded-md hidden"><%= @resume.about_me %></textarea>
+        <textarea data-resume-target="aboutMeForm" class="w-full resize-y h-20 p-2 border rounded-md hidden"><%= @resume.about_me %></textarea>
       </div>
       <div class="pt-5l">
         <h1 class="text-xl font-bold py-3">技能</h1>
@@ -48,7 +48,7 @@
         <h1 data-resume-target="workExperienceTitle" class="text-xl font-bold py-3"><%= @resume.work_experience_title %></h1>
         <input data-resume-target="workExperienceTitleForm" class="w-full h-10 resize-y h-20 p-2 border rounded-md hidden" value="<%= @resume.work_experience_title%>">
         <p data-resume-target="workExperienceContent" class="overflow-auto h-200"><%= @resume.work_experience %></p>
-        <textarea data-resume-target="workExperienceForm" class="w-full h-48 resize-y h-20 p-2 border rounded-md hidden"><%= @resume.work_experience %></textarea>
+        <textarea data-resume-target="workExperienceForm" class="w-full resize-y h-20 p-2 border rounded-md hidden"><%= @resume.work_experience %></textarea>
       </div>
     </section>
     <div class="bg-gray-200 fixed top-68px right-0 bottom-0">
