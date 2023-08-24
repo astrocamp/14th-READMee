@@ -1,6 +1,6 @@
 <div data-controller="profileInfo">
   <article>
-    <section class="container mx-auto p-4 pt-28">
+    <section class="container mx-auto p-4 pt-10">
       <div class="bg-white shadow-md rounded-lg p-6 md:flex justify-center">
         <picture class="md:w-1/4">
           <% if @profile.avatar.attached? %>
@@ -60,7 +60,7 @@
             <h2 class="text-lg font-semibold">技能</h2>
             <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
               <% @profile.skills.each do |skill| %>
-                <li><%= skill.tag %></li>
+                <li class="inline-block bg-amber-100 text-amber-600 rounded p-0.5 mb-1"><%= skill.tag %></li>
               <% end %>
             </ul>
           </div>
