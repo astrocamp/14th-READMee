@@ -1,29 +1,34 @@
 <div class="container mx-auto bg-gray-50">
-  <h1 class="text-center text-5xl">職缺列表</h1>
+  <h1 class="text-5xl text-center">職缺列表</h1>
 
-  <%= search_form_for @q, url: jobs_list_path do |f| %>
-    <%= f.label '職缺名稱或內容' %>
-    <%= f.search_field :title_or_content_cont, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/3" %>
-    <div>
-      <%= f.submit class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white cursor-pointer hover:bg-amber-600" %>
-    </div>
-  <% end %>
-
+  <div class="container w-2/3 p-3 mx-auto text-left">
+    <%= search_form_for @q, url: jobs_list_path do |f| %>
+      <%= f.label '職缺名稱或內容' %>
+      <%= f.search_field :title_or_content_cont, class: "input" %>
+      <%= f.label '公司名稱' %>
+      <%= f.search_field :company_name_start, class: "input" %>
+      <div class="flex justify-center">
+        <%= f.submit class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white cursor-pointer hover:bg-amber-600" %>
+      </div>
+    <% end %>
+  </div>
+  
   <div class="my-5">
     <% @jobs_list.each do |job| %>
-      <ul class="justify-between border-b-2 p-5 m-2 leading-6">
+      <ul class="justify-between p-5 m-2 leading-6 border-b-2">
         <div>
           <li class="md:flex">
-            <div class="md:w-2/3 p-2">
+            <div class="p-2 md:w-2/3">
               <%= link_to job.title, company_job_path(account: @account, id: job.id), class: "text-2xl" %>
-              <div>公司名稱: <%= @company.name %></div>
+              <div>公司名稱: <%= job.company.name %></div>
               <div><%= truncate(job.content, length: 100) %></div>
             </div>
 
-            <div class="md:w-1/3 p-2">
+            <div class="p-2 md:w-1/3">
               <div>需求人數: <%= job.num_of_people %></div>
               <div>年資: <%= job.seniority %></div>
               <div>薪水: <%= job.salary %></div>
+              <div>地址: <%= job.company.address %></div>
             </div>
           </li>
         </div>

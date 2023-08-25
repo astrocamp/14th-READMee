@@ -1,9 +1,6 @@
 class Job < ApplicationRecord
-  validates :title, presence: true
-  validates :content, presence: true
-  validates :num_of_people, presence: true
-  validates :seniority, presence: true
-  validates :salary, presence: true
+  acts_as_paranoid
+  validates :title, :content, :num_of_people, :seniority, :salary, presence: true
   belongs_to :company
 
   def self.ransackable_attributes(auth_object = nil)

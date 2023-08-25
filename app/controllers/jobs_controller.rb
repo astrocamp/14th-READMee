@@ -1,10 +1,10 @@
 class JobsController < ApplicationController
-  before_action :set_company, :set_account, only: %i[index new create edit update jobs_list]
-  before_action :find_job, only: %i[edit update show destroy]
+  before_action :set_company, :set_account, only: [:index, :new, :create, :edit, :update, :jobs_list]
+  before_action :find_job, only: [:edit, :update, :show, :destroy]
   
   def index
     @jobs = @company.jobs
-    @jobList = Job.where(deleted_at: nil).order(id: :desc)
+    @jobList = Job.order(id: :desc)
   end
 
   def new
@@ -40,8 +40,11 @@ class JobsController < ApplicationController
   end
 
   def jobs_list
-    @q = Job.order(id: :desc).ransack(params[:q])
-    @jobs_list = @q.result.includes(:company)
+    # @q = Job.order(id: :desc).ransack(params[:q])
+    # @jobs_list = @q.result
+    
+    @q = Job.ransack(params[:q])
+    @jobs_list = @q.result.includes(:company).order(id: :desc)
   end
   
 
