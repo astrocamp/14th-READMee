@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  
-  resources :blogs
+
+  resources :articles
+
+  resources :blogs 
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :resumes
