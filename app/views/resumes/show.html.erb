@@ -1,0 +1,63 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal">
+
+
+<section class=" w-full flex justify-between pl-32">
+    <div class="bg-white max-w-screen-lg p-16 shadow-2xl mr-1 mt-28 mb-16">
+      <div class="flex">
+        <div class="inline-block custom-width-250px flex justify-center items-center">
+          <img class="inline-block h-32 w-32 rounded-full" src="https://picsum.photos/200/200/?random=10">
+        </div>
+        <div class="flex items-center inline-block w-60" >
+          <%= @formatted_basic_info %></p>
+          <p  class="w-full h-60 resize-y h-20 p-2" >  <%=  @resume.basic_info %> </p>
+         
+         
+        </div>
+        <div class="inline-block w-1/2" >
+          <p  class="break-words"> <%= @formatted_social_links %></p>
+          <p> <%= @resume.social_links %> </p>
+         
+        </div>
+      </div>
+      <div class="pt-5l">
+        <h1  class="text-xl font-bold py-3 h-200"><%= @resume.about_me_title%></h1>
+        
+        <p  class="overflow-auto"><%= @resume.about_me %></p>
+        
+      </div>
+      <div class="pt-5l">
+        <h1 class="text-xl font-bold py-3">技能</h1>
+        
+        <% if @skills.present? %>
+            <% @skills.each do |skill| %>
+              <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2"><%= skill %></li>
+            <% end %>
+          <% else %>
+            <li class="inline-block px-5 py-3 border-2 border-gray-300 rounded-lg mr-2">請輸入技能</li>
+          <% end %>
+      </div>
+      <div class="pt-5l" >
+        <h1  class="text-xl font-bold py-3"><%= @resume.work_experience_title %></h1>
+        
+        <p  class="overflow-auto h-200"><%= @resume.work_experience %></p>
+       
+      </div>
+    </section> 
+
+
+    <div>
+    <%= link_to "Cancel", "#", data: {
+                                controller:"modal",
+                                action: "modal#close"
+                                }, class: "cancel-btn" %>  
+    
+    </div>
+
+
+
+  </div>
+
+
+
+<% end%>
