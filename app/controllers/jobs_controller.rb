@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_company, :set_account, only: [:index, :new, :create, :edit, :update]
   before_action :find_job, only: [:edit, :update, :show, :destroy]
-  
+
   def index
     @jobs = @company.jobs
     @job_list = Job.my_jobs
@@ -40,7 +40,7 @@ class JobsController < ApplicationController
   end
 
   private
-  
+
   def params_job
     params.require(:job).permit(:title, :content, :num_of_people, :seniority, :salary)
   end

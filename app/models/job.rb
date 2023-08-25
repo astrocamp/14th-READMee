@@ -9,5 +9,4 @@ class Job < ApplicationRecord
   def self.my_jobs
     where(deleted_at: nil).order(id: :desc)
   end
-  
 end
