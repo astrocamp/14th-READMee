@@ -16,4 +16,5 @@ Rails.application.routes.draw do
       resources :jobs
     end
   end
-end 
+  get "toggle_role", to: "users#toggle", as: :toggle_role 
+end

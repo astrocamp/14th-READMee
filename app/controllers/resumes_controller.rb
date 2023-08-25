@@ -10,40 +10,37 @@ class ResumesController < ApplicationController
     else
       @formatted_basic_info = ""
     end
-  
+
     if @resume.social_links.present?
       @formatted_social_links = sanitize(@resume.social_links).gsub("\n", '<br>').html_safe
     else
       @formatted_social_links = ""
     end
-  
+
     if @resume.work_experience.present?
       @formatted_work_experience = sanitize(@resume.work_experience).gsub("\n", '<br>').html_safe
     else
       @formatted_work_experience = ""
     end
 
-    
     if JSON.parse(@resume.skills) == [""]
-      ["請寫入內容"]
+      ['請寫入內容']
     else
       @skills = JSON.parse(@resume.skills)
     end
 
     if JSON.parse(@resume.languages) == [""]
-      ["請寫入內容"]
+      ['請寫入內容']
     else
-     @languages = JSON.parse(@resume.languages)    
+      @languages = JSON.parse(@resume.languages)
     end
-
-  
   end
 
   def update
     if @resume.update(resume_params)
       respond_to do |format|
-        format.json { 
-          render json: { 
+        format.json do
+          render json: {
             message: {
               basic_info: @resume.basic_info,
               social_links: @resume.social_links,
@@ -55,7 +52,7 @@ class ResumesController < ApplicationController
               languages: @resume.languages
             }
           }
-        }
+        end
       end
     else
       render :edit
@@ -67,6 +64,7 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages)
+    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links,
+                                   :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages)
   end
 end
