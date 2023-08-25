@@ -42,3 +42,12 @@ Style/StringLiterals:
 
 Style/ConditionalAssignment:
   Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false

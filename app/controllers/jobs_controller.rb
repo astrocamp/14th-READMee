@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_company, :set_account, only: [:index, :new, :create, :edit, :update, :jobs_list]
   before_action :find_job, only: [:edit, :update, :show, :destroy]
-  
+
   def index
     @jobs = @company.jobs
     @jobList = Job.order(id: :desc)
@@ -42,14 +42,13 @@ class JobsController < ApplicationController
   def jobs_list
     # @q = Job.order(id: :desc).ransack(params[:q])
     # @jobs_list = @q.result
-    
+
     @q = Job.ransack(params[:q])
     @jobs_list = @q.result.includes(:company).order(id: :desc)
   end
-  
 
   private
-  
+
   def params_job
     params.require(:job).permit(:title, :content, :num_of_people, :seniority, :salary)
   end
