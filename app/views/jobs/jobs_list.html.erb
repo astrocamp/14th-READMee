@@ -2,7 +2,7 @@
   <h1 class="text-5xl text-center">職缺列表</h1>
 
   <div class="container w-2/3 p-3 mx-auto text-left">
-    <%= search_form_for @q, url: jobs_list_path do |f| %>
+    <%= search_form_for @choose, url: jobs_list_path do |f| %>
       <%= f.label '職缺名稱或內容' %>
       <%= f.search_field :title_or_content_cont, class: "input" %>
       <%= f.label '公司名稱' %>
