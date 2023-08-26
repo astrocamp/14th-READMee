@@ -23,7 +23,16 @@ Style/ClassAndModuleChildren:
 Style/HashSyntax:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Style/SymbolArray:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+  
+Style/SymbolProc:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
 
 Style/EmptyMethod:
@@ -35,19 +44,16 @@ Style/StringLiterals:
 Style/ConditionalAssignment:
   Enabled: false
 
-Style/Documentation:
-  Enabled: false
-
-Style/SymbolArray:
-  Enabled: false
-
-Style/SymbolProc:
-  Enabled: false
-
 Style/RedundantSelf:
   Enabled: false
 
-Layout/LineLength:
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+  
+Metrics/PerceivedComplexity:
   Enabled: false
 
 Layout/EndOfLine:
@@ -66,15 +72,6 @@ Layout/IndentationWidth:
   Enabled: false
 
 Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/PerceivedComplexity:
   Enabled: false
 
 Bundler/OrderedGems:

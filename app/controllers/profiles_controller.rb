@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   def show
     if current_user.profile.present?
       @resume_id = Resume.first.id
+      @resume = Resume.first
       @resume_basic_info = Resume.first.basic_info
       @profile = Profile.find(current_user.profile.id)
     else
