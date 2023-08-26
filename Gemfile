@@ -76,5 +76,4 @@ gem 'omniauth-google-oauth2', '~> 1.1'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'paranoia', '~> 2.6'
 gem 'pundit', '~> 2.3'
-gem "rack-cors", "~> 2.0"
 gem 'ransack'

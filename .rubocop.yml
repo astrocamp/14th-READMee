@@ -90,4 +90,5 @@ Lint/EmptyConditionalBody:
   Enabled: false
 
 Naming/VariableName:
+Bundler/OrderedGems:
   Enabled: false
