@@ -2,6 +2,15 @@ class ResumesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_resume, only: [:edit, :update]
 
+  def index
+    @resumes = Resume.all
+  end
+ 
+  def show
+    @resume = Resume.find(params[:id])
+    @skills = JSON.parse(@resume.skills)
+  end
+
   def edit
     if @resume.basic_info.present?
       @resume = Resume.find(params[:id])
