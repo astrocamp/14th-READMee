@@ -114,6 +114,24 @@
                 } %>
             </div>
           </div>
+          <%= f.text_field :project_title, class: "my-2 border-0 w-full h-10 h-20 p-2 border rounded-md resize-y" %>
+          <div class="flex h-60">
+            <img class="w-1/2" src="https://picsum.photos/300/200/?random=10">
+            <div class="w-1/2 pt-5l" data-resume-target="workExperience">
+              <%= f.text_area :project, data: {
+                                                  
+                                                }, 
+              class: "border-0 w-full h-full h-20 p-2 border rounded-md resize-y" %>
+            </div>
+          </div>
+          <div class="pt-5l" data-resume-target="workExperience">
+            <%= f.text_field :education_title, class: "my-2 border-0 w-full h-10 h-20 p-2 border rounded-md resize-y" %>
+            <%= f.text_area :education, data: {
+                                                resume_target: 'workExperienceForm',
+                                                action: 'input->inputWorkExperienceTextareaHeight'
+                                              }, 
+            class: "border-0 w-full h-20 p-2 border rounded-md resize-y" %>
+          </div>
       <% end %>
     </div>
   </section>

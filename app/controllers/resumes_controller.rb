@@ -12,8 +12,6 @@ class ResumesController < ApplicationController
   end
 
   def edit
-    @resume = current_user.resumes.find(params[:id])
-    @resume_id = @resume.id
     if @resume.basic_info.present?
       @resume = Resume.find(params[:id])
       @skills = JSON.parse(@resume.skills)
