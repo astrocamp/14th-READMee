@@ -1,7 +1,7 @@
 <div class="my-5" data-controller="previews">
 	<div class="m-5">
 		<% if profile.avatar.attached?  %>
-			<%= image_tag profile.avatar, data: { previews_target: "preview" }, class: "border-black-2 border-2 rounded-full w-32 h-auto mx-auto" %>
+			<%= image_tag profile.avatar, data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
 		<% else %>
 			<%= image_tag "", data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
 		<% end %>
