@@ -3,11 +3,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    if current_user.profile.present?
-      @resume_id = Resume.first.id
+    if current_user && current_user.profile.present?
       @resume = Resume.first
-      @resume_basic_info = Resume.first.basic_info
-      @profile = Profile.find(current_user.profile.id)
     else
       redirect_to new_profile_path(current_user.account)
     end
@@ -21,6 +18,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
     @resume = current_user.resumes.build
     if @profile.save
+      Resume.create_content(current_user.profile, @resume, current_user.email)
       @resume.save
       redirect_to profile_path(current_user.account), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
