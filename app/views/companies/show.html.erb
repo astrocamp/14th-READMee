@@ -1,49 +1,101 @@
-<div class="container p-3 m-5 mx-auto border-2 md:w-2/3">
+
   <% if @company.present? %>
-    <h1 class="text-3xl"><%= @company.name %></h1>
-    <P class="my-2">公司地址</P>
-    <div><%= @company.address %></div>
-    <P class="my-2">公司電話</P>
-    <div><%= @company.phone %></div>
-    <P class="my-2">人數規模</P>
-    <div><%= @company.population %></div>
-    <P class="my-2">關於我們</P>
-    <div><%= @company.about %></div>
-    <button class="">
-      <%=link_to "編輯", edit_company_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
-    </button>
-    <button>
-      <%= link_to "查看所有職缺", company_jobs_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
-    </button>
+        <!-- Icon Blocks -->
+    <div class="container max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <!-- Card -->
+      <div class="flex w-full h-full transition-all rounded-lg shadow-md group gap-y-6">
+
+        <div class="p-3">
+          <img src="https://picsum.photos/150/150/?random=10">
+        </div>
+        <div class="grid place-content-end">
+          <h3 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= @company.name %></h3>
+          <div>
+            <button>
+              <%=link_to "編輯", edit_company_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+            </button>
+            <button>
+              <%= link_to "您的職缺", company_jobs_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End Card -->
+    </div>
+    <!-- End Icon Blocks -->
+    <div class="container max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto text-xl">
+      關於
+    </div>
+
+    <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 mx-auto ">
+      <div class="grid gap-12 md:grid-cols-3">
+        <div class="col-span-2">
+          <h2 class="block pt-4 text-xl font-bold text-gray-800 lg:text-4xl dark:text-white">
+            
+          </h2>
+          <div class="flex">
+            <div class="px-2">
+              <img src="https://picsum.photos/200/100/?random=10">
+            </div>
+            <div class="px-2">
+              <img src="https://picsum.photos/200/100/?random=10">
+            </div>
+          </div>
+          <p class="text-gray-800 whitespace-pre-line dark:text-gray-400">
+            
+              <%= @company.about %>
+            
+          </p>
+        </div>
+
+        <div class="space-y-6 lg:space-y-4">
+          <div class="flex">
+            <span class="flex-shrink-0 inline-flex justify-center items-center w-[30px] h-[30px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clip-rule="evenodd" />
+              </svg>                   
+            </span>
+            <div class="ml-5">
+              <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
+                地址: <%= @company.address %>
+              </h3>
+            </div>
+          </div>
+          
+          <div class="flex">
+            <span class="flex-shrink-0 inline-flex justify-center items-center w-[30px] h-[30px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z" clip-rule="evenodd" />
+              </svg>                
+            </span>
+            <div class="ml-5">
+              <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
+                電話: <%= @company.phone %>
+              </h3>
+            </div>
+          </div>
+          
+          <div class="flex">
+            <span class="flex-shrink-0 inline-flex justify-center items-center w-[30px] h-[30px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
+              </svg>                   
+            </span>
+            <div class="ml-5">
+              <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
+                人數規模: <%= @company.population %>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   <% else %>
     <p>尚未建立公司資料</p>
     <button>
       <%= link_to "建立公司資料", new_company_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
     </button>
   <% end %>
-</div>
 
-<!-- Icon Blocks -->
-<div class="container max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-  <!-- Card -->
-  <div class="flex w-full h-full p-5 transition-all rounded-lg group gap-y-6">
-
-    <div class="px-3">
-      <img src="https://picsum.photos/150/150/?random=10">
-    </div>
-    <div>
-      <div>
-        <h3 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= @company.name %></h3>
-        <a href="#" class="block px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
-          編輯
-        </a>
-        <a href="#" class="block px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
-          查看您的職缺
-        </a>
-      </div>
-    </div>
-  </div>
-  <!-- End Card -->
-</div>
-<!-- End Icon Blocks -->
 
