@@ -1,23 +1,20 @@
 .skill{
-  box-sizing: border-box;
-  margin-right: -64px;
-  margin-left: -64px;
+    box-sizing: border-box;
+    margin-right: -64px;
+    margin-left: -64px;
 }
-
 .top-68px{
-  top: 68px;
+    top: 68px;
 }
-
 .custom-width-250px{
-  width: 250px;
+    width: 250px;
 }
-
 .max-w-screen-lg{
-  width: 1024px;
+    width: 1024px;
 }
 
 .min-h-1000{
-  min-height: 1000px;
+    min-height: 1000px;
 }
 
 .img-container {
@@ -49,31 +46,24 @@
 }
 
 .modal {
-  position: fixed;
-  z-index: 1;
-  padding: 2em;
-  /* left: 50%;
-  top: 50%; */
-  /* transform: translate(-50%, -50%) */
+  position: absolute;
+  z-index: 50;
   overflow: auto;
-  background-color: rba(0,0,0,0);
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(28, 28, 28, 0.401);
   border-radius: 5px;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
 }
 
-.cancel-btn {
- background-color: #eec18b;
- font-size: 12px;
- color: black;
- padding: 6px 8px;
- border: none;
- border-radius: 4px;
- cursor: pointer;
+.close-btn {    
+ font-size: 22px;
+ font-weight: 600;
+ color: white;
+ padding: 8px 10px;
+ border: none; 
  float: right;
  text-decoration: none;
 }
 
-.cancel-btn:hover {
-  background-color: #cb8b3c;
+.close-btn:hover {
+  border-radius: 6px;
+  background-color: rgba(211, 211, 211, 0.401);
 }

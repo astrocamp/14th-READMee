@@ -13,7 +13,10 @@
   </head>
   <body>
     <%= render "shared/navbar", class:"relative"%>
-    <main class="container mx-auto">
+   
+   
+    <main class="container relative mx-auto">
+      <%= turbo_frame_tag "modal"%>
       <div class="absolute top-30 right-28">
         <%= render "shared/notice"%>
         <%= render "shared/alert" %>

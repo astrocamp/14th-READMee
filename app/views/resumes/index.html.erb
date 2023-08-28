@@ -1,63 +1,39 @@
 <%= turbo_frame_tag "modal" do %>
-  
 
-    <section class="flex gap-4 p-4 mt-20 mb-10 border-2 border-solid shadow-lg border-amber-400">
-      <img src="https://picsum.photos/id/181/100/100" alt="">
+  <section class="flex gap-4 mt-20 mb-10 border-2 border-solid shadow-lg border-amber-400">
+    <img src="https://picsum.photos/id/181/100/100" alt="">
+    <div>
+      <h2 class="my-4 text-2xl font-medium">找工作，從製作專業履歷開始</h2>
+      <p class="text-gray-500">免費製作履歷，快速找到理想工作</p>
+    </div>
+  </section>
+
+  <section class="flex flex-wrap items-center gap-8 ">
+    <% @resumes.each do |resume| %>    
+    <div class="card" >  
+      <img src="" alt="">
       <div>
-        <h2 class="my-4 text-2xl font-medium">找工作，從製作專業履歷開始</h2>
-        <p class="text-gray-500">免費製作履歷，快速找到理想工作</p>
+      <img class="object-cover w-full h-full" src="https://picsum.photos/id/456/100/120" alt="resume">
+      <%= link_to resume.id, resume_path(resume.id), data: { turbo_frame: "modal" }%>               
       </div>
-    </section>
-
-    <section class="flex flex-wrap items-center gap-8 ">
-      <% @resumes.each do |resume| %>
-
-    
-      <div class="card" >  
-        <img src="" alt="">
-        <div>
-        <img class="object-cover w-full h-full" src="https://picsum.photos/id/456/500/600" alt="resume">
-                <%= link_to resume.id, resume_path(resume.id)%>
-               
-        </div>
-        
-
-        
-        <div class="flex-col gap-3 px-2 py-3 bg-gray-100">
-          <!-- badge -->
-          <div class="flex items-center justify-between gap-2 ">
-            <div>
-              <span class="badge">產品規劃</span>
-              <span class="badge">專案管理</span>
-              <span class="badge">社群行銷</span>
-            </div>    
-          <%= image_tag 'heart.png', class: 'w-5 h-auto' %>
+      <div class="flex-col gap-3 px-2 py-3 bg-gray-100">
+        <!-- badge -->
+        <div class="flex items-center justify-between gap-2 ">
+          <div>
+            <span class="badge">產品規劃</span>
+            <span class="badge">專案管理</span>
+            <span class="badge">社群行銷</span>
           </div>    
-        </div>
-        <div class="flex items-center h-10">
-          <!-- user-name -->
-          <h6 class="user-name">陳先生</h6>  
-          <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
-        </div>
+        <%= image_tag 'heart.png', class: 'w-5 h-auto' %>
+        </div>    
       </div>
-
-
-
-        
-       
-         
-
-
-        <% end %>     
-    </section>
-    
+      <div class="flex items-center h-10">
+        <!-- user-name -->
+        <h6 class="user-name">陳先生</h6>  
+        <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
+      </div>
+    </div>   
+    <% end %>     
+  </section>
   
 <% end%>
-
-
-
-
-
-
-
-
