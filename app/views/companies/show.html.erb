@@ -1,4 +1,4 @@
-<div class="container mx-auto md:w-2/3 border-2 m-5 p-3">
+<div class="container p-3 m-5 mx-auto border-2 md:w-2/3">
   <% if @company.present? %>
     <h1 class="text-3xl"><%= @company.name %></h1>
     <P class="my-2">公司地址</P>
@@ -22,3 +22,28 @@
     </button>
   <% end %>
 </div>
+
+<!-- Icon Blocks -->
+<div class="container max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+  <!-- Card -->
+  <div class="flex w-full h-full p-5 transition-all rounded-lg group gap-y-6">
+
+    <div class="px-3">
+      <img src="https://picsum.photos/150/150/?random=10">
+    </div>
+    <div>
+      <div>
+        <h3 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= @company.name %></h3>
+        <a href="#" class="block px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
+          編輯
+        </a>
+        <a href="#" class="block px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
+          查看您的職缺
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- End Card -->
+</div>
+<!-- End Icon Blocks -->
+
