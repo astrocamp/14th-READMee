@@ -13,6 +13,11 @@
 .input {
   @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
+
+.language-css{
+  @apply block px-2 mb-2 border-l-4 border-solid border-amber-500 w-fit;
+}
+
 :root {
   --ss-primary-color: #f59e0b !important;
   --ss-main-height: 40px !important;
