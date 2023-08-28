@@ -15,5 +15,4 @@ class Resume < ApplicationRecord
     resume.education = "#{profile.education}"
     resume.save
   end
-
 end
