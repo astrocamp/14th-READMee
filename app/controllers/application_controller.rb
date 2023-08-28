@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   include Pundit::Authorization
   protect_from_forgery with: :exception
-  
+
   def set_locale
     I18n.locale = :'zh-TW'
   end
@@ -14,7 +14,16 @@ class ApplicationController < ActionController::Base
 
   def not_found
     render file: Rails.root.join('public', '404.html'),
-                status: 404,
-                layout: false
+           status: 404,
+           layout: false
   end
+  
+  def after_sign_in_path_for(resource)
+    if current_user.role.nil?
+      flash[:notice] = "請選擇身分"
+      select_role_path
+    else
+      root_path
+    end
+  end  
 end

@@ -1,10 +1,8 @@
 zh-TW:
-  simple_form:
-    options:
-      user:
-        role:
-          job_seeker: "求職者"
-          employer: "雇主"
+  user_roles:
+    job_seeker: '求職者'
+    employer: '雇主'
+    admin: '管理員'
   errors:
     messages:
       not_saved: '錯誤！請查看以下訊息：'
@@ -25,7 +23,7 @@ zh-TW:
       user:
         invalid: '請確認帳號密碼是否正確!'
         not_found_in_database: '請確認帳號密碼是否正確!'
-        already_authenticated: '您已經登入，無法執行該操作。'
+        already_authenticated: '您已經登入囉!'
         unconfirmed: '請至信箱確認信件'
         unauthenticated: '尚未認證，請重新登入'
     registrations:
@@ -38,6 +36,10 @@ zh-TW:
   activerecord:
     errors:
       models:
+        company:
+          attributes:
+            user:
+              required: '需要提供用戶'
         user:
           attributes:
             reset_password_token:

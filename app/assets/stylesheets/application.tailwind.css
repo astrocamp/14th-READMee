@@ -3,16 +3,21 @@
 @tailwind utilities;
 
 .save-btn {
-  @apply rounded-lg py-3 px-5 text-white inline-block bg-amber-500 hover:bg-amber-800 cursor-pointer
+  @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800;
 }
 
 .proceed-btn {
-  @apply select-none bg-amber-300 text-black rounded-xl p-0.5
+  @apply select-none bg-amber-300 text-black rounded-xl p-0.5;
 }
 
 .input {
-  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full
+  @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
+
+.language-css{
+  @apply block px-2 mb-2 border-l-4 border-solid border-amber-500 w-fit;
+}
+
 :root {
   --ss-primary-color: #f59e0b !important;
   --ss-main-height: 40px !important;
@@ -23,7 +28,7 @@
   @apply p-2 mr-1 font-semibold rounded !important;
 }
 .ss-main {
-  @apply block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full;
+  @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
 .ss-arrow path {
   @apply mr-2 !important;
