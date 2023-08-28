@@ -42,6 +42,4 @@ class User < ApplicationRecord
   def company?
     company.present?
   end
-
-  
 end
