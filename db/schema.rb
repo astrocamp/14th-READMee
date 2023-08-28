@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_23_042557) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_045805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_042557) do
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
+  end
+
   create_table "profile_skills", force: :cascade do |t|
     t.bigint "profile_id", null: false
     t.bigint "skill_id", null: false
@@ -123,6 +131,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_042557) do
     t.string "about_me_title"
     t.string "work_experience_title"
     t.string "languages"
+    t.text "project"
+    t.text "education"
+    t.string "project_title"
+    t.string "education_title"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
@@ -143,12 +155,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_042557) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
     t.string "account"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

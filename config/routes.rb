@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resource :profile, except: [:destroy]
     resources :resumes, only: [:edit, :update]
+    resources :portfolios, except: [:show, :new]
     resource :company do
       resources :jobs
     end
