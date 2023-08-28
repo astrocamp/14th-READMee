@@ -1,6 +1,6 @@
 class CompanyPolicy < ApplicationPolicy
   def show?
-    user_employer? && user_has_company?
+    user_has_company?
   end
 
   def new?
