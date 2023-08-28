@@ -17,4 +17,5 @@ Rails.application.routes.draw do
     end
   end
   get "toggle_role", to: "users#toggle", as: :toggle_role 
+  get "pricing", to: "prices#show", as: :pricing
 end
