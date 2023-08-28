@@ -38,7 +38,7 @@ class User < ApplicationRecord
   def job_seeker?
     role == 'job_seeker'
   end
-  
+
   def company?
     company.present?
   end

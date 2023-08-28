@@ -5,8 +5,8 @@ module ApplicationHelper
               class: 'hover:text-amber-600 mx-1'
     elsif user.employer?
       if user.company?
-        link_to company.name '公司', company_path(account: user.account),
-                             class: 'hover:text-amber-600 mx-1'
+        link_to user.company.name, company_path(account: user.account),
+                class: 'hover:text-amber-600 mx-1'
       else
         link_to '建立公司', new_company_path(account: user.account), class: 'hover:text-amber-600 mx-1'
       end

@@ -10,6 +10,7 @@ class ProfilesController < ApplicationController
     if current_user.profile.present?
       @resume_id = Resume.first.id
       @resume_basic_info = Resume.first.basic_info
+      @profile = Profile.find(current_user.profile.id)
     else
       redirect_to new_profile_path(current_user.account)
     end
