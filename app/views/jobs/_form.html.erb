@@ -1,23 +1,23 @@
 <div>
-  <p>標題</p>
-  <%= f.text_field :title, class: "input" %>
+  <p>職缺標題</p>
+  <%= f.text_field :title, class: "w-full" %>
 </div>
 <div>
-  <p>內容</p>
-  <%= f.text_area :content, class: "input" %>
+  <p>職缺描述</p>
+  <%= f.text_area :content, class: "w-full" %>
 </div>
 <div>
   <p>需求人數</p>
-  <%= f.number_field :num_of_people, class: "input" %>    
+  <%= f.text_field :num_of_people, class: "w-full" %>
 </div>
 <div>
-  <p>年資</p>
-  <%= f.number_field :seniority, class: "input" %>    
+  <p>年資要求</p>
+  <%= f.text_field :seniority, class: "w-full" %>
 </div>
 <div>
-  <p>薪水</p>
-  <%= f.number_field :salary, class: "input" %>    
+  <p>薪資範圍</p>
+  <%= f.text_field :salary, class: "w-full" %>
 </div>
-<button class="rounded-lg bg-amber-500 px-8 py-2 my-2 text-white">
+<button class="px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
   <%= f.submit "確定" %>
 </button>

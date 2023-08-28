@@ -1,10 +1,10 @@
 class CompanyPolicy < ApplicationPolicy
   def show?
-    user_employer? && (user_has_company? || user_can_create_company?)
+    user_employer? && user_has_company?
   end
 
   def new?
-    user_employer?
+    user_employer? && !user_has_company?
   end
 
   def create?
@@ -22,14 +22,10 @@ class CompanyPolicy < ApplicationPolicy
   private
 
   def user_employer?
-    user.employer?
+    @user.employer?
   end
 
   def user_has_company?
-    user.company.present?
-  end
-
-  def user_can_create_company?
-    record.user == user
+    @user.company.present?
   end
 end

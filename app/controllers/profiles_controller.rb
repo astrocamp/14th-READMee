@@ -2,14 +2,11 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:show, :edit, :update]
 
-  def index
-    @users = User.all
-  end
-
   def show
-    if current_user && current_user.profile.present?
+    if current_user.profile.present?
       @resume_id = Resume.first.id
       @resume_basic_info = Resume.first.basic_info
+      @profile = Profile.find(current_user.profile.id)
     else
       redirect_to new_profile_path(current_user.account)
     end
@@ -26,7 +23,6 @@ class ProfilesController < ApplicationController
       @resume.save
       redirect_to profile_path(current_user.account), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
-      flash[:alert] = '個人檔案建立失敗，請檢查表單內容。'
       render :new, alert: "請檢查表單必填欄位。"
     end
   end
@@ -49,7 +45,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education,
+    params.require(:profile).permit(:full_name, :phone, :address, :job_title, :education,
                                     :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skill_ids: [])
   end
 end

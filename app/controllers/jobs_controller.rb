@@ -4,7 +4,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = @company.jobs
-    @jobs_list = Job.order(id: :desc)
+    @job_list = Job.order(id: :desc)
   end
 
   def new

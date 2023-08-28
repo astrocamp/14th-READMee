@@ -2,13 +2,14 @@ class CompaniesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_account, only: [:edit, :update]
   before_action :set_company, only: [:show, :edit, :update]
+  before_action :find_company, only: [:edit, :update]
 
   def show
-    if user_has_company?
-      @company = Company.find(params[:id])
-      authorize @company
+    if current_user.company.present?
+    @company = Company.find(current_user.company.id)
+    authorize @company
     else
-      redirect_to new_company_path
+      redirect_to new_company_path, alert: '您尚未建立公司!'
     end
   end
 
@@ -18,28 +19,24 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.new(params_company)
-    @company.user = current_user
+    @company = current_user.build_company(params_company)
     authorize @company
-
     if @company.save
       redirect_to company_path, notice: '公司建立成功!'
     else
+      flash.now[:alert] = @company.errors.full_messages.join(', ')
       render :new
     end
   end
 
   def edit
-    @company = Company.find(params[:id])
     authorize @company
   end
 
   def update
-    @company = Company.find(params[:id])
     authorize @company
-
     if @company.update(params_company)
-      redirect_to company_path, notice: '公司資訊已更新!'
+      redirect_to company_path, notice: '更新成功!'
     else
       render :edit
     end
@@ -57,5 +54,9 @@ class CompaniesController < ApplicationController
 
   def set_account
     @account = current_user.account
+  end
+
+  def find_company
+    @company = Company.find(current_user.company.id)
   end
 end
