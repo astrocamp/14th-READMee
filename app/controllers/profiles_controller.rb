@@ -7,9 +7,10 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    if current_user && current_user.profile.present?
+    if current_user.profile.present?
       @resume_id = Resume.first.id
       @resume_basic_info = Resume.first.basic_info
+      @profile = Profile.find(current_user.profile.id)
     else
       redirect_to new_profile_path(current_user.account)
     end
@@ -49,7 +50,7 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education,
+    params.require(:profile).permit(:full_name, :phone, :address, :job_title, :education,
                                     :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skill_ids: [])
   end
 end
