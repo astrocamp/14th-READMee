@@ -17,4 +17,13 @@ class ApplicationController < ActionController::Base
            status: 404,
            layout: false
   end
+  
+  def after_sign_in_path_for(resource)
+    if current_user.role.nil?
+      flash[:notice] = "請選擇身分"
+      select_role_path
+    else
+      root_path
+    end
+  end  
 end

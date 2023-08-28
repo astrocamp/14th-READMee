@@ -49,8 +49,8 @@
               <%- resource_class.omniauth_providers.each do |provider| %>
                 <%= button_to "GOOGLE登入", omniauth_authorize_path(resource_name, provider), data: { method: :post, turbo: false },class:'hover:text-amber-600 mx-1' %>
               <% end %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
