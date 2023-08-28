@@ -38,13 +38,16 @@ Style/Documentation:
 Style/EmptyMethod:
   Enabled: false
 
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: false
 
 Style/ConditionalAssignment:
   Enabled: false
 
-Style/RedundantSelf:
+Style/RedundantInterpolation:
   Enabled: false
 
 Metrics/AbcSize:
@@ -75,4 +78,10 @@ Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
 Bundler/OrderedGems:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Security/Eval:
   Enabled: false

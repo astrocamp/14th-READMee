@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
     @resume = current_user.resumes.build
     if @profile.save
       Resume.create_content(current_user.profile, @resume, current_user.email)
-      @resume.save
+      @resume.save      
       redirect_to profile_path(current_user.account), notice: '恭喜完成第一步！建立個人檔案成功！'
     else
       render :new, alert: "請檢查表單必填欄位。"
