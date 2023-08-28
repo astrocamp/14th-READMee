@@ -12,6 +12,24 @@
 .max-w-screen-lg{
     width: 1024px;
 }
+
 .min-h-1000{
     min-height: 1000px;
+}
+
+.field_with_errors input[type=text],.field_with_errors textarea {
+  border: rgba(255, 45, 45, 0.8) solid 3px;
+  border-style:groove;  
+}
+
+.container {
+	width: calc(100% / 1.5);
+  margin-top: 3rem;
+}
+
+.img {
+	width: 100%;
+	aspect-ratio: 11/7;
+	object-fit: cover;
+  border-radius: 20px;
 }

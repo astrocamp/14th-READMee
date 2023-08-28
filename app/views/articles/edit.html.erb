@@ -1,20 +1,12 @@
-<h2 class="text-xl">更新文章</h2>
+<h2 class="article-post">更新文章</h2>
 
-<%= form_with(model: @blog, data: { turbo: false }) do |f| %>
+<%= form_with(model: @article, data: { turbo: false }) do |f| %>
 
-<div class="my-4 flex gap-2">
-  <%= f.label :title, '標題' %>
-  <%= f.text_field :title, class: "w-96 h-5" %>
-</div>
+<%= render 'form', f: f %>
 
-<div class="my-4 flex gap-2">
-  <%= f.label :content, '內容'%>
-  <%= f.text_area :content, class: "w-96 h-96" %>
-</div>
-
-<div class="my-4 flex gap-3">
-  <%= f.submit "更新文章" ,class: "proceed-btn text-sm" %>
-  <%= link_to "取消", blogs_path, class: "proceed-btn text-sm" %>
+<div class="flex gap-3 my-4">
+  <%= f.submit "更新文章" ,class: "save-btn text-lg" %>
+  <%= link_to "取消", articles_path, class: "save-btn text-lg" %>
 </div>
 
 <% end %>

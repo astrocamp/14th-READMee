@@ -1,7 +1,7 @@
-<%= link_to '文章列表',  blogs_path, class:'text-xl hover:border-b-4 border-amber-300'%>
+<%= link_to "文章列表",  articles_path, class: "article-title-link" %>
 
-<h2 class="my-6"><%= @blog.title %></h2>
+<h2 class="mt-12 mb-10 text-xl text"><%= @article.title %></h2>
 
 <article>
-  <p><%= @blog.content %></p>
+  <p class="text-lg"><%= @article.content %></p>
 </article>

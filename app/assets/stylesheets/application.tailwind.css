@@ -33,3 +33,11 @@
 .ss-arrow path {
   @apply mr-2 !important;
 }
+
+.article-title-link {
+  @apply mt-1 text-2xl hover:border-b-4 border-amber-300 font-bold hover:ease-in hover:duration-100
+}
+
+.article-post {
+  @apply mt-1 text-2xl 
+}
