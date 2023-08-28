@@ -51,6 +51,14 @@
   overflow: auto;
   background-color: rgba(28, 28, 28, 0.401);
   border-radius: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+}
+
+.turbo-frame-error{
+  @apply hidden
 }
 
 .close-btn {    
