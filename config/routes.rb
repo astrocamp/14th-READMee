@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   post "employer", to: "users#employer", as: :employer
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
   get "pricing", to: "prices#show", as: :pricing
+  get "/jobs_list", to: "jobs#jobs_list"
 end
