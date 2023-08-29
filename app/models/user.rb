@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :profile
   has_one :company
   has_many :resumes
+  has_many :articles
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
   def self.create_from_provider_data(provider_data)
