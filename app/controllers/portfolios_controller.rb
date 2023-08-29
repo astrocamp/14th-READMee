@@ -1,4 +1,5 @@
 class PortfoliosController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_portfolio, only: [:edit, :destroy]
 
   def index
