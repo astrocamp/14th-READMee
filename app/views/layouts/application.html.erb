@@ -15,18 +15,14 @@
     <%= render "shared/navbar", class:"relative"%>
    
    
-    <main class="min-h-screen">
-      <div  class="container mx-auto">
-      
-      <div class="absolute top-30 right-28">
-        <%= render "shared/notice"%>
-        <%= render "shared/alert" %>
-      </div>
-      <%= yield %>
-      </div>
-      <%= turbo_frame_tag "modal"%>
+    <main class="container min-h-screen mx-auto">
+        <div class="absolute top-30 right-28">
+          <%= render "shared/notice"%>
+          <%= render "shared/alert" %>
+        </div>        
+        <%= yield %>
     </main>
-     
+    <%= turbo_frame_tag "modal"%>     
     <footer class="w-full px-2 py-1 text-gray-500 bg-white mt-46 "></footer>
   </body>
 </html>
