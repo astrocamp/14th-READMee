@@ -47,6 +47,9 @@ Style/SymbolProc:
 Style/RedundantSelf:
   Enabled: false
 
+Style/WordArray:
+  Enabled: false
+
 Layout/LineLength:
   Enabled: false
 
@@ -68,6 +71,9 @@ Layout/IndentationWidth:
 Layout/EmptyLinesAroundModuleBody:
   Enabled: false
 
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -75,6 +81,15 @@ Metrics/MethodLength:
   Enabled: false
 
 Metrics/PerceivedComplexity:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Lint/EmptyConditionalBody:
+  Enabled: false
+
+Naming/VariableName:
   Enabled: false
 
 Bundler/OrderedGems:
