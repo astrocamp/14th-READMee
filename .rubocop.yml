@@ -50,6 +50,12 @@ Style/ConditionalAssignment:
 Style/RedundantInterpolation:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -80,6 +86,12 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 
+Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
 Metrics/MethodLength:
   Enabled: false
 
@@ -88,6 +100,7 @@ Metrics/PerceivedComplexity:
 
 Lint/UnusedMethodArgument:
   Enabled: false
+
 
 Lint/EmptyConditionalBody:
   Enabled: false
