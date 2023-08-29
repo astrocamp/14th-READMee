@@ -1,6 +1,5 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: [:edit, :update]
   before_action :set_company, only: [:show, :edit, :update]
   before_action :find_company, only: [:edit, :update]
 
@@ -50,10 +49,6 @@ class CompaniesController < ApplicationController
 
   def set_company
     @company = current_user.company
-  end
-
-  def set_account
-    @account = current_user.account
   end
 
   def find_company
