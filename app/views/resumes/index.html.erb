@@ -1,33 +1,40 @@
-  <section class="flex gap-4 mt-20 mb-10 border-2 border-solid shadow-lg border-amber-400">
-    <img src="https://picsum.photos/id/181/100/100" alt="">
-    <div>
-      <h2 class="my-4 text-2xl font-medium">找工作，從製作專業履歷開始</h2>
-      <p class="text-gray-500">免費製作履歷，快速找到理想工作</p>
-    </div>
-  </section>
-  <section class="flex flex-wrap items-center gap-8 ">
-    <% @resumes.each do |resume| %>    
-    <div class="card" >  
-      <img src="" alt="">
-      <div>
-      <%= link_to resume_path(resume.id), data: { turbo_frame: "modal" } do %>     
-      <img class="object-cover w-full h-full" src="https://picsum.photos/id/456/100/120" alt="resume">
+<section class="flex gap-4 mt-20 mb-10 border-2 border-solid shadow-lg border-amber-400">
+  <img src="https://picsum.photos/id/181/100/100" alt="">
+  <div>
+    <h2 class="my-4 text-2xl font-medium">找工作，從製作專業履歷開始</h2>
+    <p class="text-gray-500">免費製作履歷，快速找到理想工作</p>
+  </div>
+</section>
+
+<section class="flex flex-wrap items-center gap-8 ">
+  <% @users.each do |user| %>
+    <% user.resumes.each do |resume| %>
+      <% if resume.publish == true %>
+        <li class="list-none">
+          <div class="card">
+            <div>
+              <img class="object-cover w-full h-full" src="https://picsum.photos/id/456/100/120" alt="resume">
+              <%= link_to resume.id, root_path, data: { turbo_frame: "modal" }%>   
+            </div>
+            <div class="flex-col gap-3 px-2 py-3 bg-gray-100">
+              <!-- badge -->
+              <div class="flex items-center justify-between gap-2 ">
+                <div>
+                  <span class="badge">產品規劃</span>
+                  <span class="badge">專案管理</span>
+                  <span class="badge">社群行銷</span>
+                </div>
+                <%= image_tag 'heart.png', class: 'w-5 h-auto' %>
+              </div>    
+            </div>
+            <div class="flex items-center justify-between h-10">
+              <!-- user-name -->
+              <h6 class="user-name"><%= user.account %></h6>  
+              <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
+            </div>
+          </div>   
+        </li>
       <% end %>
-      </div>
-      <div class="flex-col gap-3 px-2 py-3 bg-gray-100">
-        <div class="flex items-center justify-between gap-2 ">
-          <div>
-            <span class="badge">產品規劃</span>
-            <span class="badge">專案管理</span>
-            <span class="badge">社群行銷</span>
-          </div>    
-        <%= image_tag 'heart.png', class: 'w-5 h-auto' %>
-        </div>    
-      </div>
-      <div class="flex items-center h-10">
-        <span class="user-name"><%= resume.basic_info.split(" ").first %></span>
-        <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
-      </div>
-    </div>   
-    <% end %>     
-  </section>
+    <% end %>
+  <% end %>
+</section>

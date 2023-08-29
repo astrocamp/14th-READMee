@@ -2,7 +2,9 @@
   <section class="relative flex justify-between w-full pl-16">  
     <div class="max-w-screen-lg p-16 mt-20 mb-16 bg-white shadow-2xl min-h-1000" data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent">
       <%= form_with(url: resume_path(account: current_user.account, id: @resume.id), method: "patch", model: @resume, data: { turbo: false }) do |f| %>
-        <%= f.submit "更新", class: "absolute top-4 right-72 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+        <%= f.submit "更新", name: "save", class: "absolute top-4 right-56 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+        <%= f.submit "發佈", name: "is_publish", class: "absolute top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+        <%= hidden_field_tag :publish, @resume.publish %>
         <div class="flex h-48">
           <div class="flex flex-col align-center">
             <div class="flex items-center justify-center inline-block pb-5 custom-width-250px">

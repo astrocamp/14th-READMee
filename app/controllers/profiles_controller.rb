@@ -4,7 +4,8 @@ class ProfilesController < ApplicationController
 
   def show
     if current_user && current_user.profile.present?
-      @resume = Resume.first
+      @user = User.find(current_user.id)
+      @resume = Resume.find_by(user_id: @user.id)
     else
       redirect_to new_profile_path(current_user.account)
     end
