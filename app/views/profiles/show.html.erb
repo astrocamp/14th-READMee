@@ -29,18 +29,12 @@
               </li>
             </ul>
           </div>
-          <div class="mt-4">
+          <!-- <div class="mt-4">
             <span class="text-lg font-semibold">關於我</span>
             <p class="text-gray-700" data-profileInfo-target="aboutMe">
               <%= @profile.about_me %>
             </p>
-          </div>
-          <div class="mt-4">
-            <h2 class="text-lg font-semibold">學歷</h2>
-            <ul class="mt-2 text-gray-700">
-              <li data-profileInfo-target="education"><%= @profile.education %></li>
-            </ul>
-          </div>
+          </div> -->
           <div class="mt-4">
             <h2 class="text-lg font-semibold">語言</h2>
             <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
@@ -59,38 +53,15 @@
           </div>
           <div class="mt-4">
             <h2 class="text-lg font-semibold">工作經驗</h2>
-            <div data-profileInfo-target="workExperience" class="mt-2 text-gray-700">
-              <p><%= @profile.work_experience %></p>
-            </div>
+            <ul data-profileInfo-target="workExperience" class="mt-2 text-gray-700">
+              <li><%= @profile.work_experience %> <%= @profile.work_exp_date %></li>
+            </ul>
           </div>
           <div class="mt-4">
-            <h2 class="text-lg font-semibold">社群媒體</h2>
-            <div class="grid gap-3 mt-2 lg:grid-cols-2">
-              <div class="flex items-center">
-                <div>
-                  <%= image_tag 'linkedin.svg', class: 'mr-2' %>
-                </div>
-                <p data-profileInfo-target="linkedin" class="overflow-auto" title="<%= @profile&.linkedin %>"><%= @profile&.linkedin %></p>
-              </div>
-              <div class="flex items-center">
-                <div>
-                  <%= image_tag 'facebook.svg', class: 'mr-2' %>
-                </div>
-                <p data-profileInfo-target="facebook" class="overflow-auto" title="<%= @profile&.facebook %>"><%= @profile&.facebook %></p>
-              </div>
-              <div class="flex items-center">
-                <div>
-                  <%= image_tag 'github.svg', class: 'mr-2' %>
-                </div>
-                <p data-profileInfo-target="github" class="overflow-auto" title="<%= @profile&.github %>"><%= @profile&.github %></p>
-              </div>
-              <div class="flex items-center">
-                <div>
-                  <%= image_tag 'web.png', class: 'w-8 px-1' %>
-                </div>
-                <p data-profileInfo-target="website" class="overflow-auto" title="<%= @profile&.website %>"><%= @profile&.website %></p>
-              </div>
-            </div>
+            <h2 class="text-lg font-semibold">學歷</h2>
+            <ul class="mt-2 text-gray-700">
+              <li data-profileInfo-target="education"><%= @profile.education %> <%= @profile.education_date %></li>
+            </ul>
           </div>
         </div>
         <span class="block mt-5">
