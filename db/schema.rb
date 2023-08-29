@@ -68,9 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_045652) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "num_of_people"
+    t.string "num_of_people"
     t.string "seniority"
-    t.integer "salary"
+    t.string "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
