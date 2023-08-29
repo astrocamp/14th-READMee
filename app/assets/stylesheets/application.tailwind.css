@@ -6,10 +6,6 @@
   @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800;
 }
 
-.proceed-btn {
-  @apply select-none bg-amber-300 text-black rounded-xl p-0.5;
-}
-
 .input {
   @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
@@ -94,4 +90,8 @@
     @apply
       font-light
   }
+}
+
+.turbo-frame-error{
+  @apply hidden
 }
