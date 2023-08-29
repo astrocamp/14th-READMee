@@ -35,9 +35,17 @@
 }
 
 .article-title-link {
-  @apply mt-1 text-2xl hover:border-b-4 border-amber-300 font-bold hover:ease-in hover:duration-100
+  @apply mt-10 text-2xl border-amber-300 font-bold hover:ease-in hover:duration-100 hover:border-b-4
 }
 
 .article-post {
-  @apply mt-1 text-2xl 
+  @apply mt-10 text-2xl 
+}
+
+.field_with_errors input[type=text], .field_with_errors textarea {
+  @apply border-2 border-red-600
+}
+
+.article-img {
+  @apply aspect-w-11 aspect-h-7 object-cover rounded-2xl
 }
