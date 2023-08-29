@@ -11,12 +11,16 @@
     
     <%= link_to article.title.truncate(23), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium" %>
     <div class="flex gap-4 mt-1">
+      <% if current_user.id == article.user.id %>
       <%= link_to "更新", edit_article_path(article.id)%>
+      <% end %>
+      <% if current_user.id == article.user.id %>
       <%= link_to "刪除", article_path(article.id), 
                                   data: {
                                     turbo_method: "delete",
                                     turbo_confirm: "確定要刪除?"
                                   }%>    
+      <% end %>                        
     </div>
     </li>
     <% end %>  

@@ -1,22 +1,24 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-before_action :find_article, only: [:show, :edit, :update, :destroy]
-before_action :set_account, only: [:edit, :update, :destroy]  
+  before_action :find_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:edit, :update, :destroy]  
 
   def index
     @articles = Article.order(id: :desc)      
   end
 
   def new
-    @article = Article.new
+    # @article = Article.new
+    @article = current_user.articles.build
   end 
 
   def create
-    @article = Article.new(article_params)
+    # @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to articles_path, notice: '新增文章成功' 
-    else
-      render :new
+    else  
+    render :new
     end
   end
 
@@ -46,7 +48,7 @@ before_action :set_account, only: [:edit, :update, :destroy]
   end 
 
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content, :id)
   end
 
   def set_account
