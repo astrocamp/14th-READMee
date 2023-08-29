@@ -24,12 +24,31 @@
   --ss-font-color: #888686 !important;
   --ss-spacing-m: 10px !important;
 }
+
 .ss-values .ss-value {
   @apply p-2 mr-1 font-semibold rounded !important;
 }
+
 .ss-main {
   @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
+
 .ss-arrow path {
   @apply mr-2 !important;
+}
+
+.article-title-link {
+  @apply mt-10 text-2xl border-amber-300 font-bold hover:ease-in hover:duration-100 hover:border-b-4 inline-block
+}
+
+.article-post {
+  @apply mt-10 text-2xl 
+}
+
+.field_with_errors input[type=text], .field_with_errors textarea {
+  @apply border-2 border-red-600
+}
+
+.article-img {
+  @apply aspect-w-11 aspect-h-7 object-cover rounded-2xl
 }

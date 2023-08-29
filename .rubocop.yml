@@ -53,10 +53,10 @@ Style/RedundantInterpolation:
 Metrics/AbcSize:
   Enabled: false
 
-Metrics/MethodLength:
+Style/WordArray:
   Enabled: false
-  
-Metrics/PerceivedComplexity:
+
+Layout/LineLength:
   Enabled: false
 
 Layout/EndOfLine:
@@ -75,6 +75,24 @@ Layout/IndentationWidth:
   Enabled: false
 
 Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Lint/EmptyConditionalBody:
+  Enabled: false
+
+Naming/VariableName:
   Enabled: false
 
 Bundler/OrderedGems:

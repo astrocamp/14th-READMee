@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
   
-  resources :blogs
+  resources :articles
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :resumes, only:[:new]
@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   post "employer", to: "users#employer", as: :employer
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
   get "pricing", to: "prices#show", as: :pricing
+  get "/jobs_list", to: "jobs#jobs_list"
 end
