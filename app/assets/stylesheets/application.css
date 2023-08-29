@@ -1,20 +1,20 @@
 .skill{
-    box-sizing: border-box;
-    margin-right: -64px;
-    margin-left: -64px;
+  box-sizing: border-box;
+  margin-right: -64px;
+  margin-left: -64px;
 }
 .top-68px{
-    top: 68px;
+  top: 68px;
 }
 .custom-width-250px{
-    width: 250px;
+  width: 250px;
 }
 .max-w-screen-lg{
-    width: 1024px;
+  width: 1024px;
 }
 
 .min-h-1000{
-    min-height: 1000px;
+  min-height: 1000px;
 }
 
 .img-container {
