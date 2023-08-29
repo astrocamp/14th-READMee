@@ -9,7 +9,7 @@
     <% @articles.each do |article| %>
     <li class="mt-12">
     
-    <%= link_to article.title.truncate(23), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium" %>
+    <%= link_to article.title.truncate(15), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium" %>
     <div class="flex gap-4 mt-1">
       <% if current_user.id == article.user.id %>
       <%= link_to "更新", edit_article_path(article.id)%>
