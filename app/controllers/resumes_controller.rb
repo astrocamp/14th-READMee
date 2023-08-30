@@ -1,33 +1,38 @@
 class ResumesController < ApplicationController
-  include ActionView::Helpers::SanitizeHelper
-
   before_action :authenticate_user!
-  before_action :find_resume, only: [:edit, :update, :second]
+  before_action :find_resume, only: [:edit, :update]
+
+  def index
+    @users = User.includes(:resumes)
+  end
+
+  def show
+    @resume = Resume.find(params[:id])
+    @skills = JSON.parse(@resume.skills)
+  end
 
   def edit
-    @profile = Profile.find_by(current_user.id)
+    if @resume.basic_info.present?
+      @resume = Resume.find(params[:id])
+      @skills = JSON.parse(@resume.skills)
+      @languages = eval(@resume.languages)
+    else
+      @resume = current_user.resumes.find(params[:id])
+      @skills = JSON.parse(@resume.skills)
+      @languages = eval(@resume.languages)
+    end
   end
 
   def update
-    if @resume.update(resume_params)
-      respond_to do |format|
-        format.json do 
-          render json: { 
-            message: {
-              basic_info: @resume.basic_info,
-              social_links: @resume.social_links,
-              about_me: @resume.about_me,
-              skills: @resume.skills,
-              work_experience: @resume.work_experience,
-              about_me_title: @resume.about_me_title,
-              work_experience_title: @resume.work_experience_title,
-              languages: @resume.languages
-            }
-          }
-        end
+    if params[:published] == "發佈" && params[:publish] == "false"
+      @resume.update(publish: true)
+      redirect_to resumes_path
+    elsif params[:save] == "更新"
+      if @resume.update(resume_params)
+        redirect_to edit_resume_path(account: current_user.account, id: @resume)
+      else
+        render :edit
       end
-    else
-      render :edit
     end
   end
 
@@ -36,7 +41,6 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links,
-                                   :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages)
+    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages, :project, :project_title, :education, :education_title, :published, :publish)
   end
 end

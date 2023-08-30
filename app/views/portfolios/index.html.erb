@@ -1,0 +1,28 @@
+<div class="flex pt-10">
+  <%= form_with(model: @portfolio_new, data: { turbo: false}) do |f|%>
+    <%= f.text_field :name, placeholder: "專案名稱", class: "h-full mb-2" %>
+    <%= f.submit "新增作品集", class: "rounded-lg py-3 px-5 text-white inline-block bg-amber-500 hover:bg-amber-800 cursor-pointer" %>
+  <% end %>
+</div>
+
+<ul class="grid grid-cols-4 pt-10 mx-auto gap-7">
+  <% @portfolios.each do |portfolio| %>
+    <li class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
+      <%= link_to edit_portfolio_path(id: portfolio) do %>
+        <img class="w-full h-auto rounded-t-xl" src="https://picsum.photos/300/200/?random=10" alt="Image Description">
+        <div class="flex items-center justify-between p-4 md:p-5">
+          <h1 class="text-lg font-bold text-gray-800 dark:text-white">
+            <%= portfolio.name %>
+          </h1>        
+          <%= link_to '刪除', 
+            portfolio_path(id: portfolio),
+            class: "mt-3 py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm dark:focus:ring-offset-gray-800",
+            data: {
+              turbo_method: 'delete',
+              turbo_confirm: '確定刪除？'
+            } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</ul>

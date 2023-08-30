@@ -42,13 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_102735) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "blogs", force: :cascade do |t|
+  create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_blogs_on_deleted_at"
+    t.bigint "user_id"
+    t.index ["deleted_at"], name: "index_articles_on_deleted_at"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -70,12 +72,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_102735) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "job_matchings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_job_matchings_on_company_id"
+    t.index ["job_id"], name: "index_job_matchings_on_job_id"
+    t.index ["user_id"], name: "index_job_matchings_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "num_of_people"
+    t.string "num_of_people"
     t.string "seniority"
-    t.integer "salary"
+    t.string "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
@@ -91,6 +104,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_102735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
+  create_table "portfolios", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
   create_table "profile_skills", force: :cascade do |t|
@@ -140,6 +159,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_102735) do
     t.text "education"
     t.string "project_title"
     t.string "education_title"
+    t.boolean "publish"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
@@ -175,6 +195,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_29_102735) do
   add_foreign_key "chats", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "messages", "chats"
+  add_foreign_key "articles", "users"
+  add_foreign_key "companies", "users"
+  add_foreign_key "job_matchings", "companies"
+  add_foreign_key "job_matchings", "jobs"
+  add_foreign_key "job_matchings", "users"
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"

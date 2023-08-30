@@ -52,3 +52,19 @@ zh-TW:
               too_short: '密碼太短！至少 6 個字元。'
             password_confirmation:
               confirmation: '密碼確認不符，請重新輸入確認密碼。'
+  views:
+    pagination:
+      first: "&laquo; 第一頁"
+      last: "最尾頁 &raquo;"
+      previous: "&lsaquo; 前頁"
+      next: "後頁 &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"          

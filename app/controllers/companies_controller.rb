@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: [:edit, :update]
+  before_action :set_company, only: [:show, :edit, :update]
   before_action :find_company, only: [:edit, :update]
 
   def show
@@ -47,8 +47,8 @@ class CompaniesController < ApplicationController
     params.require(:company).permit(:name, :address, :phone, :about, :population)
   end
 
-  def set_account
-    @account = current_user.account
+  def set_company
+    @company = current_user.company
   end
 
   def find_company
