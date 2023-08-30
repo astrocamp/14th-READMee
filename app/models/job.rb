@@ -5,7 +5,6 @@ class Job < ApplicationRecord
   has_many :job_matchings
   has_many :users, through: :job_matchings
 
-
   def self.ransackable_attributes(auth_object = nil)
     ["content", "title"]
   end

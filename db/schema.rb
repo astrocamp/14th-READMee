@@ -148,10 +148,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_105606) do
     t.text "education"
     t.string "project_title"
     t.string "education_title"
-<<<<<<< HEAD
     t.boolean "publish"
-=======
->>>>>>> [build]: migration job_matching
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
