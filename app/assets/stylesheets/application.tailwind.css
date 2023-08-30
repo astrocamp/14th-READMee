@@ -6,10 +6,6 @@
   @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800;
 }
 
-.proceed-btn {
-  @apply select-none bg-amber-300 text-black rounded-xl p-0.5;
-}
-
 .input {
   @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
@@ -71,4 +67,28 @@
 
 .page {
   @apply text-2xl mx-1
+}
+
+@layer base {
+  body {
+    font-family: 'Readex Pro', sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
+  }
+
+  .badge {
+    @apply px-2 py-1 rounded-sm text-xs border-solid border-2 border-gray-300
+  }
+
+  .user-name {
+    @apply font-light
+  }
+}
+
+.turbo-frame-error{
+  @apply hidden
 }
