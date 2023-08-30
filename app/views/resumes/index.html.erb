@@ -30,7 +30,9 @@
             </div>
             <div class="flex items-center justify-between h-10">
               <!-- user-name -->
-              <h6 class="user-name"><%= user.account %></h6>  
+              <h6 class="user-name">
+                <%= resume.basic_info.split(" ").first %>
+              </h6>  
               <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
             </div>
           </div>   
