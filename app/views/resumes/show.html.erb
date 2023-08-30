@@ -9,6 +9,7 @@
           action: "modals#close"
         } %>      
     </div>
+
     <section class="flex justify-center w-full">
       <div class="max-w-screen-lg p-16 mb-16 mr-1 bg-white shadow-2xl mt-28">
         <div class="flex">
@@ -16,7 +17,7 @@
             <img class="inline-block w-32 h-32 rounded-full" src="https://picsum.photos/200/200/?random=10">
           </div>
           <div class="flex items-center inline-block w-60">
-            <%= @formatted_basic_info %></p>
+            <%= @resume.basic_info %></p>
             <p class="w-full h-20 p-2 resize-y h-60"><%= @resume.basic_info %></p>
           </div>
           <div class="inline-block w-1/2">
