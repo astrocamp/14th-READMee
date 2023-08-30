@@ -24,7 +24,7 @@ class ResumesController < ApplicationController
   end
 
   def update
-    if params[:is_publish] == "發佈" && params[:publish] == "false"
+    if params[:published] == "發佈" && params[:publish] == "false"
       @resume.update(publish: true)
       redirect_to resumes_path
     elsif params[:save] == "更新"
@@ -41,6 +41,6 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages, :project, :project_title, :education, :education_title, :is_publish, :publish)
+    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages, :project, :project_title, :education, :education_title, :published, :publish)
   end
 end
