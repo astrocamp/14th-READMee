@@ -77,18 +77,15 @@
 
 @layer components {
   .card {
-    @apply
-      bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
+    @apply bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
   }
 
   .badge {
-    @apply 
-      px-2 py-1 rounded-sm text-xs border-solid border-2 border-gray-300
+    @apply px-2 py-1 rounded-sm text-xs border-solid border-2 border-gray-300
   }
 
   .user-name {
-    @apply
-      font-light
+    @apply font-light
   }
 }
 

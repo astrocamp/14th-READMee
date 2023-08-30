@@ -1,12 +1,15 @@
 <%= turbo_frame_tag "modal" do %>
-<div class="modal">
-   <div>
-      <%= link_to "Close", "#", data: {
-                                  controller:"modal",
-                                  action: "modals#close"
-                                  }, class: "close-btn" %>      
+  <div class="modal">
+    <div>
+      <%= link_to "Close",
+        "#",
+        class: "close-btn",
+        data: {
+          controller:"modal",
+          action: "modals#close"
+        } %>      
     </div>
-  <section class="flex justify-center w-full">
+    <section class="flex justify-center w-full">
       <div class="max-w-screen-lg p-16 mb-16 mr-1 bg-white shadow-2xl mt-28">
         <div class="flex">
           <div class="flex items-center justify-center inline-block custom-width-250px">
@@ -28,9 +31,9 @@
         <div class="pt-5l">
           <h1 class="py-3 text-xl font-bold">技能</h1>          
           <% if @skills.present? %>
-              <% @skills.each do |skill| %>
-                <li class="inline-block px-5 py-3 mr-2 border-2 border-gray-300 rounded-lg"><%= skill %></li>
-              <% end %>
+            <% @skills.each do |skill| %>
+              <li class="inline-block px-5 py-3 mr-2 border-2 border-gray-300 rounded-lg"><%= skill %></li>
+            <% end %>
             <% else %>
               <li class="inline-block px-5 py-3 mr-2 border-2 border-gray-300 rounded-lg">請輸入技能</li>
             <% end %>
@@ -38,7 +41,7 @@
         <div class="pt-5l">        
           <h1 class="py-3 text-xl font-bold"><%= @resume.work_experience_title %></h1>
           <p class="overflow-auto h-200"><%= @resume.work_experience %></p>
-        </div>
-  </section>    
-</div>
+      </div>
+    </section>    
+  </div>
 <% end%>

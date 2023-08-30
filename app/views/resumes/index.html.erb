@@ -10,8 +10,9 @@
     <div class="card" >  
       <img src="" alt="">
       <div>
+      <%= link_to resume_path(resume.id), data: { turbo_frame: "modal" } do %>     
       <img class="object-cover w-full h-full" src="https://picsum.photos/id/456/100/120" alt="resume">
-      <%= link_to resume.id, resume_path(resume.id), data: { turbo_frame: "modal" }%>               
+      <% end %>
       </div>
       <div class="flex-col gap-3 px-2 py-3 bg-gray-100">
         <div class="flex items-center justify-between gap-2 ">
@@ -24,7 +25,7 @@
         </div>    
       </div>
       <div class="flex items-center h-10">
-        <h6 class="user-name">陳先生</h6>  
+        <span class="user-name"><%= resume.basic_info.split(" ").first %></span>
         <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
       </div>
     </div>   
