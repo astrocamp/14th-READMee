@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :set_account, only: [:edit, :update, :destroy]  
 
   def index
-    @articles = Article.order(id: :desc)      
+    @articles = Article.page(params[:page]).per(6)
   end
 
   def new
