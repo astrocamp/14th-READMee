@@ -79,3 +79,15 @@ Metrics/PerceivedComplexity:
 
 Bundler/OrderedGems:
   Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
