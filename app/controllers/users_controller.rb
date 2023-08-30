@@ -18,15 +18,14 @@ class UsersController < ApplicationController
       flash[:notice] = '您是求職者了！請填寫基本資料'
       redirect_to profile_path(account: current_user.account)
     end
-
   end
+
   def employer
     current_user.role = 'employer'
     current_user.save
     if current_user.save
       flash[:notice] = '您是雇主了！請填寫基本資料'
       redirect_to employer_path(account: current_user.account)
-      end
+    end
   end
-
 end

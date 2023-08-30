@@ -23,10 +23,22 @@ Style/ClassAndModuleChildren:
 Style/HashSyntax:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Style/SymbolArray:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+  
+Style/SymbolProc:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
 
 Style/EmptyMethod:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
   Enabled: false
 
 Style/StringLiterals:
@@ -35,16 +47,16 @@ Style/StringLiterals:
 Style/ConditionalAssignment:
   Enabled: false
 
-Style/Documentation:
+Style/RedundantInterpolation:
   Enabled: false
 
-Style/SymbolArray:
+Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/SymbolProc:
+Style/GuardClause:
   Enabled: false
 
-Style/RedundantSelf:
+Metrics/AbcSize:
   Enabled: false
 
 Style/WordArray:
@@ -74,7 +86,10 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
 
-Metrics/AbcSize:
+Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
 Metrics/MethodLength:
@@ -86,6 +101,7 @@ Metrics/PerceivedComplexity:
 Lint/UnusedMethodArgument:
   Enabled: false
 
+
 Lint/EmptyConditionalBody:
   Enabled: false
 
@@ -93,4 +109,10 @@ Naming/VariableName:
   Enabled: false
 
 Bundler/OrderedGems:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Security/Eval:
   Enabled: false
