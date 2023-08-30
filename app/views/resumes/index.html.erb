@@ -13,8 +13,9 @@
         <li class="list-none">
           <div class="card">
             <div>
+              <%= link_to resume_path(resume.id), data: { turbo_frame: "modal" } do %>     
               <img class="object-cover w-full h-full" src="https://picsum.photos/id/456/100/120" alt="resume">
-              <%= link_to resume.id, root_path, data: { turbo_frame: "modal" }%>   
+              <% end %>   
             </div>
             <div class="flex-col gap-3 px-2 py-3 bg-gray-100">
               <!-- badge -->

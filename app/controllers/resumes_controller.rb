@@ -6,6 +6,11 @@ class ResumesController < ApplicationController
     @users = User.includes(:resumes)
   end
 
+  def show
+    @resume = Resume.find(params[:id])
+    @skills = JSON.parse(@resume.skills)
+  end
+
   def edit
     if @resume.basic_info.present?
       @resume = Resume.find(params[:id])
