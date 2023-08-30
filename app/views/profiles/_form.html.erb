@@ -1,6 +1,6 @@
 <%= form_with(model: @profile, url: profile_path, data: { controller: "nested-form", nested_form_wrapper_selector_value: '.nested-form-wrapper', turbo: false }, method: :post) do |form| %>
   <div data-controller="profileStep">
-    <div data-profileStep-target="part1">
+    <div data-profileStep-target="part1" class="shadow-md p-1 rounded-md">
       <%= render "avatar_preview", form: form, profile: @profile %>
       <div class="my-5">
         <%= form.label '姓名', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:full_name].any?}" %>
@@ -14,11 +14,11 @@
         <%= form.label '居住區域', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:address].any?}" %>
         <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇地址" }, class: "input" %>
       </div>
-      <div class="flex justify-end">
-        <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
+      <div  class="flex justify-end ">
+        <button class="next-button save-btn my-1" data-action="click->profileStep#nextBtn">下一步</button>
       </div>
     </div>
-    <div data-profileStep-target="part2" class='hidden'>
+    <div data-profileStep-target="part2" class='hidden shadow-md rounded-md'>
       <div class="my-5">
         <%= form.label "想找的工作職稱", class: "font-semibold" %>
         <%= form.select :job_title, options_for_select(Profile.job_title_options), {prompt: "請選擇工作職稱"}, class: "input" %>
@@ -39,27 +39,27 @@
         <%= form.label '技能', class: "font-semibold" %>
         <%= form.select :skill_ids, Skill.pluck(:tag, :id), {}, { data: { controller: "slimselect" }, multiple: true } %>
       </div>
-      <div class="flex justify-end">
-        <button class="back-button save-btn" data-action="click->profileStep#backBtn">上一步</button>
-        <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
+      <div class=" flex justify-end ">
+        <button class="back-button save-btn mx-1 my-1" data-action="click->profileStep#backBtn">上一步</button>
+        <button class="next-button save-btn mx-1 my-1" data-action="click->profileStep#nextBtn">下一步</button>
       </div>
     </div>
-    <div data-profileStep-target="part3" class="hidden" >
+    <div data-profileStep-target="part3" class="hidden shadow-md rounded-md" >
       <div class="my-5">
         <div class="grid grid-cols-2 ">
           <div class="my-5">
             <%= form.label '工作經驗', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:work_experience].any?}" %>
-            <%= form.text_field :work_experience, class: "input"  %>
+            <%= form.text_field :work_experience, placeholder:"ex: 五倍紅寶石-後端工程師", class: "input"  %>
           </div>
           <div class="my-5">
             <%= form.label '日期', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:work_exp_date].any?}" %>
-            <%= form.text_field :work_exp_date, class: "input"  %>
+            <%= form.text_field :work_exp_date, placeholder: "2000/01~2001/01", class: "input"   %>
           </div>
         </div>
         <div class="grid grid-cols-2 ">
           <div class="my-5">
             <%= form.label '學歷', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:education].any?}" %>
-            <%= form.text_field :education, placeholder: "台灣大學電機系",class: "input"  %>
+            <%= form.text_field :education, placeholder: "ex: 台灣大學-電機系",class: "input"  %>
           </div>
           <div class="my-5">
             <%= form.label '日期',class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:education_date].any?}" %>
@@ -68,8 +68,8 @@
         </div>
         <div>
           <div class="flex justify-end">
-            <button class="back-button save-btn" data-action="click->profileStep#backBtn">上一步</button>
-            <%= form.submit '送出', class: "save-btn submit" %>
+            <button class="back-button save-btn mx-1 my-1" data-action="click->profileStep#backBtn">上一步</button>
+            <%= form.submit '送出', class: "save-btn submit mx-1 my-1" %>
           </div>
         </div>
       </div>

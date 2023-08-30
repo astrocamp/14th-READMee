@@ -1,13 +1,19 @@
 <div data-controller="resume">
-  <section class="flex justify-between w-full pl-16"> 
+  <section class="flex justify-between w-full pl-16">
     <div class="max-w-screen-lg p-16 mb-16 bg-white shadow-2xl min-h-1000 mt-28" data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent">
       <div class="flex">
         <div class="flex items-center justify-center inline-block custom-width-250px">
           <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
         </div>
         <div class="flex items-center inline-block w-60" data-resume-target="basicInfo">
-          <p data-resume-target="basicInfoContent"><%= @formatted_basic_info %></p>
-          <textarea data-resume-target="basicInfoForm" class="hidden w-full h-20 p-2 border rounded-md resize-y h-60"><%=  @resume.basic_info %></textarea>
+          <p data-resume-target="basicInfoContent">
+            <%= @Profile.full_name %>
+            <%= @Profile.phone %>
+            <%= @Profile.address %>
+          </p>
+          <textarea data-resume-target="basicInfoForm" class="hidden w-full h-20 p-2 border rounded-md resize-y h-60">
+          <%=  @resume.basic_info %>
+          </textarea>
         </div>
         <div class="inline-block w-1/2" data-resume-target="socialLinks">
           <p data-resume-target="socialLinksContent" class="break-words"><%= @formatted_social_links %></p>
