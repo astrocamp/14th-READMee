@@ -65,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_105606) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "job_matchings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_job_matchings_on_company_id"
+    t.index ["job_id"], name: "index_job_matchings_on_job_id"
+    t.index ["user_id"], name: "index_job_matchings_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -137,7 +148,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_105606) do
     t.text "education"
     t.string "project_title"
     t.string "education_title"
+<<<<<<< HEAD
     t.boolean "publish"
+=======
+>>>>>>> [build]: migration job_matching
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
@@ -172,6 +186,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_105606) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "job_matchings", "companies"
+  add_foreign_key "job_matchings", "jobs"
+  add_foreign_key "job_matchings", "users"
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
