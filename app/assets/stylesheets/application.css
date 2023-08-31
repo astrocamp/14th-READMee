@@ -48,3 +48,16 @@
   border-radius: 6px;
   background-color: rgba(211, 211, 211, 0.401);
 }
+
+.codex-editor__redactor {
+  padding-bottom: 0 !important;
+}
+
+.ce-block__content {
+  border: 1px solid grey;
+}
+
+.ce-header {
+  font-weight: 700;
+  font-size: 1rem;
+}

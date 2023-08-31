@@ -34,39 +34,43 @@
 }
 
 .article-title-link {
-  @apply mt-10 text-2xl border-amber-300 font-bold hover:ease-in hover:duration-100 hover:border-b-4 inline-block
+  @apply mt-10 text-2xl border-amber-300 font-bold hover:ease-in hover:duration-100 hover:border-b-4 inline-block;
 }
 
 .article-post {
-  @apply mt-10 text-2xl 
+  @apply mt-10 text-2xl;
 }
 
-.field_with_errors input[type=text], .field_with_errors textarea {
-  @apply border-2 border-red-600
+.field_with_errors input[type='text'],
+.field_with_errors textarea {
+  @apply border-2 border-red-600;
 }
 
 .article-img {
-  @apply aspect-w-11 aspect-h-7 object-cover rounded-2xl
+  @apply aspect-w-11 aspect-h-7 object-cover rounded-2xl;
 }
 
 .pagination {
-  @apply mt-10
+  @apply mt-10;
 }
 
 .pagination span {
-  @apply my-2
+  @apply my-2;
 }
 
-.first, .last {
-  @apply hidden
+.first,
+.last {
+  @apply hidden;
 }
 
-.prev, .next, .page> a {
-  @apply text-2xl hover:bg-amber-500  hover:text-white mx-1
+.prev,
+.next,
+.page > a {
+  @apply text-2xl hover:bg-amber-500  hover:text-white mx-1;
 }
 
 .page {
-  @apply text-2xl mx-1
+  @apply text-2xl mx-1;
 }
 
 @layer base {
@@ -77,18 +81,18 @@
 
 @layer components {
   .card {
-    @apply bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
+    @apply bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden;
   }
 
   .badge {
-    @apply px-2 py-1 rounded-sm text-xs border-solid border-2 border-gray-300
+    @apply px-2 py-1 rounded-sm text-xs border-solid border-2 border-gray-300;
   }
 
   .user-name {
-    @apply font-light
+    @apply font-light;
   }
 }
 
-.turbo-frame-error{
-  @apply hidden
+.turbo-frame-error {
+  @apply hidden;
 }
