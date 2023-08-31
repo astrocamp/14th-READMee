@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
     I18n.locale = :'zh-TW'
   end
 
+  
+
   private
 
   def not_found
@@ -26,4 +28,8 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end  
+
+  def call_chatgpt
+    @response = ChatgptService.call(params[:message])
+    end
 end
