@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_one :company
   has_many :resumes
   has_many :articles
+  has_many :like_logs
+  has_many :liked_articles, source: :article, through: :like_logs
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
   def self.create_from_provider_data(provider_data)
@@ -19,6 +21,20 @@ class User < ApplicationRecord
       user.uid = provider_data.uid
     end
   end
+
+  def liked?(record)
+    liked_articles.include?(record)
+  end
+
+  def like!(record)
+    liked_articles << record
+  end
+  
+  
+  def unlike!(record)
+    liked_articles.destroy(record)
+  end
+  
 
   def set_account
     self.account = email.split('@').first if email.present?

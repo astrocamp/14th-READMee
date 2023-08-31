@@ -2,8 +2,10 @@
 
 <h2 class="mt-12 mb-10 text-xl text"><%= @article.title %></h2>
 
-<div data-controller="like" data-id="<%= @article.id %>">
-  <a href="#" data-action="click->like#toggle">讚</a>
+<div data-controller="like" 
+     data-liked="<%= current_user.liked?(@article) %>" 
+     data-id="<%= @article.id %>">
+  <a href="#" data-like-target="likebtn" data-action="click->like#toggle"></a>
   <span data-like-target="count">0</span>
 </div>
 <article>

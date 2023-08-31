@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_071354) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_31_092853) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_071354) do
     t.bigint "company_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
+  end
+
+  create_table "like_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.index ["article_id"], name: "index_like_logs_on_article_id"
+    t.index ["user_id"], name: "index_like_logs_on_user_id"
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -171,6 +178,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_071354) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "like_logs", "articles"
+  add_foreign_key "like_logs", "users"
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"

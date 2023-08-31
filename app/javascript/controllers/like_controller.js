@@ -2,10 +2,18 @@ import { Controller } from "@hotwired/stimulus"
 // import { document } from "postcss";
 
 // Connects to data-controller="like"
-export default class extends Controller {  
+export default class extends Controller {
+  static targets = ['likebtn']
+  
   connect(){
-    const { id } = this.element.dataset;
+    const { id, liked } = this.element.dataset;
     this.id = id;
+
+    if (liked == "true") {
+      this.likebtnTarget.textContent = "已讚"
+    } else {
+      this.likebtnTarget.textContent = "未讚"
+    }
   }
 
   toggle(e){
@@ -17,7 +25,7 @@ export default class extends Controller {
     fetch(url, { 
       method: "PATCH", 
       headers: {
-        'X-CSRF_Token': token,
+        'X-CSRF-Token': token,
       }
     })
       .then((resp) => {
@@ -25,6 +33,11 @@ export default class extends Controller {
       })
       .then(({liked}) => {
         console.log(liked);
+        if (liked) {
+          this.likebtnTarget.textContent = "已讚"
+        } else {
+          this.likebtnTarget.textContent = "未讚"
+        }
       })
       .catch((err) => {
         console.log(err);
