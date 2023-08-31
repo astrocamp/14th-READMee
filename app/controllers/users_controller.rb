@@ -1,16 +1,8 @@
 class UsersController < ApplicationController
-
   def index
     @job_matchings = current_user.job_matchings.distinct.pluck(:job_id)
     @jobs = Job.where(id: @job_matchings)
-
-    jobs_content = @jobs
-
-    @jobs.each do |job|
-      job.company.name
-    end
-  end
-  
+  end  
 
   def toggle
     if current_user.employer?
@@ -43,9 +35,6 @@ class UsersController < ApplicationController
   end
 
   def job_application
-    p params[:job].to_i
-    p current_user.id
-    p "8" * 100
     @job_matching = JobMatching.new
     JobMatching.create_matching(current_user.id, params[:job].to_i, params[:company].to_i, @job_matching)
     redirect_to jobs_list_path

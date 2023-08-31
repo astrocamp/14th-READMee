@@ -25,9 +25,6 @@ Style/HashSyntax:
 
 Style/SymbolArray:
   Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
   
 Style/SymbolProc:
   Enabled: false
@@ -72,8 +69,8 @@ Layout/TrailingWhitespace:
   Enabled: false
 
 Layout/TrailingEmptyLines:
-  Enabled: true
-  EnforcedStyle: final_blank_line
+  Enabled: false
+  # EnforcedStyle: final_blank_line
 
 Layout/IndentationWidth:
   Enabled: true
@@ -89,9 +86,6 @@ Layout/IndentationConsistency:
 
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
-
-Lint/Syntax:
-  Enabled: false 
 
 Metrics/AbcSize:
   Enabled: false
@@ -116,6 +110,9 @@ Bundler/OrderedGems:
   Enabled: false
 
 Style/RedundantSelf:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false
 
 Security/Eval:
