@@ -49,9 +49,15 @@
               <div>年資: <%= job.seniority %></div>
               <div>薪水: <%= job.salary %></div>
               <div>地址: <%= job.company.address %></div>
-              <a href="#" class="inline-flex items-center justify-center gap-2 p-2 mt-2 text-sm font-semibold text-white transition-all border border-transparent rounded-md cursor-pointer bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
-                馬上應徵
-              </a>
+
+              <%= form_with(model: job, data: { turbo: false}, url: job_seeker_list_path, method: :post) do |f| %>
+                <%= hidden_field_tag :job, job.id %>
+                <%= job.id %>
+                <%= hidden_field_tag :company, job.company_id %>
+                <% if current_user.role == "job_seeker" %>
+                  <%= f.submit "馬上應徵" %>
+                <% end %>
+              <% end%>
             </div>
           </li>
         </div>
