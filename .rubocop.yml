@@ -26,9 +26,6 @@ Style/HashSyntax:
 Style/SymbolArray:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Enabled: false
-  
 Style/SymbolProc:
   Enabled: false
 
@@ -53,9 +50,6 @@ Style/RedundantInterpolation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/GuardClause:
-  Enabled: false
-
 Style/WordArray:
   Enabled: false
 
@@ -73,7 +67,6 @@ Layout/TrailingWhitespace:
 
 Layout/TrailingEmptyLines:
   Enabled: true
-  EnforcedStyle: final_blank_line
 
 Layout/IndentationWidth:
   Enabled: true
@@ -90,9 +83,6 @@ Layout/IndentationConsistency:
 Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
-Lint/Syntax:
-  Enabled: false 
-
 Metrics/AbcSize:
   Enabled: false
 
@@ -104,7 +94,6 @@ Metrics/PerceivedComplexity:
 
 Lint/UnusedMethodArgument:
   Enabled: false
-
 
 Lint/EmptyConditionalBody:
   Enabled: false
@@ -118,14 +107,9 @@ Bundler/OrderedGems:
 Lint/UselessAssignment:
   Enabled: false
 
-Style/WordArray:
-  Enabled: false
-
 Style/GuardClause:
   Enabled: false
 
-Lint/UnusedMethodArgument:
-  Enabled: false
 Style/RedundantSelf:
   Enabled: false
 
