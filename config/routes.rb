@@ -17,6 +17,17 @@ Rails.application.routes.draw do
       resources :jobs
     end
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :articles, only: [] do
+        member do
+          patch :like
+        end
+      end
+    end
+  end
+
   post "toggle_role", to: "users#toggle", as: :toggle_role 
   get "select_role", to: "users#select_role", as: :select_role
   post "employer", to: "users#employer", as: :employer
