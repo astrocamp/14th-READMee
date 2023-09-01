@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :articles
   has_many :like_logs
   has_many :liked_articles, source: :article, through: :like_logs
+  has_many :job_matchings
+  has_many :jobs, through: :job_matchings
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
   def self.create_from_provider_data(provider_data)

@@ -13,6 +13,7 @@ class Resume < ApplicationRecord
     resume.project = "#{profile.projects}"
     resume.education_title = "學歷"
     resume.education = "#{profile.education}"
+    resume.publish = false
     resume.save
   end
 end
