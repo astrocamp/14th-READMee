@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_path, notice: '新增文章成功' 
     else  
-    render :new
+      render :new
     end
   end
 
