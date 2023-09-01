@@ -61,3 +61,7 @@
   font-weight: 700;
   font-size: 1rem;
 }
+
+.input {
+  width: 400px;
+}

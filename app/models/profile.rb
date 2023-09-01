@@ -37,7 +37,7 @@ class Profile < ApplicationRecord
   end
 
   def self.job_title_options
-    counties = ['軟體工程師',
+    job_title = ['軟體工程師',
                 '前端工程師',
                 '後端工程師',
                 '全端工程師',

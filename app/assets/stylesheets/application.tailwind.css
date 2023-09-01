@@ -7,7 +7,7 @@
 }
 
 .input {
-  @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
+  @apply block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
 
 .language-css {
