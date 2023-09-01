@@ -1,7 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-// import { document } from "postcss";
 
-// Connects to data-controller="like"
 export default class extends Controller {
   static targets = ['likebtn']
   
