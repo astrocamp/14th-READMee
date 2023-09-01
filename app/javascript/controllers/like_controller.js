@@ -10,9 +10,9 @@ export default class extends Controller {
     this.id = id;
 
     if (liked == "true") {
-      this.likebtnTarget.textContent = "已讚"
+      this.likebtnTarget.textContent = "取消"
     } else {
-      this.likebtnTarget.textContent = "未讚"
+      this.likebtnTarget.textContent = "點讚"
     }
   }
 
@@ -34,10 +34,14 @@ export default class extends Controller {
       .then(({liked}) => {
         console.log(liked);
         if (liked) {
-          this.likebtnTarget.textContent = "已讚"
+          this.likebtnTarget.textContent = "取消"
         } else {
-          this.likebtnTarget.textContent = "未讚"
+          this.likebtnTarget.textContent = "點讚"
         }
+        const likeCountElement = this.element.querySelector('[data-like-target="count"]');
+        const currentLikeCount = parseInt(likeCountElement.textContent);
+        const newLikeCount = liked ? currentLikeCount + 1 : currentLikeCount - 1;
+        likeCountElement.textContent = newLikeCount;
       })
       .catch((err) => {
         console.log(err);

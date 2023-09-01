@@ -5,8 +5,10 @@
 <div data-controller="like" 
      data-liked="<%= current_user.liked?(@article) %>" 
      data-id="<%= @article.id %>">
-  <a href="#" data-like-target="likebtn" data-action="click->like#toggle"></a>
-  <span data-like-target="count">0</span>
+  <a href="#" data-like-target="likebtn" data-action="click->like#toggle" class="save-btn"></a>
+  <span data-like-target="count">
+    <%= @liked_count %>
+  </span>
 </div>
 <article>
   <p class="text-lg"><%= @article.content %></p>
