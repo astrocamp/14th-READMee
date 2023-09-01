@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     end
   end
 
-  post "toggle_role", to: "users#toggle", as: :toggle_role 
   get "select_role", to: "users#select_role", as: :select_role
   get "pricing", to: "prices#show", as: :pricing
   get "/jobs_list", to: "jobs#jobs_list"
