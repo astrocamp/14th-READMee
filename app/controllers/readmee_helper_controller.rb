@@ -1,5 +1,6 @@
 class ReadmeeHelperController < ApplicationController
     def index
+      @chat = current_user.chat_messages.all
     end
     
     # def call_chatgpt
@@ -11,7 +12,7 @@ class ReadmeeHelperController < ApplicationController
       
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream.replace("reply", partial: "/views/readmee_helper/gpt")
+            render turbo_stream: turbo_stream.append("reply", partial: "chat")
           end
         end
       end
