@@ -1,0 +1,37 @@
+<%= form_tag("/readmee_helper", method: "post") do %>
+  <%= label_tag(:message, "Message:") %>
+  <%= text_field_tag(:message) %>
+  <%= submit_tag("Send") %>
+<% end %>
+<div id="reply">
+  <turbo-stream action="replace" target="reply">
+    <template>
+      <%= render "gpt" %>
+    </template>
+  </turbo-stream>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var newMessageForm = document.getElementById("message");
+    var replyDiv = document.getElementById("reply");
+
+    newMessageForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var userMessage = document.getElementById("message").value;
+
+      fetch("/readmee_helper/reply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: "message=" + encodeURIComponent(userMessage)
+      })
+      .then(response => response.json())
+      .then(data => {
+        var reply = data.reply;
+        replyDiv.textContent = reply;
+      });
+    });
+  });
+</script>
