@@ -35,12 +35,14 @@
               <img src="https://picsum.photos/100/100/?random=10">
             </div>
             <div class="p-2 md:w-2/3 ">
-              <%= link_to job.title, company_job_path(account: @account, id: job.id), class: "text-2xl text-amber-500" %>
+              <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
               <div class="mt-2 ">
-                公司名稱: <%= job.company.name %>
+                <%= link_to "#{job.company.name}", company_show_path(job.company.id) %>
               </div>
               <div class="mt-2">
-                <%= truncate(job.content, length: 200) %>
+                <%= link_to job_show_path(job.id) do %>
+                  <%= truncate(job.content, length: 200) %>
+                <% end %>
               </div>
             </div>
 
@@ -52,10 +54,9 @@
 
               <%= form_with(model: job, data: { turbo: false}, url: job_seeker_list_path, method: :post) do |f| %>
                 <%= hidden_field_tag :job, job.id %>
-                <%= job.id %>
                 <%= hidden_field_tag :company, job.company_id %>
                 <% if current_user.role == "job_seeker" %>
-                  <%= f.submit "馬上應徵" %>
+                  <%= f.submit "馬上應徵", class: "top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
                 <% end %>
               <% end%>
             </div>

@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-  def index
-    @job_matchings = current_user.job_matchings.distinct.pluck(:job_id)
-    @jobs = Job.where(id: @job_matchings)
-  end  
+  before_action :authenticate_user!, only: [:apply_job]
 
   def toggle
     if current_user.employer?
@@ -38,5 +35,14 @@ class UsersController < ApplicationController
     @job_matching = JobMatching.new
     JobMatching.create_matching(current_user.id, params[:job].to_i, params[:company].to_i, @job_matching)
     redirect_to jobs_list_path
+  end
+  
+  def apply_job
+    if current_user.role == "job_seeker"
+      @job_matchings = current_user.job_matchings.distinct.pluck(:job_id)
+      @jobs = Job.where(id: @job_matchings)
+    else
+      redirect_to root_path, notice: "沒有權限觀看"
+    end
   end
 end

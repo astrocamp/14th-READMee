@@ -8,10 +8,13 @@
           </div>
           <div class="p-2 md:w-2/3 ">
             <div class="mt-2 ">
-              公司名稱: <%= job.company.name %>
+              <%= link_to "#{job.company.name}", company_show_path(job.company.id), class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %>
             </div>
             <div class="mt-2">
-              <%= truncate(job.content, length: 200) %>
+              
+              <%= link_to job_show_path(job.id) do %>
+                <%= truncate(job.content, length: 200) %>
+              <% end %>
             </div>
           </div>
 
