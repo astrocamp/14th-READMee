@@ -1,0 +1,32 @@
+<div class="container pt-6 mx-auto bg-gray-50">
+  <h2 class="mt-6 text-5xl text-center">應徵者列表</h2>
+
+  <div class="container py-2 m-5 mx-auto text-white rounded-lg w-80 bg-amber-500">
+    
+  </div>
+  <div class="my-5">
+    <% @job_matchings_record.each do |record| %>
+      <ul class="justify-between p-5 m-2 leading-6 border-b-2">
+        <div>
+          <li class="md:flex">
+            <div class="p-2 md:w-2/3">                           
+              <span><%= record.created_at.localtime.strftime("%Y-%m-%d %H:%M") %></span>  
+              <h2 class="text-xl">求職者ID <%= record.user_id%></h2> 
+              <% record.user.resumes.each do |resume| %>
+              <%= link_to "查看履歷", resume_path(id: resume.id), data: { turbo_frame: "modal" }, class:"text-xl hover:text-amber-600 block" %>    
+              <% end %>
+              <%= link_to "通知面試", receive_apply_path, class:"text-xl hover:text-amber-600" %>      
+              
+            </div>           
+          </li>
+        </div>
+
+        <div class="container flex p-2 m-5 mx-auto text-white">
+          <li>  
+                  
+          </li>  
+        </div>
+      </ul>
+    <% end %>
+  </div>
+</div>

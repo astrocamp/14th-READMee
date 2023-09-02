@@ -44,4 +44,10 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "沒有權限觀看"
     end
   end
+
+  def job_application
+    @job_matching = JobMatching.new
+    JobMatching.create_matching(current_user.id, params[:job].to_i, params[:company].to_i, @job_matching)
+    redirect_to jobs_list_path
+  end
 end
