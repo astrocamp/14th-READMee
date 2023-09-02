@@ -1,0 +1,12 @@
+<% if @profile.present?%>
+  <%= @profile.full_name %>
+  <%= @profile.phone %>
+  <%= @profile.address %>
+  <%= @profile.languages %>
+  <%= @profile.work_experience %>
+  <%= @profile.work_exp_date %>
+  <%= @profile.education %>
+  <%= @profile.education_date %>
+<% else %>
+  新增個人資料
+<% end %>

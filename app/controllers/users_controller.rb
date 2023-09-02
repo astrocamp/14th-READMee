@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def toggle
     if current_user.employer?
       current_user.update(role: :job_seeker)
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
     current_user.save
     if current_user.save
       flash[:notice] = '您是求職者了！請填寫基本資料'
-      redirect_to profile_path(account: current_user.account)
+      redirect_to dashboard_path(account: current_user.account)
     end
   end
 
@@ -27,5 +29,8 @@ class UsersController < ApplicationController
       flash[:notice] = '您是雇主了！請填寫基本資料'
       redirect_to employer_path(account: current_user.account)
     end
+  end
+
+  def dashboard
   end
 end
