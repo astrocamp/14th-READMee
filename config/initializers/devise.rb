@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 Devise.setup do |config|
-  config.mailer_sender = Rails.application.credentials.dig(:config, :mailer_sender)
+  config.mailer_sender = ENV['MAILGUN_USERNAME']
   config.mailer = "Devise::Mailer"
   require "devise/orm/active_record"
   config.case_insensitive_keys = [:email]
@@ -14,9 +14,7 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
   config.scoped_views = true
   config.sign_out_via = :delete
-  google_api_key = Rails.application.credentials.google[:api_key]
-  user_number = Rails.application.credentials.google[:user_number]
-  config.omniauth :google_oauth2, user_number, google_api_key, access_type: "offline", prompt: "consent"
+  config.omniauth :google_oauth2, ENV['GOOGLE_OAUTH_CLIENT_ID'], ENV['GOOGLE_OAUTH_CLIENT_SECRET']
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
 end
