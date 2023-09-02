@@ -8,9 +8,11 @@
     <% @articles.each do |article| %>
     <li class="mt-12">
     <%= link_to article.title.truncate(15), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium" %>
-    <span data-like-target="count" class="block">
-      <%= @liked_counts[article.id] || 0 %>個讚
+    <span data-like-target="count" class="flex block">
+      <%= @liked_counts[article.id] || 0 %>
+      <%= image_tag "like.svg", class: "w-6 h-6 mx-2" %>
     </span>
+    
     <div class="flex gap-4 mt-1">
       
       <% if current_user.id == article.user.id %>

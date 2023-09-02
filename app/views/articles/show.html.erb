@@ -5,10 +5,14 @@
 <div data-controller="like" 
      data-liked="<%= current_user.liked?(@article) %>" 
      data-id="<%= @article.id %>">
-  <a href="#" data-like-target="likebtn" data-action="click->like#toggle" class="save-btn"></a>
-  <span data-like-target="count">
+  
+  <div class="flex">
+    <a href="#" data-like-target="likebtn" data-action="click->like#toggle" class="px-5 py-1 text-white rounded-lg bg-amber-500 hover:bg-amber-800"></a>
+    <span data-like-target="count" class="mx-2">
     <%= @liked_count %>
-  </span>
+    </span>
+    <%= image_tag "like.svg", class: "w-6 h-6" %>
+  </div>
 </div>
 <article>
   <p class="text-lg"><%= @article.content %></p>
