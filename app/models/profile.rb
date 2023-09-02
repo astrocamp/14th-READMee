@@ -8,6 +8,9 @@ class Profile < ApplicationRecord
   end
   has_many :profile_skills
   has_many :skills, through: :profile_skills
+  has_many :work_experiences
+  has_many :educations
+  has_many :projects
 
   def self.address_options
     counties = [
