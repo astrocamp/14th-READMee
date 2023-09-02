@@ -4,7 +4,8 @@ class User < ApplicationRecord
   before_save :set_account
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :recoverable, :rememberable, :validatable, :confirmable, 
+         :omniauthable, omniauth_providers: [:google_oauth2]
   has_one :profile
   has_one :company
   has_many :resumes
@@ -15,13 +16,16 @@ class User < ApplicationRecord
   has_many :jobs, through: :job_matchings
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
-  def self.create_from_provider_data(provider_data)
-    where(email: provider_data.info.email).first_or_create do |user|
-      user.email = provider_data.info.email
-      user.password = Devise.friendly_token[0, 20]
-      user.provider = provider_data.provider
-      user.uid = provider_data.uid
-    end
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+    user ||= User.create(
+      email: data['email'],
+      account: data['account'] || data['email'].split('@').first,
+      password: Devise.friendly_token[0, 20],
+      confirmed_at: Time.now.utc
+    )
+    user
   end
 
   def liked?(record)
