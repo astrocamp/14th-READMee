@@ -16,10 +16,6 @@ Style/SingleLineMethods:
 Style/Encoding:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Enabled: true
-  EnforcedStyle: nested
-
 Style/HashSyntax:
   Enabled: false
 
