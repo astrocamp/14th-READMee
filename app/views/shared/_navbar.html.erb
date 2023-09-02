@@ -1,5 +1,3 @@
-<% resource_class ||= User %>
-<% resource_name ||= :user %>
 <header class="sticky top-0 z-50 flex flex-wrap w-full py-3 text-sm bg-white border-b border-gray-200 sm:justify-start sm:flex-nowrap sm:py-0 dark:bg-gray-800 dark:border-gray-700">
   <nav class="relative w-full px-4 mx-auto max-w-7xl sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
     <div class="flex items-center justify-between">
@@ -48,8 +46,8 @@
             <div class="flex gap-3">
               <%= link_to '登入', new_user_session_path , class:' hover:text-amber-600 mx-1'%>
               <%= link_to '註冊', new_user_registration_path, class:'hover:text-amber-600 mx-1'%>
-              <%- resource_class.omniauth_providers.each do |provider| %>
-                <%= button_to "GOOGLE登入", omniauth_authorize_path(resource_name, provider), data: { method: :post, turbo: false },class:'hover:text-amber-600 mx-1' %>
+              <%- Devise.omniauth_providers.each do |provider| %>
+                <%= button_to "GOOGLE登入", omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class:'hover:text-amber-600 mx-1' %>
               <% end %>
             <% end %>
           </div>
