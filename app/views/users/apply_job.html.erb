@@ -1,5 +1,4 @@
-<div class="w-9/12 mx-auto m-28">
-  
+<div class="w-9/12 mx-auto m-28"> 
   <% @jobs.each do |job| %>
     <ul class="justify-between p-5 m-2 leading-6 ">
       <div>
@@ -7,12 +6,12 @@
           <div class="p-6">
             <img src="https://picsum.photos/100/100/?random=10">
           </div>
-          <div class="p-2 md:w-2/3 ">
+          <div class="p-2 md:w-2/3 ">    
             <div class="mt-2 ">
               <%= link_to "#{job.company.name}", company_show_path(job.company.id), class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %>
               <% @job_matchings_time.each do |job_matching| %>
                 <% if job_matching.job_id == job.id%>
-                  <%= job_matching.created_at.strftime("%Y-%m-%d %I:%M %p") %>
+                  <%= job_matching.created_at.in_time_zone("Taipei").strftime("%Y-%m-%d %I:%M %p") %>
                 <% end %>
               <% end %>
             </div>
@@ -27,7 +26,6 @@
             <div>年資: <%= job.seniority %></div>
             <div>薪水: <%= job.salary %></div>
             <div>地址: <%= job.company.address %></div>
-
           </div>
         </li>
       </div>
