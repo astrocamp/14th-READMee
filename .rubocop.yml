@@ -21,7 +21,6 @@ Style/HashSyntax:
 
 Style/SymbolArray:
   Enabled: false
-
 Style/SymbolProc:
   Enabled: false
 
@@ -62,7 +61,7 @@ Layout/TrailingWhitespace:
   Enabled: false
 
 Layout/TrailingEmptyLines:
-  Enabled: true
+  Enabled: false
 
 Layout/IndentationWidth:
   Enabled: true
@@ -109,5 +108,11 @@ Style/GuardClause:
 Style/RedundantSelf:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Security/Eval:
+  Enabled: false
+
+Style/IfUnlessModifier:
   Enabled: false
