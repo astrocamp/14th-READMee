@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  validates :full_name, :phone, :address, :job_title, :education, :work_experience, presence: true
+  validates :full_name, :phone, :address, :languages, :job_hunting, :about_me, :social_link, presence: true
 
   # relationships
   belongs_to :user

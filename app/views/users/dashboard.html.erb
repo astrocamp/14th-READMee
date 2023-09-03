@@ -1,5 +1,7 @@
-<div>head photh</div>
-<div>profile
-  <%= render '/profiles/show'%>
+<h2 class="text-lg font-semibold">dashboard</h2>
+<div class="grid justify-center ">
+  <h2 class="text-lg font-semibold">profile</h2>
+  <turbo-frame id="new_profile">
+    <%= render 'profiles/show' %>
+  </turbo-frame>
 </div>
-<div>resume</div>
