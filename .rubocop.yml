@@ -66,7 +66,6 @@ Layout/TrailingWhitespace:
 
 Layout/TrailingEmptyLines:
   Enabled: false
-  # EnforcedStyle: final_blank_line
 
 Layout/IndentationWidth:
   Enabled: true

@@ -34,12 +34,13 @@ class UsersController < ApplicationController
   def job_application
     @job_matching = JobMatching.new
     JobMatching.create_matching(current_user.id, params[:job].to_i, params[:company].to_i, @job_matching)
-    redirect_to jobs_list_path
+    redirect_to jobs_list_path, notice: "您已應徵該工作，請至個人頁查看"
   end
   
   def apply_job
     if current_user.role == "job_seeker"
       @job_matchings = current_user.job_matchings.distinct.pluck(:job_id)
+      @job_matchings_time = current_user.job_matchings.where(user_id: current_user)
       @jobs = Job.where(id: @job_matchings)
     else
       redirect_to root_path, notice: "沒有權限觀看"

@@ -25,7 +25,7 @@
       </div>
     </div>
   </div>
-  
+
   <div>
     <% @jobs_list.each do |job| %>
       <ul class="justify-between p-5 m-2 leading-6 ">
@@ -53,10 +53,11 @@
               <div>地址: <%= job.company.address %></div>
 
               <%= form_with(model: job, data: { turbo: false}, url: job_seeker_list_path, method: :post) do |f| %>
+                
                 <%= hidden_field_tag :job, job.id %>
                 <%= hidden_field_tag :company, job.company_id %>
                 <% if current_user.role == "job_seeker" %>
-                  <%= f.submit "馬上應徵", class: "top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+                <%= f.submit "馬上應徵", class: "top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>   
                 <% end %>
               <% end%>
             </div>
@@ -66,3 +67,5 @@
     <% end %>
   </div>
 </div>
+
+<% %>
