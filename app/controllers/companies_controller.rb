@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
   def show
     if current_user.company.present?
       @company = Company.find(current_user.company.id)
+      authorize @company
     else
       redirect_to new_company_path, alert: '您尚未建立公司!'
     end

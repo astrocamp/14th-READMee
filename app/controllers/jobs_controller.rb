@@ -46,7 +46,7 @@ class JobsController < ApplicationController
 
   def receive_application 
     job_id_number = params[:id].to_i   
-    @job_matchings_record = JobMatching.includes(user: :resumes,user: :profile).where(job_id: job_id_number) 
+    @job_matchings_record = JobMatching.includes(user: :resumes, user: :profile).where(job_id: job_id_number) 
   end  
 
   private
