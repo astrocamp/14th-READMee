@@ -42,7 +42,6 @@ class JobsController < ApplicationController
   def jobs_list
     @choose = Job.ransack(params[:q])
     @jobs_list = @choose.result.includes(:company).order(id: :desc)
-    @job_matching = JobMatching.where(user_id: current_user.id)
   end
 
   private
