@@ -20,10 +20,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :articles, only: [] do
-        member do
-          patch :like
-        end
+      scope 'articles/:id' do
+        patch 'like', to: 'articles#like', as: :like_article
       end
     end
   end
