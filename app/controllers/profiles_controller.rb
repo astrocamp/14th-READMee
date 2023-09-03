@@ -18,8 +18,8 @@ class ProfilesController < ApplicationController
     if @profile.save
       render "users/dashboard"
     else
-      flash.now[:alert]= "請檢查表單必填欄位。" 
-   end
+      flash.now[:alert] = "請檢查表單必填欄位。" 
+    end
   end
 
   def edit
@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       render "users/dashboard"
     else
-      flash.now[:alert]= "請檢查表單必填欄位。" 
+      flash.now[:alert] = "請檢查表單必填欄位。" 
     end
   end
 

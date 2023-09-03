@@ -7,12 +7,12 @@ class ResumesController < ApplicationController
   end
 
   def show
-    @resume = Resume.find()
+    @resume = Resume.find
     @skills = JSON.parse(@resume.skills)
   end
 
   def edit
-    @profile =current_user.profile
+    @profile = current_user.profile
     @skills = current_user.profile.skills
     @languages = current_user.profile.languages
     # if @resume.basic_info.present?
