@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'pages#index'
   
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:create, :destroy], 
+    shallow: true
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :resumes, only:[:new, :index, :show]
