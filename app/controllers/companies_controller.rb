@@ -6,7 +6,6 @@ class CompaniesController < ApplicationController
   def show
     if current_user.company.present?
       @company = Company.find(current_user.company.id)
-    authorize @company
     else
       redirect_to new_company_path, alert: '您尚未建立公司!'
     end
@@ -14,14 +13,13 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
-    authorize @company
   end
 
   def create
     @company = current_user.build_company(params_company)
     authorize @company
     if @company.save
-      redirect_to company_path, notice: '公司建立成功!'
+      redirect_to company_show_path(@company), notice: '公司建立成功!'
     else
       flash.now[:alert] = @company.errors.full_messages.join(', ')
       render :new

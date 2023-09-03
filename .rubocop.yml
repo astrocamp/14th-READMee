@@ -21,9 +21,6 @@ Style/HashSyntax:
 
 Style/SymbolArray:
   Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
   
 Style/SymbolProc:
   Enabled: false
@@ -67,6 +64,9 @@ Layout/CommentIndentation:
 Layout/TrailingWhitespace:
   Enabled: false
 
+Layout/TrailingEmptyLines:
+  Enabled: false
+
 Layout/IndentationWidth:
   Enabled: true
 
@@ -105,6 +105,9 @@ Bundler/OrderedGems:
   Enabled: false
 
 Style/RedundantSelf:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false
 
 Security/Eval:
