@@ -10,10 +10,14 @@
         <h3 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= @company.name %></h3>
         <div>
           <button>
-            <%=link_to "編輯", edit_company_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+            <% if current_user.role == "employer" %>
+              <%=link_to "編輯", edit_company_path(current_user.company.id), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+            <% end %>
           </button>
           <button>
-            <%= link_to "您的職缺", company_jobs_path, class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+            <% if current_user.role == "employer" %>
+              <%= link_to "您的職缺", company_jobs_path(current_user.company.id), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+            <% end %>
           </button>
         </div>
       </div>
