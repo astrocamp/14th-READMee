@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get "receive_apply/:id", to: "jobs#receive_application", as: :receive_apply
   post "/@:account/company", to: "companys#create", as: "create_company"
   post "job_seeker_list", to: "users#job_application" 
-  post "toggle_role", to: "users#toggle", as: :toggle_role 
+  post "toggle_role", to: "users#toggle", as: :toggle_role
   post "employer", to: "users#employer", as: :employer
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
   patch "/@:account/resumes/:id", to: "resumes#update", as: :update_resume 

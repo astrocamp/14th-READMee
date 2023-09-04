@@ -19,7 +19,7 @@
           </div>
           <div class="flex items-center inline-block w-60">
             <%= @resume.basic_info %></p>
-            <p class="w-full h-20 p-2 resize-y h-60"><%= @resume.basic_info %></p>
+            
           </div>
           <div class="inline-block w-1/2">
             <p class="break-words"><%= @formatted_social_links %></p>
@@ -28,7 +28,7 @@
         </div>
         <div class="pt-5l">
           <h1 class="py-3 text-xl font-bold h-200"><%= @resume.about_me_title%></h1>
-          <p class="overflow-auto"><%= @resume.about_me %></p>          
+          <p class="overflow-auto"><%= simple_format("#{@resume.about_me}") %></p>          
         </div>
         <div class="pt-5l">
           <h1 class="py-3 text-xl font-bold">技能</h1>          

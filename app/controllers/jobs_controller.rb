@@ -3,8 +3,12 @@ class JobsController < ApplicationController
   before_action :find_job, only: [:edit, :update, :show, :destroy]
 
   def index
-    @jobs = @company.jobs
-    @job_list = Job.order(id: :desc)
+    if current_user && current_user.role == "employer"
+      @jobs = @company.jobs
+      @job_list = Job.order(id: :desc)
+    else 
+      redirect_to root_path
+    end
   end
 
   def new
@@ -53,7 +57,7 @@ class JobsController < ApplicationController
     elsif current_user && current_user.role == "employer"
       render :receive_application
     else
-      redirect_to root_path, notice: "沒有權限觀看" 
+      redirect_to root_path
     end
   end  
 
