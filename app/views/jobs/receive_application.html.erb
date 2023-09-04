@@ -10,7 +10,7 @@
         <div>
           <li class="md:flex">
             <div class="p-2 md:w-2/3">                           
-              <span><%= record.created_at.in_time_zone("Taipei").strftime("%Y-%m-%d %H:%M") %></span>                
+              <span><%= record.created_at.in_time_zone("Taipei").strftime("%Y-%m-%d %H:%M") %></span>
               <h2 class="text-xl font-bold">求職者姓名:<%= record.user.profile.full_name %></h2>  
               <% record.user.resumes.each do |resume| %>
               <%= link_to "查看履歷", resume_path(id: resume.id), data: { turbo_frame: "modal" }, class:"save-btn" %>    
