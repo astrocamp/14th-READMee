@@ -1,7 +1,7 @@
 <section class="m-10 ">
   <h1 class="mb-10 text-2xl font-semibold">面試通知</h1>
 
-  <%= form_with(model: @job_matching, url: job_matchings_path, data: { turbo: false }) do |f| %>
+  <%= form_with(model: @job_matching, data: { turbo: false }) do |f| %>
     <div class="my-5">
       <div class="grid grid-cols-4 gap-2">
         <%= f.hidden_field :user_id %>

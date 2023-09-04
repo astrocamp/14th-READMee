@@ -29,12 +29,11 @@ Rails.application.routes.draw do
   get "company/jobs/:id", to: "jobs#show", as: "job_show"
   get "company/:id", to: "companies#show", as: "company_show"
   get "/@:account/apply_job", to: "users#apply_job", as: "apply_job"
+  get "/@:account/notification", to: "users#notify", as: "notify"
   get "select_role", to: "users#select_role", as: :select_role
   get "pricing", to: "prices#show", as: :pricing
   get "jobs_list", to: "jobs#jobs_list"
   get "receive_apply/:id", to: "jobs#receive_application", as: :receive_apply
-  # get 'new_interview_notification', to: "job_matchings#new", as: :new_interview_notification
-  # post 'create_interview_notification', to: "job_matchings#create", as: :create_interview_notification
   post "/@:account/company", to: "companys#create", as: "create_company"
   post "job_seeker_list", to: "users#job_application" 
   post "toggle_role", to: "users#toggle", as: :toggle_role

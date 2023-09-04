@@ -1,7 +1,6 @@
-
 <% @job_matchings.each do |matching| %>
-  <div class="w-9/12 mx-auto m-28"> 
-      <ul class="justify-between p-5 m-2 leading-6 ">
+  <div class="w-9/12 m-10 mx-auto"> 
+      <ul class="justify-between p-5 m-2 leading-6">
         <div>
           <li class="border shadow-lg md:flex">
             <div class="p-6">
@@ -26,6 +25,29 @@
             </div>
           </li>
         </div>
+        <div class="container p-10 mx-auto input">
+          <h1 class="p-2 mb-2 font-semibold text-white rounded-lg text-md bg-amber-500 w-fit">我的面試通知</h1>
+          <% if matching.notified == true %>
+            <ul role="list" class="divide-y divide-gray-100">
+              <li class="flex justify-between py-5 gap-x-6">
+                <div class="flex min-w-0 gap-x-4">
+                  <%= image_tag("defaultuser.png", class: "rounded-full w-10 h-10 mx-auto") %>
+                  <div class="flex-auto min-w-0">
+                    <p class="text-sm font-semibold leading-6 text-gray-900"><%= matching.interview_date %>  <%= matching.interview_time.in_time_zone("Taipei").strftime("%I:%M %p") %></p>
+                    <p class="mt-1 text-xs leading-5 text-gray-500"><%= matching.interview_message %></p>
+                  </div>
+                </div>
+                <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                  <p class="text-sm leading-6 text-gray-900"><%= matching.company.name %></p>
+                  <p class="mt-1 text-sm leading-5 text-gray-500">地址: <%= matching.company.address %></p>
+                </div>
+              </li>
+            </ul>
+          <% else %>
+            <p class="font-semibold">目前沒有任何面試通知。</p>
+          <% end %>
+        </div>
       </ul>
+    <hr>    
   </div>
 <% end %>
