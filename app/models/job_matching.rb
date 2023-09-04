@@ -1,4 +1,7 @@
 class JobMatching < ApplicationRecord
+  # validates :interview_date, :interview_time, :interview_message, presence: true
+  # validates :notified, inclusion: { in: [true, false] }
+
   belongs_to :user
   belongs_to :job
   belongs_to :company

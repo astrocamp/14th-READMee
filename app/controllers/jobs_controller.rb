@@ -57,7 +57,7 @@ class JobsController < ApplicationController
     elsif current_user && current_user.role == "employer"
       render :receive_application
     else
-      redirect_to root_path
+      redirect_to root_path, notice: "沒有權限觀看" 
     end
   end  
 
