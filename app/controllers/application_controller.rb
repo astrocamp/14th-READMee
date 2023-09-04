@@ -31,5 +31,5 @@ class ApplicationController < ActionController::Base
 
   def call_chatgpt
     @response = ChatgptService.call(params[:message])
-    end
+  end
 end

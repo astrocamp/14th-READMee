@@ -32,4 +32,4 @@ class ChatgptService
         new(message).call
       end
     end
-  end
+end
