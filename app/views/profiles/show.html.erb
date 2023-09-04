@@ -5,8 +5,12 @@
         <picture class="md:w-1/4">
           <% if @profile.avatar.attached? %>
             <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
+            <%= link_to "應徵紀錄", apply_job_path(id: current_user) %>
           <% else %>
-            <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+            <div class="flex flex-col items-center justify-center">
+              <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+              <%= link_to "應徵紀錄", apply_job_path, class: "m-5 inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800;" %>
+            </div>
           <% end %>
         </picture>
         <div class="mt-4 md:w-3/4 md:mt-0 md:pl-4">
@@ -95,7 +99,7 @@
         </div>
         <span class="block mt-5">
           <%= link_to edit_profile_path do %>
-            <%= image_tag 'edit.svg', class: "w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-400 font-lg cursor-pointer p-1.5" %>
+            <%= editor_icon %>
           <% end %>
         </span>
       </div>
@@ -103,15 +107,9 @@
         <section class="p-6 mt-6 bg-white rounded-lg shadow-md">
           <h2 class="mb-2 text-xl font-semibold">近期履歷</h2>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div class="flex items-center justify-center p-5 border border-gray-300 rounded-md bg-amber-50">
-              <% if @resume_basic_info.present? %>
-                <%= link_to edit_resume_path(account: current_user.account, id: @resume_id) do %>
-                  <%= image_tag 'edit.svg', class: "w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-400 font-lg cursor-pointer p-1.5" %>
-                <% end %>
-              <% else %>
-                <a href="#" data-account="<%= current_user.account %>" data-profileInfo-target="updateContent" data-serial="<%= @resume_id %>" data-action="click->profileInfo#saveProfileToResume" >
-                  <%= image_tag 'edit.svg', class: "w-8 h-8 rounded-lg bg-amber-500 hover:bg-amber-400 font-lg cursor-pointer p-1.5" %>
-                </a>
+            <div class="flex items-center justify-center p-5 border border-gray-300 rounded-e bg-amber-50">
+              <%= link_to edit_resume_path(account: current_user.account, id: @resume.id) do %>
+                <%= editor_icon %>
               <% end %>
             </div>
             <div class="flex items-center justify-center p-5 border border-gray-300 rounded-md bg-amber-50">

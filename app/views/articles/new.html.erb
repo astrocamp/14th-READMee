@@ -1,0 +1,12 @@
+<h2 class="mt-10 article-post">新增文章</h2>
+
+<%= form_with(model: @article, data: { turbo: false }) do |f| %>
+
+<%= render 'form', f: f %>
+
+<div class="flex gap-3 my-4">
+  <%= f.submit "新增文章"  ,class: "save-btn text-lg" %>
+  <%= link_to "取消", articles_path, class: "save-btn text-lg" %>
+</div>
+
+<% end %>

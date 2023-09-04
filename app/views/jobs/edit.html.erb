@@ -1,6 +1,5 @@
-<div class="container mx-auto w-1/3 p-3 bg-slate-100 text-left">
+<div class="container w-2/3 p-3 pt-10 mx-auto text-left">
   <%= form_with(model: @job, url: company_job_path(account: current_user.account), data: { turbo: false, method:'patch' }) do |f| %>
-    <h1 class="text-center text-5xl">編輯職缺</h1>
     <%= render 'form', f: f %>
   <% end %>
 </div>

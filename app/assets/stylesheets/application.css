@@ -12,10 +12,39 @@
 .max-w-screen-lg {
   width: 1024px;
 }
+
 .min-h-1000 {
   min-height: 1000px;
 }
-.chat_bot {
-  background-color: white;
-  width: 350px;
+
+.img-container {
+  width: calc(100% / 1.5);
+  margin-top: 3rem;
+}
+
+.modal {
+  position: absolute;
+  z-index: 50;
+  overflow: auto;
+  background-color: rgba(28, 28, 28, 0.401);
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.close-btn {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  padding: 8px 10px;
+  border: none;
+  float: right;
+  text-decoration: none;
+}
+
+.close-btn:hover {
+  border-radius: 6px;
+  background-color: rgba(211, 211, 211, 0.401);
 }

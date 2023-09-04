@@ -1,5 +1,5 @@
-<p>歡迎，親愛的 <%= @email %>！</p>
+<p>親愛的 <%= @email %> 歡迎來到 READMee！</p>
 
-<p>您可以通過下面的連結確認您的帳戶郵件：</p>
+<p>請點選下方連結確認您的帳戶：</p>
 
-<p><%= link_to '確認我的帳戶', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to '按我確認帳戶', confirmation_url(@resource, confirmation_token: @token) %></p>

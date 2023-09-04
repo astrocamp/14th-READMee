@@ -16,26 +16,7 @@ Style/SingleLineMethods:
 Style/Encoding:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Enabled: false
-  EnforcedStyle: nested
-
 Style/HashSyntax:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/EmptyMethod:
-  Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/ConditionalAssignment:
-  Enabled: false
-
-Style/Documentation:
   Enabled: false
 
 Style/SymbolArray:
@@ -44,7 +25,31 @@ Style/SymbolArray:
 Style/SymbolProc:
   Enabled: false
 
-Style/RedundantSelf:
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/RedundantInterpolation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/WordArray:
   Enabled: false
 
 Layout/LineLength:
@@ -63,9 +68,18 @@ Layout/TrailingEmptyLines:
   Enabled: false
 
 Layout/IndentationWidth:
-  Enabled: false
+  Enabled: true
 
 Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+Layout/IndentationConsistency:
+  Enabled: false
+
+Layout/EmptyLineAfterGuardClause:
   Enabled: false
 
 Metrics/AbcSize:
@@ -77,14 +91,26 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Bundler/OrderedGems:
-  Enabled: false
-
 Lint/UnusedMethodArgument:
   Enabled: false
 
-Style/GuardClause:
+Lint/EmptyConditionalBody:
   Enabled: false
+
+Naming/VariableName:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Security/Eval:
+  Enabled:
 
 Style/IfUnlessModifier:
   Enabled: false

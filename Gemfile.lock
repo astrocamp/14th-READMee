@@ -101,6 +101,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     faraday (2.7.10)
       faraday-net_http (>= 2.0, < 3.1)
@@ -131,6 +135,18 @@ GEM
     jmespath (1.6.2)
     json (2.6.3)
     jwt (2.7.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
     loofah (2.21.3)
       crass (~> 1.0.2)
@@ -231,6 +247,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     regexp_parser (2.8.1)
     reline (0.3.7)
       io-console (~> 0.5)
@@ -307,11 +327,13 @@ DEPENDENCIES
   bootsnap
   debug
   devise (~> 4.9)
+  dotenv-rails
   htmlbeautifier (~> 1.4)
   httparty (~> 0.21.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
+  kaminari
   omniauth (~> 2.1)
   omniauth-google-oauth2 (~> 1.1)
   omniauth-rails_csrf_protection (~> 1.0)
@@ -320,6 +342,7 @@ DEPENDENCIES
   puma (~> 5.0)
   pundit (~> 2.3)
   rails (~> 7.0.6)
+  ransack
   rubocop-rails (~> 2.20)
   sprockets-rails
   stimulus-rails

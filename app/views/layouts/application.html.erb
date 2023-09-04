@@ -11,23 +11,16 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-  <body>
+  <body class="relative">
     <%= render "shared/navbar", class:"relative"%>
-    <main class="container mx-auto">
+    <main class="container min-h-screen mx-auto">
       <div class="absolute top-30 right-28">
         <%= render "shared/notice"%>
         <%= render "shared/alert" %>
       </div>
       <%= yield %>
-      <div data-controller="chat" class="sticky bottom-0 flex justify-end	">
-        <div data-chat-target="chat_view" class="hidden">
-          <%= render '/chat_messages/index'%>
-        </div>
-        <button data-action="click->chat#toggle" class="bottom-0">
-          <%= image_tag 'chat_bot.png', size:'50x50'%>
-        </button>
-      </div>
     </main>
+    <%= turbo_frame_tag "modal"%>
     <footer class="w-full px-2 py-1 text-gray-500 bg-white mt-46 "></footer>
   </body>
 </html>
