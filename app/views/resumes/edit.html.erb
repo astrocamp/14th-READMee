@@ -1,5 +1,5 @@
 <div id="content" data-controller="resume">
-  <section class="relative flex justify-between w-full pl-16">  
+  <section class="relative flex justify-between w-full pl-16">
     <div class="max-w-screen-lg p-16 mt-20 mb-16 bg-white shadow-2xl min-h-1000">
       <%= form_with(url: update_resume_path(account: current_user.account, id: @resume.id), method: "patch", model: @resume, data: { turbo: false }) do |f| %>
         <%= f.submit "更新", name: "save", class: "absolute top-4 right-56 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
@@ -8,7 +8,7 @@
         <div class="flex min-h-min">
           <div class="flex flex-col">
             <div class="flex items-center justify-center inline-block pb-5 custom-width-250px">
-              <%= image_tag "defaultuser.png", class: "inline-block w-32 h-32 rounded-full" %>           
+              <%= image_tag "defaultuser.png", class: "inline-block w-32 h-32 rounded-full" %>
             </div>
             <div class="flex items-center justify-center inline-block w-60">
               <div data-resume-target="basicInfo" data-action="click->resume#showBasicInfoForm" class="text-center cursor-pointer"><%= simple_format("#{@resume.basic_info}") %></div>
@@ -29,7 +29,7 @@
                   <li class="inline-block rounded-lg">-請輸入語言</li>
                 <% end %>
               </ul>
-            </div>         
+            </div>
             <div class="">
               <h1 class="text-lg font-bold ">技能</h1>
               <ul class="relative">
@@ -41,9 +41,9 @@
                   <li class="inline-block rounded-lg">-請輸入技能</li>
                 <% end %>
               </ul>
-            </div>    
+            </div>
           </div>
-          
+
           <div class="flex-grow">
             <div data-resume-target="aboutMe" data-action="click->resume#showAboutMeForm" class="cursor-pointer"><%= simple_format("#{@resume.about_me}") %></div>
             <%= f.text_area :about_me,
@@ -54,11 +54,11 @@
               } %>
           </div>
           </div>
-          
+
           <div class="mt-10">
             <div>
               <h1 class="mb-3 text-lg font-bold cursor-pointer" data-resume-target="workExperienceTitle" data-action="click->resume#showWorkExperienceTitleInput"><%= @resume.work_experience_title %></h1>
-              <%= f.text_field :work_experience_title, 
+              <%= f.text_field :work_experience_title,
                 class: "hidden my-2 w-full h-10 h-20 p-2 rounded-md resize-y",
                 data: {
                   resume_target: 'workExperienceTitleInput'
@@ -77,7 +77,7 @@
           <div>
             <div class="pb-3 mt-10">
               <h1 class="text-lg font-bold cursor-pointer" data-resume-target="projectTitle" data-action="click->resume#showProjectTitleInput"><%= @resume.project_title %></h1>
-              <%= f.text_field :project_title, 
+              <%= f.text_field :project_title,
                 class: "hidden my-2 border-0 w-full h-10 h-20 p-2 border rounded-md resize-y",
                 data: {
                   resume_target: 'projectTitleInput',
@@ -87,7 +87,7 @@
               <img class="w-1/2" src="https://picsum.photos/300/200/?random=10">
               <div class="w-1/2 pt-5l">
                 <div data-action="click->resume#showProjectForm" data-resume-target="project" class="h-full pl-2 cursor-pointer"><%= simple_format("#{@resume.project}") %></div>
-                <%= f.text_area :project, 
+                <%= f.text_area :project,
                   class: "hidden border-0 w-full h-full h-20 p-2 border rounded-md resize-y",
                   data: {
                     resume_target: 'projectForm'

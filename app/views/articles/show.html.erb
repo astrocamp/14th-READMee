@@ -1,9 +1,7 @@
-<%= link_to "文章列表",  articles_path, class: "article-title-link" %>
-
+<%= link_to "文章列表", articles_path, class: "article-title-link" %>
 <h2 class="mt-12 mb-10 text-xl text"><%= @article.title %></h2>
-
-<div data-controller="like" 
-     data-liked="<%= current_user.liked?(@article) %>" 
+<div data-controller="like"
+     data-liked="<%= current_user.liked?(@article) %>"
      data-id="<%= @article.id %>">
   <div class="flex">
     <a href="#" data-like-target="likebtn" data-action="click->like#toggle" class="px-5 py-1 text-white rounded-lg bg-amber-500 hover:bg-amber-800"></a>
@@ -14,5 +12,5 @@
   </div>
 </div>
 <article>
-  <p class="text-lg"><%= @article.content %></p>
+  <p class="text-lg whitespace-pre-line"><%= @article.content %></p>
 </article>

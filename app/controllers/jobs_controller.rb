@@ -6,7 +6,7 @@ class JobsController < ApplicationController
     if current_user && current_user.role == "employer"
       @jobs = @company.jobs
       @job_list = Job.order(id: :desc)
-    else 
+    else
       redirect_to root_path
     end
   end
@@ -48,9 +48,9 @@ class JobsController < ApplicationController
     @jobs_list = @choose.result.includes(:company).order(id: :desc)
   end
 
-  def receive_application 
-    job_id_number = params[:id].to_i   
-    @job_matchings_record = JobMatching.includes(user: [:resumes, :profile]).where(job_id: job_id_number) 
+  def receive_application
+    job_id_number = params[:id].to_i
+    @job_matchings_record = JobMatching.includes(user: [:resumes, :profile]).where(job_id: job_id_number).order(id: :desc)
 
     if @job_matchings_record.empty?
       redirect_to company_jobs_path(:account), notice: "尚未有求職者應徵該工作"
@@ -59,7 +59,7 @@ class JobsController < ApplicationController
     else
       redirect_to root_path, notice: "沒有權限觀看" 
     end
-  end  
+  end
 
   private
 
