@@ -28,7 +28,7 @@ class ChatgptService
     end
   
     class << self
-      def call(message )
+      def call(message)
         new(message).call
       end
     end

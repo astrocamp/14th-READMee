@@ -4,10 +4,11 @@ class User < ApplicationRecord
   before_save :set_account
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_one :profile
   has_one :company
   has_many :resumes
+  has_many :chat_messages
   enum role: { job_seeker: 0, employer: 1, admin: 2 }
 
   def self.create_from_provider_data(provider_data)

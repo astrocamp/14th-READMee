@@ -1,0 +1,11 @@
+<div data-controller="text-value" class="chat_bot shadow-md">
+  <div id="reply">
+    <%= render "/chat_messages/chat" %>
+  </div>
+  <div class="flex">
+    <%= form_tag("/chat_messages", method: "post") do %>
+      <%= text_field_tag(:message, nil, data: { 'text-value-target': "input" }) %>
+      <%= submit_tag("送出", data: { action: "click->text-value#clean" }, class: "save-btn") %>
+    <% end %>
+  </div>
+</div>

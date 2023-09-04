@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_023824) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,13 +42,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_023824) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "blogs", force: :cascade do |t|
+  create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deleted_at"], name: "index_blogs_on_deleted_at"
+    t.bigint "user_id"
+    t.index ["deleted_at"], name: "index_articles_on_deleted_at"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "chat_messages", force: :cascade do |t|
@@ -72,18 +74,47 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_023824) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+  end
+
+  create_table "job_matchings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "job_id", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_job_matchings_on_company_id"
+    t.index ["job_id"], name: "index_job_matchings_on_job_id"
+    t.index ["user_id"], name: "index_job_matchings_on_user_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "num_of_people"
+    t.string "num_of_people"
     t.string "seniority"
-    t.integer "salary"
+    t.string "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.bigint "company_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
   create_table "profile_skills", force: :cascade do |t|
@@ -96,44 +127,43 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_023824) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
-    t.string "full_name"
-    t.string "phone"
-    t.string "address"
-    t.string "job_title"
-    t.string "education"
-    t.jsonb "languages", default: {}
-    t.text "about_me"
-    t.text "work_experience"
-    t.string "projects"
-    t.string "linkedin"
-    t.string "facebook"
-    t.string "github"
-    t.string "website"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.text "about_me"
+    t.jsonb "languages"
+    t.jsonb "job_hunting"
+    t.jsonb "social_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.jsonb "use_skill"
+    t.text "content"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_projects_on_profile_id"
   end
 
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
-    t.text "basic_info"
     t.text "social_links"
-    t.text "work_experience"
-    t.string "skills"
     t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "component_name"
-    t.bigint "user_id"
-    t.text "about_me"
-    t.string "about_me_title"
-    t.string "work_experience_title"
-    t.string "languages"
-    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
-    t.index ["user_id"], name: "index_resumes_on_user_id"
+    t.string "project_title"
+    t.boolean "publish"
+    t.bigint "profile_id"
+    t.text "about_me_content"
+    t.text "work_exp_content"
+    t.text "project_content"
+    t.index ["profile_id"], name: "index_resumes_on_profile_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -162,12 +192,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_023824) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "users"
   add_foreign_key "chat_messages", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "educations", "profiles"
+  add_foreign_key "job_matchings", "companies"
+  add_foreign_key "job_matchings", "jobs"
+  add_foreign_key "job_matchings", "users"
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "resumes", "users"
+  add_foreign_key "projects", "profiles"
+  add_foreign_key "resumes", "profiles"
+  add_foreign_key "work_experiences", "profiles"
 end
