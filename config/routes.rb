@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   post "toggle_role", to: "users#toggle", as: :toggle_role 
   post "employer", to: "users#employer", as: :employer
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
-  get "pricing", to: "prices#show", as: :pricing
   get "chat_messages", to: "chat_messages#index"
   post "chat_messages", to: "chat_messages#reply"
   patch "/@:account/resumes/:id", to: "resumes#update", as: :update_resume

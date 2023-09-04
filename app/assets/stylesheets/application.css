@@ -48,3 +48,8 @@
   border-radius: 6px;
   background-color: rgba(211, 211, 211, 0.401);
 }
+
+.chat {
+  width: 300px;
+  background-color: white;
+}
