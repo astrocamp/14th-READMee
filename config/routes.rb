@@ -38,11 +38,10 @@ Rails.application.routes.draw do
   get "select_role", to: "users#select_role", as: :select_role
   get "pricing", to: "prices#show", as: :pricing
   get "jobs_list", to: "jobs#jobs_list"
-  get "receive_apply/:id", to: "jobs#receive_application", as: :receive_apply
-  post "/@:account/company", to: "companys#create", as: "create_company"
-  post "job_seeker_list", to: "users#job_application" 
+  get "receive_applicant/:id", to: "jobs#receive_applicant", as: :receive_applicant
+  post "job_seeker_list", to: "users#job_application"
   post "toggle_role", to: "users#toggle", as: :toggle_role
   post "employer", to: "users#employer", as: :employer
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
-  patch "/@:account/resumes/:id", to: "resumes#update", as: :update_resume 
+  patch "/@:account/resumes/:id", to: "resumes#update", as: :update_resume
 end

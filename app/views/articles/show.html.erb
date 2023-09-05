@@ -1,8 +1,7 @@
 <div class="w-9/12 pt-20 mx-auto">
   <%= link_to "文章列表",  articles_path, class: "rounded-lg py-2 px-5 text-white bg-amber-500 hover:bg-amber-800" %>
-
   <h2 class="mt-12 mb-10 text-3xl font-bold"><%= @article.title %></h2>
-
+  
   <article class="p-3 border shadow-md">
     <p class="text-lg break-words whitespace-pre-line"><%= @article.content %></p>
   </article>
