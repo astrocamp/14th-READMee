@@ -84,7 +84,7 @@
                 } %>
             </div>
             <div class="flex pb-14 h-60">
-              <img class="w-1/2" src="https://picsum.photos/300/200/?random=10">
+              <%= image_tag "pdf-project.jpg" %>
               <div class="w-1/2 pt-5l">
                 <div data-action="click->resume#showProjectForm" data-resume-target="project" class="h-full pl-2 cursor-pointer"><%= simple_format("#{@resume.project}") %></div>
                 <%= f.text_area :project,
