@@ -30,19 +30,25 @@
   <ul>
     <% @comments.each do |comment| %>
       <li class="p-2">
-        <p><%= comment.user.account %></p>
-        <p class="whitespace-pre-line"><%= comment.content %></p>
-        (<%= comment.created_at %>)
+        <p class="flex">
+          <%= image_tag "company_show_pepole.svg", class:"w-5 h-5 mr-2" %>
+          <%= comment.user.account%>
+        </p>
+        <p class="mb-2 whitespace-pre-line"><%= comment.content %></p>
+        <span class="text-sm font-semibold">
+          留言於: <%= comment.created_at.in_time_zone("Taipei").strftime("%Y-%m-%d %I:%M %p") %>
+        </span>
         <% if comment.user == current_user %>
-            <%= link_to '删除', comment_path(comment), data: {
-                                      turbo_method: "delete",
-                                      turbo_confirm: "確定要刪除?"
-                                    }, class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-800" %>
+          <%= link_to '删除', 
+            comment_path(comment),
+            class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-800",
+            data: {
+              turbo_method: "delete",
+              turbo_confirm: "確定要刪除?"
+            } %>
         <% end %>
         <hr class="mt-5">
       </li>
     <% end %>
   </ul>
 </div>
-
-

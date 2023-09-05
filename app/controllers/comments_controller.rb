@@ -8,13 +8,13 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to article_path(@article), notice: '留言成功'
     else
-      render "articles/show"
+      redirect_to article_path(@comment.article), alert: '留言不能空白'
     end
   end
 
   def destroy
     def destroy
-      @comment = Comment.find(params[:id]) # 查找要删除的评论
+      @comment = Comment.find(params[:id])
     
       if @comment.destroy
         redirect_to article_path(@comment.article), notice: '留言删除成功'
