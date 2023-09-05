@@ -38,7 +38,7 @@
 }
 
 .article-post {
-  @apply mt-10 text-2xl 
+  @apply mt-10 text-2xl
 }
 
 .field_with_errors input[type=text], .field_with_errors textarea {
@@ -77,7 +77,7 @@
 
 @layer components {
   .card {
-    @apply bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
+    @apply bg-white text-gray-700 w-72 min-h-[10rem] shadow-xl rounded-md overflow-hidden
   }
 
   .badge {
@@ -85,7 +85,7 @@
   }
 
   .user-name {
-    @apply font-light
+    @apply font-bold
   }
 }
 
