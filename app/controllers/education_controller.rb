@@ -2,6 +2,7 @@ class EducationController < ApplicationController
   include Pundit
   def show
   end
+
   def new
     if current_user.profile.present?
       @education = Education.new
@@ -16,10 +17,10 @@ class EducationController < ApplicationController
     @education.profile_id = current_user.profile.id
     if @education.save
       redirect_to dashboard_path
-      flash.now[:alert]="成功"
+      flash.now[:alert] = "成功"
     else
       render "educaiton/new"
-      flash.now[:alert]="錯誤"  
+      flash.now[:alert] = "錯誤"  
     end
   end
 
@@ -33,11 +34,12 @@ class EducationController < ApplicationController
       redirect_to dashboard_path
     else
       render :edit
-      flash.now[:alert]="請檢察欄位!"
+      flash.now[:alert] = "請檢察欄位!"
     end
   end
 
   private
+
   def education_params
     params.require(:education).permit(:title, :start_date, :end_date)
   end

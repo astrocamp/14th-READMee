@@ -9,6 +9,7 @@ class ResumesController < ApplicationController
       format.html
     end
   end
+
   def index
     @users = User.includes(:resumes)
   end
