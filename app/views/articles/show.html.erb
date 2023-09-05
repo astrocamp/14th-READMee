@@ -1,16 +1,17 @@
-<%= link_to "文章列表",  articles_path, class: "article-title-link" %>
+<div class="w-9/12 pt-20 mx-auto">
+  <%= link_to "文章列表",  articles_path, class: "rounded-lg py-2 px-5 text-white bg-amber-500 hover:bg-amber-800" %>
 
-<h2 class="mt-12 mb-10 text-xl text"><%= @article.title %></h2>
+<h2 class="mt-12 mb-10 text-3xl font-bold"><%= @article.title %></h2>
 
-<article>
-  <p class="text-lg"><%= @article.content %></p>
+<article class="p-3 border shadow-md">
+  <p class="text-lg whitespace-pre-line"><%= @article.content %></p>
 </article>
 
-<h2 class="mt-12 mb-10 text-xl text">留言區</h2>
+<h2 class="mt-12 mb-10 text-xl font-semibold">留言區</h2>
 <%= form_with(model: @comment, url: article_comments_path(@article)) do |f| %>
   <div>
     <%= f.label :content, '留言內容', class:"block" %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: "input mb-5" %>
   </div>
   <%= f.submit '新增留言', class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-800" %>
 <% end %>
@@ -18,7 +19,7 @@
   <% @comments.each do |comment| %>
     <li class="p-2">
       <p><%= comment.user.account %></p>
-      <p><%= comment.content %></p>
+      <p class="whitespace-pre-line"><%= comment.content %></p>
       (<%= comment.created_at %>)
       <% if comment.user == current_user %>
           <%= link_to '删除', comment_path(comment), data: {
@@ -26,7 +27,9 @@
                                     turbo_confirm: "確定要刪除?"
                                   }, class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-800" %>
       <% end %>
+      <hr class="mt-5">
     </li>
   <% end %>
 </ul>
+</div>
 
