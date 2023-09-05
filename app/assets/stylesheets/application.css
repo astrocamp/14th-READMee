@@ -3,12 +3,15 @@
   margin-right: -64px;
   margin-left: -64px;
 }
+
 .top-68px{
   top: 68px;
 }
+
 .custom-width-250px{
   width: 250px;
 }
+
 .max-w-screen-lg{
   width: 1024px;
 }
@@ -35,13 +38,13 @@
 }
 
 .close-btn {    
- font-size: 22px;
- font-weight: 600;
- color: white;
- padding: 8px 10px;
- border: none; 
- float: right;
- text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  padding: 8px 10px;
+  border: none; 
+  float: right;
+  text-decoration: none;
 }
 
 .close-btn:hover {
