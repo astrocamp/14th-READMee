@@ -9,18 +9,14 @@ class ResumesController < ApplicationController
   def show
     @resume = Resume.find(params[:id])
     @skills = JSON.parse(@resume.skills)
+    @languages = eval(@resume.languages)
   end
 
   def edit
-    if @resume.basic_info.present?
-      @resume = Resume.find(params[:id])
-      @skills = JSON.parse(@resume.skills)
-      @languages = eval(@resume.languages)
-    else
-      @resume = current_user.resumes.find(params[:id])
-      @skills = JSON.parse(@resume.skills)
-      @languages = eval(@resume.languages)
-    end
+    @resume.basic_info.present?
+    @resume = Resume.find(params[:id])
+    @skills = JSON.parse(@resume.skills)
+    @languages = eval(@resume.languages)    
   end
 
   def update

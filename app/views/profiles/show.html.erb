@@ -2,16 +2,17 @@
   <article>
     <section class="container p-4 pt-10 mx-auto">
       <div class="justify-center p-6 bg-white rounded-lg shadow-md md:flex">
-        <picture class="md:w-1/4">
+        <picture class="flex flex-col items-center justify-center md:w-1/4">
           <% if @profile.avatar.attached? %>
             <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
-            <%= link_to "應徵紀錄", apply_job_path(id: current_user) %>
           <% else %>
             <div class="flex flex-col items-center justify-center">
               <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-              <%= link_to "應徵紀錄", apply_job_path, class: "m-5 inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800;" %>
             </div>
           <% end %>
+          <span class="mb-auto">
+            <%= link_to "應徵紀錄", apply_job_path(id: current_user), class: "my-5 inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+          </span>
         </picture>
         <div class="mt-4 md:w-3/4 md:mt-0 md:pl-4">
           <h1 class="text-2xl font-semibold" data-profileInfo-target="fullName"><%= @profile.full_name %></h1>
