@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :resumes, only:[:new, :index, :show]
   resources :articles
- 
+  resources :job_matchings, only: [:edit, :update]
+
   scope path: '@:account' do
     namespace :admin do
       resources :users
-    end    
+    end
     resource :profile, except: [:destroy]
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   get "company/jobs/:id", to: "jobs#show", as: "job_show"
   get "company/:id", to: "companies#show", as: "company_show"
   get "/@:account/apply_job", to: "users#apply_job", as: "apply_job"
+  get "/@:account/notification", to: "users#notify", as: "notify"
   get "select_role", to: "users#select_role", as: :select_role
   get "pricing", to: "prices#show", as: :pricing
   get "jobs_list", to: "jobs#jobs_list"
