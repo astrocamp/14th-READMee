@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_31_131910) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_140932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,12 +75,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_131910) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+  end
+
   create_table "job_matchings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "job_id", null: false
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "interview_date"
+    t.time "interview_time"
+    t.text "interview_message"
+    t.boolean "notified", default: false
     t.index ["company_id"], name: "index_job_matchings_on_company_id"
     t.index ["job_id"], name: "index_job_matchings_on_job_id"
     t.index ["user_id"], name: "index_job_matchings_on_user_id"
@@ -125,24 +139,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_131910) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
-    t.string "full_name"
-    t.string "phone"
-    t.string "address"
-    t.string "job_title"
-    t.string "education"
-    t.jsonb "languages", default: {}
-    t.text "about_me"
-    t.text "work_experience"
-    t.string "projects"
-    t.string "linkedin"
-    t.string "facebook"
-    t.string "github"
-    t.string "website"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.text "about_me"
+    t.jsonb "languages"
+    t.jsonb "job_hunting"
+    t.jsonb "social_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.jsonb "use_skill"
+    t.text "content"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_projects_on_profile_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -212,12 +229,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_131910) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter"
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "educations", "profiles"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
@@ -226,5 +254,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_131910) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
+  add_foreign_key "projects", "profiles"
   add_foreign_key "resumes", "users"
+  add_foreign_key "work_experiences", "profiles"
 end
