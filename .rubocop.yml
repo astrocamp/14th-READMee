@@ -94,7 +94,6 @@ Metrics/PerceivedComplexity:
 Lint/UnusedMethodArgument:
   Enabled: false
 
-
 Lint/EmptyConditionalBody:
   Enabled: false
 

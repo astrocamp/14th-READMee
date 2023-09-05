@@ -3,8 +3,12 @@ class JobsController < ApplicationController
   before_action :find_job, only: [:edit, :update, :show, :destroy]
 
   def index
-    @jobs = @company.jobs
-    @job_list = Job.order(id: :desc)
+    if current_user && current_user.role == "employer"
+      @jobs = @company.jobs
+      @job_list = Job.order(id: :desc)
+    else 
+      redirect_to root_path
+    end
   end
 
   def new
@@ -43,6 +47,19 @@ class JobsController < ApplicationController
     @choose = Job.ransack(params[:q])
     @jobs_list = @choose.result.includes(:company).order(id: :desc)
   end
+
+  def receive_application 
+    job_id_number = params[:id].to_i   
+    @job_matchings_record = JobMatching.includes(user: [:resumes, :profile]).where(job_id: job_id_number) 
+
+    if @job_matchings_record.empty?
+      redirect_to company_jobs_path(:account), notice: "尚未有求職者應徵該工作"
+    elsif current_user && current_user.role == "employer"
+      render :receive_application
+    else
+      redirect_to root_path
+    end
+  end  
 
   private
 

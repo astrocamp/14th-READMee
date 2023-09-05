@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.page(params[:page]).per(6)
+    @liked_counts = LikeLog.group(:article_id).count
   end
 
   def new
@@ -23,6 +24,7 @@ class ArticlesController < ApplicationController
   def show 
     @comment = Comment.new
     @comments = @article.comments.order(id: :desc)
+    @liked_count = LikeLog.where(article_id: @article.id).count
   end
 
   def edit    
