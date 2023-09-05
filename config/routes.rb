@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :users
     end
     get "dashboard", to:"users#dashboard"
+    resources :education
     resource :profile, except: [:destroy]
     resources :resumes, only: [:edit]
     resources :portfolios, except: [:show, :new]

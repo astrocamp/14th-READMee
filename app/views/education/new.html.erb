@@ -1,0 +1,8 @@
+<turbo-frame id="new_education">
+  <%= form_with(model: @education, url: education_index_path, data: { turbo: false}) do |form| %>
+    <%= form.text_field :title %>
+    <%= form.date_field :start_date %>
+    <%= form.date_field :end_date %>
+    <%= form.submit '提交' %>
+  <% end %>
+</turbo-frame>

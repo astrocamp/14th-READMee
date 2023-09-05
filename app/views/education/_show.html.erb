@@ -1,0 +1,13 @@
+<% if @education.present? %>
+  <turbo-frame id="edit_education">
+    <% @education.each do |education|%>
+      <div class="my-2">
+        <%= education.title %>
+        <%= education.start_date %> ~ 
+        <%= education.end_date %>
+        <%= link_to '編輯', edit_education_path(id: education.id), class: "save-btn" %>
+      </div>
+    <% end %>
+  <% end %>
+  <%= link_to '新增', new_education_path, class: "save-btn" %>
+</turbo-frame>

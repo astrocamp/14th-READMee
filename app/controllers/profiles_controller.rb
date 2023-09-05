@@ -7,10 +7,6 @@ class ProfilesController < ApplicationController
 
   def new
     @profile = current_user.build_profile
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("new-profile-frame", partial: 'profiles/new') }
-      format.html
-    end
   end
 
   def create
@@ -18,15 +14,12 @@ class ProfilesController < ApplicationController
     if @profile.save
       render "users/dashboard"
     else
+      render "profile/new"
       flash.now[:alert] = "請檢查表單必填欄位。" 
     end
   end
 
   def edit
-    respond_to do |format|
-      format.turbo_stream { render turbo_stream: turbo_stream.replace("edit-profile-frame", partial: 'profiles/edit') }
-      format.html
-    end
   end
 
   def update

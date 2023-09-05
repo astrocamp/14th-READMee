@@ -144,17 +144,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
+    t.text "basic_info"
     t.text "social_links"
+    t.text "work_experience"
+    t.string "skills"
     t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "component_name"
+    t.bigint "user_id"
+    t.text "about_me"
+    t.string "about_me_title"
+    t.string "work_experience_title"
+    t.string "languages"
+    t.text "project"
+    t.text "education"
     t.string "project_title"
+    t.string "education_title"
     t.boolean "publish"
-    t.bigint "profile_id"
-    t.text "about_me_content"
-    t.text "work_exp_content"
-    t.text "project_content"
-    t.index ["profile_id"], name: "index_resumes_on_profile_id"
+    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -205,6 +214,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
-  add_foreign_key "resumes", "profiles"
+  add_foreign_key "resumes", "users"
   add_foreign_key "work_experiences", "profiles"
 end

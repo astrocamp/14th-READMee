@@ -2,6 +2,13 @@ class ResumesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_resume, only: [:edit, :update]
 
+  def new
+    @resume = Resume.new
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new-resume-frame", partial: 'resumes/new') }
+      format.html
+    end
+  end
   def index
     @users = User.includes(:resumes)
   end
@@ -15,15 +22,6 @@ class ResumesController < ApplicationController
     @profile = current_user.profile
     @skills = current_user.profile.skills
     @languages = current_user.profile.languages
-    # if @resume.basic_info.present?
-    #   @resume = Resume.find(params[:id])
-    #   @skills = JSON.parse(@resume.skills)
-    #   @languages = eval(@resume.languages)
-    # else
-    #   @resume = current_user.resumes.find(params[:id])
-    #   @skills = JSON.parse(@resume.skills)
-    #   @languages = eval(@resume.languages)
-    # end
   end
 
   def update

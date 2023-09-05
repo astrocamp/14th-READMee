@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_one :profile
   has_one :company
-  has_many :resumes
   has_many :articles
   has_many :job_matchings
   has_many :jobs, through: :job_matchings
