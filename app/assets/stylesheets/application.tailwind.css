@@ -34,7 +34,7 @@
 }
 
 .article-title-link {
-  @apply mt-10 text-2xl border-amber-300 font-bold hover:ease-in hover:duration-100 hover:border-b-4 inline-block;
+  @apply mt-10 text-2xl font-bold hover:ease-in hover:duration-200 hover:text-amber-600 inline-block;
 }
 
 .article-post {

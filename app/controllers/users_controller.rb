@@ -39,9 +39,7 @@ class UsersController < ApplicationController
   
   def apply_job
     if current_user.role == "job_seeker"
-      @job_matchings = current_user.job_matchings.distinct.pluck(:job_id)
-      @job_matchings_time = current_user.job_matchings.where(user_id: current_user)
-      @jobs = Job.where(id: @job_matchings)
+      @job_matchings = current_user.job_matchings.where(user_id: current_user)
     else
       redirect_to root_path, notice: "沒有權限觀看"
     end

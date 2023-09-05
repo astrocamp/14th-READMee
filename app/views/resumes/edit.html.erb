@@ -5,8 +5,8 @@
         <%= f.submit "更新", name: "save", class: "absolute top-4 right-56 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
         <%= f.submit "發佈", name: "published", class: "absolute top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
         <%= hidden_field_tag :publish, @resume.publish %>
-        <div class="flex h-48">
-          <div class="flex flex-col-3 align-center">
+        <div class="flex min-h-min">
+          <div class="flex flex-col">
             <div class="flex items-center justify-center inline-block pb-5 custom-width-250px">
               <%= image_tag "defaultuser.png", class: "inline-block w-32 h-32 rounded-full" %>
             </div>
@@ -31,92 +31,135 @@
                   <%= @profile.address%></li>
               </ul>
             </div>
+            <<<<<<< HEAD
           </div>
-          <div class="flex-grow">
-            <div data-resume-target="aboutMe" data-action="click->resume#showAboutMeForm" class="cursor-pointer"><%= simple_format("#{@resume.about_me}") %></div>
-            <%= f.text_area :about_me,
+              <div class="flex-grow">
+                <div data-resume-target="aboutMe" data-action="click->resume#showAboutMeForm" class="cursor-pointer"><%= simple_format("#{@resume.about_me}") %></div>
+                <%= f.text_area :about_me,
               class: "hidden h-full border-0 w-full h-20 p-2 border rounded-md resize-y",
               data: {
                 resume_target: "aboutMeForm",
                 action: "input->inputAboutMeTextareaHeight"
               } %>
-          </div>
-        </div>
-        <div class=" pl-1 mt-7">
-          <h2 class="py-3 text-xl font-bold">自我介紹</h2>
-          <div id="edtorjs_self_introduction" data-controller="editor"></div>
-          <div>
-            <h2 class="py-3 text-xl font-bold">技能</h2>
-            <ul class="relative">
-              <% @skills.each do |skill|%>
-                <%= skill.tag %>
-              <% end %>
-            </ul>
-            <div class="w-1/2 pl-1">
-              <h2 class="py-3 text-xl font-bold">語言</h2>
-              <ul class="relative">
-                <%= @languages%>
-              </ul>
+              </div>
             </div>
-          </div>
+            <div class=" pl-1 mt-7">
+              <h2 class="py-3 text-xl font-bold">自我介紹</h2>
+              <div id="edtorjs_self_introduction" data-controller="editor"></div>
+              <div>
+                <h2 class="py-3 text-xl font-bold">技能</h2>
+                <ul class="relative">
+                  <% @skills.each do |skill|%>
+                    <%= skill.tag %>
+                  <% end %>
+                </ul>
+                <div class="w-1/2 pl-1">
+                  <h2 class="py-3 text-xl font-bold">語言</h2>
+                  <ul class="relative">
+                    <%= @languages%>
+                    =======
+                    <div class="">
+                      <h1 class="text-lg font-bold ">語言</h1>
+                      <ul class="relative">
+                        <% if @resume.languages.present? %>
+                          <% @languages.each do |language, level| %>
+                            <li class="inline-blockrounded-lg">-<%= language %>▪️<%= level %></li>
+                          <% end %>
+                        <% else %>
+                          <li class="inline-block rounded-lg">-請輸入語言</li>
+                        <% end %>
+                      </ul>
+                    </div>
+                    <div class="">
+                      <h1 class="text-lg font-bold ">技能</h1>
+                      <ul class="relative">
+                        <% if @skills.present? %>
+                          <% @skills.each do |skill| %>
+                            <li class="inline-blockrounded-lg">-<%= skill %></li>
+                          <% end %>
+                        <% else %>
+                          <li class="inline-block rounded-lg">-請輸入技能</li>
+                        <% end %>
+                        >>>>>>> 851e7a5b08c6ddac16f072b448ed605e1fe24f07
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="flex-grow">
+                    <div data-resume-target="aboutMe" data-action="click->resume#showAboutMeForm" class="cursor-pointer"><%= simple_format("#{@resume.about_me}") %></div>
+                    <%= f.text_area :about_me,
+              class: "hidden h-full border-0 w-full h-20 p-2 border rounded-md resize-y",
+              data: {
+                resume_target: "aboutMeForm",
+                action: "input->inputAboutMeTextareaHeight"
+              } %>
+                  </div>
+                </div>
+                <<<<<<< HEAD
         </div>
-        <div class="mt-10">
-          <div>
-            <h1 class="mb-3 text-lg font-bold cursor-pointer" data-resume-target="workExperienceTitle" data-action="click->resume#showWorkExperienceTitleInput"><%= @resume.work_experience_title %></h1>
-            <%= f.text_field :work_experience_title, 
+                  <div class="mt-10">
+                    <div>
+                      <h1 class="mb-3 text-lg font-bold cursor-pointer" data-resume-target="workExperienceTitle" data-action="click->resume#showWorkExperienceTitleInput"><%= @resume.work_experience_title %></h1>
+                      <%= f.text_field :work_experience_title, 
+=======
+          
+          <div class="mt-10">
+            <div>
+              <h1 class="mb-3 text-lg font-bold cursor-pointer" data-resume-target="workExperienceTitle" data-action="click->resume#showWorkExperienceTitleInput"><%= @resume.work_experience_title %></h1>
+                    <%= f.text_field :work_experience_title, 
+>>>>>>> 851e7a5b08c6ddac16f072b448ed605e1fe24f07
                 class: "hidden my-2 w-full h-10 h-20 p-2 rounded-md resize-y",
                 data: {
                   resume_target: 'workExperienceTitleInput'
                 } %>
-          </div>
-          <div class=" grid grid-col-2">
-            <div>
-              <h2 class="py-3 text-xl font-bold">工作經驗</h2>
-              <%= @profile.work_experience%> - <%= @profile.work_exp_date%>
-            </div>
-            <div>
-              <h2 class="py-3 text-xl font-bold">簡述</h2>
-              <p id="work_state" class="w-1/2"></p>
-            </div>
-          </div>
-          <div>
-            <h2 class="py-3 text-xl font-bold">教育程度</h2>
-            <%= @profile.education%> - <%= @profile.education_date%>
-          </div>
-          <div>
-            <h2 class="py-3 text-xl font-bold">作品集</h2>
-            <div id="protofolio"></div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <h1 class="text-lg font-bold cursor-pointer" data-resume-target="educationTitle" data-action="click->resume#showEducationTitleInput"><%= @resume.education_title %></h1>
-            <%= f.text_field :education_title,
+                  </div>
+                  <div class=" grid grid-col-2">
+                    <div>
+                      <h2 class="py-3 text-xl font-bold">工作經驗</h2>
+                      <%= @profile.work_experience%> - <%= @profile.work_exp_date%>
+                    </div>
+                    <div>
+                      <h2 class="py-3 text-xl font-bold">簡述</h2>
+                      <p id="work_state" class="w-1/2"></p>
+                    </div>
+                  </div>
+                  <div>
+                    <h2 class="py-3 text-xl font-bold">教育程度</h2>
+                    <%= @profile.education%> - <%= @profile.education_date%>
+                  </div>
+                  <div>
+                    <h2 class="py-3 text-xl font-bold">作品集</h2>
+                    <div id="protofolio"></div>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <h1 class="text-lg font-bold cursor-pointer" data-resume-target="educationTitle" data-action="click->resume#showEducationTitleInput"><%= @resume.education_title %></h1>
+                    <%= f.text_field :education_title,
                 class: "hidden my-2 border-0 w-full h-10 h-20 p-2 border rounded-md resize-y",
                 data: {
                   resume_target: 'educationTitleInput',
                 } %>
-          </div>
-          <div>
-            <div data-action="click->resume#showEducationForm" data-resume-target="education" class="cursor-pointer"><%= simple_format("#{@resume.education}") %></div>
-            <%= f.text_area :education,
+                  </div>
+                  <div>
+                    <div data-action="click->resume#showEducationForm" data-resume-target="education" class="cursor-pointer"><%= simple_format("#{@resume.education}") %></div>
+                    <%= f.text_area :education,
                 class: "hidden border-0 w-full h-20 p-2 border rounded-md resize-y",
                 data: {
                   resume_target: 'educationForm'
                 } %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </section>
+          <div class="fixed bottom-0 right-0 bg-gray-200 top-68px">
+            <div class="flex-col justify-between h-full overflow-y-scroll align-center">
+              <div class="px-10 pt-10 custom-width-250px">
+                <p>組件一</p>
+                <p>組件二</p>
+                <p>組件三</p>
+                <p>組件四</p>
+              </div>
+            </div>
           </div>
         </div>
-      <% end %>
-    </div>
-  </section>
-  <div class="fixed bottom-0 right-0 bg-gray-200 top-68px">
-    <div class="flex-col justify-between h-full overflow-y-scroll align-center">
-      <div class="px-10 pt-10 custom-width-250px">
-        <p>組件一</p>
-        <p>組件二</p>
-        <p>組件三</p>
-        <p>組件四</p>
-      </div>
-    </div>
-  </div>
-</div>

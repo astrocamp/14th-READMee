@@ -10,3 +10,4 @@ class JobMatching < ApplicationRecord
     job_matching.save
   end
 end
+

@@ -100,6 +100,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
   end
 
+  create_table "like_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.index ["article_id"], name: "index_like_logs_on_article_id"
+    t.index ["user_id"], name: "index_like_logs_on_user_id"
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -210,6 +217,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
+  add_foreign_key "like_logs", "articles"
+  add_foreign_key "like_logs", "users"
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
