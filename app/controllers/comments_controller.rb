@@ -31,6 +31,5 @@ class CommentsController < ApplicationController
   
   def comment_params
     params.require(:comment).permit(:content).merge(user: current_user)
-  end
-  
+  end  
 end
