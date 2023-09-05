@@ -17,6 +17,14 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      scope 'articles/:id' do
+        patch 'like', to: 'articles#like', as: :like_article
+      end
+    end
+  end
+
   get "company/jobs/:id", to: "jobs#show", as: "job_show"
   get "company/:id", to: "companies#show", as: "company_show"
   get "/@:account/apply_job", to: "users#apply_job", as: "apply_job"
