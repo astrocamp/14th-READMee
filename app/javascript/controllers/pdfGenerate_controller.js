@@ -11,7 +11,8 @@ export default class extends Controller {
 
   generate() {
     const pdfContent = this.pdfContentTarget
-    
+    this.pdfContentTarget.style.boxShadow = 'unset'
+
     html2canvas(pdfContent).then((canvas) => {
       const pageData = canvas.toDataURL("image/jpeg", 1.0);
   
@@ -19,6 +20,12 @@ export default class extends Controller {
   
       pdf.addImage(pageData, "JPEG", 0, 0, 595.28, 592.28 * canvas.height / canvas.width);
       pdf.save("resume.pdf");
+      this.open();
     });
+  }
+  
+  open() {
+    this.pdfContentTarget.style.boxShadow =
+      '0 25px 50px -12px rgb(0 0 0 / 0.25)';
   }
 }

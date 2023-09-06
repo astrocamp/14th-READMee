@@ -89,7 +89,7 @@
   }
 
   .user-name {
-    @apply font-light;
+    @apply font-bold;
   }
 }
 

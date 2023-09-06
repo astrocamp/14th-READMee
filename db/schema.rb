@@ -53,6 +53,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -65,22 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "educations", force: :cascade do |t|
-    t.string "title"
-    t.date "start_date"
-    t.date "end_date"
-    t.bigint "profile_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_educations_on_profile_id"
-  end
-
   create_table "job_matchings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "job_id", null: false
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "interview_date"
+    t.time "interview_time"
+    t.text "interview_message"
+    t.boolean "notified", default: false
     t.index ["company_id"], name: "index_job_matchings_on_company_id"
     t.index ["job_id"], name: "index_job_matchings_on_job_id"
     t.index ["user_id"], name: "index_job_matchings_on_user_id"
@@ -125,27 +129,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "avatar"
     t.string "full_name"
     t.string "phone"
     t.string "address"
+    t.string "job_title"
+    t.string "education"
+    t.jsonb "languages", default: {}
     t.text "about_me"
-    t.jsonb "languages"
-    t.jsonb "job_hunting"
-    t.jsonb "social_link"
-    t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.jsonb "use_skill"
-    t.text "content"
-    t.bigint "profile_id", null: false
+    t.text "work_experience"
+    t.string "projects"
+    t.string "linkedin"
+    t.string "facebook"
+    t.string "github"
+    t.string "website"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_projects_on_profile_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -212,8 +213,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
-  add_foreign_key "educations", "profiles"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"

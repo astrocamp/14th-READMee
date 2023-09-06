@@ -17,6 +17,7 @@ class ResumesController < ApplicationController
   def show
     @resume = Resume.find
     @skills = JSON.parse(@resume.skills)
+    @languages = eval(@resume.languages)
   end
 
   def edit
