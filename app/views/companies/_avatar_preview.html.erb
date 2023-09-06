@@ -1,0 +1,14 @@
+<div class="my-5" data-controller="previews">
+	<div class="m-5">
+		<% if company.avatar.attached?  %>
+			<%= image_tag company.avatar, data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
+		<% else %>
+			<%= image_tag "", data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
+		<% end %>
+	</div>
+  <%= f.label '公司照片', class: "font-semibold" %>
+  <%= f.file_field :avatar, 
+			direct_upload: true,
+			data: { previews_target: "input", action: "change->previews#preview" },
+			class: "input block w-full text-sm text-slate-500 file:mr-2 file:py-2 file:px-2 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-amber-50 file:text-amber-600 hover:file:bg-amber-100" %>
+</div>

@@ -6,7 +6,6 @@ class CompaniesController < ApplicationController
   def show
     if current_user.company.present?
       @company = Company.find(current_user.company.id)
-      authorize @company
     else
       redirect_to new_company_path, alert: '您尚未建立公司!'
     end
@@ -34,7 +33,7 @@ class CompaniesController < ApplicationController
   def update
     authorize @company
     if @company.update(params_company)
-      redirect_to company_path, notice: '更新成功!'
+      redirect_to company_show_path(current_user.company.id), notice: '更新成功!'
     else
       render :edit
     end
@@ -44,7 +43,7 @@ class CompaniesController < ApplicationController
   private
 
   def params_company
-    params.require(:company).permit(:name, :address, :phone, :about, :population, :id)
+    params.require(:company).permit(:avatar, :name, :address, :phone, :about, :population, :id)
   end
 
   def set_company
