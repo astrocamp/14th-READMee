@@ -1,5 +1,6 @@
 class EducationController < ApplicationController
-  include Pundit
+  before_action :set_education, only: [:edit, :update, :destroy]
+
   def show
   end
 
@@ -17,19 +18,15 @@ class EducationController < ApplicationController
     @education.profile_id = current_user.profile.id
     if @education.save
       redirect_to dashboard_path
-      flash.now[:alert] = "成功"
     else
       render "educaiton/new"
-      flash.now[:alert] = "錯誤"  
     end
   end
 
   def edit
-    @education = Education.find(params[:id])
   end
 
   def update
-    @education = Education.find(params[:id])
     if @education.update(education_params)
       redirect_to dashboard_path
     else
@@ -38,7 +35,17 @@ class EducationController < ApplicationController
     end
   end
 
+  def destroy
+    if @education.destroy
+      redirect_to dashboard_path
+    end
+  end  
+
   private
+
+  def set_education
+    @education = Education.find(params[:id])
+  end
 
   def education_params
     params.require(:education).permit(:title, :start_date, :end_date)

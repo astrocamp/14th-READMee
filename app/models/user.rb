@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   before_save :set_account
 
@@ -32,13 +30,11 @@ class User < ApplicationRecord
 
   def like!(record)
     liked_articles << record
-  end
-  
+  end  
   
   def unlike!(record)
     liked_articles.destroy(record)
-  end
-  
+  end  
 
   def set_account
     self.account = email.split('@').first if email.present?

@@ -6,6 +6,7 @@
         <%= education.start_date %> ~ 
         <%= education.end_date %>
         <%= link_to '編輯', edit_education_path(id: education.id), class: "save-btn" %>
+        <%= link_to '刪除', education_path(id: education.id), class: "save-btn", data:{turbo_method: :delete} %>
       </div>
     <% end %>
   </turbo-frame>
