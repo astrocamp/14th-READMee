@@ -10,13 +10,14 @@ Rails.application.routes.draw do
       resources :users
     end
     get "dashboard", to:"users#dashboard"
+    resources :social_link
     resources :education
     resources :projects
     resource :profile, except: [:destroy]
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]
     resource :company, except: [:show] do
-      resources :jobs, except: [:show]
+      resources :jobs, except: [:show]  
     end
   end
 

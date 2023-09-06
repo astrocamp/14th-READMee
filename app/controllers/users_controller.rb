@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     if @profile.present?
       @projects = Project.where(profile_id: @profile.id)
       @education = Education.where(profile_id: @profile.id)
+      @social_link = SocialLink.where(profile_id: @profile.id)
     end
   end
 end

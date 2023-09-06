@@ -1,0 +1,10 @@
+<turbo-frame id="edit_social_link">
+  <% if @social_link.present?%>
+    <% @social_link.each do |social|%>
+      <%= link_to "#{social.title}", social.link%>
+      <%= link_to '編輯', edit_social_link_path(id: social.id), class:"save-btn"%>
+      <%= link_to '刪除', social_link_path(id: social.id), class:"save-btn", data:{turbo_method: :DELETE}%>
+    <% end %>
+  <% end %>
+  <%= link_to '新增', new_social_link_path, class:"save-btn"%>
+</turbo-frame>
