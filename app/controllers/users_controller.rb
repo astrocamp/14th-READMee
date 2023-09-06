@@ -48,6 +48,7 @@ class UsersController < ApplicationController
   def dashboard
     @profile = current_user.profile
     if @profile.present?
+      @projects = Project.where(profile_id: @profile.id)
       @education = Education.where(profile_id: @profile.id)
     end
   end

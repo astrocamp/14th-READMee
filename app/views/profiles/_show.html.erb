@@ -41,10 +41,12 @@
       <h2 class="text-lg font-semibold">社群連結</h2>
       <%= @profile.social_link %>
     </div>
-    <div class="mt-4">
+    <div class="mt-4 mr-0">
       <%= link_to '修改個人資料',edit_profile_path , class:"save-btn"%>
     </div>
   </turbo-frame>
 <% else %>
-  <%= link_to '新增個人資料',new_profile_path , class:"save-btn"%>
+  <div class="mr-0">
+    <%= link_to '新增個人資料',new_profile_path , class:"save-btn"%>
+  </div>
 <% end %>

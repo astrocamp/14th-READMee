@@ -1,0 +1,20 @@
+<% if @projects.present? %>
+  <turbo-frame id="edit_project">
+    <table>
+      <tr>
+        <td>專案名稱</td>
+        <td>使用技術</td>
+        <td>介紹</td>
+      </tr>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= project.use_skill %></td>
+          <td><%= project.content %></td>
+          <td><%= link_to "修改", edit_project_path(id: project.id), class: "save-btn" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </turbo-frame>
+<% end %>
+<%= link_to "新增", new_project_path, class: "save-btn" %>
