@@ -34,7 +34,7 @@ class EducationController < ApplicationController
       redirect_to dashboard_path
     else
       render :edit
-      flash.now[:alert] = "請檢察欄位!"
+      flash.now[:alert] = "請檢查欄位!"
     end
   end
 

@@ -20,15 +20,23 @@ class ProjectsController < ApplicationController
     end
 
     def edit
-
+      @project = Project.find(params[:id])
     end
 
     def update
-
+      @project = Project.find(params[:id])
+      if @project.update(project_params)
+        redirect_to dashboard_path
+      else
+        flash.now[:alert]="請檢查欄位"
+      end
     end
 
-    def delete
-
+    def destroy
+      @project = Project.find(params[:id])
+      if @project.destroy
+        redirect_to dashboard_path
+      end
     end
 
     private
