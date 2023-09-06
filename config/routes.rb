@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :users
     end
+    get "dashboard", to:"users#dashboard"
     resource :profile, except: [:destroy]
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]

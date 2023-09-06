@@ -1,89 +1,42 @@
-<div data-controller="profileStep">
-  <div data-profileStep-target="part1">
-    <%= render "avatar_preview", form: form, profile: @profile %>
-    <div class="my-5">
-      <%= form.label '全名', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:full_name].any?}" %>
-      <%= form.text_field :full_name, class: "input" %>
-    </div>
-    <div class="my-5">
-      <%= form.label '聯絡電話', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:phone].any?}" %>
-      <%= form.text_field :phone, placeholder: "輸入您的手機號碼", class: "input" %>
-    </div>
-    <div class="my-5">
-      <%= form.label '地址', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:address].any?}" %>
-      <%= form.text_field :address, placeholder: "例如：台灣台北市 或 台北市大安區", class: "input" %>
-    </div>
-    <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
+<%= form_with(model: @profile, url:profile_path) do |form|%>
+  <%= render "avatar_preview", form: form, profile: @profile %>
+  <div class="my-5">
+    <%= form.label :full_name, '全名', class: "font-semibold"%>
+    <%= form.text_field :full_name, class:"input"%>
   </div>
-  <div data-profileStep-target="part2" class='hidden'>
-    <div class="my-5">
-      <%= form.label '職稱', class: "font-semibold" %>
-      <%= form.text_field :job_title, class: "input" %>
-    </div>
-    <div class="my-5">
-      <%= form.label '學歷', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:education].any?}" %>
-      <%= form.text_field :education, placeholder: "例如：台灣大學電機系",class: "input"  %>
-    </div>
-    <div class="my-5">
-      <%= form.label '關於我', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:about_me].any?}" %>
-      <%= form.text_area :about_me, size: "60x10", class: "input"  %>
-    </div>
-    <button class="back-button save-btn" data-action="click->profileStep#backBtn">上一步</button>
-    <button class="next-button save-btn" data-action="click->profileStep#nextBtn">下一步</button>
+  <div class="my-5">
+    <%= form.label :phone, '電話', class: "font-semibold"%>
+    <%= form.text_field :phone, class:"input"%>
   </div>
-  <div data-profileStep-target="part3" class="hidden" >
-    <div class="my-5">
-      <%= form.label '語言', class: "inline-block font-semibold mb-2" %>
-      <span class="text-sm text-slate-400">選填</span>
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <% ["中文", "英文", "日文", "西班牙文", "法文", "德文"].each do |language| %>
-          <div class="flex flex-col">
-            <div class="mb-1">
-              <%= form.label language, class: "px-2 mb-2 block border-amber-500 border-l-4 border-solid w-fit" %>
-            </div>
-            <%= form.select :languages, options_for_select([["程度", "", { disabled: true, selected: true, hidden: true }], ["初階", "初階"], ["中等", "中等"], ["進階", "進階"]]), {}, { name: "profile[languages][#{language}]", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" } %>
+  <div class="my-5">
+    <%= form.label :address, '居住區域', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:address].any?}" %>
+    <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇地址" }, class: "input" %>
+  </div>
+  <%= form.label :languages, '語言', class: "font-semibold"%>
+  <div class="flex flex-col">
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <% ["中文", "英文", "日文", "西班牙文", "法文", "德文"].each do |language| %>
+        <div class="flex flex-col">
+          <div class="mb-1">
+            <%= form.label language, class: "px-2 mb-2 block border-amber-500 border-l-4 border-solid w-fit" %>
           </div>
-        <% end %>
-      </div>
-      <div class="my-5">
-        <%= form.label '技能', class: "font-semibold" %>
-        <%= form.select :skill_ids, Skill.pluck(:tag, :id), {}, { data: { controller: "slimselect" }, multiple: true } %>
-      </div>
-      <div class="my-5">
-        <%= form.label '工作經驗', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:about_me].any?}" %>
-        <%= form.text_area :work_experience, size: "60x10", class: "input"  %>
-      </div>
-      <div class="my-5">
-        <%= form.label '專案', class: "font-semibold" %>
-        <span class="text-sm text-slate-400">選填</span>
-        <%= form.text_field :projects, placeholder: "附上專案連結", class: "input"  %>
-      </div>
-      <div class="my-5">
-        <%= form.label '社群連結', class: "font-semibold" %>
-        <span class="text-sm text-slate-400">選填</span>
-        <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-4">
-          <div class="flex items-center">
-            <%= image_tag 'linkedin.svg', class: 'mr-2 w-10' %>
-            <%= form.text_field :linkedin, class: "input"  %>
-          </div>
-          <div class="flex items-center">
-            <%= image_tag 'facebook.svg', class: 'mr-2 w-10' %>
-            <%= form.text_field :facebook, class: "input"  %>
-          </div>
-          <div class="flex items-center">
-            <%= image_tag 'github.svg', class: 'mr-2 w-10' %>
-            <%= form.text_field :github, class: "input"  %>
-          </div>
-          <div class="flex items-center">
-            <%= image_tag 'web.png', class: 'mr-2 w-8' %>
-            <%= form.text_field :website, class: "input"  %>
-          </div>
+          <%= form.select :languages, options_for_select([["程度", "", { disabled: true, selected: true, hidden: true }], ["初階", "初階"], ["中等", "中等"], ["進階", "進階"]]), {}, { name: "profile[languages][#{language}]", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" } %>
         </div>
-      </div>
-      <div>
-        <button class="back-button save-btn" data-action="click->profileStep#backBtn">上一步</button>
-        <%= form.submit '送出', class: "save-btn submit" %>
-      </div>
+      <% end %>
     </div>
   </div>
+  <div class="my-5">
+    <%= form.label :job_hunting, '尋找的職稱', class: "font-semibold"%>
+    <%= form.text_field :job_hunting, class:"input"%>
+  </div>
+  <div class="my-5">
+    <%= form.label :about_me, '自我介紹', class: "font-semibold"%>
+    <%= form.text_area :about_me, rows: 4, class: "w-full"%>
+  </div>
+  <div class="my-5">
+    <%= form.label :social_link, '社群連結', class: "font-semibold"%>
+    <%= form.text_field :social_link, class:"input"%>
+  </div>
+  <%= form.submit '送出',class:"save-btn"%>
 </div>
+<% end %>

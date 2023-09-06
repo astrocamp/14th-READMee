@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     current_user.save
     if current_user.save
       flash[:notice] = '您是求職者了！請填寫基本資料'
-      redirect_to profile_path(account: current_user.account)
+      redirect_to dashboard_path(account: current_user.account)
     end
   end
 
@@ -43,5 +43,9 @@ class UsersController < ApplicationController
     else
       redirect_to root_path, notice: "沒有權限觀看"
     end
+  end
+
+  def dashboard
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 end

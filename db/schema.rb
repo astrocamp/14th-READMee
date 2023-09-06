@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -152,26 +152,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
-    t.text "basic_info"
     t.text "social_links"
-    t.text "work_experience"
-    t.string "skills"
     t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "component_name"
-    t.bigint "user_id"
-    t.text "about_me"
-    t.string "about_me_title"
-    t.string "work_experience_title"
-    t.string "languages"
-    t.text "project"
-    t.text "education"
     t.string "project_title"
-    t.string "education_title"
     t.boolean "publish"
-    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
-    t.index ["user_id"], name: "index_resumes_on_user_id"
+    t.bigint "profile_id"
+    t.text "about_me_content"
+    t.text "work_exp_content"
+    t.text "project_content"
+    t.index ["profile_id"], name: "index_resumes_on_profile_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -200,6 +191,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
@@ -214,5 +215,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "resumes", "users"
+  add_foreign_key "projects", "profiles"
+  add_foreign_key "resumes", "profiles"
+  add_foreign_key "work_experiences", "profiles"
 end

@@ -43,7 +43,6 @@
               </ul>
             </div>
           </div>
-
           <div class="flex-grow">
             <div data-resume-target="aboutMe" data-action="click->resume#showAboutMeForm" class="cursor-pointer"><%= simple_format("#{@resume.about_me}") %></div>
             <%= f.text_area :about_me,
@@ -53,25 +52,24 @@
                 action: "input->inputAboutMeTextareaHeight"
               } %>
           </div>
-          </div>
-
-          <div class="mt-10">
-            <div>
-              <h1 class="mb-3 text-lg font-bold cursor-pointer" data-resume-target="workExperienceTitle" data-action="click->resume#showWorkExperienceTitleInput"><%= @resume.work_experience_title %></h1>
-              <%= f.text_field :work_experience_title,
+        </div>
+        <div class="mt-10">
+          <div>
+            <h1 class="mb-3 text-lg font-bold cursor-pointer" data-resume-target="workExperienceTitle" data-action="click->resume#showWorkExperienceTitleInput"><%= @resume.work_experience_title %></h1>
+            <%= f.text_field :work_experience_title,
                 class: "hidden my-2 w-full h-10 h-20 p-2 rounded-md resize-y",
                 data: {
                   resume_target: 'workExperienceTitleInput'
                 } %>
+          </div>
+          <div class=" grid grid-col-2">
+            <div>
+              <h2 class="py-3 text-xl font-bold">工作經驗</h2>
+              <%= @profile.work_experience%> - <%= @profile.work_exp_date%>
             </div>
             <div>
-              <div data-resume-target="workExperience" class="cursor-pointer"><%= simple_format("#{@resume.work_experience}") %></div>
-              <%= f.text_area :work_experience,
-              class: "hidden border-0 w-full h-20 p-2 rounded-md resize-y",
-              data: {
-                resume_target: 'workExperienceForm',
-                action: 'input->inputWorkExperienceTextareaHeight'
-              }  %>
+              <h2 class="py-3 text-xl font-bold">簡述</h2>
+              <p id="work_state" class="w-1/2"></p>
             </div>
           </div>
           <div>
@@ -96,23 +94,28 @@
             </div>
           </div>
           <div>
-            <div>
-              <h1 class="text-lg font-bold cursor-pointer" data-resume-target="educationTitle" data-action="click->resume#showEducationTitleInput"><%= @resume.education_title %></h1>
-              <%= f.text_field :education_title,
+            <h2 class="py-3 text-xl font-bold">作品集</h2>
+            <div id="protofolio"></div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h1 class="text-lg font-bold cursor-pointer" data-resume-target="educationTitle" data-action="click->resume#showEducationTitleInput"><%= @resume.education_title %></h1>
+            <%= f.text_field :education_title,
                 class: "hidden my-2 border-0 w-full h-10 h-20 p-2 border rounded-md resize-y",
                 data: {
                   resume_target: 'educationTitleInput',
                 } %>
-            </div>
-            <div>
-              <div data-action="click->resume#showEducationForm" data-resume-target="education" class="cursor-pointer"><%= simple_format("#{@resume.education}") %></div>
-              <%= f.text_area :education,
+          </div>
+          <div>
+            <div data-action="click->resume#showEducationForm" data-resume-target="education" class="cursor-pointer"><%= simple_format("#{@resume.education}") %></div>
+            <%= f.text_area :education,
                 class: "hidden border-0 w-full h-20 p-2 border rounded-md resize-y",
                 data: {
                   resume_target: 'educationForm'
                 } %>
-            </div>
           </div>
+        </div>
       <% end %>
     </div>
   </section>

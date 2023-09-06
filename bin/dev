@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+exec /home/dojo11272/.rvm/rubies/ruby-3.2.2/bin/ruby /home/dojo11272/.rvm/gems/ruby-3.2.2/bin/foreman start -f Procfile.dev "$@" 
 
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."

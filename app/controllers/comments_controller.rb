@@ -13,15 +13,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    def destroy
-      @comment = Comment.find(params[:id])
-    
-      if @comment.destroy
-        redirect_to article_path(@comment.article), notice: '留言删除成功'
-      else
-        redirect_to article_path(@comment.article), alert: '無法删除留言'
-      end
-    end    
+    @comment = Comment.find(params[:id])
+  
+    if @comment.destroy
+      redirect_to article_path(@comment.article), notice: '留言删除成功'
+    else
+      redirect_to article_path(@comment.article), alert: '無法删除留言'
+    end
   end
   
   private
