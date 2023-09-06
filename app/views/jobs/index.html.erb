@@ -32,6 +32,10 @@
           <li>
             <%= link_to "刪除", company_job_path(@account, job), data: { turbo_method: "delete", turbo_confirm: "是否刪除" }, class: "rounded-lg bg-amber-500 px-8 py-2 m-2" %>
           </li>
+          <li>
+           <%= link_to "查看應徵者" , receive_applicant_path(job.id), class: "rounded-lg bg-amber-500 px-8 py-2 m-2"%>
+          </li>
+
         </div>
       </ul>
     <% end %>

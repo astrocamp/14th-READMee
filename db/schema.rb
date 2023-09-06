@@ -53,6 +53,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -81,6 +91,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "interview_date"
+    t.time "interview_time"
+    t.text "interview_message"
+    t.boolean "notified", default: false
     t.index ["company_id"], name: "index_job_matchings_on_company_id"
     t.index ["job_id"], name: "index_job_matchings_on_job_id"
     t.index ["user_id"], name: "index_job_matchings_on_user_id"
@@ -98,6 +112,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.bigint "company_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
     t.index ["deleted_at"], name: "index_jobs_on_deleted_at"
+  end
+
+  create_table "like_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.index ["article_id"], name: "index_like_logs_on_article_id"
+    t.index ["user_id"], name: "index_like_logs_on_user_id"
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -196,11 +217,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "educations", "profiles"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
+  add_foreign_key "like_logs", "articles"
+  add_foreign_key "like_logs", "users"
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
