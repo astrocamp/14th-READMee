@@ -1,19 +1,12 @@
-<h2 class="text-lg font-semibold">dashboard</h2>
-<div class="grid justify-center ">
-  <h2 class="text-lg font-semibold">profile</h2>
-  <turbo-frame id="new_profile">
+<div class="dashboard_basic">
+  <div class="relative my-2 border-solid border rounded-md p-1">
+    <h2 class="text-lg">個人檔案</h2>
     <%= render 'profiles/show' %>
-  </turbo-frame>
-</div>
-<div  class="grid justify-center">
-  <h2 class="text-lg font-semibold">education</h2>
-  <turbo-frame id="new_education">
-    <%= render 'education/show'%>
-  </turbo-frame>
-</div>
-<div class="grid justify-center">
-  <h2 class="text-lg font-semibold">resume</h2>
-  <turbo-frame id="new_resume">
-    <%= render 'resumes/show' %>
-  </turbo-frame>
+  </div>
+  <div  class="relative my-2 border-solid border rounded-md p-1">
+    <h2 class="text-lg">教育程度</h2>
+    <turbo-frame id="new_education">
+      <%= render 'education/show'%>
+    </turbo-frame>
+  </div>
 </div>

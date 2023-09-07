@@ -1,8 +1,8 @@
 <turbo-frame id="new_education">
-  <%= form_with(model: @education, url: education_index_path, data: { turbo: false}) do |form| %>
-    <%= form.text_field :title %>
-    <%= form.date_field :start_date %>
-    <%= form.date_field :end_date %>
-    <%= form.submit '提交' %>
+  <%= form_with(model: @education, url: education_index_path) do |form| %>
+    <%= form.text_field :title, placeholder:"台灣大學-電機系", class:"input"%>
+    <%= form.date_field :start_date, class:"input" %>
+    <%= form.date_field :end_date, class:"input" %>
+    <%= form.submit '提交', class:"save-btn"%>
   <% end %>
 </turbo-frame>

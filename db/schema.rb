@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+  end
+
   create_table "job_matchings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "job_id", null: false
@@ -129,24 +139,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
-    t.string "full_name"
-    t.string "phone"
-    t.string "address"
-    t.string "job_title"
-    t.string "education"
-    t.jsonb "languages", default: {}
-    t.text "about_me"
-    t.text "work_experience"
-    t.string "projects"
-    t.string "linkedin"
-    t.string "facebook"
-    t.string "github"
-    t.string "website"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.text "about_me"
+    t.jsonb "languages"
+    t.jsonb "job_hunting"
+    t.jsonb "social_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.jsonb "use_skill"
+    t.text "content"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_projects_on_profile_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -216,6 +229,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "educations", "profiles"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"

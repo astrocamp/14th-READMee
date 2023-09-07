@@ -12,9 +12,9 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(profile_params)
     if @profile.save
-      render "users/dashboard"
+      redirect_to dashboard_path
     else
-      render "profile/new"
+      render "profiles/new"
       flash.now[:alert] = "請檢查表單必填欄位。" 
     end
   end

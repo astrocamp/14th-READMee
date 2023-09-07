@@ -25,17 +25,17 @@
       <% end %>
     </div>
   </div>
+  <div>
+    <%= form.label '技能', class: "font-semibold" %>
+    <%= form.select :skill_ids, Skill.pluck(:tag, :id), {}, { data: { controller: "slimselect" }, multiple: true } %>
+  </div>
   <div class="my-5">
     <%= form.label :job_hunting, '尋找的職稱', class: "font-semibold"%>
-    <%= form.text_field :job_hunting, class:"input"%>
+    <%= form.select :job_hunting, options_for_select(Profile.job_title_options), {}, class: "input" %>
   </div>
   <div class="my-5">
     <%= form.label :about_me, '自我介紹', class: "font-semibold"%>
-    <%= form.text_area :about_me, rows: 4, class: "w-full"%>
-  </div>
-  <div class="my-5">
-    <%= form.label :social_link, '社群連結', class: "font-semibold"%>
-    <%= form.text_field :social_link, class:"input"%>
+    <%= form.text_area :about_me, rows: 4, class: "w-full", class:"block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full"%>
   </div>
   <%= form.submit '送出',class:"save-btn"%>
 </div>
