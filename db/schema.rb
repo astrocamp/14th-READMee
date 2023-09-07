@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_050738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +85,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+  end
+
   create_table "job_matchings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "job_id", null: false
@@ -116,6 +136,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.string "content"
+    t.boolean "publish"
     t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
@@ -129,40 +151,62 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "avatar"
-    t.string "full_name"
-    t.string "phone"
-    t.string "address"
-    t.string "job_title"
-    t.string "education"
-    t.jsonb "languages", default: {}
-    t.text "about_me"
-    t.text "work_experience"
-    t.string "projects"
-    t.string "linkedin"
-    t.string "facebook"
-    t.string "github"
-    t.string "website"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.text "about_me"
+    t.jsonb "languages"
+    t.jsonb "job_hunting"
+    t.jsonb "social_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.jsonb "use_skill"
+    t.text "content"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_projects_on_profile_id"
   end
 
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
+    t.text "basic_info"
     t.text "social_links"
+    t.text "work_experience"
+    t.string "skills"
     t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "component_name"
+    t.bigint "user_id"
+    t.text "about_me"
+    t.string "about_me_title"
+    t.string "work_experience_title"
+    t.string "languages"
+    t.text "project"
+    t.text "education"
     t.string "project_title"
+    t.string "education_title"
     t.boolean "publish"
-    t.bigint "profile_id"
-    t.text "about_me_content"
-    t.text "work_exp_content"
-    t.text "project_content"
-    t.index ["profile_id"], name: "index_resumes_on_profile_id"
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.string "job_hunting"
+    t.bigint "work_experience_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "education_id", null: false
+    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["education_id"], name: "index_resumes_on_education_id"
+    t.index ["project_id"], name: "index_resumes_on_project_id"
+    t.index ["user_id"], name: "index_resumes_on_user_id"
+    t.index ["work_experience_id"], name: "index_resumes_on_work_experience_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -207,6 +251,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
+  add_foreign_key "educations", "profiles"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
@@ -216,6 +261,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
-  add_foreign_key "resumes", "profiles"
+  add_foreign_key "resumes", "educations"
+  add_foreign_key "resumes", "projects"
+  add_foreign_key "resumes", "users"
+  add_foreign_key "resumes", "work_experiences"
   add_foreign_key "work_experiences", "profiles"
 end
