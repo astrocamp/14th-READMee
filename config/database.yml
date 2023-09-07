@@ -81,6 +81,8 @@ test:
 #
 production:
   <<: *default
-  database: READMee_production
-  username: READMee
-  password: <%= ENV["READMEE_DATABASE_PASSWORD"] %>
+  port: <%= ENV["H_POSTGRES_PORT"] %>
+  host: <%= ENV["H_POSTGRES_HOST"] %>
+  database: <%= ENV["H_POSTGRES_DB"] %>
+  username: <%= ENV["H_POSTGRES_USER"] %>
+  password: <%= ENV["H_POSTGRES_PASSWORD"] %>
