@@ -65,3 +65,7 @@
 .input {
   width: 400px;
 }
+
+.colored-toast.swal2-icon-success {
+  color: rgb(245 158 11) !important;
+}
