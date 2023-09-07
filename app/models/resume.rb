@@ -1,6 +1,8 @@
 class Resume < ApplicationRecord
   belongs_to :user
-  
+  belongs_to :profile
+
+
   def self.create_content(profile, resume, email)
     resume.basic_info = "#{profile.full_name}\n#{profile.address}"
     resume.skills = profile.skills.pluck(:tag)
