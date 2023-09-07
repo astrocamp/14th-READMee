@@ -7,7 +7,7 @@
 }
 
 .input {
-  @apply block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
+  @apply block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full;
 }
 
 .language-css {
@@ -95,4 +95,8 @@
 
 .turbo-frame-error {
   @apply hidden;
+}
+
+.form {
+  @apply block w-11/12 px-3 py-2 mx-auto mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
