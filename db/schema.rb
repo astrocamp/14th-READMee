@@ -10,19 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_07_050738) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_075125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -136,8 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_050738) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.string "content"
-    t.boolean "publish"
     t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
@@ -202,8 +190,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_050738) do
     t.bigint "work_experience_id", null: false
     t.bigint "project_id", null: false
     t.bigint "education_id", null: false
+    t.bigint "profile_id"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["education_id"], name: "index_resumes_on_education_id"
+    t.index ["profile_id"], name: "index_resumes_on_profile_id"
     t.index ["project_id"], name: "index_resumes_on_project_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
     t.index ["work_experience_id"], name: "index_resumes_on_work_experience_id"
@@ -262,6 +252,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_07_050738) do
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
   add_foreign_key "resumes", "educations"
+  add_foreign_key "resumes", "profiles"
   add_foreign_key "resumes", "projects"
   add_foreign_key "resumes", "users"
   add_foreign_key "resumes", "work_experiences"
