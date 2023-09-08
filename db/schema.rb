@@ -197,7 +197,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
     t.string "phone"
     t.string "address"
     t.string "job_hunting"
-    t.bigint "profile_id"
     t.integer "area_1"
     t.integer "area_2"
     t.integer "area_3"
@@ -213,7 +212,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
     t.string "project_name_2"
     t.text "project_content_2"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
-    t.index ["profile_id"], name: "index_resumes_on_profile_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
@@ -283,7 +281,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
   add_foreign_key "projects", "resumes"
-  add_foreign_key "resumes", "profiles"
   add_foreign_key "resumes", "users"
   add_foreign_key "resumes", "work_experiences"
   add_foreign_key "social_links", "profiles"
