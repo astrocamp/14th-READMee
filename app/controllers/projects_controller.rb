@@ -21,8 +21,10 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @profile = current_user.profile
     @projects = Project.find(params[:id])
     if @projects.update(project_params)
+      @projects = Project.where(profile_id: @profile.id)
       render "users/dashboard"
     else
       flash.now[:alert] = "請檢查欄位"
