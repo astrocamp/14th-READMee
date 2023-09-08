@@ -1,4 +1,4 @@
-<div class="mx-10">
+<div class="px-10">
   <div class="flex items-center gap-5 mt-10" >
   <h2 class="text-2xl font-bold ">文章列表</h2>    
   <%= link_to "新增文章",new_article_path, class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-800" %>
@@ -7,11 +7,11 @@
   <section class= "flex justify-between">
     <ul>
       <% @articles.each do |article| %>
-      <li class="mt-12">
+      <li class="p-3 mt-12 border">
       <%= link_to article.title.truncate(15), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium font-semibold" %>
-      <div><%= truncate(article.content, length: 100) %></div>
-      <span data-like-target="count" class="flex block">
-      <%= @liked_counts[article.id] || 0 %>
+      <div class="break-words whitespace-pre-line"><%= truncate(article.content, length: 100) %></div>
+      <span data-like-target="count" class="flex block py-3">
+      已有 <%= @liked_counts[article.id] || 0 %> 人點讚!
       <%= image_tag "like.svg", class: "w-6 h-6 mx-2" %>
       </span>
       <div class="flex gap-4 mt-1">
