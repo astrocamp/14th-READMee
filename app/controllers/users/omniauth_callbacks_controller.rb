@@ -14,7 +14,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    flash[:notice] = I18n.t('devise.omniauth_callbacks.faile')
+    flash[:alert] = I18n.t('devise.omniauth_callbacks.fail')
     redirect_to root_path
   end
 end
