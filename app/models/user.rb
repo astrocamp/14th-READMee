@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   before_save :set_account
 
@@ -8,7 +6,6 @@ class User < ApplicationRecord
   has_one :profile
   has_one :company
   has_many :comments
-  has_many :resumes
   has_many :articles
   has_many :like_logs
   has_many :liked_articles, source: :article, through: :like_logs

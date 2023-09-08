@@ -46,6 +46,9 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @profile = Profile.find_by(user_id: current_user.id)
+    @profile = current_user.profile
+    if @profile.present?
+      @education = Education.where(profile_id: @profile.id)
+    end
   end
 end

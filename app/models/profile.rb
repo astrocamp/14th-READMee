@@ -1,7 +1,6 @@
 class Profile < ApplicationRecord
-  validates :full_name, :phone, :address, :languages, :job_hunting, :about_me, :social_link, presence: true
-
-  # relationships
+  validates :full_name, :phone, :address, presence: true
+ 
   belongs_to :user
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [128, 128]
@@ -11,6 +10,7 @@ class Profile < ApplicationRecord
   has_many :work_experiences
   has_many :educations
   has_many :projects
+  has_many :resumes
 
   def self.address_options
     counties = [
@@ -40,7 +40,8 @@ class Profile < ApplicationRecord
   end
 
   def self.job_title_options
-    job_title = ['軟體工程師',
+    job_title = [
+                 '軟體工程師',
                  '前端工程師',
                  '後端工程師',
                  '全端工程師',

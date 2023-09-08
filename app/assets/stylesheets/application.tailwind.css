@@ -7,7 +7,7 @@
 }
 
 .input {
-  @apply block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
+  @apply block px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full;
 }
 
 .language-css {
@@ -42,6 +42,7 @@
 }
 
 .field_with_errors input[type='text'],
+.field_with_errors input[type='date'],
 .field_with_errors textarea {
   @apply border-2 border-red-600;
 }
@@ -95,4 +96,8 @@
 
 .turbo-frame-error {
   @apply hidden;
+}
+
+.form {
+  @apply block w-6/12 px-3 py-2 mx-auto mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
