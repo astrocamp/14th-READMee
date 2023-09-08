@@ -5,10 +5,12 @@ export default class extends Controller {
   connect() {
     const Toast = Swal.mixin({
       toast: true,
-      position: 'top-right',
+      position: 'top-end',
+      target: '#custom-target',
       iconColor: 'orange',
       customClass: {
-        popup: 'colored-toast'
+        popup: 'colored-toast',
+        container: 'position-absolute'
       },
       showConfirmButton: false,
       timer: 1500,

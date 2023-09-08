@@ -68,5 +68,13 @@
 
 .colored-toast.swal2-icon-success {
   color: black !important;
-  background-color: rgb(252, 246, 239) !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
 }
