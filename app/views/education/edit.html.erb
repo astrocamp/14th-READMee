@@ -1,7 +1,8 @@
 <turbo-frame id="edit_education">
-  <%= form_with(model: @education, url: education_path, data: { turbo: false, turbo_method: :patch}) do |form| %>
-    <%= form.text_field :title %>
-    <%= form.date_field :start_date %>
-    <%= form.date_field :end_date %>
-    <%= form.submit '提交' %>
-  <% end %></turbo-frame>
+  <%= form_with(model: @education, url: education_path, data:{turbo_method: :patch}) do |form| %>
+    <%= form.text_field :title, class:"input" %>
+    <%= form.date_field :start_date, class:"input"%>
+    <%= form.date_field :end_date, class:"input"%>
+    <%= form.submit '提交', class:"save-btn my-2" %>
+  <% end %>
+</turbo-frame>

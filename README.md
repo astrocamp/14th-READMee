@@ -1,6 +1,6 @@
 # READMee 履歷米
-**發掘職涯，一步一機會** <br>
-**Empower Your Story, Elevate Your Career with READMee**
+**To know about me, just READMee!**<br>
+**發掘職涯，一步一機會** 
 
 歡迎來到 READMee，展現您的獨特魅力，尋找理想職位。<br>
 打造精彩履歷，啟動成功之旅！
@@ -28,21 +28,20 @@
 
 ## 技術堆疊
 
-- **前端開發**：HTML5, CSS3, Tailwindcss, JavaScript, Stimulus.js 
-- **後端開發**：Ruby version: 3.2.2, Ruby on Rails: 7.0.6
-- **數據庫**：PostgreSQL
-- **版本控制**：Git, GitHub
-- **圖片上傳**：AWS S3
-- **寄信功能**：Mailgun
-- **實時通信**：WebSocket 技術實現實時通信功能。
+- **Frontend**：HTML5, CSS3, Tailwindcss, JavaScript, Stimulus.js 
+- **Backend**：Ruby version: 3.2.2, Ruby on Rails: 7.0.6
+- **Database**：PostgreSQL
+- **Version Control**：Git, GitHub
+- **Image Upload**：AWS S3
+- **Mail**：Mailgun
 - **部署**：Heroku, CloudFlare
-- **第三方金流**：藍新金流（ NewebPay）
+- **第三方金流**：LinePay
 
 ## 如何運行
 
 如果想要運行我們的專案，請按照以下步驟操作：
 -  `git clone` 我們的專案到本地端。
-- 安裝所需的開發環境和依賴項。
+- 安裝所需的開發環境和套件。
 - 啟動前端和後端服務。
 - 訪問本地服務並開始體驗我們的平台！
 

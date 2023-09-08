@@ -2,15 +2,15 @@
   <%= form_with url: projects_path, model: @projects do |form| %>
     <div>
       <%= form.label :title, "名稱" %>
-      <%= form.text_field :title, name:"projects[title]" %>
+      <%= form.text_field :title, placeholder: "專案名稱", name: "projects[title]", class: "input" %>
     </div>
     <div>
       <%= form.label :use_skill, "使用技術" %>
-      <%= form.text_field :use_skill, name:"projects[use_skill]" %>
+      <%= form.text_field :use_skill, placeholder: "Rails, Heroku, Stimulus...", name: "projects[use_skill]", class: "input" %>
     </div>
     <div>
       <%= form.label :content, "簡介" %>
-      <%= form.text_area :content, name:"projects[content]"%>
+      <%= form.text_area :content, name: "projects[content]", class: "input", rows: 10 %>
     </div>
     <%= form.submit "送出", class: "save-btn" %>
   <% end %>

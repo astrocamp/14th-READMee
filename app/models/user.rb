@@ -1,12 +1,11 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   before_save :set_account
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_one :profile
   has_one :company
+  has_many :comments
   has_many :articles
   has_many :like_logs
   has_many :liked_articles, source: :article, through: :like_logs

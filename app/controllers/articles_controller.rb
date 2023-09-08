@@ -22,6 +22,8 @@ class ArticlesController < ApplicationController
   end
 
   def show 
+    @comment = Comment.new
+    @comments = @article.comments.order(id: :desc)
     @liked_count = LikeLog.where(article_id: @article.id).count
   end
 
