@@ -12,12 +12,12 @@
         <%= @profile.full_name %>
       </div>
       <div class="mx-2">
-        <div class="flex mx-1">
-          <%= image_tag("address.png", class:"profile_img")%>
+        <div class="flex mx-1 items-center">
+          <%= image_tag("address.png", class:"profile_img m-2")%>
           <%= @profile.address %>
         </div>
-        <div class="flex mx-1">
-          <%= image_tag("phone.png", class:"profile_img")%>
+        <div class="flex mx-1 items-center">
+          <%= image_tag("phone.png", class:"profile_img m-2")%>
           <%= @profile.phone %>
         </div>
       </div>
@@ -55,5 +55,7 @@
     </div>
   </turbo-frame>
 <% else %>
-  <%= link_to '新增個人資料',new_profile_path , class:"save-btn"%>
+  <div class="mr-0">
+    <%= link_to '新增個人資料',new_profile_path , class:"save-btn"%>
+  </div>
 <% end %>

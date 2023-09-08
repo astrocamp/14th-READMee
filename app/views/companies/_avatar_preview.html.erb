@@ -1,11 +1,11 @@
 <div class="my-5" data-controller="previews">
-	<div class="m-5">
-		<% if company.avatar.attached?  %>
-			<%= image_tag company.avatar, data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
-		<% else %>
-			<%= image_tag "", data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
-		<% end %>
-	</div>
+  <div class="m-5">
+    <% if company.avatar.attached?  %>
+      <%= image_tag company.avatar, data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
+    <% else %>
+      <%= image_tag "", data: { previews_target: "preview" }, class: "w-32 h-auto mx-auto" %>
+    <% end %>
+  </div>
   <%= f.label '公司照片', class: "font-semibold" %>
   <%= f.file_field :avatar, 
 			direct_upload: true,
