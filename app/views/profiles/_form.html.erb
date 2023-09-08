@@ -1,4 +1,4 @@
-<%= form_with(model: @profile, url:profile_path, class:"dashboard_basic", data:{turbo: false}) do |form|%>
+<%= form_with(model: @profile, url:profile_path, class:"dashboard_basic") do |form|%>
   <%= render "avatar_preview", form: form, profile: @profile %>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     <div class="lg:my-5">
