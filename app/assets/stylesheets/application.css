@@ -97,3 +97,16 @@
   width: 30px;
   height: 30px;
 }
+
+.colored-toast.swal2-icon-success {
+  color: black !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
