@@ -1,21 +1,17 @@
 <turbo-frame id="edit_project">
   <% if @projects.present? %>
-    <table>
-      <tr>
-        <td>專案名稱</td>
-        <td>使用技術</td>
-        <td>介紹</td>
-      </tr>
-      <% @projects.each do |project| %>
-        <tr>
-          <td><%= project.title %></td>
-          <td><%= project.use_skill %></td>
-          <td><%= project.content %></td>
-          <td><%= link_to "編輯", edit_project_path(id: project.id), class: "save-btn" %></td>
-          <td><%= link_to "刪除", project_path(id: project.id), class: "save-btn", data:{turbo_method: :delete} %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
+    <% @projects.each do |project| %>
+      <%= project.title %>
+      <%= project.use_skill %>
+      <%= project.content %>
+      <%= link_to "編輯", edit_project_path(id: project.id), class: "save-btn" %>
+      <%= link_to "刪除", project_path(id: project.id), class: "save-btn", data:{turbo_method: :delete} %>
+    <% end %>
+  </table>
+<% end %>
 </turbo-frame>
-<%= link_to "新增", new_project_path, class: "save-btn" %>
+<% if @profile.present? %>
+  <%= link_to "新增", new_project_path, class: "save-btn" %>
+<% else %>
+  <%= link_to "新增", new_project_path, class: "disabled-btn", disabled: true %>
+<% end %>

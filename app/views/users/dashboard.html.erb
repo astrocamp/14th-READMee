@@ -1,19 +1,15 @@
-<h2 class="text-lg font-semibold">dashboard</h2>
-<div class="w-9/12  mx-auto shadow-lg">
-  <div class="border-solid border-2 border-indigo-600 my-2">
-    <h2 class="text-lg font-semibold">profile</h2>
-    <turbo-frame id="new_profile">
-      <%= render 'profiles/show' %>
-    </turbo-frame>
+<div class="form">
+  <div class="relative my-2 border-solid border rounded-md p-1">
+    <%= render 'profiles/show' %>
   </div>
-  <div  class="border-solid border-2 border-indigo-600 my-2">
-    <h2 class="text-lg font-semibold">education</h2>
+  <div  class="relative my-2 border-solid border rounded-md p-1">
+    <h2 class="text-lg">教育程度</h2>
     <turbo-frame id="new_education">
       <%= render 'education/show'%>
     </turbo-frame>
   </div>
-  <div class="border-solid border-2 border-indigo-600 my-2">
-    <h2 class="text-lg font-semibold">projects</h2>
+  <div class="relative my-2 border-solid border rounded-md p-1">
+    <h2 class="text-lg">專案</h2>
     <turbo-frame id="new_projects">
       <%= render 'projects/show' %>
     </turbo-frame>

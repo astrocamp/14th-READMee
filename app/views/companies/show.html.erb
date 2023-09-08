@@ -1,22 +1,26 @@
 <% if @company.present? %>
-      
   <div class="container max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-    <div class="flex w-full h-full transition-all rounded-lg shadow-md group gap-y-6">
-
-      <div class="p-3">
-        <img src="https://picsum.photos/150/150/?random=10">
-      </div>
-      <div class="grid place-content-end">
+    <div class="flex flex-col-reverse w-full h-full transition-all rounded-lg shadow-md md:flex-row group gap-y-6">
+      <picture class="md:w-1/4">
+        <% if @company.avatar.attached? %>
+          <%= image_tag @company.avatar.variant(:thumb), class: "mx-auto" %>
+        <% else %>
+          <div class="flex flex-col items-center justify-center">
+            <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+          </div>
+        <% end %>
+      </picture>
+      <div class="md:w-3/4">
         <h3 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= @company.name %></h3>
         <div>
           <button>
             <% if current_user.role == "employer" %>
-              <%=link_to "編輯", edit_company_path(current_user.company.id), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+              <%=link_to "編輯", edit_company_path(current_user.account), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
             <% end %>
           </button>
           <button>
             <% if current_user.role == "employer" %>
-              <%= link_to "您的職缺", company_jobs_path(current_user.company.id), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
+              <%= link_to "您的職缺", company_jobs_path(current_user.account), class:"rounded-lg bg-amber-500 px-8 py-2 my-2 text-white my-2 block" %>
             <% end %>
           </button>
         </div>
@@ -24,22 +28,17 @@
     </div>
   </div>
 
-  <div class="container max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto text-xl">
-    關於
-  </div>
-
+  <div class="container max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 mx-auto text-xl font-bold">關於</div>
+  
   <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 mx-auto ">
-    <div class="grid gap-12 md:grid-cols-3">
+    <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-3">
       <div class="col-span-2">
         <div class="flex">
           <div class="px-1">
-            <img src="https://picsum.photos/200/100/?random=10">
-          </div>
-          <div class="px-1">
-            <img src="https://picsum.photos/200/100/?random=10">
+            <%= image_tag("defaultcover.png", class: "w-80 mx-auto") %>
           </div>
         </div>
-        <p class="text-gray-800 whitespace-pre-line dark:text-gray-400">
+        <p class="text-black whitespace-pre-line">
           <%= @company.about %>
         </p>
       </div>

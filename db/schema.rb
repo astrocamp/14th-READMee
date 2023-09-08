@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +63,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -81,6 +101,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "interview_date"
+    t.time "interview_time"
+    t.text "interview_message"
+    t.boolean "notified", default: false
     t.index ["company_id"], name: "index_job_matchings_on_company_id"
     t.index ["job_id"], name: "index_job_matchings_on_job_id"
     t.index ["user_id"], name: "index_job_matchings_on_user_id"
@@ -112,6 +136,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.string "content"
+    t.boolean "publish"
     t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
@@ -169,8 +195,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.string "project_title"
     t.string "education_title"
     t.boolean "publish"
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.string "job_hunting"
+    t.bigint "work_experience_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "education_id", null: false
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["education_id"], name: "index_resumes_on_education_id"
+    t.index ["project_id"], name: "index_resumes_on_project_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
+    t.index ["work_experience_id"], name: "index_resumes_on_work_experience_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -212,6 +248,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "educations", "profiles"
   add_foreign_key "job_matchings", "companies"
@@ -223,6 +261,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
   add_foreign_key "projects", "profiles"
+  add_foreign_key "resumes", "educations"
+  add_foreign_key "resumes", "projects"
   add_foreign_key "resumes", "users"
+  add_foreign_key "resumes", "work_experiences"
   add_foreign_key "work_experiences", "profiles"
 end

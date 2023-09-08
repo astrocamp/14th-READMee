@@ -1,5 +1,5 @@
 <turbo-frame id="edit_education">
-  <%= form_with(model: @education, url: education_path, data: { turbo: false, turbo_method: :patch}) do |form| %>
+  <%= form_with(model: @education, url: education_path, data:{turbo_method: :patch}) do |form| %>
     <%= form.text_field :title %>
     <%= form.date_field :start_date %>
     <%= form.date_field :end_date %>
