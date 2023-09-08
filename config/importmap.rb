@@ -30,3 +30,4 @@ pin "@editorjs/simple-image", to: "https://ga.jspm.io/npm:@editorjs/simple-image
 pin "@editorjs/image", to: "https://ga.jspm.io/npm:@editorjs/image@2.8.1/dist/bundle.js"
 pin "@editorjs/list", to: "https://ga.jspm.io/npm:@editorjs/list@1.8.0/dist/bundle.js"
 pin "@editorjs/embed", to: "https://ga.jspm.io/npm:@editorjs/embed@2.5.3/dist/bundle.js"
+pin "sweetalert2", to: "https://ga.jspm.io/npm:sweetalert2@11.7.27/dist/sweetalert2.all.js"
