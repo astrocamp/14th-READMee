@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   before_save :set_account
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
   has_one :profile
   has_one :company
