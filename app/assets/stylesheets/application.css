@@ -103,6 +103,15 @@
   position: relative !important;
 }
 
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
 .colored-toast.swal2-icon-success {
   color: black !important;
 }

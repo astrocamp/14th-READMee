@@ -48,16 +48,10 @@
       <h2 class="text-lg font-semibold">求職偏好</h2>
       <%= @profile.job_hunting %>
     </div>
-    <div class="mt-4">
-      <h2 class="text-lg font-semibold">自我介紹</h2>
-      <%= @profile.about_me %>
-    </div>
-    <div class="mt-4">
-      <h2 class="text-lg font-semibold">社群連結</h2>
-      <%= @profile.social_link %>
-    </div>
-    <div class="mt-4 mr-0">
-      <%= link_to '修改個人資料',edit_profile_path , class:"save-btn"%>
+    <div class="profile_edit_img">
+      <%= link_to edit_profile_path do%>
+        <%= image_tag "edit.png"%>
+      <% end %>
     </div>
   </turbo-frame>
 <% else %>
