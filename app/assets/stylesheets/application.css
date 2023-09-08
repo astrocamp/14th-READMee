@@ -67,5 +67,6 @@
 }
 
 .colored-toast.swal2-icon-success {
-  color: rgb(245 158 11) !important;
+  color: black !important;
+  background-color: rgb(252, 246, 239) !important;
 }
