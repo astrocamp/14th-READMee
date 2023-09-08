@@ -2,10 +2,6 @@ class EducationController < ApplicationController
   before_action :set_education, only: [:edit, :update, :destroy]
   before_action :set_profile, only: [:show, :create, :update, :destroy]
 
-  def _show
-    find_educaiton
-  end
-
   def new
     if current_user.profile.present?
       @education = Education.new
@@ -19,9 +15,8 @@ class EducationController < ApplicationController
     @education.profile_id = @profile.id
     if @education.save
       find_educaiton
-      render "_show"
+      render "users/dashboard"
     else
-      flash.now[:alert] = "請檢察欄位!"
       render :new
     end
   end
@@ -32,9 +27,8 @@ class EducationController < ApplicationController
   def update
     if @education.update(education_params)
       find_educaiton
-      render "_show"  
+      render "users/dashboard"
     else
-      flash.now[:alert] = "請檢察欄位!"
       render :edit
     end
   end
@@ -43,7 +37,7 @@ class EducationController < ApplicationController
     if @education.destroy
       @profile = current_user.profile
       find_educaiton
-      render "_show"
+      render "users/dashboard"
     end
   end  
 
