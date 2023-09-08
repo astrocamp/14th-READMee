@@ -1,28 +1,32 @@
-<%= form_with(model: @profile, url:profile_path, class:"dashboard_basic") do |form|%>
+  <%= form_with(model: @profile, url:profile_path, class:"dashboard_basic") do |form|%>
   <%= render "avatar_preview", form: form, profile: @profile %>
-  <div class="my-5">
-    <%= form.label :full_name, '全名', class: "font-semibold"%>
-    <%= form.text_field :full_name, class:"input"%>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div class="lg:my-5">
+      <%= form.label :full_name, '全名', class: "font-semibold#{"bg-amber-100 p-2" if @profile.errors[:address].any?}"%>
+      <%= form.text_field :full_name, class:"input"%>
+    </div>
+    <div class="lg:my-5">
+      <%= form.label :phone, '電話', class: "font-semibold#{"bg-amber-100 p-2" if @profile.errors[:address].any?}"%>
+      <%= form.text_field :phone, class:"input"%>
+    </div>
+    <div class="lg:my-5">
+      <%= form.label :address, '居住區域', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:address].any?}" %>
+      <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇" }, class: "input" %>
+    </div>
   </div>
   <div class="my-5">
-    <%= form.label :phone, '電話', class: "font-semibold"%>
-    <%= form.text_field :phone, class:"input"%>
-  </div>
-  <div class="my-5">
-    <%= form.label :address, '居住區域', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:address].any?}" %>
-    <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇地址" }, class: "input" %>
-  </div>
-  <%= form.label :languages, '語言', class: "font-semibold"%>
-  <div class="flex flex-col">
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <% ["中文", "英文", "日文", "西班牙文", "法文", "德文"].each do |language| %>
-        <div class="flex flex-col">
-          <div class="mb-1">
-            <%= form.label language, class: "px-2 mb-2 block border-amber-500 border-l-4 border-solid w-fit" %>
+    <%= form.label :languages, '語言', class: "font-semibold"%>
+    <div class="flex flex-col">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <% ["中文", "英文", "日文", "西班牙文", "法文", "德文"].each do |language| %>
+          <div class="flex flex-col">
+            <div class="mb-1">
+              <%= form.label language, class: "px-2 m-2 block border-amber-500 border-l-4 border-solid w-fit" %>
+            </div>
+            <%= form.select :languages, options_for_select([["程度", "", { disabled: true, selected: true, hidden: true }], ["初階", "初階"], ["中等", "中等"], ["進階", "進階"]]), {}, { name: "profile[languages][#{language}]", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" } %>
           </div>
-          <%= form.select :languages, options_for_select([["程度", "", { disabled: true, selected: true, hidden: true }], ["初階", "初階"], ["中等", "中等"], ["進階", "進階"]]), {}, { name: "profile[languages][#{language}]", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 w-full" } %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div>
@@ -30,13 +34,14 @@
     <%= form.select :skill_ids, Skill.pluck(:tag, :id), {}, { data: { controller: "slimselect" }, multiple: true } %>
   </div>
   <div class="my-5">
-    <%= form.label :job_hunting, '尋找的職稱', class: "font-semibold"%>
-    <%= form.select :job_hunting, options_for_select(Profile.job_title_options), {}, class: "input" %>
+    <%= form.label :job_hunting, '尋找的職稱', class: "font-semibold" %>
+    <%= form.select :job_hunting, options_for_select(Profile.job_title_options), {prompt: '請選擇'}, class: "input" %>
   </div>
-  <div class="my-5">
-    <%= form.label :about_me, '自我介紹', class: "font-semibold"%>
-    <%= form.text_area :about_me, rows: 4, class: "w-full", class:"block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full"%>
-  </div>
-  <%= form.submit '送出',class:"save-btn"%>
+</div>
+<div class="my-5">
+  <%= form.label :about_me, '自我介紹', class: "font-semibold"%>
+  <%= form.text_area :about_me, rows: 4, class: "w-full", class:"block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full"%>
+</div>
+<%= form.submit '送出',class:"save-btn"%>
 </div>
 <% end %>

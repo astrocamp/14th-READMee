@@ -14,8 +14,8 @@ class ProfilesController < ApplicationController
     if @profile.save
       redirect_to dashboard_path
     else
-      render "profiles/new"
       flash.now[:alert] = "請檢查表單必填欄位。" 
+      render :new
     end
   end
 
@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
       render "users/dashboard"
     else
       flash.now[:alert] = "請檢查表單必填欄位。" 
+      render :edit
     end
   end
 

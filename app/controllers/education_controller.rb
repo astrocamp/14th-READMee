@@ -22,6 +22,7 @@ class EducationController < ApplicationController
       render "_show"
     else
       flash.now[:alert] = "請檢察欄位!"
+      render :new
     end
   end
 
@@ -34,6 +35,7 @@ class EducationController < ApplicationController
       render "_show"  
     else
       flash.now[:alert] = "請檢察欄位!"
+      render :edit
     end
   end
 
