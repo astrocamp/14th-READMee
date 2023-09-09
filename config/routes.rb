@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  
+
   resources :articles do
-    resources :comments, only: [:create, :destroy], 
+    resources :comments, only: [:create, :destroy],
     shallow: true
   end
 
@@ -19,11 +19,11 @@ Rails.application.routes.draw do
     resources :social_link
     resources :education
     resources :projects
-    resource :profile, except: [:destroy]
+    resource :profile, except: [:destroy, :show, :new, :update]
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]
     resource :company, except: [:show] do
-      resources :jobs, except: [:show]  
+      resources :jobs, except: [:show]
     end
   end
 
