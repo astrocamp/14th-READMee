@@ -5,7 +5,7 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem "image_processing", "~> 1.2"
-gem 'importmap-rails'
+
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
@@ -36,3 +36,4 @@ gem 'paranoia', '~> 2.6'
 gem 'pundit', '~> 2.3'
 gem 'ransack'
 gem 'kaminari'
+gem 'jsbundling-rails'

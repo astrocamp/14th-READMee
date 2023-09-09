@@ -9,8 +9,9 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "https://unpkg.com/slim-select@latest/dist/slimselect.css", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+
     <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
   <body class="relative">
     <%= render "shared/navbar", class:"relative"%>
