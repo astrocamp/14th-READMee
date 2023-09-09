@@ -6,19 +6,37 @@
         <%= f.submit "發佈", name: "published", class: "absolute top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
 
         <%= hidden_field_tag :publish, @resume.publish %>
-        <div class="flex min-h-min">
-          <div >
-            <div class="flex items-center justify-center pb-5 custom-width-250px">
-             <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
-            </div>
-            <div class="flex flex-col items-center justify-center inline-block w-60">
+        <div class="w-9/12 mx-auto min-h-min">
+          <div>
+
+            <div class="flex flex-col items-center justify-center ">
+              <div class="flex items-center justify-center">
+                <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
+              </div>
               <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入全名" %>
               <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center" , placeholder: "請輸入欲求職的職位" %>
-              <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-gray-200 rounded-md text-center " , placeholder: "請輸入電話" %>
+              <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center " , placeholder: "請輸入電話" %>
+              <%= f.text_field :address, class: "px-2 py-1 my-1 border-white rounded-md text-center" , placeholder: "請輸入地址" %>
               <%= f.text_field :social_link, class: "px-2 py-1 my-1 border-white rounded-md text-center" , placeholder: "請輸入社群連結" %>
             </div>
 
-            <div class="text-center">
+
+          </div>
+
+
+        </div>
+
+
+        <div class="flex flex-col w-full">
+          <%= f.text_field :about_me_title, class: "py-1 text border border-0 border-white rounded-md ", placeholder: "請輸入自我介紹標題" %>
+          <%= f.text_area :about_me, class: "grow h-96 border border-0 border-white rounded-md ", placeholder: "請輸入自我介紹" %>
+        </div>
+
+
+
+        <div class="flex justify-between w-9/12">
+
+           <div class="text-center">
               <h1 class="mt-1 text-lg font-bold">語言</h1>
               <ul class="relative">
                 <% if @resume.languages.present? %>
@@ -42,44 +60,41 @@
                 <% end %>
               </ul>
             </div>
-          </div>
 
-          <div class="flex flex-col w-full">
-            <%= f.text_field :about_me_title, class: "py-1 text border border-gray-200 rounded-md shadow outline-none", placeholder: "請輸入自我介紹標題" %>
-            <%= f.text_area :about_me, class: "grow h-96 border border-gray-200 rounded-md shadow outline-none", placeholder: "請輸入自我介紹" %>
-          </div>
+
         </div>
+
 
           <div class="mt-8">
             <%= f.text_field :work_experience_title, class: "border-0 border-white text-lg font-bold w-full py-1", placeholder: "工作經驗標題" %>
             <div class="flex justify-between">
-              <%= f.text_field :work_experience_name,  class: "my-2 p-2 rounded-md resize-y border-gray-200 shadow outline-none", placeholder: "從work_model拿資料" %>
+              <%= f.text_field :work_experience_name,  class: "my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
               <div class="flex" >
-                <%= f.text_field :work_start_date,  class: "my-2 p-2 rounded-md resize-y border-gray-200  shadow outline-none", placeholder: "開始日期從work拿資料" %>
-                <%= f.text_field :work_end_date,  class: "my-2 p-2 rounded-md resize-y border-gray-200  shadow outline-none", placeholder: "結束日期從work拿資料" %>
+                <%= f.text_field :work_start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "開始日期從work拿資料" %>
+                <%= f.text_field :work_end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "結束日期從work拿資料" %>
               </div>
             </div>
           </div>
 
           <div class="mt-2">
-            <%= f.text_field :project_title, class: "my-2 p-2 w-full rounded-md resize-y  border-0 border-white ", placeholder: "請輸入專案標題" %>
-            <div class="flex pb-14 h-60">
-              <%= image_tag "pdf-project.jpg" %>
-              <div class="w-1/2 pt-5l">
-                <%= f.text_area :project_name_1, class: "w-full py-1  rounded-md resize-y border-gray-200  shadow outline-none", placeholder: "從project拿資料" %>
-                <%= f.text_area :project_content_1, class: "w-full py-1 rounded-md resize-y border-gray-200  shadow outline-none", placeholder: "從project拿資料" %>
-
+            <%= f.text_field :project_title, class: "my-2 p-2 w-full rounded-md resize-y text-lg font-bold border-0 border-white ", placeholder: "請輸入專案標題" %>
+            <div class="flex h-60">
+              <div class="w-1/2 fle">
+                <%= f.text_area :project_name_1, class: "w-full py-1  rounded-md resize-y border-0 border-white  ", placeholder: "專案名稱1號" %>
+                <%= f.text_area :project_content_1, class: "w-full py-1 rounded-md resize-y border-0 border-white  ", placeholder: "專案內容1號" %>
               </div>
+              <%= image_tag "pdf-project.jpg", class:"w-1/2" %>
+
             </div>
           </div>
 
           <div class="mt-2">
-            <%= f.text_field :education_title, class: "p-2 w-full rounded-md border-0 border-white", placeholder: "請輸入教育程度標題" %>
+            <%= f.text_field :education_title, class: "p-2 w-full  text-lg font-bold  rounded-md border-0 border-white", placeholder: "請輸入教育程度標題" %>
             <div class="flex justify-between mt-2">
-              <%= f.text_field :education_name, class: "p-2 rounded-md border-gray-200 shadow outline-none", placeholder: "從education拿資料" %>
+              <%= f.text_field :education_name, class: "p-2 rounded-md border-0 border-white ", placeholder: "請輸入學歷名稱" %>
               <div class="flex">
-              <%= f.text_field :education_start_date, class: "p-2 rounded-md border-gray-200 shadow outline-none", placeholder: "開始日期從edu拿資料" %>
-              <%= f.text_field :education_end_date, class: "p-2 rounded-md border-gray-200 shadow outline-none", placeholder: "結束日期從edu拿資料" %>
+              <%= f.text_field :education_start_date, class: "p-2 rounded-md border-0 border-white ", placeholder: "請輸入學歷開始日期" %>
+              <%= f.text_field :education_end_date, class: "p-2 rounded-md border-0 border-white ", placeholder: "請輸入學歷結束日期" %>
               </div>
             </div>
           </div>
