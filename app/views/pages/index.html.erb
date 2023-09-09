@@ -19,11 +19,13 @@
         <span class="block font-semibold">讓我們一同蓄勢待發，航向成功的職業未來。</span>
       </p>
       <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-        <a class="inline-flex items-center justify-center px-4 py-3 text-lg font-semibold text-center text-white transition border border-transparent rounded-md gap-x-3 bg-amber-500 hover:bg-amber-600 " href="/users/sign_up">註冊會員
-          <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <% if show_registration_button %>
+          <a class="inline-flex items-center justify-center px-4 py-3 text-lg font-semibold text-center text-white transition border border-transparent rounded-md gap-x-3 bg-amber-500 hover:bg-amber-600" href="/users/sign_up">註冊會員
+            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        </a>
+          </a>
+        <% end %>
       </div>
     </div> 
     <picture class="w-full max-w-md mx-auto">

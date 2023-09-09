@@ -8,4 +8,12 @@ module ApplicationHelper
       link_to '公司', new_company_path(account: user.account), class: 'nav-btn-signed-in'
     end
   end
+
+  def show_registration_button
+    if current_user
+      false
+    else
+      true
+    end
+  end
 end
