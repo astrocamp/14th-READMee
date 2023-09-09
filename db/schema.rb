@@ -82,7 +82,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "resume_id"
     t.index ["profile_id"], name: "index_educations_on_profile_id"
+    t.index ["resume_id"], name: "index_educations_on_resume_id"
   end
 
   create_table "job_matchings", force: :cascade do |t|
@@ -157,7 +159,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
     t.string "avatar"
     t.text "basic_info"
     t.text "social_links"
-    t.text "work_experience"
     t.string "skills"
     t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
@@ -168,8 +169,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
     t.string "about_me_title"
     t.string "work_experience_title"
     t.string "languages"
-    t.text "project"
-    t.text "education"
     t.string "project_title"
     t.string "education_title"
     t.boolean "publish"
@@ -177,14 +176,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
     t.string "phone"
     t.string "address"
     t.string "job_hunting"
-    t.bigint "work_experience_id", null: false
-    t.bigint "project_id", null: false
-    t.bigint "education_id", null: false
+    t.integer "area_1"
+    t.integer "area_2"
+    t.integer "area_3"
+    t.integer "area_4"
+    t.string "project_name_1"
+    t.text "project_content_1"
+    t.string "project_name_2"
+    t.text "project_content_2"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
-    t.index ["education_id"], name: "index_resumes_on_education_id"
-    t.index ["project_id"], name: "index_resumes_on_project_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
-    t.index ["work_experience_id"], name: "index_resumes_on_work_experience_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -229,7 +230,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "resume_id"
     t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
+    t.index ["resume_id"], name: "index_work_experiences_on_resume_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -239,6 +242,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "educations", "profiles"
+  add_foreign_key "educations", "resumes"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
@@ -247,9 +251,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "resumes", "educations"
+  add_foreign_key"resumes", "educations"
   add_foreign_key "resumes", "users"
-  add_foreign_key "resumes", "work_experiences"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
+  add_foreign_key "work_experiences", "resumes"
 end

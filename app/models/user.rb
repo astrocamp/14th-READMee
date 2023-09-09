@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :company
   has_many :comments
   has_many :articles
+  has_many :resumes
   has_many :like_logs
   has_many :liked_articles, source: :article, through: :like_logs
   has_many :job_matchings
@@ -31,11 +32,11 @@ class User < ApplicationRecord
 
   def like!(record)
     liked_articles << record
-  end  
-  
+  end
+
   def unlike!(record)
     liked_articles.destroy(record)
-  end  
+  end
 
   def set_account
     self.account = email.split('@').first if email.present?
@@ -44,7 +45,7 @@ class User < ApplicationRecord
   def role_unset?
     role == 'nil'
   end
-  
+
   def admin?
     role == 'admin'
   end
