@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_111941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,15 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
     t.bigint "user_id"
     t.index ["deleted_at"], name: "index_articles_on_deleted_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
-  end
-
-  create_table "chat_messages", force: :cascade do |t|
-    t.text "user_message"
-    t.text "gpt_reply"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -201,12 +192,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
     t.integer "area_2"
     t.integer "area_3"
     t.integer "area_4"
-    t.text "work_experience_name"
-    t.string "work_start_date"
-    t.string "work_end_date"
-    t.string "education_name"
-    t.string "education_start_date"
-    t.string "education_end_date"
     t.string "project_name_1"
     t.text "project_content_1"
     t.string "project_name_2"
@@ -265,7 +250,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
-  add_foreign_key "chat_messages", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
@@ -282,7 +266,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_081305) do
   add_foreign_key "projects", "profiles"
   add_foreign_key "projects", "resumes"
   add_foreign_key "resumes", "users"
-  add_foreign_key "resumes", "work_experiences"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
   add_foreign_key "work_experiences", "resumes"
