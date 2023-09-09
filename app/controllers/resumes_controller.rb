@@ -2,6 +2,14 @@ class ResumesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_resume, only: [:edit, :update]
 
+  def new
+    @resume = Resume.new
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace("new-resume-frame", partial: 'resumes/new') }
+      format.html
+    end
+  end
+
   def index
     @users = User.includes(:resumes)
   end

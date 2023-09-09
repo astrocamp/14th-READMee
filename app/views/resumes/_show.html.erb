@@ -1,0 +1,5 @@
+<% if current_user.profile.present? %>
+  要先修改resume的欄位
+<% else %>
+  <%= link_to '新增履歷',new_resume_path , class:"save-btn"%>
+<% end %>
