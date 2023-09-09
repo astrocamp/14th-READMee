@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   
   belongs_to :profile
   def self.use_skill
-    skill=[
+    skill = [
       "HTML",
       "CSS",
       "JavaScript",
@@ -26,7 +26,7 @@ class Project < ApplicationRecord
       "Version Control (e.g., Git)",
       "Web Accessibility",
       "Web Security",
-      "Performance Optimization",
+      "Performance Optimization"
     ]
   end
 end

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def job_application
     @job_matching = JobMatching.new
     JobMatching.create_matching(current_user.id, params[:job].to_i, params[:company].to_i, @job_matching)
-    redirect_to jobs_list_path, notice: "您已應徵該工作，請至個人頁查看"
+    redirect_to jobs_list_path, notice: "已應徵，請至應徵紀錄查看"
   end
   
   def apply_job
@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     if @profile.present?
       @projects = Project.where(profile_id: @profile.id)
       @education = Education.where(profile_id: @profile.id)
+      @social_link = SocialLink.where(profile_id: @profile.id)
     end
   end
 end

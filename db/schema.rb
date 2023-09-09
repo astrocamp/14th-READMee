@@ -10,19 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -136,8 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.string "content"
-    t.boolean "publish"
     t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
@@ -162,16 +150,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.jsonb "job_hunting"
     t.jsonb "social_link"
     t.index ["user_id"], name: "index_profiles_on_user_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.jsonb "use_skill"
-    t.text "content"
-    t.bigint "profile_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_projects_on_profile_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -213,6 +191,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "social_links", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_social_links_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -260,10 +247,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "profiles"
   add_foreign_key "resumes", "educations"
-  add_foreign_key "resumes", "projects"
   add_foreign_key "resumes", "users"
   add_foreign_key "resumes", "work_experiences"
+  add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
 end
