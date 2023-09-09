@@ -9,11 +9,23 @@
   @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-slate-600;
 }
 .input {
-  @apply block px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full;
+  @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
 
 .language-css {
   @apply block px-2 mb-2 border-l-4 border-solid border-amber-500 w-fit;
+}
+
+.nav-btn {
+  @apply font-semibold text-gray-500 hover:text-amber-500 sm:py-6;
+}
+
+.nav-btn-signed-in {
+  @apply font-semibold text-gray-500 hover:text-amber-500 mx-1
+}
+
+.show {
+  @apply block;
 }
 
 :root {
@@ -36,7 +48,7 @@
 }
 
 .article-title-link {
-  @apply mt-10 text-2xl font-bold hover:ease-in hover:duration-200 hover:text-amber-600 inline-block;
+  @apply inline-block mt-10 text-2xl font-bold hover:ease-in hover:duration-200 hover:text-amber-600;
 }
 
 .article-post {
@@ -51,7 +63,7 @@
 }
 
 .article-img {
-  @apply aspect-w-11 aspect-h-7 object-cover rounded-2xl;
+  @apply object-cover aspect-w-11 aspect-h-7 rounded-2xl;
 }
 
 .pagination {
@@ -70,11 +82,11 @@
 .prev,
 .next,
 .page > a {
-  @apply text-2xl hover:bg-amber-500  hover:text-white mx-1;
+  @apply mx-1 text-2xl hover:bg-amber-500 hover:text-white;
 }
 
 .page {
-  @apply text-2xl mx-1;
+  @apply mx-1 text-2xl;
 }
 
 @layer base {
@@ -89,7 +101,7 @@
   }
 
   .badge {
-    @apply px-2 py-1 rounded-sm text-xs border-solid border-2 border-gray-300;
+    @apply px-2 py-1 text-xs border-2 border-gray-300 border-solid rounded-sm;
   }
 
   .user-name {
