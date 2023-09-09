@@ -23,6 +23,6 @@
   <% if @profile.present? %>
     <%= link_to '新增', new_education_path, class: "save-btn" %>
   <% else %>
-    請先建立個人檔案
+    <%= link_to '新增', new_education_path, class: "disabled-btn", disabled: true %>
   <% end %>
 </turbo-frame>

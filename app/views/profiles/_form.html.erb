@@ -1,16 +1,16 @@
-  <%= form_with(model: @profile, url:profile_path, class:"dashboard_basic") do |form|%>
+<%= form_with(model: @profile, url:profile_path, class:"dashboard_basic") do |form|%>
   <%= render "avatar_preview", form: form, profile: @profile %>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     <div class="lg:my-5">
-      <%= form.label :full_name, '全名', class: "font-semibold#{"bg-amber-100 p-2" if @profile.errors[:address].any?}"%>
+      <%= form.label :full_name, '全名', class: "font-semibold"%>
       <%= form.text_field :full_name, class:"input"%>
     </div>
     <div class="lg:my-5">
-      <%= form.label :phone, '電話', class: "font-semibold#{"bg-amber-100 p-2" if @profile.errors[:address].any?}"%>
-      <%= form.text_field :phone, class:"input"%>
+      <%= form.label :phone, '電話', class: "font-semibold"%>
+      <%= form.phone_field :phone, class: "input", pattern: "\\d{4}-\\d{3}-\\d{3}", placeholder: "0900-000-000" %>
     </div>
     <div class="lg:my-5">
-      <%= form.label :address, '居住區域', class: "font-semibold #{"bg-amber-100 p-2" if @profile.errors[:address].any?}" %>
+      <%= form.label :address, '居住區域', class: "font-semibold" %>
       <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇" }, class: "input" %>
     </div>
   </div>
@@ -37,11 +37,9 @@
     <%= form.label :job_hunting, '尋找的職稱', class: "font-semibold" %>
     <%= form.select :job_hunting, options_for_select(Profile.job_title_options), {prompt: '請選擇'}, class: "input" %>
   </div>
-</div>
-<div class="my-5">
-  <%= form.label :about_me, '自我介紹', class: "font-semibold"%>
-  <%= form.text_area :about_me, rows: 4, class: "w-full", class:"block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full"%>
-</div>
-<%= form.submit '送出',class:"save-btn"%>
-</div>
+  <div class="my-5">
+    <%= form.label :about_me, '自我介紹', class: "font-semibold"%>
+    <%= form.text_area :about_me, rows: 4, class: "w-full", class:"block w-auto px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none w-full"%>
+  </div>
+  <%= form.submit '送出',class:"save-btn"%>
 <% end %>

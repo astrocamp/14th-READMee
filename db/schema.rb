@@ -10,19 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_07_050738) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.bigint "user_id"
     t.index ["deleted_at"], name: "index_articles_on_deleted_at"
     t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "chat_messages", force: :cascade do |t|
+    t.text "user_message"
+    t.text "gpt_reply"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -136,8 +135,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
-    t.string "content"
-    t.boolean "publish"
     t.index ["deleted_at"], name: "index_portfolios_on_deleted_at"
   end
 
@@ -215,6 +212,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "social_links", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_social_links_on_profile_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -248,6 +254,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "users"
+  add_foreign_key "chat_messages", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
@@ -265,5 +272,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_03_144321) do
   add_foreign_key "resumes", "projects"
   add_foreign_key "resumes", "users"
   add_foreign_key "resumes", "work_experiences"
+  add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
 end
