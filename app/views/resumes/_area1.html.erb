@@ -78,5 +78,50 @@
     
   <% elsif @resume.area_1 == 3 %>
   
+    <div class="w-9/12 mx-auto min-h-min">
+      <div>
+        <div class="flex flex-col items-center justify-center ">
+          <div class="flex items-center justify-center">
+            <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
+          </div>
+          <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入全名" %>
+          <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center" , placeholder: "請輸入欲求職的職位" %>
+          <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center " , placeholder: "請輸入電話" %>
+          <%= f.text_field :address, class: "px-2 py-1 w-96 my-1 border-white rounded-md text-center" , placeholder: "請輸入地址" %>
+          <%= f.text_field :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md text-center" , placeholder: "請輸入社群連結" %>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col w-full">
+      <%= f.text_field :about_me_title, class: "mb-1 py-1 text border border-0 border-white rounded-md", placeholder: "請輸入自我介紹標題" %>
+      <%= f.text_area :about_me, class: "px-3 grow h-48 border border-0 border-white rounded-md ", placeholder: "請輸入自我介紹" %>
+    </div>
+    <div class="flex justify-between">
+      <div class="grow">
+        <h1 class="px-2 mt-1 text-lg font-bold">語言</h1>
+        <ul class="relative">
+          <% if @resume.languages.present? %>
+            <% @languages.each do |language, level| %>
+              <li class="px-2 inline-blockrounded-lg"><%= language %>▪️<%= level %></li>
+            <% end %>
+          <% else %>
+            <li class="inline-block px-2 rounded-lg">-請輸入語言</li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="grow">
+        <h1 class="px-2 text-lg font-bold ">技能</h1>
+        <ul class="relative">
+          <% if @skills.present? %>
+            <% @skills.each do |skill| %>
+              <li class="inline-blockrounded-lg"><%= skill %></li>
+            <% end %>
+          <% else %>
+            <li class="inline-block rounded-lg">-請輸入技能</li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
   <% end %>
 </div>
