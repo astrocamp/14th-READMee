@@ -7,7 +7,6 @@ class RemoveColumnFromResumes < ActiveRecord::Migration[7.0]
     remove_reference :resumes, :project, index: true
     remove_reference :resumes, :education, index: true
     add_reference :work_experiences, :resume, foreign_key: true
-    add_reference :projects, :resume, foreign_key: true
     add_reference :educations, :resume, foreign_key: true
   end
 end

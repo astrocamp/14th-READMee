@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_111941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -251,7 +251,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_070717) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "resumes", "educations"
   add_foreign_key "resumes", "users"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
