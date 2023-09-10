@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_111941) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_055133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -196,6 +196,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_111941) do
     t.text "project_content_1"
     t.string "project_name_2"
     t.text "project_content_2"
+    t.string "work_exp_name_1"
+    t.text "work_exp_content_1"
+    t.string "work_exp_start_date_1"
+    t.string "work_exp_end_date_1"
+    t.string "work_exp_name_2"
+    t.text "work_exp_content_2"
+    t.string "work_exp_start_date_2"
+    t.string "work_exp_end_date_2"
+    t.string "education_name_1"
+    t.string "education_start_date_1"
+    t.string "education_end_date_1"
+    t.string "education_name_2"
+    t.string "education_start_date_2"
+    t.string "education_end_date_2"
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
