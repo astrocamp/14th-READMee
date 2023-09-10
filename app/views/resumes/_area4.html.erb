@@ -1,0 +1,26 @@
+<!-- _my_partial.html.erb -->
+<div class="area4">
+  <% if @resume.area_4 == 1 %>
+  
+    <div class="mt-2">
+      <%= f.text_field :education_title, class: "p-2 w-full rounded-md border-0 border-white" %>
+      <div class="flex justify-between mt-2">
+        <%= f.text_field :education_name, class: "p-2 rounded-md border-gray-200 shadow outline-none" %>
+        <div class="flex">
+        <%= f.text_field :education_start_date, class: "p-2 rounded-md border-gray-200 shadow outline-none" %>
+        <%= f.text_field :education_end_date, class: "p-2 rounded-md border-gray-200 shadow outline-none" %>
+        </div>
+      </div>
+    </div>
+
+  <% elsif @resume.area_4 == 2 %>
+    <% @resume.work_experiences.each do |f| %>
+      area4組件二
+      <%= f.title %>
+    <% end %>
+    <%= @resume.phone %>
+  <% elsif @resume.area_4 == 3 %>
+    area4組件三
+    <%= @resume.address %>
+  <% end %>
+</div>

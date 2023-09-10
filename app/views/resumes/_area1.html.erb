@@ -1,0 +1,82 @@
+<!-- _my_partial.html.erb -->
+<div class="area1">
+  <% if @resume.area_1 == 1 %>
+  
+    <div class="flex min-h-min">
+      <div >
+        <div class="flex items-center justify-center pb-5 custom-width-250px">
+        <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
+        </div>
+        <div class="flex flex-col items-center justify-center inline-block w-60">
+          <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center" %>
+          <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center" %>
+          <%= f.text_field :phone, class: "px-2 py-1 my-1 border-white rounded-md text-center" %>
+          <%= f.text_field :social_links, class: "px-2 py-1 my-1 border-white rounded-md text-center" %>
+        </div>
+
+        <div class="text-center">
+          <h1 class="mt-1 text-lg font-bold">語言</h1>
+          <ul class="relative">
+            <% if @resume.languages.present? %>
+              <% @languages.each do |language, level| %>
+                <li class="inline-blockrounded-lg"><%= language %>▪️<%= level %></li>
+              <% end %>
+            <% else %>
+              <li class="inline-block rounded-lg">-請輸入語言</li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="text-center">
+          <h1 class="text-lg font-bold ">技能</h1>
+          <ul class="relative">
+            <% if @skills.present? %>
+              <% @skills.each do |skill| %>
+                <li class="inline-blockrounded-lg"><%= skill %></li>
+              <% end %>
+            <% else %>
+              <li class="inline-block rounded-lg">-請輸入技能</li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col w-full">
+        <%= f.text_field :about_me_title, class: "py-1 text border-white rounded-md" %>
+        <%= f.text_area :about_me, class: "grow h-96 border-white rounded-md" %>
+      </div>
+    </div>
+
+  <% elsif @resume.area_1 == 2 %>
+  
+    <div>
+      <div class="flex">
+        <div>
+          <img class="w-full h-full" src="https://picsum.photos/350/350/?random=10">
+        </div>
+        <div>
+          <div class="grid w-3/4 grid-cols-3 grow">
+            <div class="mr-2">
+              <%= f.text_field :full_name, class: "px-2 py-1 my-1 border-white rounded-md" %>
+              <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md" %>
+              <%= f.text_field :phone, class: "px-2 py-1 my-1 border-white rounded-md" %>
+            </div>
+            <div class="ml-2">
+              <%= f.text_area :skills, class: "px-2 py-1 my-1 border-white rounded-md grow" %>
+            </div>
+            <div>
+              <p>language</p>
+            </div>
+          </div>
+          <%= f.text_field :social_links, class: "w-full grow px-2 py-1 my-1 border-white rounded-md" %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= f.text_field :about_me_title, class: "font-bold w-full grow px-2 py-1 my-1 border-white rounded-md" %>
+      <%= f.text_area :about_me, class: "min-h-180 w-full grow px-2 py-1 my-1 border-white rounded-md" %>
+    </div>  
+    
+  <% elsif @resume.area_1 == 3 %>
+  
+  <% end %>
+</div>

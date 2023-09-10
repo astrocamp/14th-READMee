@@ -1,0 +1,26 @@
+<!-- _my_partial.html.erb -->
+<div class="area2">
+  <% if @resume.area_2 == 1 %>
+  
+    <div class="mt-8">
+      <%= f.text_field :work_experience_title, class: "border-0 border-white text-lg font-bold w-full py-1" %>
+      <div class="flex justify-between">
+        <%= f.text_field :work_experience_name,  class: "my-2 p-2 rounded-md resize-y border-gray-200 shadow outline-none" %>
+        <div class="flex" >
+          <%= f.text_field :work_start_date,  class: "my-2 p-2 rounded-md resize-y border-gray-200  shadow outline-none" %>
+          <%= f.text_field :work_end_date,  class: "my-2 p-2 rounded-md resize-y border-gray-200  shadow outline-none" %>
+        </div>
+      </div>
+    </div>
+
+  <% elsif @resume.area_2 == 2 %>
+    <% @resume.work_experiences.each do |f| %>
+      area2組件二
+      <%= f.title %>
+    <% end %>
+    <%= @resume.phone %>
+  <% elsif @resume.area_2 == 3 %>
+    area2組件三
+    <%= @resume.address %>
+  <% end %>
+</div>
