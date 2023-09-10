@@ -3,7 +3,7 @@ class EducationController < ApplicationController
   before_action :set_profile, only: [:show, :create, :update, :destroy]
 
   def new
-      @education = Education.new
+    @education = Education.new
   end
 
   def create

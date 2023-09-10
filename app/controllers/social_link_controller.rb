@@ -1,5 +1,5 @@
 class SocialLinkController < ApplicationController
-  before_action :set_social_link, only:[ :edit, :update, :destroy]
+  before_action :set_social_link, only: [ :edit, :update, :destroy]
   before_action :set_profile, only: [:show, :create, :update, :destroy]
 
   def new
@@ -10,9 +10,9 @@ class SocialLinkController < ApplicationController
     @social_link = SocialLink.new(social_link_params)
     @social_link.profile_id = @profile.id
     if @social_link.save
-    respond_to do |format|
-      find_social_link     
-      format.turbo_stream { render turbo_stream: turbo_stream.replace('show_social', partial: 'social_link/show') }
+      respond_to do |format|
+        find_social_link     
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('show_social', partial: 'social_link/show') }
       end
     else
       render :new
@@ -50,8 +50,7 @@ class SocialLinkController < ApplicationController
 
   def set_profile
     @profile = current_user.profile
-  end
- 
+  end 
 
   def set_social_link
     @social_link = SocialLink.find(params[:id])
