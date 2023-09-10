@@ -5,6 +5,9 @@
 .save-btn {
   @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
 }
+.new-btn {
+  @apply rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600;
+}
 .disabled-btn {
   @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-slate-600;
 }
