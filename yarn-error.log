@@ -1,5 +1,5 @@
 Arguments: 
-  /home/thekuen/.nvm/versions/node/v18.16.1/bin/node /home/thekuen/.yarn/bin/yarn.js add @editorjs/sweetalert2
+  /home/thekuen/.nvm/versions/node/v18.16.1/bin/node /home/thekuen/.yarn/bin/yarn.js build --watch
 
 PATH: 
   /home/thekuen/.yarn/bin:/home/thekuen/.config/yarn/global/node_modules/.bin:/home/thekuen/.vscode-server/bin/8b617bd08fd9e3fc94d14adb8d358b56e3f72314/bin/remote-cli:/home/thekuen/.rvm/gems/ruby-3.2.2/bin:/home/thekuen/.rvm/gems/ruby-3.2.2@global/bin:/home/thekuen/.rvm/rubies/ruby-3.2.2/bin:/home/thekuen/.nvm/versions/node/v18.16.1/bin:/home/thekuen/.yarn/bin:/home/thekuen/.config/yarn/global/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Finn/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Finn/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Finn/AppData/Roaming/npm:/snap/bin:/home/thekuen/.rvm/bin:/home/thekuen/.rvm/bin:/home/thekuen/.rvm/bin
@@ -14,17 +14,12 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@editorjs%2fsweetalert2: Not found
-      at params.callback [as _callback] (/home/thekuen/.yarn/lib/cli.js:66145:18)
-      at self.callback (/home/thekuen/.yarn/lib/cli.js:140890:22)
-      at Request.emit (node:events:513:28)
-      at Request.<anonymous> (/home/thekuen/.yarn/lib/cli.js:141862:10)
-      at Request.emit (node:events:513:28)
-      at IncomingMessage.<anonymous> (/home/thekuen/.yarn/lib/cli.js:141784:12)
-      at Object.onceWrapper (node:events:627:28)
-      at IncomingMessage.emit (node:events:525:35)
-      at endReadableNT (node:internal/streams/readable:1359:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  SyntaxError: /home/thekuen/14th-READMee/package.json: Unexpected token } in JSON at position 1602
+      at JSON.parse (<anonymous>)
+      at /home/thekuen/.yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/home/thekuen/.yarn/lib/cli.js:310:30)
+      at /home/thekuen/.yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -60,6 +55,7 @@ npm manifest:
       "babel": "^6.23.0",
       "canvg": "^4.0.1",
       "core-js": "^3.32.2",
+      "daisyui": "^3.7.3",
       "dompurify": "^3.0.5",
       "esbuild": "^0.19.2",
       "fflate": "^0.8.0",
@@ -75,7 +71,8 @@ npm manifest:
       "stackblur-canvas": "^2.6.0",
       "stimulus-rails-nested-form": "^4.1.0",
       "svg-pathdata": "^6.0.3",
-      "tailwindcss": "^3.3.3"
+      "sweetalert2": "^11.7.27",
+      "tailwindcss": "^3.3.3",
     }
   }
 
@@ -524,6 +521,11 @@ Lockfile:
     optionalDependencies:
       fsevents "~2.3.2"
   
+  colord@^2.9:
+    version "2.9.3"
+    resolved "https://registry.yarnpkg.com/colord/-/colord-2.9.3.tgz#4f8ce919de456f1d5c1c368c307fe20f3e59fb43"
+    integrity sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==
+  
   commander@^4.0.0:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
@@ -546,10 +548,29 @@ Lockfile:
     dependencies:
       utrie "^1.0.2"
   
+  css-selector-tokenizer@^0.8:
+    version "0.8.0"
+    resolved "https://registry.yarnpkg.com/css-selector-tokenizer/-/css-selector-tokenizer-0.8.0.tgz#88267ef6238e64f2215ea2764b3e2cf498b845dd"
+    integrity sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==
+    dependencies:
+      cssesc "^3.0.0"
+      fastparse "^1.1.2"
+  
   cssesc@^3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
     integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
+  
+  daisyui@^3.7.3:
+    version "3.7.3"
+    resolved "https://registry.yarnpkg.com/daisyui/-/daisyui-3.7.3.tgz#247cfefa0112c31679af9035eff65e1bd866f062"
+    integrity sha512-gKlz3RwfaukZxf8nQZsDAZ7quUSi7F8HjGGB34tkHruvfQB9cgVDQsmqUqSQtkAJYvzbrg/3dLUa9+5jF4iC1A==
+    dependencies:
+      colord "^2.9"
+      css-selector-tokenizer "^0.8"
+      postcss "^8"
+      postcss-js "^4"
+      tailwindcss "^3"
   
   didyoumean@^1.2.2:
     version "1.2.2"
@@ -619,6 +640,11 @@ Lockfile:
       glob-parent "^5.1.2"
       merge2 "^1.3.0"
       micromatch "^4.0.4"
+  
+  fastparse@^1.1.2:
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
+    integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
   
   fastq@^1.6.0:
     version "1.15.0"
@@ -909,7 +935,7 @@ Lockfile:
       read-cache "^1.0.0"
       resolve "^1.1.7"
   
-  postcss-js@^4.0.1:
+  postcss-js@^4, postcss-js@^4.0.1:
     version "4.0.1"
     resolved "https://registry.yarnpkg.com/postcss-js/-/postcss-js-4.0.1.tgz#61598186f3703bab052f1c4f7d805f3991bee9d2"
     integrity sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==
@@ -952,7 +978,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
     integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
   
-  postcss@^8.4.23, postcss@^8.4.28:
+  postcss@^8, postcss@^8.4.23, postcss@^8.4.28:
     version "8.4.29"
     resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.29.tgz#33bc121cf3b3688d4ddef50be869b2a54185a1dd"
     integrity sha512-cbI+jaqIeu/VGqXEarWkRCCffhjgXc0qjBtXpqJhTBohMUjUQnbBr0xqX3vEKudc4iviTewcJo5ajcec5+wdJw==
@@ -1078,7 +1104,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/svg-pathdata/-/svg-pathdata-6.0.3.tgz#80b0e0283b652ccbafb69ad4f8f73e8d3fbf2cac"
     integrity sha512-qsjeeq5YjBZ5eMdFuUa4ZosMLxgr5RZ+F+Y1OrDhuOCEInRMA3x74XdBtggJcj9kOeInz0WE+LgCPDkZFlBYJw==
   
-  tailwindcss@^3.3.3:
+  sweetalert2@^11.7.27:
+    version "11.7.27"
+    resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.7.27.tgz#de19294e1b5ae7991de27bb4ae34aff3570aaa0e"
+    integrity sha512-QbRXGQn1sb7HEhzA/K2xtWIwQHh/qkSbb1w6jYcTql2xy17876lTREEt1D4X6Q0x2wHtfUjKJ+Cb8IVkRoq7DQ==
+  
+  tailwindcss@^3, tailwindcss@^3.3.3:
     version "3.3.3"
     resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.3.3.tgz#90da807393a2859189e48e9e7000e6880a736daf"
     integrity sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==
