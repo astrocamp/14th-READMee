@@ -1,9 +1,12 @@
-<turbo-frame id="edit_social_link">
+<turbo-frame id="edit_social_link" class="flex">
   <% if @social_link.present?%>
     <% @social_link.each do |social|%>
       <%= link_to "#{social.title}", social.link%>
-      <%= link_to '編輯', edit_social_link_path(id: social.id), class:"save-btn"%>
-      <%= link_to '刪除', social_link_path(id: social.id), class:"save-btn", data:{turbo_method: :DELETE}%>
+      <div class="mb-3 ml-auto">
+        <%= link_to '編輯', edit_social_link_path(id: social.id), class:"save-btn"%>
+        <%= link_to '刪除', social_link_path(id: social.id), class:"save-btn", data:{turbo_method: :DELETE}%>
+      </div>
+      
     <% end %>
   <% end %>
 </turbo-frame>

@@ -1,6 +1,6 @@
 <% if current_user.profile.present?%>
   <turbo-frame id="edit_profile">
-    <picture class="md:w-1/4">
+    <picture class="p-5 md:w-1/4">
       <% if @profile.avatar.attached? %>
         <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
       <% else %>
@@ -8,22 +8,22 @@
       <% end %>
     </picture>
     <div class="mt-4 profile_name_block">
-      <div class="profile_name">
+      <div class="pt-3 text-lg font-semibold border-b-4 profile_name border-amber-500">
         <%= @profile.full_name %>
       </div>
       <div class="mx-2">
-        <div class="flex mx-1 items-center">
+        <div class="flex items-center mx-1">
           <%= image_tag("address.png", class:"profile_img m-2")%>
           <%= @profile.address %>
         </div>
-        <div class="flex mx-1 items-center">
+        <div class="flex items-center mx-1">
           <%= image_tag("phone.png", class:"profile_img m-2")%>
           <%= @profile.phone %>
         </div>
       </div>
     </div>
     <div class="mt-4">
-      <h2 class="text-lg font-semibold">自我介紹</h2>
+      <h2 class="mb-5 text-lg font-semibold">自我介紹:</h2>
       <%= @profile.about_me %>
     </div>
     <div class="mt-4">
