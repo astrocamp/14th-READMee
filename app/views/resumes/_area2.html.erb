@@ -1,0 +1,70 @@
+<!-- _my_partial.html.erb -->
+<div class="area2">
+  <% if @resume.area_2 == 1 %>
+
+  <div class="flex flex-col mt-8">
+    <%= f.text_field :work_experience_title, class: "border-0 border-white text-lg font-bold w-full py-1", placeholder: "工作經驗標題" %>
+    <div>
+      <div class="flex" >
+        <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+        <%= f.text_field :work_exp_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+      </div>
+      <%= f.text_field :work_exp_name_1,  class: "w-full grow my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+    </div>
+    <%= f.text_area :work_exp_content_1,  class: "grow my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+  
+    <div>
+      <div class="flex" >
+        <%= f.text_field :work_exp_start_date_2,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+        <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+      </div>
+      <%= f.text_field :work_exp_name_2,  class: "w-full grow my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+    </div>
+    <%= f.text_area :work_exp_content_2,  class: "grow my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+
+  </div>
+
+  <% elsif @resume.area_2 == 2 %>
+    
+    <div>
+      <div>
+        <%= f.text_field :work_experience_title, class: "mt-8 border-0 border-white text-lg font-bold rounded-md mb-2 w-full py-1" %>
+      </div>
+      <div class="flex">
+        <div class="w-1/4">
+          <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+          <%= f.text_field :work_exp_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+        </div>
+        <div class="flex flex-col grow">
+          <%= f.text_field :work_exp_name_1,  class: "p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+          <%= f.text_area :work_exp_content_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "開始日期從work拿資料" %>
+        </div>
+      </div>
+    </div>
+
+  <% elsif @resume.area_2 == 3 %>
+    
+    <div class="flex flex-col mt-8">
+      <%= f.text_field :work_experience_title, class: "mb-1 py-1 px-2 text border border-0 border-white rounded-md", placeholder: "工作經驗標題" %>
+      <div class="flex justify-between">
+        <%= f.text_field :work_exp_name_1,  class: "w-64 my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+        <div class="flex" >
+          <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+          <%= f.text_field :work_exp_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束日期從work拿資料" %>
+        </div>
+      </div>
+      <%= f.text_area :work_exp_content_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "開始日期從work拿資料" %>
+    </div>
+    <div class="flex flex-col">
+      <div class="flex justify-between">
+        <%= f.text_field :work_exp_name_2,  class: "w-64 my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
+        <div class="flex" >
+          <%= f.text_field :work_exp_start_date_2,  class: "mr-5 ml-2 my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "結束日期從work拿資料" %>
+          <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "結束日期從work拿資料" %>
+        </div>
+      </div>
+      <%= f.text_area :work_exp_content_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "開始日期從work拿資料" %>
+    </div>
+
+  <% end %>
+</div>

@@ -6,8 +6,8 @@
 .top-68px {
   top: 68px;
 }
-.custom-width-250px {
-  width: 250px;
+.custom-width-190px {
+  width: 190px;
 }
 .max-w-screen-lg {
   width: 1024px;
@@ -123,4 +123,33 @@
 
 .position-absolute {
   position: relative !important;
+}
+
+.section-inputs input {
+  border: none;
+}
+
+.section-inputs:hover input {
+  border: 1px solid gray;
+}
+.section-inputs:hover textarea {
+  border: 1px solid gray;
+}
+
+.section-inputs input::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.section-inputs textarea::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.section-inputs:hover input::placeholder {
+  opacity: 1;
+}
+
+.section-inputs:hover textarea::placeholder {
+  opacity: 1;
 }
