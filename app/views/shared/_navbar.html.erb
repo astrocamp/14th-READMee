@@ -23,7 +23,7 @@
           <%= link_to '文章社群', articles_path, class: 'nav-btn-signed-in' %>
           <% if current_user.role === 'employer'%>
             <% if current_user.company.present? %>
-              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: " nav-btn-signed-in" %>
+              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn-signed-in' %>
             <% end %>
           <% end %>
         <% else %>

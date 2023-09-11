@@ -51,6 +51,13 @@ class JobsController < ApplicationController
   def receive_applicant
     job_id_number = params[:id].to_i
     @job_matchings_record = JobMatching.includes(user: [:resumes, :profile]).where(job_id: job_id_number).order(id: :desc)
+  
+    if @job_matchings_record.present?
+      render :receive_applicant
+    else
+      flash[:alert] = "尚無應徵者"
+      redirect_to company_jobs_path(current_user.account)
+    end
   end
 
   private

@@ -1,12 +1,9 @@
-<h1 class="mt-6 text-5xl text-center"><%= @company.name %>-職缺列表</h1>
 <div class="container pt-6 mx-auto bg-gray-50">
-  
-
-  <div class="container m-5 mx-auto text-white rounded-lg w-80 bg-amber-500 hover:bg-amber-600">
+  <div class="text-center">
+  <p class="mb-5 text-3xl font-semibold"><%= @company.name %></p>
+  <p class="mb-5 text-3xl">目前職缺</p>
     <% if @company %>
-      <div>
-        <%= link_to "新增職缺", new_company_job_path, class: "block text-white text-center py-2" %>
-      </div>
+      <%= link_to "新增您的職缺", new_company_job_path, class: "save-btn font-semibold py-2" %>
     <% end %>
   </div>
 </div>
@@ -20,7 +17,7 @@
             
             <div class="p-6 md:w-5/6 ">
               <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
-              <div class="mt-2 ">
+              <div class="mt-2 font-semibold">
                 <%= link_to "#{job.company.name}", company_show_path(job.company.id) %>
               </div>
               <div class="mt-2">
@@ -29,7 +26,7 @@
                 <% end %>
               </div>
               <div class="flex text-white">
-                <%= link_to "編輯", edit_company_job_path(@account, job), class: "rounded-lg bg-amber-500 px-5 py-2 m-2 block hover:bg-amber-600" %>
+                <%= link_to "編輯", edit_company_job_path(@account, job), class: "rounded-lg bg-amber-500 px-5 py-2 mr-2 my-2 block hover:bg-amber-600" %>
             <%= link_to "刪除", company_job_path(@account, job), data: { turbo_method: "delete", turbo_confirm: "是否刪除" }, class: "rounded-lg bg-amber-500 px-5 py-2 m-2 block hover:bg-amber-600" %>
             <%= link_to "查看應徵者" , receive_applicant_path(job.id), class: "rounded-lg bg-amber-500 px-5 py-2 m-2 block hover:bg-amber-600"%>
               </div>
