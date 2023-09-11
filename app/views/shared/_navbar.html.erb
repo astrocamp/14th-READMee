@@ -40,16 +40,19 @@
             <div class='flex gap-3' data-controller="switchRole">
               <%= link_based_on_role(current_user) %>
               <%= link_to '切換身分', toggle_role_path, data: { turbo_method: :post }, class: 'nav-btn-signed-in' %>
+              <button  data-action="click->toggle-dark-mode#toggleDarkMode">
+                <%= image_tag "light-mode.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
+              </button>
               <%= link_to '登出', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-btn-signed-in' %>
             </div>
           <% else %>
-          <div class="flex gap-3">
-            <%= link_to '登入', new_user_session_path , class: 'nav-btn-signed-in' %>
-            <%= link_to '註冊', new_user_registration_path, class: 'nav-btn-signed-in' %>
+            <div class="flex gap-3">
+              <%= link_to '登入', new_user_session_path , class: 'nav-btn-signed-in' %>
+              <%= link_to '註冊', new_user_registration_path, class: 'nav-btn-signed-in' %>
               <%- Devise.omniauth_providers.each do |provider| %>
                 <%= button_to "GOOGLE登入", omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class: 'nav-btn-signed-in'  %>
               <% end %>
-          <% end %>
+            <% end %>
           </div>
         </div>
       </div>
