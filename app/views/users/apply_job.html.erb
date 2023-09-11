@@ -43,8 +43,14 @@
             <div class="p-5 md:w-2/3">
               <div class="flex mt-2">
                 <div class="flex-grow"> 
-                  <p class="text-sm font-semibold leading-6"><%= matching.interview_date %>  <%= matching.interview_time.strftime("%I:%M %p") %></p>
-                    <p class="mt-1 text-sm leading-5"><%= matching.interview_message %></p>
+                  <% if matching.present? && matching.interview_date.present? && matching.interview_time.present? %>
+                    <p class="text-sm font-semibold leading-6">
+                    面試日期與時間：<%= matching.interview_date %> <%= matching.interview_time.strftime("%I:%M %p") %>
+                    </p>
+                  <% else %>
+                    <p class="text-sm font-semibold leading-6">請與公司聯繫</p>
+                  <% end %>
+                  <p class="mt-1 text-sm leading-5"><%= matching.interview_message %></p>
                 </div>
               </div>
             </div>

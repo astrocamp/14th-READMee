@@ -3,6 +3,7 @@ class JobMatchingsController < ApplicationController
   before_action :find_matched_jobs, only: [:update, :edit]
 
   def edit
+    flash[:notice] = "請填寫日期與時間"
   end
 
   def update
