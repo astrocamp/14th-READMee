@@ -12,14 +12,11 @@ class ResumesController < ApplicationController
   end
 
   def show
-    @resume = Resume.find
-    @languages = eval(@resume.languages)
+    @resume = Resume.find(params[:id])
   end
 
   def edit
     @profile = current_user.profile
-    @skills = current_user.profile.skills
-    @languages = current_user.profile.languages
   end
 
   def update
@@ -37,7 +34,4 @@ class ResumesController < ApplicationController
   def resume_params
     params.require(:resume).permit(:social_links, :about_me, :languages, :publish, :full_name, :phone, :address, :job_hunting, :work_exp_name_1, :work_exp_content_1, :work_exp_start_date_1, :work_exp_end_date_1, :work_exp_name_2, :work_exp_content_2, :work_exp_start_date_2, :work_exp_end_date_2, :project_name_1, :project_name_2, :project_content_1, :project_content_2, :education_name_1, :education_start_date_1, :education_end_date_1, :education_name_2, :education_start_date_2, :education_end_date_2, :area_1, :area_2, :area_3, :area_4)
   end
-  
-  
 end
- 
