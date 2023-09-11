@@ -1,6 +1,8 @@
 class Resume < ApplicationRecord
   belongs_to :user
   has_many :work_experiences
+  has_many :resume_skills
+  has_many :skills, through: :resume_skills
   
   def self.create_content(profile, resume, email)
     resume.basic_info = "#{profile.full_name}\n#{profile.address}"

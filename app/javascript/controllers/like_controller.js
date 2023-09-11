@@ -8,9 +8,9 @@ export default class extends Controller {
     this.id = id;
 
     if (liked == 'true') {
-      this.likebtnTarget.textContent = '取消';
+      this.likebtnTarget.textContent = '收回讚';
     } else {
-      this.likebtnTarget.textContent = '點讚';
+      this.likebtnTarget.textContent = '給個讚';
     }
   }
 
@@ -30,9 +30,9 @@ export default class extends Controller {
       })
       .then(({ liked }) => {
         if (liked) {
-          this.likebtnTarget.textContent = '取消';
+          this.likebtnTarget.textContent = '收回讚';
         } else {
-          this.likebtnTarget.textContent = '點讚';
+          this.likebtnTarget.textContent = '給個讚';
         }
         const likeCountElement = this.element.querySelector(
           '[data-like-target="count"]'

@@ -1,6 +1,6 @@
 <% I18n.locale = :'zh-TW' %>
 <!DOCTYPE html>
-<html>
+<html data-controller="toggle-dark-mode" data-toggle-dark-mode-target="html">
   <head>
     <title>READMee</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,7 +15,11 @@
   <body class="relative">
     <%= render "shared/navbar", class:"relative"%>
     <main class="container min-h-screen mx-auto">
-      <div id="custom-target" data-controller="notification" data-notification-notice="<%= notice %>" data-notification-alert="<%= alert %>"></div>
+      <div id="custom-target" 
+          data-controller="notification"
+          data-notification-notice="<%= notice %>"
+          data-notification-alert="<%= alert %>">
+      </div>
       <%= yield %>
     </main>
     <%= turbo_frame_tag "modal"%>

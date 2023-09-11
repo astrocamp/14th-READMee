@@ -1,12 +1,14 @@
 class JobMatchingsController < ApplicationController
-  before_action :find_job_matchings, only: [:update, :edit]
+  before_action :authenticate_user!
+  before_action :find_matched_jobs, only: [:update, :edit]
 
   def edit
+    flash[:notice] = "請填寫日期與時間"
   end
 
   def update
-    if @job_matching.update(job_matching_params) && @job_matching.update(notified: true)
-      redirect_to receive_applicant_path(current_user.company.id), notice: '已發送面試通知！'
+    if @job_matching.update(job_matching_params)
+      redirect_to receive_applicant_path(current_user.company), notice: '已發送面試通知！'
     else
       render :edit
     end
@@ -14,11 +16,17 @@ class JobMatchingsController < ApplicationController
 
   private
 
-  def find_job_matchings
-    @job_matching = JobMatching.find(params[:id])
+  def find_matched_jobs
+    @job_matching = current_user.job_matchings.find(params[:id])
   end
 
   def job_matching_params
-    params.require(:job_matching).permit(:user_id, :job_id, :company_id, :interview_date, :interview_time, :interview_message, :notified)
+    params.require(:job_matching)
+          .permit(:job_id,
+                  :company_id,
+                  :interview_date,
+                  :interview_time,
+                  :interview_message)
+          .merge({ user_id: current_user.id, notified: true })
   end
 end
