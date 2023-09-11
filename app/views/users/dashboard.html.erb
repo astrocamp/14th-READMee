@@ -1,14 +1,17 @@
-<div class="form">
-  <div class="relative p-1 my-2 border border-solid rounded-md">
+<div class="w-full px-5 mx-auto sm:w-1/2">
+  <div class="relative p-4 my-5 border rounded-md shadow-md">
     <%= render 'profiles/show' %>
   </div>
-  <div  class="relative my-2 border-solid border rounded-md p-1">
+  <span class="py-2 text-lg border-b-4 border-amber-500">教育程度</span>
+  <div  class="relative p-4 my-5 border border-solid rounded-md shadow-md">
     <%= render 'education/show'%>
   </div>
-  <div class="relative my-2 border-solid border rounded-md p-1">
+  <span class="py-2 text-lg border-b-4 border-amber-500">社群連結</span>
+  <div class="relative p-4 my-5 border border-solid rounded-md shadow-md">
     <%= render 'social_link/show' %>
   </div>
-  <div class="relative my-2 border-solid border rounded-md p-1">
+  <span class="py-2 text-lg border-b-4 border-amber-500">工作經歷</span>
+  <div class="relative p-4 my-5 border border-solid rounded-md shadow-md">
     <%= render 'work_experiences/show' %>
   </div>
   <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}%>
