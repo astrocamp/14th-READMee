@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_082049) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_111304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,9 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_082049) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "resume_id"
     t.index ["profile_id"], name: "index_educations_on_profile_id"
-    t.index ["resume_id"], name: "index_educations_on_resume_id"
   end
 
   create_table "job_matchings", force: :cascade do |t|
@@ -248,9 +246,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_082049) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "resume_id"
     t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
-    t.index ["resume_id"], name: "index_work_experiences_on_resume_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -260,7 +256,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_082049) do
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "educations", "profiles"
-  add_foreign_key "educations", "resumes"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
@@ -275,5 +270,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_082049) do
   add_foreign_key "resumes", "users"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
-  add_foreign_key "work_experiences", "resumes"
 end
