@@ -27,11 +27,9 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    authorize @company
   end
 
   def update
-    authorize @company
     if @company.update(params_company)
       redirect_to company_show_path(current_user.company.id), notice: '更新成功!'
     else
