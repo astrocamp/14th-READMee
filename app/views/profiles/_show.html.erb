@@ -59,3 +59,6 @@
     <%= link_to '新增個人資料', new_profile_path, class:"save-btn"%>
   </div>
 <% end %>
+<span class="mb-auto">
+  <%= link_to "應徵紀錄", apply_job_path(id: current_user), class: "my-5 inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+</span>
