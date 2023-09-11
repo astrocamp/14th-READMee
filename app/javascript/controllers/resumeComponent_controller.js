@@ -2,9 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = []
-
-  connect() {
-  }
   
   saveComponent(event){
     const area1 = event.currentTarget.dataset.area1;
@@ -31,7 +28,6 @@ export default class extends Controller {
       })
     })
     .then(data => {
-      console.log(data)
       window.location.href = `/@${account}/resumes/${serial}/edit`;
     })
     .catch(error => {

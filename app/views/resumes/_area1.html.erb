@@ -56,8 +56,8 @@
         <div>
           <div class="grid w-3/4 grid-cols-3 grow">
             <div class="mr-2">
-              <%= f.text_field :full_name, class: "px-2 py-1 my-1 border-white rounded-md" %>
-              <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md" %>
+              <%= f.text_field :full_name, class: "px-2 py-1 my-1 border-white rounded-md", placeholder: "請輸入名字" %>
+              <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md", placeholder: "請輸入想要應徵的工作" %>
               <%= f.text_field :phone, class: "px-2 py-1 my-1 border-white rounded-md" %>
             </div>
             <div class="ml-2">
@@ -84,17 +84,17 @@
           <div class="flex items-center justify-center">
             <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
           </div>
-          <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入全名" %>
-          <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center" , placeholder: "請輸入欲求職的職位" %>
-          <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center " , placeholder: "請輸入電話" %>
-          <%= f.text_field :address, class: "px-2 py-1 w-96 my-1 border-white rounded-md text-center" , placeholder: "請輸入地址" %>
-          <%= f.text_field :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md text-center" , placeholder: "請輸入社群連結" %>
+          <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center" %>
+          <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center" %>
+          <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center " %>
+          <%= f.text_field :address, class: "px-2 py-1 w-96 my-1 border-white rounded-md text-center" %>
+          <%= f.text_field :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md text-center" %>
         </div>
       </div>
     </div>
     <div class="flex flex-col w-full">
-      <%= f.text_field :about_me_title, class: "mb-1 py-1 text border border-0 border-white rounded-md", placeholder: "請輸入自我介紹標題" %>
-      <%= f.text_area :about_me, class: "px-3 grow h-48 border border-0 border-white rounded-md ", placeholder: "請輸入自我介紹" %>
+      <%= f.text_field :about_me_title, class: "mb-1 py-1 text border border-0 border-white rounded-md" %>
+      <%= f.text_area :about_me, class: "px-3 grow h-48 border border-0 border-white rounded-md " %>
     </div>
     <div class="flex justify-between">
       <div class="grow">
