@@ -12,4 +12,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def show_registration_button
+    if current_user
+      false
+    else
+      true
+    end
+  end
 end
