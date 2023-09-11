@@ -8,7 +8,7 @@ module ApplicationHelper
       if user.company.present?
         link_to user.company.name, company_show_path(user.company.id), class: 'nav-btn-signed-in'
       else
-        link_to user.company.name, new_company_path(account: user.account), class: 'nav-btn-signed-in'
+        link_to '建立公司', new_company_path(account: user.account), class: 'nav-btn-signed-in'
       end
     end
   end
