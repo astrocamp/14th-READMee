@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .save-btn {
-  @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
+  @apply inline-block px-5 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
 }
 .new-btn {
   @apply rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600;
@@ -117,5 +117,5 @@
 }
 
 .form {
-  @apply block w-6/12 px-3 py-2 mx-auto mt-2 border border-gray-200 rounded-md shadow outline-none;
+  @apply block w-full px-3 py-2 mx-auto mt-2 sm:w-6/12;
 }

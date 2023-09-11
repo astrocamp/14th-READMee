@@ -1,9 +1,8 @@
 <turbo-frame id="show_education">
-  <h2 class="text-lg">教育程度</h2>
   <turbo-frame id="edit_education">
     <% if @education.present? %>
       <% @education.each do |education|%>
-        <div class="my-2 flex justify-between">
+        <div class="flex justify-between my-2">
           <div>
             <%= education.title %>
             <%= education.start_date %> ~ 
@@ -14,7 +13,7 @@
               <%= image_tag("edit.png", class: "img_resize mx-1") %>
             <% end %>
             <%= link_to education_path(id: education.id), data:{turbo_method: :delete, turbo_confirm: "確定要刪除?"} do %>
-              <%= image_tag("delete_img", class: "delete_img mx-1")%>
+              <%= image_tag("delete_img", class: "delete_img mx-1 mt-0.5")%>
             <% end %>
           </div>
         </div>
