@@ -1,43 +1,12 @@
+<h1 class="mt-6 text-5xl text-center"><%= @company.name %>-職缺列表</h1>
 <div class="container pt-6 mx-auto bg-gray-50">
-  <h1 class="mt-6 text-5xl text-center"><%= @company.name %>-職缺列表</h1>
+  
 
-  <div class="container py-2 m-5 mx-auto text-white rounded-lg w-80 bg-amber-500">
+  <div class="container m-5 mx-auto text-white rounded-lg w-80 bg-amber-500 hover:bg-amber-600">
     <% if @company %>
       <div>
-        <%= link_to "新增職缺", new_company_job_path, class: "block text-white text-center" %>
+        <%= link_to "新增職缺", new_company_job_path, class: "block text-white text-center py-2" %>
       </div>
-    <% end %>
-  </div>
-  <div class="my-5">
-    <% @jobs.each do |job| %>
-      <ul class="justify-between p-5 m-2 leading-6 border-b-2">
-        <div>
-          <li class="md:flex">
-            <div class="p-2 md:w-2/3">
-              <%= link_to job.title, job_show_path(job), class: "text-2xl" %>
-              <div><%= truncate(job.content, length: 100) %></div>
-            </div>
-            <div class="p-2 md:w-1/3">
-              <div>需求人數: <%= job.num_of_people %></div>
-              <div>年資: <%= job.seniority %></div>
-              <div>薪水: <%= job.salary %></div>
-            </div>
-          </li>
-        </div>
-
-        <div class="container flex p-2 m-5 mx-auto text-white">
-          <li>
-            <%= link_to "編輯", edit_company_job_path(@account, job), class: "rounded-lg bg-amber-500 px-8 py-2 m-2" %>
-          </li>
-          <li>
-            <%= link_to "刪除", company_job_path(@account, job), data: { turbo_method: "delete", turbo_confirm: "是否刪除" }, class: "rounded-lg bg-amber-500 px-8 py-2 m-2" %>
-          </li>
-          <li>
-           <%= link_to "查看應徵者" , receive_applicant_path(job.id), class: "rounded-lg bg-amber-500 px-8 py-2 m-2"%>
-          </li>
-
-        </div>
-      </ul>
     <% end %>
   </div>
 </div>
@@ -47,15 +16,7 @@
       <ul class="justify-between p-5 m-2 leading-6 ">
         <div>
           <li class="border shadow-lg md:flex">
-            <picture class="p-6 lg:w-1/6">
-              <% if job.company.avatar.attached? %>
-                <%= image_tag job.company.avatar.variant(:thumb), class: "mx-auto" %>
-              <% else %>
-                <div class="flex flex-col items-center justify-center">
-                  <%= image_tag("defaultuser.png", class: "rounded-full w-20 h-20 mx-auto") %>
-                </div>
-              <% end %>
-            </picture>
+            
             
             <div class="p-6 md:w-5/6 ">
               <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
@@ -67,7 +28,11 @@
                   <%= truncate(job.content, length: 200) %>
                 <% end %>
               </div>
-              
+              <div class="flex text-white">
+                <%= link_to "編輯", edit_company_job_path(@account, job), class: "rounded-lg bg-amber-500 px-5 py-2 m-2 block hover:bg-amber-600" %>
+            <%= link_to "刪除", company_job_path(@account, job), data: { turbo_method: "delete", turbo_confirm: "是否刪除" }, class: "rounded-lg bg-amber-500 px-5 py-2 m-2 block hover:bg-amber-600" %>
+            <%= link_to "查看應徵者" , receive_applicant_path(job.id), class: "rounded-lg bg-amber-500 px-5 py-2 m-2 block hover:bg-amber-600"%>
+              </div>
             </div>
             <div class="p-6 md:w-1/3">
               <div class="flex py-1">

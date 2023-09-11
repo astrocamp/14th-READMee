@@ -4,7 +4,7 @@ class JobsController < ApplicationController
 
   def index
     if current_user && current_user.role == "employer"
-      @jobs = @company.jobs
+      @jobs = @company.jobs.order(id: :desc)
       @job_list = Job.order(id: :desc)
     else
       redirect_to root_path

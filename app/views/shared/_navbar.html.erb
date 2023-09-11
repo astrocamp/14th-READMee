@@ -41,7 +41,7 @@
               <%= link_based_on_role(current_user) %>
               <%= link_to '切換身分', toggle_role_path, data: { turbo_method: :post }, class: 'nav-btn-signed-in' %>
               <button  data-action="click->toggle-dark-mode#toggleDarkMode">
-                <%= image_tag "light-mode.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
+                <%= image_tag "night-mode.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
               </button>
               <%= link_to '登出', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-btn-signed-in' %>
             </div>
