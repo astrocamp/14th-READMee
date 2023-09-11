@@ -23,7 +23,7 @@
           <%= link_to '文章社群', articles_path, class: 'nav-btn-signed-in' %>
           <% if current_user.role === 'employer'%>
             <% if current_user.company.present? %>
-              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %>
+              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn-signed-in' %>
             <% end %>
           <% end %>
         <% else %>
@@ -40,16 +40,19 @@
             <div class='flex gap-3' data-controller="switchRole">
               <%= link_based_on_role(current_user) %>
               <%= link_to '切換身分', toggle_role_path, data: { turbo_method: :post }, class: 'nav-btn-signed-in' %>
+              <button  data-action="click->toggle-dark-mode#toggleDarkMode">
+                <%= image_tag "night-mode.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
+              </button>
               <%= link_to '登出', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-btn-signed-in' %>
             </div>
           <% else %>
-          <div class="flex gap-3">
-            <%= link_to '登入', new_user_session_path , class: 'nav-btn-signed-in' %>
-            <%= link_to '註冊', new_user_registration_path, class: 'nav-btn-signed-in' %>
+            <div class="flex gap-3">
+              <%= link_to '登入', new_user_session_path , class: 'nav-btn-signed-in' %>
+              <%= link_to '註冊', new_user_registration_path, class: 'nav-btn-signed-in' %>
               <%- Devise.omniauth_providers.each do |provider| %>
                 <%= button_to "GOOGLE登入", omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class: 'nav-btn-signed-in'  %>
               <% end %>
-          <% end %>
+            <% end %>
           </div>
         </div>
       </div>

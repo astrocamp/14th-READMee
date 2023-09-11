@@ -1,6 +1,7 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+  darkMode: 'class',
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
@@ -21,5 +22,5 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
     require('preline/plugin'),
-  ]
-}
+  ],
+};

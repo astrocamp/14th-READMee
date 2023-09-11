@@ -198,7 +198,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_111304) do
     t.string "education_start_date_2"
     t.string "education_end_date_2"
     t.jsonb "languages"
+    t.bigint "profile_id", null: false
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["profile_id"], name: "index_resumes_on_profile_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
@@ -264,6 +266,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_111304) do
   add_foreign_key "profiles", "users"
   add_foreign_key "resume_skills", "resumes"
   add_foreign_key "resume_skills", "skills"
+  add_foreign_key "resumes", "profiles"
   add_foreign_key "resumes", "users"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"

@@ -1,6 +1,6 @@
 <div class="mx-10">
   <div class="flex items-center gap-5 mt-10" >
-    <h2 class="text-2xl font-bold ">文章列表</h2>    
+    <h2 class="text-2xl font-bold ">文章列表</h2>
     <%= link_to "新增文章",new_article_path, class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>
   </div>
   <%= paginate @articles %>
@@ -10,7 +10,7 @@
         <li class="pb-3 mt-12 border-b-2 border-amber-400">
           <%= link_to article.title.truncate(15), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium font-semibold" %>
           <div class="break-words whitespace-pre-line">
-          作者: <%= article.user.account%>
+            作者: <%= article.user.account%>
             <%= truncate(article.content, length: 100) %>
           </div>
           <span data-like-target="count" class="flex block mt-2 font-semibold">
@@ -25,14 +25,18 @@
                                         data: {
                                           turbo_method: "delete",
                                           turbo_confirm: "確定要刪除?"
-                                        }, class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>    
-            <% end %>                        
+                                        }, class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>
+            <% end %>
           </div>
         </li>
-      <% end %>  
+      <% end %>
     </ul>
     <div class="img-container">
       <%= image_tag 'network.jpg',class:"article-img" %>
     </div>
   </section>
+  <<<<<<< HEAD
 </div>
+    =======
+  </div>
+  >>>>>>> c855ff511f3df77682432d202b479dba5d704734
