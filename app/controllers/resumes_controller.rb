@@ -13,13 +13,10 @@ class ResumesController < ApplicationController
 
   def show
     @resume = Resume.find
-    @languages = eval(@resume.languages)
   end
 
   def edit
     @profile = current_user.profile
-    @skills = current_user.profile.skills
-    @languages = current_user.profile.languages
   end
 
   def update
