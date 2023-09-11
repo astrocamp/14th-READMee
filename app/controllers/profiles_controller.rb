@@ -42,10 +42,10 @@ class ProfilesController < ApplicationController
       address: @profile.address,
       about_me: @profile.about_me,
       job_hunting: @profile.job_hunting,
-      languages: @profile.languages,
+      languages: @profile.languages
     )
     if @resume.save
-      redirect_to edit_resume_path(account: current_user.account, id: @resume), notice:"成功"
+      redirect_to edit_resume_path(account: current_user.account, id: @resume), notice: "成功"
     else
       flash[:alert] = "創建失敗，請檢查"
       redirect_to dashboard_path(current_user.account)
