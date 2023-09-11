@@ -24,6 +24,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @works = WorkExperience.where(profile_id: @profile.id)
     if @profile.update(profile_params)
       render "users/dashboard"
     else

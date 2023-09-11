@@ -2,16 +2,13 @@
   <div class="relative p-1 my-2 border border-solid rounded-md">
     <%= render 'profiles/show' %>
   </div>
-  <div  class="relative p-1 my-2 border border-solid rounded-md">
-    <h2 class="text-lg">教育程度</h2>
-    <turbo-frame id="new_education">
-      <%= render 'education/show'%>
-    </turbo-frame>
+  <div  class="relative my-2 border-solid border rounded-md p-1">
+    <%= render 'education/show'%>
   </div>
-  <div class="relative p-1 my-2 border border-solid rounded-md">
-    <h2 class="text-lg">社群連結</h2>
-    <turbo-frame id="new_social_link">
-      <%= render 'social_link/show' %>
-    </turbo-frame>
+  <div class="relative my-2 border-solid border rounded-md p-1">
+    <%= render 'social_link/show' %>
+  </div>
+  <div class="relative my-2 border-solid border rounded-md p-1">
+    <%= render 'work_experiences/show' %>
   </div>
 </div>
