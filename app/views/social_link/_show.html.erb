@@ -1,13 +1,24 @@
-<turbo-frame id="edit_social_link" class="flex">
-  <% if @social_link.present?%>
-    <% @social_link.each do |social|%>
-      <%= link_to "#{social.title}", social.link%>
-      <div class="mb-3 ml-auto">
-        <%= link_to '編輯', edit_social_link_path(id: social.id), class:"save-btn"%>
-        <%= link_to '刪除', social_link_path(id: social.id), class:"save-btn", data:{turbo_method: :DELETE}%>
-      </div>
-      
+<turbo-frame id="show_social" class="flex">
+  <h2 class="text-lg">社群連結</h2>
+  <turbo-frame id="edit_social">
+    <% if @social_link.present?%>
+      <% @social_link.each do |social|%>
+        <div class="flex justify-between">
+          <div>
+            <%= link_to "#{social.title}", social.link%></div>
+          <div>
+            <%= link_to '編輯', edit_social_link_path(id: social.id), class:"new-btn"%>
+            <%= link_to '刪除', social_link_path(id: social.id), class:"new-btn", data:{turbo_method: :delete, turbo_confirm: "確定要刪除?"}%>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </turbo-frame>
+  <turbo-frame id="new_social">
+    <% if @profile.present? %>
+      <%= link_to '新增', new_social_link_path, class:"new-btn"%>
+    <% else %>
+      <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
+    <% end %>
+  </turbo-frame>
 </turbo-frame>
-<%= link_to '新增', new_social_link_path, class:"save-btn"%>

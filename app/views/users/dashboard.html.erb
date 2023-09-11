@@ -2,20 +2,13 @@
   <div class="relative p-4 my-5 border rounded-md shadow-md">
     <%= render 'profiles/show' %>
   </div>
-  <span class="pb-2 text-lg font-semibold border-b-4 border-amber-500">
-    教育程度
-  </span>
-  <div  class="relative p-4 my-5 border rounded-md shadow-md">
-    
-    <turbo-frame id="new_education">
-      <%= render 'education/show'%>
-    </turbo-frame>
+  <div  class="relative p-1 my-2 border border-solid rounded-md">
+    <%= render 'education/show'%>
   </div>
-  <span class="pb-2 text-lg font-semibold border-b-4 border-amber-500">社群連結</span>
-  <div class="relative p-4 my-5 border rounded-md shadow-md">
-    
-    <turbo-frame id="new_social_link">
-      <%= render 'social_link/show' %>
-    </turbo-frame>
+  <div class="relative p-1 my-2 border border-solid rounded-md">
+    <%= render 'social_link/show' %>
+  </div>
+  <div class="relative p-1 my-2 border border-solid rounded-md">
+    <%= render 'work_experiences/show' %>
   </div>
 </div>

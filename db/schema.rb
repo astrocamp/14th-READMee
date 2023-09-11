@@ -154,18 +154,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_111941) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.jsonb "use_skill"
-    t.text "content"
-    t.bigint "profile_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "resume_id"
-    t.index ["profile_id"], name: "index_projects_on_profile_id"
-    t.index ["resume_id"], name: "index_projects_on_resume_id"
-  end
-
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
@@ -279,8 +267,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_111941) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "profiles"
-  add_foreign_key "projects", "resumes"
   add_foreign_key "resumes", "users"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"

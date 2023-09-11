@@ -27,26 +27,20 @@
       </div>
     </div>
   </div>
-
   <div class="container max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 mx-auto text-xl font-bold">關於</div>
-  
   <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 mx-auto ">
     <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-3">
       <div class="col-span-2">
         <div class="flex">
-          <div class="px-1">
-            <%= image_tag("defaultcover.png", class: "w-80 mx-auto") %>
-          </div>
         </div>
         <p class="text-black whitespace-pre-line">
           <%= @company.about %>
         </p>
       </div>
-
       <div class="space-y-6 lg:space-y-4">
         <div class="flex">
           <span class="flex-shrink-0 inline-flex justify-center items-center w-[30px] h-[30px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
-            <%= image_tag "company_show_address.svg",  class:"w-5 h-5" %>                  
+            <%= image_tag "company_show_address.svg",  class:"w-5 h-5" %>
           </span>
           <div class="ml-5">
             <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
@@ -54,10 +48,9 @@
             </h3>
           </div>
         </div>
-        
         <div class="flex">
           <span class="flex-shrink-0 inline-flex justify-center items-center w-[30px] h-[30px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
-            <%= image_tag "company_show_phone.svg",  class:"w-5 h-5" %>               
+            <%= image_tag "company_show_phone.svg",  class:"w-5 h-5" %>
           </span>
           <div class="ml-5">
             <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
@@ -65,7 +58,6 @@
             </h3>
           </div>
         </div>
-        
         <div class="flex">
           <span class="flex-shrink-0 inline-flex justify-center items-center w-[30px] h-[30px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
             <%= image_tag "company_show_pepole.svg", class:"w-5 h-5" %>
