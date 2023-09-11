@@ -1,0 +1,38 @@
+<div class="area1">
+  <% if @resume.area_1 == 1 %>
+  
+
+  <% elsif @resume.area_1 == 2 %>
+  
+  <%= @resume.full_name %>
+  
+  <div>
+    <div>
+      <div class="flex">
+        <div>
+          <% if @resume.profile.avatar.attached? %>
+            <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
+          <% else %>
+            <%= image_tag("defaultuser.png", class: "rounded-full mx-auto") %>
+          <% end %>
+        </div>
+        <div>
+          <div class="grid w-3/4 grid-cols-3 grow">
+            <div class="mr-2">
+              <p class="px-2 py-1 my-1 border-white rounded-md"><%= @resume.full_name %></p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1>簡介</h1>
+      <%= f.text_area :about_me,
+        class: "min-h-180 w-full grow px-2 py-1 my-1 border-white rounded-md",
+        placeholder: "請輸入個人簡介" %>
+    </div>
+  </div>
+    
+  <% end %>
+</div>

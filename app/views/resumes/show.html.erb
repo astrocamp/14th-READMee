@@ -11,58 +11,12 @@
         } %>
     </div>
     <section class="flex justify-center w-full">
-      <div data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent" class="max-w-screen-lg mt-20 mb-16 bg-white shadow-2xl section-inputs sm:p-4 md:p-8 lg:p-16 min-h-1000">
-        <div class="flex min-h-min">
-          <div >
-            <div class="flex items-center justify-center pb-5 custom-width-250px">
-              <% if @profile.avatar.attached? %>
-                <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
-              <% else %>
-                <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-              <% end %>
-            </div>
-            <div class="flex flex-col items-center justify-center inline-block w-60">
-              <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入名字" %>
-              <%= f.text_field :job_hunting, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入想要應徵的工作" %>
-              <%= f.text_field :phone, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入電話" %>
-              
-              <% if @resume.social_links.present? %>
-                <%= f.text_area :social_links, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
-              <% else %>
-                <% if @profile.social_links.first.present? %>
-                  <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
-                <% else %>
-                  <%= f.text_area :social_links, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
-                <% end %>
-              <% end %>
-            </div>
-    
-            <div class="text-center">
-              <h1 class="mt-1 text-lg font-bold">語言</h1>
-              <div class="flex flex-col">
-                
-              <% if @profile.languages.present? %>
-                <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
-                  <% @profile.languages.each do |language, level| %>
-                    <li><%= "#{language} • #{level}" %></li>
-                  <% end %>
-                </ul>
-              <% end %>
-              </div>
-            </div>
-            <div class="flex flex-col items-center">
-              <h2 class="font-bold">技能</h2>
-              <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
-                <% @profile.skills.each do |skill| %>
-                  <li class="inline-block mr-2"><%= skill.tag %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-    
-          <div class="flex flex-col w-full">
-            <h1>簡介</h1>
-            <%= f.text_area :about_me, class: "grow h-96 border-white rounded-md p-2", placeholder: "請輸入簡介內容" %>
+      <div class="max-w-screen-lg p-16 mt-20 bg-white shadow-2xl">
+        <div class="flex items-end min-h-min">
+          <div class="flex flex-col text-center">
+
+            <%= render partial: "show_area1", locals: { resume: @resume } %>
+
           </div>
         </div>
       </div>

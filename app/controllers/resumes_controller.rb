@@ -12,7 +12,7 @@ class ResumesController < ApplicationController
   end
 
   def show
-    @resume = Resume.find
+    @resume = Resume.find(params[:id])
   end
 
   def edit
