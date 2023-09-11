@@ -8,10 +8,10 @@ export default class extends Controller {
     const img = this.dark_mode_imgTarget;
     console.log(img);
     if (htmlTag.classList.contains('dark')) {
-      this.dark_mode_imgTarget.src = '/assets/dark-bulb.png';
+      this.dark_mode_imgTarget.src = '/assets/night-mode.png';
       htmlTag.classList.remove('dark');
     } else {
-      this.dark_mode_imgTarget.src = '/assets/light-bulb.png';
+      this.dark_mode_imgTarget.src = '/assets/light-mode.png';
       htmlTag.classList.add('dark');
     }
   }
