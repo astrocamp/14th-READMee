@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_company, only: [:show, :edit, :update]
+  before_action :set_user_company, only: [:show]
   before_action :find_company, only: [:edit, :update]
 
   def show
@@ -12,12 +12,15 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    @company = Company.new
+    if current_user.company.present?
+      redirect_to company_show_path(current_user.company.id)
+    else
+      @company = Company.new
+    end
   end
 
   def create
     @company = current_user.build_company(params_company)
-    authorize @company
     if @company.save
       redirect_to company_show_path(@company), notice: '公司建立成功!'
     else
@@ -41,10 +44,10 @@ class CompaniesController < ApplicationController
   private
 
   def params_company
-    params.require(:company).permit(:avatar, :name, :address, :phone, :about, :population, :id)
+    params.require(:company).permit(:avatar, :name, :address, :phone, :about, :population)
   end
 
-  def set_company
+  def set_user_company
     @company = current_user.company
   end
 
