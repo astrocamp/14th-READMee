@@ -27,19 +27,11 @@ class ResumesController < ApplicationController
   end
 
   def update
-    # if params[:published] == "發佈" && params[:publish] == "false"
-    #   p "*" * 100
-    #   p '發佈'
-    #   @resume.update(publish: true)
-    #   redirect_to resumes_path
-    # elsif params[:save] == "更新"
-    #   p "*" * 100
-    #   p '更新'
-      if @resume.update(resume_params)
-      else
-        render :edit
-      end
-    # end
+    if @resume.update(resume_params)
+      redirect_to edit_resume_path(account: current_user.account, id: @resume.id)
+    else
+      render :edit
+    end
   end
 
   def find_resume
@@ -47,6 +39,6 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :social_links, :skills, :user_id, :about_me, :about_me_title, :work_experience_title, :languages, :project_title, :education_title, :publish, :full_name, :phone, :address, :job_hunting, :work_exp_name_1, :work_exp_content_1, :work_exp_start_date_1, :work_exp_end_date_1, :work_exp_name_2, :work_exp_content_2, :work_exp_start_date_2, :work_exp_end_date_2, :project_name_1, :project_name_2, :project_content_1, :project_content_2, :education_name_1, :education_start_date_1, :education_end_date_1, :education_name_2, :education_start_date_2, :education_end_date_2, :area_1, :area_2, :area_3, :area_4)
+    params.require(:resume).permit(:social_links, :skills, :about_me, :about_me_title, :work_experience_title, :languages, :project_title, :education_title, :publish, :full_name, :phone, :address, :job_hunting, :work_exp_name_1, :work_exp_content_1, :work_exp_start_date_1, :work_exp_end_date_1, :work_exp_name_2, :work_exp_content_2, :work_exp_start_date_2, :work_exp_end_date_2, :project_name_1, :project_name_2, :project_content_1, :project_content_2, :education_name_1, :education_start_date_1, :education_end_date_1, :education_name_2, :education_start_date_2, :education_end_date_2, :area_1, :area_2, :area_3, :area_4)
   end
 end
