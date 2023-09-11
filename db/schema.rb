@@ -154,18 +154,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_055133) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.jsonb "use_skill"
-    t.text "content"
-    t.bigint "profile_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "resume_id"
-    t.index ["profile_id"], name: "index_projects_on_profile_id"
-    t.index ["resume_id"], name: "index_projects_on_resume_id"
-  end
-
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
     t.string "avatar"
@@ -249,6 +237,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_055133) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.bigint "votable_id"
+    t.string "voter_type"
+    t.bigint "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter"
+  end
+
   create_table "work_experiences", force: :cascade do |t|
     t.string "title"
     t.date "start_date"
@@ -277,8 +281,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_10_055133) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "profiles"
-  add_foreign_key "projects", "resumes"
   add_foreign_key "resumes", "users"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"

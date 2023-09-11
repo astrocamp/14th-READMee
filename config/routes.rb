@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :education
     resources :projects
     resource :profile, except: [:destroy]
+    resources :work_experiences
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]
     resource :company, except: [:show] do
