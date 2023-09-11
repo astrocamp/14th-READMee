@@ -2,96 +2,34 @@
   <div class="grid gap-4 md:grid-cols-2 md:gap-8 xl:gap-20 md:items-center pt-28">
     <div>
       <h1 class="text-xl font-bold text-gray-800 sm:text-xl lg:text-3xl lg:leading-tight dark:text-white">
-        <span class="block mb-2 text-6xl text-amber-500">READMee</span>生活如此愜意，履歷如此恣意
+        <span class="block mb-2 text-6xl text-amber-500">READMee</span>To know me, just READMee !<br/>
+        生活如此愜意，履歷如此恣意 
       </h1>
       <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">
-        在職業生涯的浩瀚大海中，我們如同強而有力的風帆，解決您在寫履歷過程中的種種困擾。
-        結構和內容不再是痛點，讓您輕鬆駕馭求職之旅。我們提供填空式的導引，引領您輕鬆地編排履歷內容。
+        在職業生涯的大海中，我們如同強而有力的風帆，<br/>
+        解決您在寫履歷過程中的種種困擾。<br/>
+      </p>
+      <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">
+        結構和內容不再是痛點，讓您輕鬆駕馭求職之旅。<br/>
+        我們提供填空式的導引，引領您輕鬆地編排履歷內容。
       </p>
       </p>
       <p class="mt-3 text-lg text-gray-800 dark:text-gray-400">
-        您只需輕輕編輯基本訓息、工作經歷和教育背景，
+        您只需簡易編輯基本個人資訊、工作經歷和教育背景，
         <span class="block font-semibold">讓我們一同蓄勢待發，航向成功的職業未來。</span>
       </p>
       <div class="grid w-full gap-3 mt-7 sm:inline-flex">
-        <a class="inline-flex items-center justify-center px-4 py-3 text-sm font-medium text-center text-white transition border border-transparent rounded-md gap-x-3 bg-amber-500 hover:bg-amber-700 lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800" href="/users/sign_up">註冊會員
-          <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <% if show_registration_button %>
+          <a class="inline-flex items-center justify-center px-4 py-3 text-lg font-semibold text-center text-white transition border border-transparent rounded-md gap-x-3 bg-amber-500 hover:bg-amber-600" href="/users/sign_up">註冊會員
+            <svg class="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        </a>
+          </a>
+        <% end %>
       </div>
     </div> 
     <picture class="w-full max-w-md mx-auto">
       <%= image_tag 'READMee.png' %>
     </picture>
   </div> 
-</div>
-
-<div class="max-w-5xl px-4 py-10 mx-auto sm:px-6 lg:px-8 lg:py-14">
-  <div class="max-w-2xl mx-auto mb-10 text-center lg:mb-14">
-    <h2 class="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">READMee團隊</h2>
-    <p class="mt-1 text-gray-600 dark:text-gray-400"></p>
-  </div>
-
-  <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 md:gap-12">
-      <div class="text-center">
-      <%= image_tag 'zinni.svg', class: 'w-28 h-28 mx-auto' %>
-      <div class="mt-2 sm:mt-4">
-        <h3 class="font-medium text-gray-800 dark:text-gray-200">
-          芷寧
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Full Stack Engineer
-        </p>
-      </div>
-    </div>
-
-    <div class="text-center">
-    <%= image_tag 'dojo.svg', class: 'w-28 h-28 mx-auto' %>
-      <div class="mt-2 sm:mt-4">
-        <h3 class="font-medium text-gray-800 dark:text-gray-200">
-          冠霖
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Full Stack Engineer
-        </p>
-      </div>
-    </div>
-
-    <div class="text-center">
-      <%= image_tag 'ziti.svg', class: 'w-28 h-28 mx-auto' %>
-      <div class="mt-2 sm:mt-4">
-        <h3 class="font-medium text-gray-800 dark:text-gray-200">
-          子禔
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Full Stack Engineer
-        </p>
-      </div>
-    </div>  
-
-    <div class="text-center">
-      <%= image_tag 'finn.svg', class: 'w-28 h-28 mx-auto' %>
-      <div class="mt-2 sm:mt-4">
-        <h3 class="font-medium text-gray-800 dark:text-gray-200">
-          昆鋒
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Full Stack Engineer
-        </p>
-      </div>
-    </div>
-
-    <div class="text-center">
-      <%= image_tag 'komaki.svg', class: 'w-28 h-28 mx-auto' %>
-      <div class="mt-2 sm:mt-4">
-        <h3 class="font-medium text-gray-800 dark:text-gray-200">
-          哲維
-        </h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">
-          Full Stack Engineer
-        </p>
-      </div>
-    </div>  
-  </div>
 </div>
