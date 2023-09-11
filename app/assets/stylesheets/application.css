@@ -153,3 +153,11 @@
 .section-inputs:hover textarea::placeholder {
   opacity: 1;
 }
+
+.field_with_errors input[type="text"] {
+  border: red solid 2px;
+}
+
+.field_with_errors textarea {
+  border: red solid 2px;
+}
