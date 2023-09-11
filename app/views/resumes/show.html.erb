@@ -10,16 +10,10 @@
           action: "modals#close"
         } %>
     </div>
-    <section class="flex justify-center w-full">
-      <div class="max-w-screen-lg p-16 mt-20 bg-white shadow-2xl">
-        <div class="flex items-end min-h-min">
-          <div class="flex flex-col text-center">
 
-            <%= render partial: "show_area1", locals: { resume: @resume } %>
+    <%= render partial: "show_area1", locals: { resume: @resume } %>
+    <%= render partial: "show_area2", locals: { resume: @resume } %>
+    <%= render partial: "show_area3", locals: { resume: @resume } %>
 
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 <% end %>
