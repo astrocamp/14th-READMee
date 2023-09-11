@@ -11,7 +11,7 @@
         <% if @resume.work_exp_start_date_1.present? %>
           <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
         <% else %>
-          <% if @resume.work_experiences.first.present %>
+          <% if @profile.work_experiences.first.present? %>
             <%= f.text_field :work_exp_start_date_1, value: @profile.work_experiences.first.start_date,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
           <% else %>
             <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -21,7 +21,7 @@
         <% if @resume.work_exp_end_date_1.present? %>
           <%= f.text_field :work_exp_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
         <% else %>        
-          <% if @resume.work_experiences.first.present %>
+          <% if @profile.work_experiences.first.present? %>
             <%= f.text_field :work_exp_end_date_1, value: @profile.work_experiences.first.end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>
             <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -33,7 +33,7 @@
       <% if @resume.work_exp_name_1.present? %>
         <%= f.text_field :work_exp_name_1,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
       <% else %>
-        <% if @resume.work_experiences.first.present %>
+        <% if @profile.work_experiences.first.present? %>
           <%= f.text_field :work_exp_name_1, value: @profile.work_experiences.first.title,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
         <% else %>
           <%= f.text_field :work_exp_name_1,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
@@ -49,7 +49,7 @@
         <% if @resume.work_exp_start_date_2.present? %>
           <%= f.text_field :work_exp_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
         <% else %>
-          <% if @resume.work_experiences.second.present %>
+          <% if @profile.work_experiences.second.present? %>
             <%= f.text_field :work_exp_start_date_2, value: @profile.work_experiences.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
           <% else %>
             <%= f.text_field :work_exp_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -59,7 +59,7 @@
         <% if @resume.work_exp_end_date_2.present? %>
           <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
         <% else %>
-          <% if @resume.work_experiences.second.present %>
+          <% if @profile.work_experiences.second.present? %>
             <%= f.text_field :work_exp_end_date_2, value: @profile.work_experiences.second.end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>
             <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
@@ -70,7 +70,7 @@
       <% if @resume.work_exp_name_2.present? %>
         <%= f.text_field :work_exp_name_2,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
       <% else %>
-        <% if @resume.work_experiences.second.present %>
+        <% if @profile.work_experiences.second.present? %>
           <%= f.text_field :work_exp_name_2, value: @profile.work_experiences.second.title,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
         <% else %>
           <%= f.text_field :work_exp_name_2,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
@@ -93,7 +93,7 @@
           <% if @resume.work_exp_start_date_1.present? %>
             <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
           <% else %>
-            <% if @resume.work_experiences.first.present %>
+            <% if @profile.work_experiences.first.present? %>
               <%= f.text_field :work_exp_start_date_1, value: @profile.work_experiences.first.start_date,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
             <% else %>
               <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -103,7 +103,7 @@
           <% if @resume.work_exp_end_date_1.present? %>
             <%= f.text_field :work_exp_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>        
-            <% if @resume.work_experiences.first.present %>
+            <% if @profile.work_experiences.first.present? %>
               <%= f.text_field :work_exp_end_date_1, value: @profile.work_experiences.first.end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
             <% else %>
               <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -116,7 +116,7 @@
           <% if @resume.work_exp_name_1.present? %>
             <%= f.text_field :work_exp_name_1,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
           <% else %>
-            <% if @resume.work_experiences.first.present %>
+            <% if @profile.work_experiences.first.present? %>
               <%= f.text_field :work_exp_name_1, value: @profile.work_experiences.first.title,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
             <% else %>
               <%= f.text_field :work_exp_name_1,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
@@ -133,7 +133,7 @@
           <% if @resume.work_exp_start_date_2.present? %>
             <%= f.text_field :work_exp_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
           <% else %>
-            <% if @resume.work_experiences.second.present %>
+            <% if @profile.work_experiences.second.present? %>
               <%= f.text_field :work_exp_start_date_2, value: @profile.work_experiences.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
             <% else %>
               <%= f.text_field :work_exp_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -143,7 +143,7 @@
           <% if @resume.work_exp_end_date_2.present? %>
             <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>
-            <% if @resume.work_experiences.second.present %>
+            <% if @profile.work_experiences.second.present? %>
               <%= f.text_field :work_exp_end_date_2, value: @profile.work_experiences.second.end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
             <% else %>
               <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
@@ -156,7 +156,7 @@
           <% if @resume.work_exp_name_2.present? %>
             <%= f.text_field :work_exp_name_2,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
           <% else %>
-            <% if @resume.work_experiences.second.present %>
+            <% if @profile.work_experiences.second.present? %>
               <%= f.text_field :work_exp_name_2, value: @profile.work_experiences.second.title,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
             <% else %>
               <%= f.text_field :work_exp_name_2,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
@@ -177,7 +177,7 @@
         <% if @resume.work_exp_name_1.present? %>
           <%= f.text_field :work_exp_name_1,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
         <% else %>
-          <% if @resume.work_experiences.first.present %>
+          <% if @profile.work_experiences.first.present? %>
             <%= f.text_field :work_exp_name_1, value: @profile.work_experiences.first.title,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
           <% else %>
             <%= f.text_field :work_exp_name_1,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗一" %>
@@ -188,7 +188,7 @@
           <% if @resume.work_exp_start_date_1.present? %>
             <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
           <% else %>
-            <% if @resume.work_experiences.first.present %>
+            <% if @profile.work_experiences.first.present? %>
               <%= f.text_field :work_exp_start_date_1, value: @profile.work_experiences.first.start_date,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
             <% else %>
               <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -198,7 +198,7 @@
           <% if @resume.work_exp_end_date_1.present? %>
             <%= f.text_field :work_exp_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>        
-            <% if @resume.work_experiences.first.present %>
+            <% if @profile.work_experiences.first.present? %>
               <%= f.text_field :work_exp_end_date_1, value: @profile.work_experiences.first.end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
             <% else %>
               <%= f.text_field :work_exp_start_date_1,  class: "mr-5 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
@@ -215,7 +215,7 @@
         <% if @resume.work_exp_name_2.present? %>
           <%= f.text_field :work_exp_name_2,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
         <% else %>
-          <% if @resume.work_experiences.second.present %>
+          <% if @profile.work_experiences.second.present? %>
             <%= f.text_field :work_exp_name_2, value: @profile.work_experiences.second.title,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
           <% else %>
             <%= f.text_field :work_exp_name_2,  class: "w-full my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作經驗二" %>
@@ -226,8 +226,8 @@
           <% if @resume.work_exp_start_date_2.present? %>
             <%= f.text_field :work_exp_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
           <% else %>
-            <% if @resume.work_experiences.second.present %>
-              <%= f.text_field :work_exp_start_date_2, value: @resume.work_experiences.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+            <% if @profile.work_experiences.second.present? %>
+              <%= f.text_field :work_exp_start_date_2, value: @profile.work_experiences.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
             <% else %>
               <%= f.text_field :work_exp_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
             <% end %>
@@ -236,7 +236,7 @@
           <% if @resume.work_exp_end_date_2.present? %>
             <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>
-            <% if @resume.work_experiences.second.present %>
+            <% if @profile.work_experiences.second.present? %>
               <%= f.text_field :work_exp_end_date_2, value: @profile.work_experiences.second.end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
             <% else %>
               <%= f.text_field :work_exp_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>

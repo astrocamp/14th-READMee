@@ -1,10 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  connect() {
-    console.log(this.element)
-    console.log(this.element.dataset.publish)
-  }
   
   updatePublish() {
     var result = confirm("確定要發佈嗎");

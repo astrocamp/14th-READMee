@@ -4,13 +4,26 @@
     <div class="flex min-h-min">
       <div >
         <div class="flex items-center justify-center pb-5 custom-width-250px">
-        <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
+          <% if @profile.avatar.attached? %>
+            <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
+          <% else %>
+            <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+          <% end %>
         </div>
         <div class="flex flex-col items-center justify-center inline-block w-60">
           <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入名字" %>
           <%= f.text_field :job_hunting, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入想要應徵的工作" %>
           <%= f.text_field :phone, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入電話" %>
-          <%= f.text_area :social_links, class: "break-words px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入社群連結" %>
+          
+          <% if @resume.social_links.present? %>
+            <%= f.text_area :social_links, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+          <% else %>
+            <% if @profile.social_links.first.present? %>
+              <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+            <% else %>
+              <%= f.text_area :social_links, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+            <% end %>
+          <% end %>
         </div>
 
         <div class="text-center">
@@ -57,13 +70,32 @@
               <%= f.text_field :phone, class: "px-2 py-1 my-1 border-white rounded-md", placeholder: "請輸入電話" %>
             </div>
             <div class="ml-2">
-              <%= f.text_area :skills, class: "px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入技能" %>
+              <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+                <% @profile.skills.each do |skill| %>
+                  <li class="inline-block mr-2"><%= skill.tag %></li>
+                <% end %>
+              </ul>
             </div>
             <div>
-              <p>language</p>
+                <% if @profile.languages.present? %>
+                  <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+                    <% @profile.languages.each do |language, level| %>
+                      <li><%= "#{language} • #{level}" %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
             </div>
           </div>
-          <%= f.text_area :social_links, class: "w-full grow px-2 py-1 my-1 border-white rounded-md", placeholder: "請輸入社群連結" %>
+          
+          <% if @resume.social_links.present? %>
+            <%= f.text_area :social_links, class: "w-full px-2 w-96 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+          <% else %>
+            <% if @profile.social_links.first.present? %>
+              <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "w-full px-2 w-96 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+            <% else %>
+              <%= f.text_area :social_links, class: "w-full px-2 w-96 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -84,7 +116,17 @@
           <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center", placeholder: "請輸入想要的職位" %>
           <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center", placeholder: "請輸入電話" %>
           <%= f.text_field :address, class: "px-2 py-1 w-96 my-1 border-white rounded-md text-center", placeholder: "請輸入地址" %>
-          <%= f.text_area :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md text-center", placeholder: "請輸入連結" %>
+          
+          <% if @resume.social_links.present? %>
+            <%= f.text_area :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+          <% else %>
+            <% if @profile.social_links.first.present? %>
+              <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+            <% else %>
+              <%= f.text_area :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+            <% end %>
+          <% end %>
+
         </div>
       </div>
     </div>
@@ -95,25 +137,19 @@
     <div class="flex justify-between">
       <div class="grow">
         <h1 class="px-2 mt-1 text-lg font-bold">語言</h1>
-        <ul class="relative">
-          <% if @resume.languages.present? %>
-            <% @languages.each do |language, level| %>
-              <li class="px-2 inline-blockrounded-lg"><%= language %>▪️<%= level %></li>
+        <% if @profile.languages.present? %>
+          <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+            <% @profile.languages.each do |language, level| %>
+              <li><%= "#{language} • #{level}" %></li>
             <% end %>
-          <% else %>
-            <li class="inline-block px-2 rounded-lg">-請輸入語言</li>
-          <% end %>
-        </ul>
+          </ul>
+      <% end %>
       </div>
       <div class="grow">
         <h1 class="px-2 text-lg font-bold ">技能</h1>
-        <ul class="relative">
-          <% if @skills.present? %>
-            <% @skills.each do |skill| %>
-              <li class="inline-blockrounded-lg"><%= skill %></li>
-            <% end %>
-          <% else %>
-            <li class="inline-block rounded-lg">-請輸入技能</li>
+        <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+          <% @profile.skills.each do |skill| %>
+            <li class="inline-block mr-2"><%= skill.tag %></li>
           <% end %>
         </ul>
       </div>
