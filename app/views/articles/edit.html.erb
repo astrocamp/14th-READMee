@@ -1,12 +1,15 @@
-<h2 class="article-post">更新文章</h2>
+<div class="container w-8/12 mx-auto mt-12">
 
-<%= form_with(model: @article, data: { turbo: false }) do |f| %>
+  <h2 class="text-center article-post">更新文章</h2>
 
-<%= render 'form', f: f %>
+  <%= form_with(model: @article, data: { turbo: false }) do |f| %>
 
-<div class="flex gap-3 my-4">
-  <%= f.submit "更新文章" ,class: "save-btn text-lg" %>
-  <%= link_to "取消", articles_path, class: "save-btn text-lg" %>
+  <%= render 'form', f: f  %>
+
+  <div class="flex gap-3 my-4">
+    <%= f.submit "更新文章" ,class: "save-btn text-lg" %>
+    <%= link_to "取消", articles_path, class: "save-btn text-lg" %>
+  </div>
+
+  <% end %>
 </div>
-
-<% end %>
