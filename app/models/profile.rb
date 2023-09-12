@@ -11,6 +11,7 @@ class Profile < ApplicationRecord
   has_many :educations
   has_many :projects
   has_many :resumes
+  has_many :social_links
 
   def self.address_options
     counties = [

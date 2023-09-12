@@ -1,0 +1,210 @@
+<div class="area4">
+  <% if @resume.area_4 == 1 %>
+    <div>
+      <div class="mt-2">
+        <h1 class="font-bold">教育程度</h1>
+        <div class="flex justify-between mt-2">
+          <% if @resume.education_name_1.present? %>
+            <p class="p-2 my-2 border-0 border-white rounded-md resize-y" > <%= @resume.education_name_1 %></p>
+          <% else %>
+            <% if @resume.profile.educations.first.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_name_1 %>   </p>
+            <% else %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_1%>  </p>
+            <% end %>
+          <% end %>
+          <div class="flex">
+            <% if @resume.education_start_date_1.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_start_date_1 %>   </p>
+            <% else %>
+              <% if @resume.profile.educations.first.present? %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_start_date_1 %></p>
+              <% else %>
+                <p   class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_start_date_1%></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_end_date_1.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_end_date_1 %></p>
+            <% else %>
+              <% if @resume.profile.educations.first.present? %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_end_date_1%></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_end_date_1 %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex justify-between mt-2">
+          <% if @resume.education_name_2.present? %>
+            <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_name_2 %></p>
+          <% else %>
+            <% if @resume.profile.educations.second.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_2 %></p>
+            <% else %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">    <%= @resume.education_name_2   %></p>
+            <% end %>
+          <% end %>
+          <div class="flex">
+            <% if @resume.education_start_date_2.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_start_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.educations.second.present? %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_start_date_2%></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_start_date_2 %>  </p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_end_date_2.present? %>
+              <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_end_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.educations.second.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_end_date_2    %></p>
+              <% else %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_end_date_2  %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @resume.area_4 == 2 %>
+    <div>
+      <div>
+        <div>
+          <h1 class="font-bold">教育程度</h1>
+        </div>
+        <div class="flex">
+          <div class="flex">
+            <% if @resume.education_start_date_1.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_start_date_1 %></p>
+            <% else %>
+              <% if @resume.profile.educations.first.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_start_date_1 %></p>
+              <% else %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_start_date_1 %></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_end_date_1.present? %>
+              <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_1%></p>
+            <% else %>
+              <% if @resume.profile.educations.first.present? %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_1 %></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">    <%= @resume.education_end_date_1%></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_name_1.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_name_1 %></p>
+            <% else %>
+              <% if @resume.profile.educations.first.present? %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_1 %></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_name_1 %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="flex">
+            <% if @resume.education_start_date_2.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_start_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.educations.second.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_start_date_2 %></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">      <%= @resume.education_start_date_2%></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_end_date_2.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_2%></p>
+            <% else %>
+              <% if  @resume.profile.educations.second.present? %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_end_date_2 %></p>
+              <% else %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y"><%= @resume.education_end_date_2 %></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_name_2.present? %>
+              <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_name_2 %></p>
+            <% else %>
+              <% if @resume.profile.educations.second.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_name_2 %></p>
+              <% else %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_2 %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @resume.area_4 == 3 %>
+    <div>
+      <div class="mt-2">
+        <h1 class="font-bold">教育程度</h1>
+        <div class="flex justify-between mt-2">
+          <% if @resume.education_name_1.present? %>
+            <p class="p-2 my-2 border-0 border-white rounded-md resize-y">    <%= @resume.education_name_1%></p>
+          <% else %>
+            <% if @resume.profile.educations.first.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_1 %></p>
+            <% else %>
+              <p class== "my-2 p-2 rounded-md resize-y border-0 border-white">   <%= @resume.education_name_1 %></p>
+            <% end %>
+          <% end %>
+          <div class="flex">
+            <% if @resume.education_start_date_1.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_start_date_1 %> </p>
+            <% else %>
+              <% if @resume.educations.first.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_start_date_1 %></p>
+              <% else %>
+                <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_start_date_1%></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_end_date_1.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_end_date_1 %></p>
+            <% else %>
+              <% if @resume.profile.educations.first.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_end_date_1 %></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_1 %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2">
+        <div class="flex justify-between mt-2">
+          <% if @resume.education_name_2.present? %>
+            <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_2 %></p>
+          <% else %>
+            <% if @resume.profile.educations.second.present? %>
+              <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_name_2 %></p>
+            <% else %>
+              <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">     <%= @resume.education_name_2 %></p>
+            <% end %>
+          <% end %>
+          <div class="flex">
+            <% if @resume.education_start_date_2.present? %>
+              <p  class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_start_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.educations.second.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y"> <%= @resume.education_start_date_2 %></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_start_date_2 %></p>
+              <% end %>
+            <% end %>
+            <% if @resume.education_end_date_2.present? %>
+              <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.educations.second.present? %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_2  %></p>
+              <% else %>
+                <p class="p-2 my-2 border-0 border-white rounded-md resize-y">  <%= @resume.education_end_date_2 %></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
