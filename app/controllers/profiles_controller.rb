@@ -3,11 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def show
-    if current_user && current_user.profile.present?
-      @resume = Resume.find_by(user_id: current_user.id)
-    else
-      redirect_to new_profile_path(current_user.account)
-    end
+    @profile = current_user.profile
   end
 
   def new
@@ -16,13 +12,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = current_user.build_profile(profile_params)
-    @resume = current_user.resumes.build
     if @profile.save
-      Resume.create_content(current_user.profile, @resume, current_user.email)
-      @resume.save      
-      redirect_to profile_path(current_user.account), notice: '恭喜完成第一步！建立個人檔案成功！'
+      redirect_to dashboard_path
     else
-      render :new, alert: "請檢查表單必填欄位。"
+      flash.now[:alert] = "請檢查表單必填欄位。" 
+      render :new
     end
   end
 
@@ -30,12 +24,39 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @works = WorkExperience.where(profile_id: @profile.id)
     if @profile.update(profile_params)
-      redirect_to profile_path(current_user.account), notice: '更新個人檔案成功！'
+      render "users/dashboard"
     else
+      flash.now[:alert] = "請檢查表單必填欄位。" 
       render :edit
     end
   end
+
+  def create_resume
+    @profile = current_user.profile
+    @resume = @profile.resumes.find_or_create_by(
+      user: current_user,
+      full_name: @profile.full_name,
+      phone: @profile.phone,
+      address: @profile.address,
+      about_me: @profile.about_me,
+      job_hunting: @profile.job_hunting,
+      languages: @profile.languages,
+      area_1: 1,
+      area_2: 1,
+      area_3: 1,
+      area_4: 1,
+      publish: false
+    )
+    if @resume.save
+      redirect_to edit_resume_path(account: current_user.account, id: @resume), notice: "成功"
+    else
+      flash[:alert] = "創建失敗，請檢查"
+      redirect_to dashboard_path(current_user.account)
+    end
+  end
+  
 
   private
 
@@ -44,7 +65,8 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :job_title, :education,
-                                    :about_me, :work_experience, :projects, :linkedin, :facebook, :github, :website, languages: {}, skill_ids: [])
-  end
+    params.require(:profile).permit(:avatar, :full_name, :phone, :address, :about_me, :languages, :job_hunting, :social_link, skill_ids: [], languages: {})
+  end  
+
+  
 end

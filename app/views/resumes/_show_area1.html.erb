@@ -1,0 +1,170 @@
+<section class="flex justify-center w-full">
+  <div class="max-w-screen-lg p-16 mt-20 bg-white shadow-2xl">
+    <div class="flex items-end min-h-min">
+      <div class="flex flex-col text-center">
+<% if @resume.area_1 == 1 %>
+
+  <div class="flex min-h-min">
+    <div >
+      <div class="flex items-center justify-center pb-5 custom-width-250px">
+        <% if @resume.profile.avatar.attached? %>
+          <%= image_tag @resume.profile.avatar.variant(:thumb), class: "w-32 h-32 mx-auto" %>
+        <% else %>
+          <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+        <% end %>
+      </div>
+      <div class="flex flex-col items-center justify-center inline-block w-60">
+
+        <p class="px-2 py-1 font-bold text-center border-0 border-white rounded-md"><%= @resume.full_name%></p>
+        <p class="px-2 py-1 font-bold text-center border-0 border-white rounded-md"><%= @resume.job_hunting %></p>
+        <p class="px-2 py-1 font-bold text-center border-0 border-white rounded-md"><%= @resume.phone %></p>
+
+        <% if @resume.social_links.present? %>
+          <p class="w-56 px-2 py-1 my-1 border-white rounded-md h-28"><%= @resume.social_links %></p>
+        <% else %>
+          <% if @resume.profile.social_links.first.present? %>
+            <p class="w-56 px-2 py-1 my-1 border-white rounded-md h-28"><%= @resume.social_links %></p>
+            <p class="w-56 px-2 py-1 my-1 border-white rounded-md h-28"><%= @resume.social_links %></p>
+          <% else %>
+            <p class="w-56 px-2 py-1 my-1 border-white rounded-md h-28"><%= @resume.social_links %></p>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="text-center">
+        <h1 class="mt-1 text-lg font-bold">語言</h1>
+        <div class="flex flex-col">
+
+        <% if @resume.profile.languages.present? %>
+          <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+            <% @resume.profile.languages.each do |language, level| %>
+              <li><%= "#{language} • #{level}" %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        </div>
+      </div>
+      <div class="flex flex-col items-center">
+        <h2 class="font-bold">技能</h2>
+        <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+          <% @resume.profile.skills.each do |skill| %>
+            <li class="inline-block mr-2"><%= skill.tag %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col w-full">
+      <h1>簡介</h1>
+      <p class="p-2 border-white rounded-md grow h-96"><%= @resume.about_me %></p>
+    </div>
+  </div>
+
+<% elsif @resume.area_1 == 2 %>
+
+  <div>
+    <div>
+      <div class="flex">
+        <div>
+          <% if @resume.profile.avatar.attached? %>
+            <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
+          <% else %>
+            <%= image_tag("defaultuser.png", class: "rounded-full mx-auto") %>
+          <% end %>
+        </div>
+        <div>
+          <div class="grid w-3/4 grid-cols-3 grow">
+            <div class="mr-2">
+              <p class="px-2 py-1 my-1 border-white rounded-md"><%= @resume.full_name %></p>
+              <p class="px-2 py-1 my-1 border-0 border-white rounded-md"><%= @resume.job_hunting %></p>
+              <p class="px-2 py-1 my-1 border-white rounded-md"><%= @resume.phone %></p>
+            </div>
+            <div class="ml-2">
+              <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+                <% @resume.profile.skills.each do |skill| %>
+                  <li class="inline-block mr-2"><%= skill.tag %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div>
+                <% if @resume.profile.languages.present? %>
+                  <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+                    <% @resume.profile.languages.each do |language, level| %>
+                      <li><%= "#{language} • #{level}" %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+            </div>
+          </div>
+          <% if @resume.social_links.present? %>
+            <p class="w-full px-2 py-1 my-1 border-white rounded-md w-96"><%= @resume.social_links %></p>
+          <% else %>
+            <% if @resume.profile.social_links.first.present? %>
+              <p class="w-full px-2 py-1 my-1 border-white rounded-md w-96"><%= @resume.social_links %></p>
+            <% else %>
+              <p class="w-full px-2 py-1 my-1 border-white rounded-md w-96"><%= @resume.social_links %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h1>簡介</h1>
+      <p class="w-full px-2 py-1 my-1 border-white rounded-md min-h-180 grow"><%= @resume.about_me %></p>
+    </div>
+  </div>
+
+<% elsif @resume.area_1 == 3 %>
+
+  <div>
+    <div class="w-9/12 mx-auto min-h-min">
+      <div>
+        <div class="flex flex-col items-center justify-center ">
+          <div class="flex items-center justify-center">
+            <% if @resume.profile.avatar.attached? %>
+              <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
+            <% else %>
+              <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+            <% end %>
+          </div>
+          <p class="px-2 py-1 font-bold text-center border-0 border-white rounded-md"><%= @resume.full_name %></p>
+          <p class="px-2 py-1 my-1 text-center border-0 border-white rounded-md"><%= @resume.job_hunting %></p>
+          <p class="px-2 py-1 my-1 text-center border-0 border-white rounded-md"><%= @resume.phone %></p>
+          <p class="px-2 py-1 my-1 text-center border-0 border-white rounded-md"><%= @resume.address %></p>
+          <% if @resume.social_links.present? %>
+            <p class="px-2 py-1 my-1 border-white rounded-md w-96 grow"><%= @resume.social_links %></p>
+          <% else %>
+            <% if @resume.profile.social_links.first.present? %>
+            <p class="px-2 py-1 my-1 border-white rounded-md w-96 grow"><%= @resume.social_links %></p>
+            <% else %>
+            <p class="px-2 py-1 my-1 border-white rounded-md w-96 grow"><%= @resume.social_links %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col w-full">
+      <p class="h-48 px-3 border border-0 border-white rounded-md grow"><%= @resume.about_me %></p>
+    </div>
+    <div class="flex justify-between">
+      <div class="grow">
+        <h1 class="px-2 mt-1 text-lg font-bold">語言</h1>
+        <% if @resume.profile.languages.present? %>
+          <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+            <% @resume.profile.languages.each do |language, level| %>
+              <li><%= "#{language} • #{level}" %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      </div>
+      <div class="grow">
+        <h1 class="px-2 text-lg font-bold ">技能</h1>
+        <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+          <% @resume.profile.skills.each do |skill| %>
+            <li class="inline-block mr-2"><%= skill.tag %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <% end %>

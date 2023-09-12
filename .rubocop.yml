@@ -21,7 +21,6 @@ Style/HashSyntax:
 
 Style/SymbolArray:
   Enabled: false
-
 Style/SymbolProc:
   Enabled: false
 
@@ -44,9 +43,6 @@ Style/RedundantInterpolation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/GuardClause:
   Enabled: false
 
 Style/WordArray:
@@ -103,6 +99,12 @@ Naming/VariableName:
 Bundler/OrderedGems:
   Enabled: false
 
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
 Style/RedundantSelf:
   Enabled: false
 
@@ -110,7 +112,7 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 Security/Eval:
-  Enabled:
+  Enabled: false
 
 Style/IfUnlessModifier:
   Enabled: false

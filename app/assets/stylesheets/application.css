@@ -6,8 +6,8 @@
 .top-68px {
   top: 68px;
 }
-.custom-width-250px {
-  width: 250px;
+.custom-width-190px {
+  width: 190px;
 }
 .max-w-screen-lg {
   width: 1024px;
@@ -52,4 +52,116 @@
 .chat {
   width: 300px;
   background-color: white;
+}
+.codex-editor__redactor {
+  padding-bottom: 0 !important;
+}
+
+.ce-block__content {
+  border: 1px solid grey;
+}
+
+.ce-header {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.profile_name {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.profile_name_block {
+  display: flex;
+  justify-content: space-between;
+}
+.profile_img {
+  width: 15px;
+  height: 15px;
+}
+.profile_edit_img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.delete_img {
+  display: inline;
+  width: 25px;
+  height: 25px;
+}
+.img_resize {
+  width: 30px;
+  height: 30px;
+}
+
+.colored-toast.swal2-icon-success {
+  color: black !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
+.colored-toast.swal2-icon-success {
+  color: black !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
+.section-inputs input {
+  border: none;
+}
+
+.section-inputs:hover input {
+  border: 1px solid gray;
+}
+.section-inputs:hover textarea {
+  border: 1px solid gray;
+}
+
+.section-inputs input::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.section-inputs textarea::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.section-inputs:hover input::placeholder {
+  opacity: 1;
+}
+
+.section-inputs:hover textarea::placeholder {
+  opacity: 1;
+}
+
+.field_with_errors input[type='text'] {
+  border: red solid 2px;
+}
+
+.field_with_errors textarea {
+  border: red solid 2px;
 }

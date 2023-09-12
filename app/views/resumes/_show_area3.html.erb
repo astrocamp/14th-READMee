@@ -1,0 +1,75 @@
+<div class="area3">
+  <% if @resume.area_3 == 1 %>
+    <div>
+      <div class="mt-2">
+        <h1 class="mb-5 font-bold">專案</h1>
+        <div class="flex pb-14 h-60">
+          <div class="flex flex-col w-1/2 pt-5l grow">
+            <p class="w-full py-1 rounded-md resize-y">
+              <%= @resume.project_name_1 %>
+            </p>
+            <p class="w-full p-2 py-1 border-white rounded-md resize-y grow">
+              <%= @resume.project_content_1 %>
+            </p>
+          </div>
+        </div>
+        <div class="flex pb-14 h-60">
+          <div class="flex flex-col w-1/2 pt-5l grow">
+            <p class="w-full py-1 rounded-md resize-y">
+              <%= @resume.project_name_2 %>
+            </p>
+            <p class="w-full p-2 py-1 border-white rounded-md resize-y grow">
+              <%= @resume.project_content_2 %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @resume.area_3 == 2 %>
+    <div>
+      <div id="area_3">
+        <div class="font-bold ">
+          專案經驗
+        </div>
+        <div class="flex">
+          <div class="w-1/2 pr-2">
+            <div></div>
+            <p class="w-full px-2 py-1 border-0 border-white rounded-md resize-y">
+              <%= @resume.project_name_1 %>
+            </p>
+            <div></div>
+            <p class="w-full p-2 py-1 mt-1 border-0 border-white rounded-md resize-y grow">
+              <%= @resume.project_content_1 %>
+            </p>
+          </div>
+          <div class="w-1/2">
+            <div></div>
+            <p class="w-full px-2 py-1 border-0 border-white rounded-md resize-y">
+              <%= @resume.project_name_2 %>
+            </p>
+            <div></div>
+            <p class="w-full p-2 py-1 mt-1 border-0 border-white rounded-md resize-y grow">
+              <%= @resume.project_content_2 %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% elsif @resume.area_3 == 3 %>
+    <div>
+      <div class="mt-2">
+        <div class="flex h-60">
+          <div class="flex flex-col w-1/2">
+            <p class="w-full px-2 py-1 font-bold border-0 border-white rounded-md resize-y">
+              <%= @resume.project_name_1 %>
+            </p>
+            <p class="w-full p-2 py-1 mt-1 border-0 border-white rounded-md resize-y grow">
+              <%= @resume.project_content_1 %>
+            </p>
+          </div>
+          <%= image_tag "pdf-project.jpg", class:"w-1/2" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

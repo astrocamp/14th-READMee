@@ -1,11 +1,11 @@
-<header class="sticky top-0 z-50 flex flex-wrap w-full py-3 text-sm bg-white border-b border-gray-200 sm:justify-start sm:flex-nowrap sm:py-0 dark:bg-gray-800 dark:border-gray-700">
+<header data-controller="navbar" class="sticky top-0 z-50 flex flex-wrap w-full py-3 text-sm bg-white border-b border-gray-200 sm:justify-start sm:flex-nowrap sm:py-0 dark:bg-gray-800 dark:border-gray-700">
   <nav class="relative w-full px-4 mx-auto max-w-7xl sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
     <div class="flex items-center justify-between">
       <a class="flex items-center text-xl font-semibold gap-x-2 dark:text-white" href="/" aria-label="Logo">
         <%= image_tag 'websiteLogo.png', class: 'w-10 h-10 rounded-full' %>READMee
       </a>
       <div class="sm:hidden">
-        <button type="button" class="inline-flex items-center justify-center gap-2 p-2 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-md shadow-sm hs-collapse-toggle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 dark:bg-slate-900 dark:hover:bg-slate-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:focus:ring-offset-gray-800" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
+        <button data-action="click->navbar#toggle" type="button" class="inline-flex items-center justify-center gap-2 p-2 text-sm font-medium text-gray-700 align-middle transition-all bg-white border rounded-md shadow-sm hs-collapse-toggle hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600" data-hs-collapse="#navbar-collapse-with-animation" aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
           <svg class="w-4 h-4 hs-collapse-open:hidden" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
           </svg>
@@ -15,25 +15,22 @@
         </button>
       </div>
     </div>
-    <div id="navbar-collapse-with-animation" class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block">
+    <div data-navbar-target="tinylink" id="navbar-collapse-with-animation" class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block">
       <div class="flex flex-col mt-5 gap-y-4 lg:gap-x-7 md:gap-x-7 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-2 sm:mt-0 sm:pl-7">
         <% if current_user %>
-          <%= link_to "履歷列表", resumes_path, class: 'text-gray-500 hover:text-gray-400' %>
-          <%= link_to "工作職缺", jobs_list_path, class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %>
-          <a class="font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" href="#">作品集</a>
-          <%= link_to '文章', articles_path, class: 'text-gray-500 hover:text-gray-400' %>
+          <%= link_to '履歷列表', resumes_path, class: 'nav-btn-signed-in' %>
+          <%= link_to '工作職缺', jobs_list_path, class: 'nav-btn-signed-in' %>
+          <%= link_to '文章社群', articles_path, class: 'nav-btn-signed-in' %>
           <% if current_user.role === 'employer'%>
             <% if current_user.company.present? %>
-              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500" %>
+              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn-signed-in' %>
             <% end %>
           <% end %>
-
         <% else %>
-          <%= link_to '履歷列表', user_session_path, class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"%>
-          <%= link_to '工作職缺', user_session_path, class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"%>
-          <%= link_to '作品集', user_session_path, class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"%>
-          <%= link_to '雇主專區', user_session_path, class: "font-medium text-gray-500 hover:text-gray-400 sm:py-6 dark:text-gray-400 dark:hover:text-gray-500"%>
-          <%= link_to '文章', articles_path, class: 'text-gray-500 hover:text-gray-400' %>
+          <%= link_to '履歷列表', user_session_path, class: 'nav-btn' %>
+          <%= link_to '工作職缺', user_session_path, class: 'nav-btn' %>
+          <%= link_to '雇主專區', user_session_path, class: 'nav-btn' %>
+          <%= link_to '文章社群', articles_path, class: 'nav-btn' %>
         <% end %>
         <div class="flex items-center font-medium text-gray-500 sm:border-l sm:border-gray-300 sm:my-6 sm:pl-6 dark:border-gray-700 dark:text-gray-400" data-controller="switchRole">
           <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -41,16 +38,19 @@
           </svg>
           <% if current_user %>
             <div class='flex gap-3' data-controller="switchRole">
-              <%= link_based_on_role(current_user)%>
-              <%= link_to '切換身分', toggle_role_path, data: { turbo_method: :post } %>
-              <%= link_to '登出', destroy_user_session_path, data: { turbo_method: :delete }, class:'hover:text-amber-600 mx-1'%>
+              <%= link_based_on_role(current_user) %>
+              <%= link_to '切換身分', toggle_role_path, data: { turbo_method: :post }, class: 'nav-btn-signed-in' %>
+              <button  data-action="click->toggle-dark-mode#toggleDarkMode">
+                <%= image_tag "night-mode.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
+              </button>
+              <%= link_to '登出', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-btn-signed-in' %>
             </div>
           <% else %>
             <div class="flex gap-3">
-              <%= link_to '登入', new_user_session_path , class:' hover:text-amber-600 mx-1'%>
-              <%= link_to '註冊', new_user_registration_path, class:'hover:text-amber-600 mx-1'%>
+              <%= link_to '登入', new_user_session_path , class: 'nav-btn-signed-in' %>
+              <%= link_to '註冊', new_user_registration_path, class: 'nav-btn-signed-in' %>
               <%- Devise.omniauth_providers.each do |provider| %>
-                <%= button_to "GOOGLE登入", omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class:'hover:text-amber-600 mx-1' %>
+                <%= button_to "GOOGLE登入", omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class: 'nav-btn-signed-in'  %>
               <% end %>
             <% end %>
           </div>

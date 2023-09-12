@@ -1,0 +1,30 @@
+<turbo-frame id="show_education">
+  <turbo-frame id="edit_education">
+    <% if @education.present? %>
+      <% @education.each do |education|%>
+        <div class="flex justify-between my-2">
+          <div>
+            <%= education.title %>
+            <%= education.start_date %> ~ 
+            <%= education.end_date %>
+          </div>
+          <div class="flex">
+            <%= link_to edit_education_path(id: education.id) do %>
+              <%= image_tag("edit.png", class: "img_resize mx-1") %>
+            <% end %>
+            <%= link_to education_path(id: education.id), data:{turbo_method: :delete, turbo_confirm: "確定要刪除?"} do %>
+              <%= image_tag("delete_img", class: "delete_img mx-1 mt-0.5")%>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </turbo-frame>
+  <turbo-frame id="new_education">
+    <% if @profile.present? %>
+      <%= link_to '新增', new_education_path, class: "new-btn" %>
+    <% else %>
+      <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
+    <% end %>
+  </turbo-frame>
+</turbo-frame>

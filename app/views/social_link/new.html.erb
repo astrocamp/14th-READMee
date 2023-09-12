@@ -1,0 +1,13 @@
+<turbo-frame id="new_social">
+  <%= form_with(model: @social_link, url: social_link_index_path , data:{turbo_method: :post}) do |form| %>
+    <div>
+      <%= form.label :title, '名稱' %>
+      <%= form.text_field :title, name:"social_link[title]", class:"input"%>
+    </div>
+    <div>
+      <%= form.label :link, '連結' %>
+      <%= form.text_field :link, name:"social_link[link]", class:"input"%>
+    </div>
+    <%= form.submit '提交', class: 'save-btn'%>
+  <% end %>
+</turbo-frame>

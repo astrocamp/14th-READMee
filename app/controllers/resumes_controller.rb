@@ -2,33 +2,28 @@ class ResumesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_resume, only: [:edit, :update]
 
+  def new
+    @resume = Resume.new
+    @profile = current_user.profile
+  end
+
   def index
     @users = User.includes(:resumes)
   end
 
   def show
     @resume = Resume.find(params[:id])
-    @skills = JSON.parse(@resume.skills)
-    @languages = eval(@resume.languages)
   end
 
   def edit
-    @resume.basic_info.present?
-    @resume = Resume.find(params[:id])
-    @skills = JSON.parse(@resume.skills)
-    @languages = eval(@resume.languages)    
+    @profile = current_user.profile
   end
 
   def update
-    if params[:published] == "發佈" && params[:publish] == "false"
-      @resume.update(publish: true)
-      redirect_to resumes_path
-    elsif params[:save] == "更新"
-      if @resume.update(resume_params)
-        redirect_to edit_resume_path(account: current_user.account, id: @resume)
-      else
-        render :edit
-      end
+    if @resume.update(resume_params)
+      redirect_to edit_resume_path(account: current_user.account, id: @resume.id)
+    else
+      render :edit, notice: "請輸入內容"
     end
   end
 
@@ -37,6 +32,6 @@ class ResumesController < ApplicationController
   end
 
   def resume_params
-    params.require(:resume).permit(:id, :block, :information, :basic_info, :social_links, :about_me, :skills, :work_experience, :about_me_title, :work_experience_title, :component_name, :languages, :project, :project_title, :education, :education_title, :published, :publish)
+    params.require(:resume).permit(:social_links, :about_me, :languages, :publish, :full_name, :phone, :address, :job_hunting, :work_exp_name_1, :work_exp_content_1, :work_exp_start_date_1, :work_exp_end_date_1, :work_exp_name_2, :work_exp_content_2, :work_exp_start_date_2, :work_exp_end_date_2, :project_name_1, :project_name_2, :project_content_1, :project_content_2, :education_name_1, :education_start_date_1, :education_end_date_1, :education_name_2, :education_start_date_2, :education_end_date_2, :area_1, :area_2, :area_3, :area_4)
   end
 end

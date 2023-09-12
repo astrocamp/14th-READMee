@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  
+
   resources :articles do
-    resources :comments, only: [:create, :destroy], 
+    resources :comments, only: [:create, :destroy],
     shallow: true
   end
 
@@ -15,7 +15,12 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :users
     end
+    get "dashboard", to:"users#dashboard"
+    resources :social_link
+    resources :education
+    resources :projects
     resource :profile, except: [:destroy]
+    resources :work_experiences
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]
     resource :company, except: [:show] do
@@ -45,5 +50,6 @@ Rails.application.routes.draw do
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
   get "chat_messages", to: "chat_messages#index"
   post "chat_messages", to: "chat_messages#reply"
+  post "create_resume", to: "profiles#create_resume"
   patch "/@:account/resumes/:id", to: "resumes#update", as: :update_resume
 end

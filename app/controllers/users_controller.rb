@@ -15,16 +15,14 @@ class UsersController < ApplicationController
 
   def job_seeker
     current_user.role = 'job_seeker'
-    current_user.save
     if current_user.save
       flash[:notice] = '您是求職者了！請填寫基本資料'
-      redirect_to profile_path(account: current_user.account)
+      redirect_to dashboard_path(account: current_user.account)
     end
   end
 
   def employer
     current_user.role = 'employer'
-    current_user.save
     if current_user.save
       flash[:notice] = '您是雇主了！請填寫基本資料'
       redirect_to new_company_path(account: current_user.account)
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
   def job_application
     @job_matching = JobMatching.new
     JobMatching.create_matching(current_user.id, params[:job].to_i, params[:company].to_i, @job_matching)
-    redirect_to jobs_list_path, notice: "您已應徵該工作，請至個人頁查看"
+    redirect_to jobs_list_path, notice: "已應徵，請至應徵紀錄查看"
   end
   
   def apply_job
@@ -42,6 +40,15 @@ class UsersController < ApplicationController
       @job_matchings = current_user.job_matchings.where(user_id: current_user)
     else
       redirect_to root_path, notice: "沒有權限觀看"
+    end
+  end
+
+  def dashboard
+    @profile = current_user.profile
+    if @profile.present?
+      @works = WorkExperience.where(profile_id: @profile.id)
+      @education = Education.where(profile_id: @profile.id)
+      @social_link = SocialLink.where(profile_id: @profile.id)
     end
   end
 end

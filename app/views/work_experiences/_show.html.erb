@@ -1,0 +1,29 @@
+<turbo-frame id="show_workexp">
+  <turbo-frame id="edit_workexp">
+    <% if @works.present? %>
+      <% @works.each do |work| %>
+        <div class="flex justify-between my-4 ">
+          <div>
+            <%= work.title %>
+            <%= work.start_date %>~
+            <%= work.end_date %>
+          </div>
+          <div>
+            <%= link_to "編輯", edit_work_experience_path(id: work.id), class: "save-btn" %>
+            <%= link_to "刪除", work_experience_path(id: work.id),
+                          data: {turbo_method: "delete",turbo_confirm: "確定要刪除?"}, class: "save-btn" %>
+          </div>
+        </div>
+      <% end %>
+    </turbo-frame>
+  <% end %>
+  <turbo-frame id="new_workexp">
+    <div>
+      <% if @profile.present? %>
+        <%= link_to "新增", new_work_experience_path, class: "new-btn" %>
+      <% else %>
+        <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
+      <% end %>
+    </div>
+  </turbo-frame>
+</turbo-frame>
