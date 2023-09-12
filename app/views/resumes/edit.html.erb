@@ -1,18 +1,20 @@
+<div class="ml-10">
 <%= form_with(url: update_resume_path(account: current_user.account, id: @resume.id), method: "patch", model: @resume, data: { turbo: false }) do |f| %>
 
   <%= f.submit "更新", name: "save", class: "right-72 fixed top-32 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
   
   <% if @resume.publish == false %>
-    <div class="fixed inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer right-96 top-32 bg-amber-500 hover:bg-amber-800" data-serial="<%= @resume.id %>" data-account="<%= current_user.account %>" data-action="click->publish#updatePublish" data-controller="publish" data-publish="<%= @resume.publish %>">發佈</div>
+    <div class="fixed inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer right-96 top-10 bg-amber-500 hover:bg-amber-800" data-serial="<%= @resume.id %>" data-account="<%= current_user.account %>" data-action="click->publish#updatePublish" data-controller="publish" data-publish="<%= @resume.publish %>">發佈</div>
   <% end %>
   
   <div data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent" class="max-w-screen-lg mt-20 mb-16 bg-white shadow-2xl section-inputs sm:p-4 md:p-8 lg:p-16 min-h-1000">
-    <%= render partial: "area1", locals: { f: f } %>
-    <%= render partial: "area2", locals: { f: f } %>
-    <%= render partial: "area3", locals: { f: f } %>
-    <%= render partial: "area4", locals: { f: f } %>
-  </div>
-<% end %>
+      <%= render partial: "area1", locals: { f: f } %>
+      <%= render partial: "area2", locals: { f: f } %>
+      <%= render partial: "area3", locals: { f: f } %>
+      <%= render partial: "area4", locals: { f: f } %>        
+    </div>
+  <% end %>
+</div>
 
   <div class="fixed bottom-0 right-0 hidden bg-gray-100 xl:block top-68px" data-controller="resumeComponent" data-serial="<%= @resume.id %>" data-account="<%= current_user.account %>">
     <div class="flex-col justify-between h-full overflow-y-scroll align-center">

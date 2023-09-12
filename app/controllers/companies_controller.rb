@@ -4,10 +4,10 @@ class CompaniesController < ApplicationController
   before_action :find_company, only: [:edit, :update]
 
   def show
-    if current_user.company.present?
+    if current_user.employer?
       @company = Company.find(current_user.company.id)
     else
-      redirect_to new_company_path, alert: '您尚未建立公司!'
+      @company = Company.find(params[:id])
     end
   end
 
