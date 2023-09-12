@@ -15,7 +15,6 @@ class UsersController < ApplicationController
 
   def job_seeker
     current_user.role = 'job_seeker'
-    current_user.save
     if current_user.save
       flash[:notice] = '您是求職者了！請填寫基本資料'
       redirect_to dashboard_path(account: current_user.account)
@@ -24,7 +23,6 @@ class UsersController < ApplicationController
 
   def employer
     current_user.role = 'employer'
-    current_user.save
     if current_user.save
       flash[:notice] = '您是雇主了！請填寫基本資料'
       redirect_to new_company_path(account: current_user.account)

@@ -7,7 +7,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "https://unpkg.com/slim-select@latest/dist/slimselect.css", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -23,7 +22,6 @@
       </div>
       <%= yield %>
     </main>
-    <%= turbo_frame_tag "modal"%>
     <footer class="w-full px-2 py-1 text-gray-500 bg-white mt-46 "></footer>
   </body>
 </html>
