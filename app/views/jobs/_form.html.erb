@@ -8,16 +8,19 @@
 </div>
 <div class="my-5">
   <p>需求人數</p>
-  <%= f.text_field :num_of_people, class: "input" %>    
+  <%= f.select :num_of_people, options_for_select(["1人", "2人", "3人", "3人以上"]), { prompt: "請選擇" }, class: "input" %>
 </div>
+
 <div class="my-5">
   <p>年資</p>
-  <%= f.text_field :seniority, class: "input" %>    
+  <%= f.select :seniority, options_for_select(["無經驗可", "1 年以下", "1-3 年", "3-5 年", "5年以上"]), { prompt: "請選擇" }, class: "input" %>
+  
 </div>
+
 <div class="my-5">
-  <p>薪水</p>
-  <%= f.text_field :salary, class: "input" %>    
+  <p>薪資</p>
+  <%= f.select :salary, options_for_select(["面議", "30k-40k /月", "40k-50k /月", "50k以上 /月"]), { prompt: "請選擇" }, class: "input" %>
 </div>
-<button class="px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
-  <%= f.submit "確定" %>
-</button>
+
+  <%= f.submit "確定", class: "px-8 py-2 my-2 text-white rounded-lg bg-amber-500 hover:bg-amber-600 cursor-pointer" %>
+

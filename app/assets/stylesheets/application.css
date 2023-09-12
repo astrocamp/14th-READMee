@@ -6,8 +6,8 @@
 .top-68px {
   top: 68px;
 }
-.custom-width-250px {
-  width: 250px;
+.custom-width-190px {
+  width: 190px;
 }
 .max-w-screen-lg {
   width: 1024px;
@@ -123,4 +123,14 @@
 
 .position-absolute {
   position: relative !important;
+}
+
+
+
+.field_with_errors input[type="text"] {
+  border: red solid 2px;
+}
+
+.field_with_errors textarea {
+  border: red solid 2px
 }

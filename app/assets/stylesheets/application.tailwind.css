@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 .save-btn {
-  @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
+  @apply inline-block px-5 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
+}
+.new-btn {
+  @apply px-5 py-1 text-white rounded-lg bg-amber-500 hover:bg-amber-600;
 }
 .disabled-btn {
   @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-slate-600;
 }
+
 .input {
   @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
 }
@@ -114,5 +118,5 @@
 }
 
 .form {
-  @apply block w-6/12 px-3 py-2 mx-auto mt-2 border border-gray-200 rounded-md shadow outline-none;
+  @apply block w-full px-3 py-2 mx-auto mt-2 sm:w-6/12;
 }

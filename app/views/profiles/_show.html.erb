@@ -1,6 +1,6 @@
 <% if current_user.profile.present?%>
   <turbo-frame id="edit_profile">
-    <picture class="md:w-1/4">
+    <picture class="p-5 md:w-1/4">
       <% if @profile.avatar.attached? %>
         <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
       <% else %>
@@ -8,7 +8,7 @@
       <% end %>
     </picture>
     <div class="mt-4 profile_name_block">
-      <div class="profile_name">
+      <div class="pt-3 text-lg font-semibold border-b-4 profile_name border-amber-500">
         <%= @profile.full_name %>
       </div>
       <div class="mx-2">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="mt-4">
-      <h2 class="text-lg font-semibold">自我介紹</h2>
+      <h2 class="mb-5 text-lg font-semibold">自我介紹:</h2>
       <%= @profile.about_me %>
     </div>
     <div class="mt-4">
@@ -59,3 +59,8 @@
     <%= link_to '新增個人資料', new_profile_path, class:"save-btn"%>
   </div>
 <% end %>
+<span class="mb-auto">
+  <% if current_user.job_matchings.any? %>
+    <%= link_to "應徵紀錄", apply_job_path(id: current_user), class: "new-btn" %>
+  <% end %>
+</span>

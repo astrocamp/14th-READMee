@@ -1,118 +1,95 @@
-<div id="content" data-controller="resume">
-  <section class="relative flex justify-between w-full pl-16">
-    <div class="max-w-screen-lg mt-20 mb-16 bg-white shadow-2xl sm:p-4 md:p-8 lg:p-16 min-h-1000" data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent">
-      <%= form_with(url: update_resume_path(account: current_user.account, id: @resume.id), method: "patch", model: @resume, data: { turbo: false }) do |f| %>
-        <%= f.submit "更新", name: "save", class: "absolute top-4 right-56 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
-        <%= f.submit "發佈", name: "published", class: "absolute top-4 right-80 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
+<%= form_with(url: update_resume_path(account: current_user.account, id: @resume.id), method: "patch", model: @resume, data: { turbo: false }) do |f| %>
+  <%= f.submit "更新", name: "save", class: "right-72 ml-5 mt-5 top-32 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
 
-        <%= hidden_field_tag :publish, @resume.publish %>
-        <div class="w-9/12 mx-auto min-h-min">
-          <div>
+  <% if @resume.publish == false %>
+    <div class="inline-block px-5 py-3 mx-auto mt-5 text-center text-white rounded-lg cursor-pointer right-96 top-32 bg-amber-500 hover:bg-amber-800" data-serial="<%= @resume.id %>" data-account="<%= current_user.account %>" data-action="click->publish#updatePublish" data-controller="publish" data-publish="<%= @resume.publish %>">發佈</div>
+  <% end %>
 
-            <div class="flex flex-col items-center justify-center ">
-              <div class="flex items-center justify-center">
-                <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
-              </div>
-              <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入全名" %>
-              <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center" , placeholder: "請輸入欲求職的職位" %>
-              <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center " , placeholder: "請輸入電話" %>
-              <%= f.text_field :address, class: "px-2 py-1 my-1 border-white rounded-md text-center" , placeholder: "請輸入地址" %>
-              <%= f.text_field :social_link, class: "px-2 py-1 my-1 border-white rounded-md text-center" , placeholder: "請輸入社群連結" %>
-            </div>
+  <div data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent" class="max-w-screen-lg mt-20 mb-16 ml-5 bg-white shadow-2xl section-inputs sm:p-4 md:p-8 lg:p-16 min-h-1000">
+    <%= render partial: "area1", locals: { f: f } %>
+    <%= render partial: "area2", locals: { f: f } %>
+    <%= render partial: "area3", locals: { f: f } %>
+    <%= render partial: "area4", locals: { f: f } %>
+  </div>
 
+<% end %>
 
-          </div>
-
-
-        </div>
-
-
-        <div class="flex flex-col w-full">
-          <%= f.text_field :about_me_title, class: "py-1 text border border-0 border-white rounded-md ", placeholder: "請輸入自我介紹標題" %>
-          <%= f.text_area :about_me, class: "grow h-96 border border-0 border-white rounded-md ", placeholder: "請輸入自我介紹" %>
-        </div>
-
-
-
-        <div class="flex justify-between w-9/12">
-
-           <div class="text-center">
-              <h1 class="mt-1 text-lg font-bold">語言</h1>
-              <ul class="relative">
-                <% if @resume.languages.present? %>
-                  <% @languages.each do |language, level| %>
-                    <li class="inline-blockrounded-lg"><%= language %>▪️<%= level %></li>
-                  <% end %>
-                <% else %>
-                  <li class="inline-block rounded-lg">-請輸入語言</li>
-                <% end %>
-              </ul>
-            </div>
-            <div class="text-center">
-              <h1 class="text-lg font-bold ">技能</h1>
-              <ul class="relative">
-                <% if @skills.present? %>
-                  <% @skills.each do |skill| %>
-                    <li class="inline-blockrounded-lg"><%= skill %></li>
-                  <% end %>
-                <% else %>
-                  <li class="inline-block rounded-lg">-請輸入技能</li>
-                <% end %>
-              </ul>
-            </div>
-
-
-        </div>
-
-
-          <div class="mt-8">
-            <%= f.text_field :work_experience_title, class: "border-0 border-white text-lg font-bold w-full py-1", placeholder: "工作經驗標題" %>
-            <div class="flex justify-between">
-              <%= f.text_field :work_experience_name,  class: "my-2 p-2 rounded-md resize-y border-0 border-white ", placeholder: "從work_model拿資料" %>
-              <div class="flex" >
-                <%= f.text_field :work_start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "開始日期從work拿資料" %>
-                <%= f.text_field :work_end_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "結束日期從work拿資料" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-2">
-            <%= f.text_field :project_title, class: "my-2 p-2 w-full rounded-md resize-y text-lg font-bold border-0 border-white ", placeholder: "請輸入專案標題" %>
-            <div class="flex h-60">
-              <div class="w-1/2 fle">
-                <%= f.text_area :project_name_1, class: "w-full py-1  rounded-md resize-y border-0 border-white  ", placeholder: "專案名稱1號" %>
-                <%= f.text_area :project_content_1, class: "w-full py-1 rounded-md resize-y border-0 border-white  ", placeholder: "專案內容1號" %>
-              </div>
-              <%= image_tag "pdf-project.jpg", class:"w-1/2" %>
-
-            </div>
-          </div>
-
-          <div class="mt-2">
-            <%= f.text_field :education_title, class: "p-2 w-full  text-lg font-bold  rounded-md border-0 border-white", placeholder: "請輸入教育程度標題" %>
-            <div class="flex justify-between mt-2">
-              <%= f.text_field :education_name, class: "p-2 rounded-md border-0 border-white ", placeholder: "請輸入學歷名稱" %>
-              <div class="flex">
-              <%= f.text_field :education_start_date, class: "p-2 rounded-md border-0 border-white ", placeholder: "請輸入學歷開始日期" %>
-              <%= f.text_field :education_end_date, class: "p-2 rounded-md border-0 border-white ", placeholder: "請輸入學歷結束日期" %>
-              </div>
-            </div>
-          </div>
-
-      <% end %>
-    </div>
-
-
-  </section>
-  <div class="fixed bottom-0 right-0 hidden bg-gray-200 top-68px xl:block ">
+  <div class="fixed bottom-0 right-0 hidden bg-gray-100 xl:block top-68px" data-controller="resumeComponent" data-serial="<%= @resume.id %>" data-account="<%= current_user.account %>">
     <div class="flex-col justify-between h-full overflow-y-scroll align-center">
-      <button id="generatePdfBtn" class="inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" data-action="pdfGenerate#generate">下載 PDF</button>
+      <a id="generatePdfBtn" class="inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" data-action="pdfGenerate#generate">下載 PDF</a>
       <div class="px-10 pt-10 custom-width-190px">
-        <p>組件一</p>
-        <p>組件二</p>
-        <p>組件三</p>
-        <p>組件四</p>
+        <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
+          <p class="py-3 text-amber-700">基本資料</p>
+          <span>樣式一</span>
+          <%= image_tag "area_1_component_1.png",
+            class: "cursor-pointer p-2 border-2  hover:border-amber-500 hover:duration-150",
+            data: {
+              area1: 1,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+          <span>樣式二</span>
+          <%= image_tag "area_1_component_3.png",
+          class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+              area1: 3,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+        </div>
+
+        <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
+          <p class="py-3 text-amber-700">工作經驗</p>
+          <span>樣式一</span>
+          <%= image_tag "work_experience_part_1.png",
+            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+              area2: 1,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+          <span>樣式二</span>
+          <%= image_tag "work_experience_part_3.png",
+            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+            area2: 3,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+        </div>
+
+        <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
+          <p class="py-3 text-amber-700">專案</p>
+          <span>樣式一</span>
+          <%= image_tag "project_part_1.png",
+            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+            area3: 1,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+          <span>樣式二</span>
+          <%= image_tag "project_part_2.png",
+            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+            area3: 2,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+        </div>
+
+        <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
+          <p class="py-3 text-amber-700">教育</p>
+          <span>樣式一</span>
+          <%= image_tag "education_part_1.png",
+            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+            area4: 1,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+          <span>樣式二</span>
+          <%= image_tag "education_part_2.png",
+            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            data: {
+            area4: 2,
+              action: "click->resumeComponent#saveComponent"
+          } %>
+        </div>
+
       </div>
     </div>
   </div>
-</div>

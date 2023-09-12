@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     resources :social_link
     resources :education
     resources :projects
-    resource :profile, except: [:destroy, :show, :update]
+    resource :profile, except: [:destroy]
+    resources :work_experiences
     resources :resumes, only: [:edit, :update]
     resources :portfolios, except: [:show, :new]
     resource :company, except: [:show] do
@@ -47,5 +48,6 @@ Rails.application.routes.draw do
   post "toggle_role", to: "users#toggle", as: :toggle_role
   post "employer", to: "users#employer", as: :employer
   post "job_seeker", to: "users#job_seeker", as: :job_seeker
+  post "create_resume", to: "profiles#create_resume"
   patch "/@:account/resumes/:id", to: "resumes#update", as: :update_resume
 end

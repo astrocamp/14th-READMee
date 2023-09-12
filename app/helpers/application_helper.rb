@@ -5,15 +5,11 @@ module ApplicationHelper
     elsif user.role == 'job_seeker'
       link_to '個人檔案', dashboard_path(account: user.account), class: 'nav-btn-signed-in'
     elsif user.role == 'employer'
-      link_to '公司', new_company_path(account: user.account), class: 'nav-btn-signed-in'
-    end
-  end
-
-  def show_registration_button
-    if current_user
-      false
-    else
-      true
+      if user.company.present?
+        link_to user.company.name, company_show_path(user.company.id), class: 'nav-btn-signed-in'
+      else
+        link_to '建立公司', new_company_path(account: user.account), class: 'nav-btn-signed-in'
+      end
     end
   end
 end

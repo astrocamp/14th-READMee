@@ -1,82 +1,12 @@
-<meta name="turbo-visit-control" content="reload">
-<%= turbo_frame_tag "modal" do %>
-  <div class="modal">
-    <div>
-      <%= link_to "Close",
-        "#",
-        class: "close-btn",
-        data: {
-          controller:"modal",
-          action: "modals#close"
-        } %>
-    </div>
-    <section class="flex justify-center w-full">
-      <div class="max-w-screen-lg p-16 mt-20 bg-white shadow-2xl">
-        <div class="flex items-end min-h-min">
-          <div class="flex flex-col text-center">
-            <div class="flex items-center justify-center inline-block pb-5 custom-width-250px">
-              <%= image_tag "defaultuser.png", class: "inline-block w-32 h-32 rounded-full" %>
-            </div>
-            <div class="flex items-center justify-center inline-block w-60">
-              <div class="text-lg font-semibold text-center "><%= simple_format("#{@resume.basic_info}") %></div>
-            </div>
-            <div>
-              <h1 class="mt-1 text-lg font-bold">語言</h1>
-              <ul class="relative">
-                <% if @resume.languages.present? %>
-                  <% @languages.each do |language, level| %>
-                  <li class="inline-blockrounded-lg"><%= language %>▪️<%= level %></li>
-                  <% end %>
-                <% else %>
-                  <li class="inline-block rounded-lg">-請輸入語言</li>
-                <% end %>
-              </ul>
-            </div>
-            <div>
-              <h1 class="text-lg font-bold ">技能</h1>
-              <ul class="relative">
-                <% if @skills.present? %>
-                  <% @skills.each do |skill| %>
-                  <li class="inline-blockrounded-lg"><%= skill %></li>
-                  <% end %>
-                <% else %>
-                  <li class="inline-block rounded-lg">-請輸入技能</li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-          <div class="flex-grow">
-            <div class=""><%= simple_format("#{@resume.about_me}") %></div>
-          </div>
-        </div>
-        <div class="mt-10">
-          <div>
-            <h1 class="mb-3 text-lg font-bold"><%= @resume.work_experience_title %></h1>
-          </div>
-          <div>
-            <div class=""><%= simple_format("#{@resume.work_experience}") %></div>
-          </div>
-        </div>
-        <div>
-          <div class="pb-3 mt-10">
-            <h1 class="text-lg font-bold"><%= @resume.project_title %></h1>
-          </div>
-          <div class="flex pb-14 h-60">
-            <img class="w-1/2" src="https://picsum.photos/300/200/?random=10">
-            <div class="w-1/2 pt-5l">
-              <div class="h-full pl-2"><%= simple_format("#{@resume.project}") %></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <h1 class="text-lg font-bold"><%= @resume.education_title %></h1>
-          </div>
-          <div>
-            <div ><%= simple_format("#{@resume.education}") %></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<turbo-frame action="replace" id="show_resume_<%= @resume.id%>">
+  <div class="modal" data-controller="show-resume-close-btn">
+   <div>
+    <%= render partial: "show_area1", locals: { resume: @resume } %>
+    <%= render partial: "show_area2", locals: { resume: @resume } %>
+    <%= render partial: "show_area3", locals: { resume: @resume } %>
+    <%= render partial: "show_area4", locals: { resume: @resume } %>
+    <a href="#" class="save-btn">返回履歷列表</a>
+   </div>
+
   </div>
-<% end %>
+</turbo-frame>
