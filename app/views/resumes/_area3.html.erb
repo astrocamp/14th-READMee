@@ -1,60 +1,53 @@
-<!-- _my_partial.html.erb -->
 <div class="area3">
   <% if @resume.area_3 == 1 %>
-
-    <div class="mt-2">
-      <%= f.text_field :project_title, class: "my-2 p-2 w-full rounded-md resize-y  border-0 border-white " %>
-      <div class="flex pb-14 h-60">
-        <%= image_tag "pdf-project.jpg" %>
-        <div class="flex flex-col w-1/2 pt-5l grow">
-          <%= f.text_field :project_name_1, class: "w-full py-1 rounded-md resize-y border-gray-200  shadow outline-none" %>
-          <%= f.text_area :project_content_1, class: "w-full py-1 grow rounded-md resize-y border-gray-200 shadow outline-none" %>
+  
+    <div>
+      <div class="mt-2">
+        <h1 class="mb-5 font-bold">專案</h1>
+        <div class="flex pb-14 h-60">
+          <div class="flex flex-col w-1/2 pt-5l grow">
+            <%= f.text_field :project_name_1, class: "w-full py-1 rounded-md resize-y", placeholder: "專案名稱一" %>
+            <%= f.text_area :project_content_1, class: "p-2 w-full py-1 grow rounded-md resize-y border-white", placeholder: "專案內容一" %>
+          </div>
+        </div>
+        <div class="flex pb-14 h-60">
+          <div class="flex flex-col w-1/2 pt-5l grow">
+            <%= f.text_field :project_name_2, class: "w-full py-1 rounded-md resize-y", placeholder: "專案名稱二" %>
+            <%= f.text_area :project_content_2, class: "p-2 w-full py-1 grow rounded-md resize-y border-white", placeholder: "專案內容二" %>
+          </div>
         </div>
       </div>
     </div>
+
   
   <% elsif @resume.area_3 == 2 %>
   
-  <div id="area_3">
-    <div>
-      <%= f.text_field :project_title, class: "border-0 border-white text-lg font-bold rounded-md mb-2 w-full py-1" %>
-    </div>
-    <div class="flex">
-      <div class="w-1/2 pr-2">
-        <div>
-          <img src="https://picsum.photos/480/200/?random=10">
-        </div>
-        <div>
-          <%= f.text_field :project_name_1, class: "w-full py-1 px-2 rounded-md resize-y border-0 border-white" %>
-        </div>
-        <div>
-          <%= f.text_area :project_content_1, class: "p-2 grow w-full mt-1 py-1 rounded-md resize-y border-0 border-white" %>
-        </div>
+  <div>    
+    <div id="area_3">
+      <div class="font-bold ">
+        專案經驗
       </div>
-      <div class="w-1/2">
-        <div>
-          <img src="https://picsum.photos/480/200/?random=10">
+      <div class="flex">
+        <div class="w-1/2 pr-2">
+          <div>
+          </div>
+          <div>
+            <%= f.text_field :project_name_1, class: "w-full py-1 px-2 rounded-md resize-y border-0 border-white", placeholder: "專案名稱一" %>
+          </div>
+          <div>
+            <%= f.text_area :project_content_1, class: "p-2 grow w-full mt-1 py-1 rounded-md resize-y border-0 border-white", placeholder: "專案內容一" %>
+          </div>
         </div>
-        <div>
-          <%= f.text_field :project_name_2, class: "w-full py-1 px-2 rounded-md resize-y border-0 border-white" %>
+        <div class="w-1/2">
+          <div>
+          </div>
+          <div>
+            <%= f.text_field :project_name_2, class: "w-full py-1 px-2 rounded-md resize-y border-0 border-white", placeholder: "專案名稱二" %>
+          </div>
+          <div>
+            <%= f.text_area :project_content_2, class: "p-2 grow w-full mt-1 py-1 rounded-md resize-y border-0 border-white", placeholder: "專案內容二" %>
+          </div>
         </div>
-        <div>
-          <%= f.text_area :project_content_2, class: "p-2 grow w-full mt-1 py-1 rounded-md resize-y border-0 border-white" %>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <% elsif @resume.area_3 == 3 %>
-
-    <div class="mt-2">
-      <div class="flex h-60">
-        <div class="flex flex-col w-1/2">
-          <%= f.text_field :project_name_1, class: "font-bold w-full py-1 px-2 rounded-md resize-y border-0 border-white" %>
-          <%= f.text_area :project_content_1, class: "p-2 grow w-full mt-1 py-1 rounded-md resize-y border-0 border-white" %>
-        </div>
-        <%= image_tag "pdf-project.jpg", class:"w-1/2" %>
-
       </div>
     </div>
   

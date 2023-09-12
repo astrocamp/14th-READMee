@@ -60,8 +60,7 @@
   </div>
 <% end %>
 <span class="mb-auto">
-<% if current_user.job_matchings.any? %>
-  <%= link_to "應徵紀錄", apply_job_path(id: current_user), class: "new-btn" %>
-<% end %>
-  <%#= link_to "應徵紀錄", apply_job_path(id: current_user), class: "new-btn" %>
+  <% if current_user.job_matchings.any? %>
+    <%= link_to "應徵紀錄", apply_job_path(id: current_user), class: "new-btn" %>
+  <% end %>
 </span>
