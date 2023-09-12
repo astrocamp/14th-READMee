@@ -1,4 +1,4 @@
-<div class="container pt-6 mx-auto bg-gray-50">
+<div class="container pt-6 mx-auto bg-gray-50 dark:bg-gray-700">
   <div class="text-center">
   <p class="mb-5 text-3xl font-semibold"><%= @company.name %></p>
   <p class="mb-5 text-3xl">目前職缺</p>
@@ -10,11 +10,10 @@
 
 <div>
     <% @jobs.each do |job| %>
-      <ul class="justify-between p-5 m-2 leading-6 ">
+      <ul class="justify-between p-5 m-2 leading-6">
         <div>
-          <li class="border shadow-lg md:flex">
-            
-            
+          <li class="border rounded-lg shadow-lg md:flex">
+          
             <div class="p-6 md:w-5/6 ">
               <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
               <div class="mt-2 font-semibold">

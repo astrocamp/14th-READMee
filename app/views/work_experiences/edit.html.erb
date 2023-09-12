@@ -1,12 +1,12 @@
 <turbo-frame id="edit_workexp">
-  <h2 class="mt-10 article-post">新增工作經歷</h2>
+  <h2 class="mt-10 article-post">編輯工作經歷</h2>
   <%= form_with(model: @works, url: work_experience_path, data:{turbo_method: :patch }) do |form| %>
     <%= form.label :title, "職業"%>
-    <%= form.text_field :title, class: "input" %>
+    <%= form.text_field :title, class: "input dark:bg-gray-800 dark:text-gray-300" %>
     <%= form.label :start_date, "開始日期"%>
-    <%= form.date_field :start_date, class: "input" %>
+    <%= form.date_field :start_date, class: "input dark:bg-gray-800 dark:text-gray-300" %>
     <%= form.label :end_date, "結束日期"%>
-    <%= form.date_field :end_date, class: "input" %>
-    <%= form.submit "確定", class: "save-btn text-lg" %>
+    <%= form.date_field :end_date, class: "input dark:bg-gray-800 dark:text-gray-300" %>
+    <%= form.submit "確定", class: "save-btn" %>
   <% end %>
 </turbo-frame>
