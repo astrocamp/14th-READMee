@@ -1,20 +1,9 @@
-<meta name="turbo-visit-control" content="reload">
-<%= turbo_frame_tag "modal" do %>
-  <div class="modal">
-    <div>
-      <%= link_to "Close",
-        "#",
-        class: "close-btn",
-        data: {
-          controller:"modal",
-          action: "modals#close"
-        } %>
-    </div>
-
+<turbo-frame action="replace" id="show_resume_<%= @resume.id%>">
+  <div class="modal" data-controller="show-resume-close-btn">
     <%= render partial: "show_area1", locals: { resume: @resume } %>
     <%= render partial: "show_area2", locals: { resume: @resume } %>
     <%= render partial: "show_area3", locals: { resume: @resume } %>
     <%= render partial: "show_area4", locals: { resume: @resume } %>
-
+    <a href="#" class="save-btn">X</a>
   </div>
-<% end %>
+</turbo-frame>
