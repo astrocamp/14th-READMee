@@ -19,7 +19,6 @@ class CompaniesController < ApplicationController
     end
   end
 
-
   def create
     @company = current_user.build_company(params_company)
     if @company.save

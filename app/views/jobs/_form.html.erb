@@ -21,6 +21,6 @@
   <p>薪資</p>
   <%= f.select :salary, options_for_select(["面議", "30k-40k /月", "40k-50k /月", "50k以上 /月"]), { prompt: "請選擇" }, class: "input" %>
 </div>
-<button class="px-8 py-2 my-2 text-white rounded-lg bg-amber-500">
-  <%= f.submit "確定" %>
-</button>
+
+  <%= f.submit "確定", class: "px-8 py-2 my-2 text-white rounded-lg bg-amber-500 hover:bg-amber-600 cursor-pointer" %>
+

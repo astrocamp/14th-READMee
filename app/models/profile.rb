@@ -1,6 +1,6 @@
 class Profile < ApplicationRecord
   validates :full_name, :phone, :address, presence: true
- 
+  validates_format_of :phone, with: /09\d{2}(\d{6}|-\d{3}-\d{3})/
   belongs_to :user
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_limit: [128, 128]

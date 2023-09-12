@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_111304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,9 +82,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "resume_id"
     t.index ["profile_id"], name: "index_educations_on_profile_id"
-    t.index ["resume_id"], name: "index_educations_on_resume_id"
   end
 
   create_table "job_matchings", force: :cascade do |t|
@@ -154,18 +152,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.jsonb "use_skill"
-    t.text "content"
-    t.bigint "profile_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "resume_id"
-    t.index ["profile_id"], name: "index_projects_on_profile_id"
-    t.index ["resume_id"], name: "index_projects_on_resume_id"
-  end
-
   create_table "resume_skills", force: :cascade do |t|
     t.bigint "resume_id", null: false
     t.bigint "skill_id", null: false
@@ -212,7 +198,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
     t.string "education_start_date_2"
     t.string "education_end_date_2"
     t.jsonb "languages"
+    t.bigint "profile_id", null: false
     t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
+    t.index ["profile_id"], name: "index_resumes_on_profile_id"
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
@@ -258,9 +246,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
     t.bigint "profile_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "resume_id"
     t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
-    t.index ["resume_id"], name: "index_work_experiences_on_resume_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -270,7 +256,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "users"
   add_foreign_key "educations", "profiles"
-  add_foreign_key "educations", "resumes"
   add_foreign_key "job_matchings", "companies"
   add_foreign_key "job_matchings", "jobs"
   add_foreign_key "job_matchings", "users"
@@ -279,12 +264,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_054658) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "profiles"
-  add_foreign_key "projects", "resumes"
   add_foreign_key "resume_skills", "resumes"
   add_foreign_key "resume_skills", "skills"
+  add_foreign_key "resumes", "profiles"
   add_foreign_key "resumes", "users"
   add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
-  add_foreign_key "work_experiences", "resumes"
 end
