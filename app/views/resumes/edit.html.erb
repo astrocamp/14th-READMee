@@ -1,5 +1,4 @@
 <%= form_with(url: update_resume_path(account: current_user.account, id: @resume.id), method: "patch", model: @resume, data: { turbo: false }) do |f| %>
- <%= @resume.id %>
   <%= f.submit "更新", name: "save", class: "right-72 fixed top-32 inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
 
   <% if @resume.publish == false %>
@@ -19,20 +18,14 @@
       <div class="px-10 pt-10 custom-width-190px">
         <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
           <p class="py-3 text-amber-700">基本資料</p>
+          <span>樣式一</span>
           <%= image_tag "area_1_component_1.png",
-            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
+            class: "cursor-pointer p-2 border-2  hover:border-amber-500 hover:duration-150",
             data: {
               area1: 1,
               action: "click->resumeComponent#saveComponent"
           } %>
-
-          <%= image_tag "area_1_component_2.png",
-          class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
-            data: {
-              area1: 2,
-              action: "click->resumeComponent#saveComponent"
-          } %>
-
+          <span>樣式二</span>
           <%= image_tag "area_1_component_3.png",
           class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
@@ -43,20 +36,14 @@
 
         <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
           <p class="py-3 text-amber-700">工作經驗</p>
+          <span>樣式一</span>
           <%= image_tag "work_experience_part_1.png",
             class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
               area2: 1,
               action: "click->resumeComponent#saveComponent"
           } %>
-
-          <%= image_tag "work_experience_part_2.png",
-            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
-            data: {
-              area2: 2,
-              action: "click->resumeComponent#saveComponent"
-          } %>
-
+          <span>樣式二</span>
           <%= image_tag "work_experience_part_3.png",
             class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
@@ -67,48 +54,36 @@
 
         <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
           <p class="py-3 text-amber-700">專案</p>
+          <span>樣式一</span>
           <%= image_tag "project_part_1.png",
             class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
             area3: 1,
               action: "click->resumeComponent#saveComponent"
           } %>
-
+          <span>樣式二</span>
           <%= image_tag "project_part_2.png",
             class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
             area3: 2,
               action: "click->resumeComponent#saveComponent"
           } %>
-
-          <%#= image_tag "heart.png",
-            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
-            data: {
-            area3: 3,
-              action: "click->resumeComponent#saveComponent"
-          } %>
         </div>
 
         <div class="flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none">
           <p class="py-3 text-amber-700">教育</p>
+          <span>樣式一</span>
           <%= image_tag "education_part_1.png",
             class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
             area4: 1,
               action: "click->resumeComponent#saveComponent"
           } %>
-
+          <span>樣式二</span>
           <%= image_tag "education_part_2.png",
             class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
             data: {
             area4: 2,
-              action: "click->resumeComponent#saveComponent"
-          } %>
-
-          <%#= image_tag "messenger.png",
-            class: "cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150",
-            data: {
-            area4: 3,
               action: "click->resumeComponent#saveComponent"
           } %>
         </div>
