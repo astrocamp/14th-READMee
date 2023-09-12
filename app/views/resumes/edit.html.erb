@@ -7,7 +7,7 @@
     <div class="fixed inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer top-32 right-96 top-10 bg-amber-500 hover:bg-amber-800" data-serial="<%= @resume.id %>" data-account="<%= current_user.account %>" data-action="click->publish#updatePublish" data-controller="publish" data-publish="<%= @resume.publish %>">發佈</div>
   <% end %>
   
-  <div data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent" class="w-full max-w-screen-lg mx-auto mt-20 mb-16 bg-white shadow-2xl section-inputs sm:p-4 md:p-8 lg:p-16 min-h-1000">
+  <div data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent" class="max-w-screen-lg mt-20 mb-16 bg-white shadow-2xl section-inputs sm:p-4 md:p-8 lg:p-16 min-h-1000">
       <%= render partial: "area1", locals: { f: f } %>
       <%= render partial: "area2", locals: { f: f } %>
       <%= render partial: "area3", locals: { f: f } %>

@@ -2,13 +2,16 @@
 <%= turbo_frame_tag "modal" do %>
   <div class="modal">
     <div>
-      <%= link_to "Close",
-        "#",
+      <%#= link_to "Close",
+        resumes_path,
         class: "close-btn",
         data: {
           controller:"modal",
           action: "modals#close"
         } %>
+      <%= link_to "Close",
+        resumes_path,
+        class: "close-btn" %>
     </div>
 
     <%= render partial: "show_area1", locals: { resume: @resume } %>
