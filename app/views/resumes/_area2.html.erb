@@ -59,7 +59,7 @@
           <%= f.text_field :work_exp_end_date_2,  class: "px-2 w-28 rounded-md resize-y  border-white", placeholder: "工作結束日期" %>
         <% else %>
           <% if @profile.work_experiences.second.present? %>
-            <%= f.text_field :work_exp_end_date_2, value: @profile.work_experiences.second.end_datec,  class: "px-2 w-28 rounded-md resize-y  border-white", placeholder: "工作結束日期" %>
+            <%= f.text_field :work_exp_end_date_2, value: @profile.work_experiences.second.end_date,  class: "px-2 w-28 rounded-md resize-y  border-white", placeholder: "工作結束日期" %>
           <% else %>
             <%= f.text_field :work_exp_end_date_2,  class: "px-2 w-28 rounded-md resize-y  border-white", placeholder: "工作結束日期" %>
           <% end %>

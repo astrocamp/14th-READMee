@@ -11,7 +11,7 @@
           <p class="p-2 my-2 border-0 border-white rounded-md resize-y" > <%= @resume.education_name_1 %></p>
 
           <% else %>
-            <% if @profile.educations.first.present? %>
+            <% if @resume.profile.educations.first.present? %>
             <p class="p-2 my-2 border-0 border-white rounded-md resize-y">   <%= @resume.education_name_1 %>   </p>
 
             <% else %>
