@@ -125,8 +125,6 @@
   position: relative !important;
 }
 
-
-
 .field_with_errors input[type="text"] {
   border: red solid 2px;
 }
