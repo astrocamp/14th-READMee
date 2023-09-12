@@ -14,5 +14,9 @@
   <div class="relative p-4 my-5 border border-solid rounded-md shadow-md">
     <%= render 'work_experiences/show' %>
   </div>
-  <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}%>
+  <% if current_user.resumes.present? %>
+    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids)%>
+  <% else %>
+    <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}%>
+  <% end %>
 </div>
