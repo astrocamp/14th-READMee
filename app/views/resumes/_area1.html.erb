@@ -16,12 +16,12 @@
           <%= f.text_field :phone, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入電話" %>
           
           <% if @resume.social_links.present? %>
-            <%= f.text_area :social_links, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+            <%= f.text_field :social_links, class: "text-center px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
           <% else %>
             <% if @profile.social_links.first.present? %>
-              <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, value: @profile.social_links.first.link, class: "text-center px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
             <% else %>
-              <%= f.text_area :social_links, class: "px-2 w-56 h-28 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, class: "text-center px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
             <% end %>
           <% end %>
         </div>
@@ -93,12 +93,12 @@
             </div>
             
             <% if @resume.social_links.present? %>
-              <%= f.text_area :social_links, class: "w-full px-2 w-96 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
             <% else %>
               <% if @profile.social_links.first.present? %>
-                <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "w-full px-2 w-96 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+                <%= f.text_field :social_links, value: @profile.social_links.first.link, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
               <% else %>
-                <%= f.text_area :social_links, class: "w-full px-2 w-96 py-1 my-1 border-white rounded-md", placeholder: "請輸入連結" %>
+                <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
               <% end %>
             <% end %>
           </div>
@@ -131,12 +131,12 @@
             <%= f.text_field :address, class: "px-2 py-1 w-96 my-1 border-white rounded-md text-center", placeholder: "請輸入地址" %>
             
             <% if @resume.social_links.present? %>
-              <%= f.text_area :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
             <% else %>
               <% if @profile.social_links.first.present? %>
-                <%= f.text_area :social_links, value: @profile.social_links.first.link, class: "px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+                <%= f.text_field :social_links, value: @profile.social_links.first.link, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
               <% else %>
-                <%= f.text_area :social_links, class: "px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+                <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
               <% end %>
             <% end %>
   
