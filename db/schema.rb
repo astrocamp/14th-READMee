@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_111304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
-  
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
@@ -161,36 +161,71 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.jsonb "use_skill"
-    t.text "content"
-    t.bigint "profile_id", null: false
+  create_table "resume_skills", force: :cascade do |t|
+    t.bigint "resume_id", null: false
+    t.bigint "skill_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["profile_id"], name: "index_projects_on_profile_id"
+    t.index ["resume_id"], name: "index_resume_skills_on_resume_id"
+    t.index ["skill_id"], name: "index_resume_skills_on_skill_id"
   end
 
   create_table "resumes", force: :cascade do |t|
     t.integer "block"
-    t.string "avatar"
     t.text "social_links"
     t.integer "resume_state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "project_title"
+    t.string "component_name"
+    t.bigint "user_id"
+    t.text "about_me"
     t.boolean "publish"
-    t.bigint "profile_id"
-    t.text "about_me_content"
-    t.text "work_exp_content"
-    t.text "project_content"
+    t.string "full_name"
+    t.string "phone"
+    t.string "address"
+    t.string "job_hunting"
+    t.integer "area_1"
+    t.integer "area_2"
+    t.integer "area_3"
+    t.integer "area_4"
+    t.string "project_name_1"
+    t.text "project_content_1"
+    t.string "project_name_2"
+    t.text "project_content_2"
+    t.string "work_exp_name_1"
+    t.text "work_exp_content_1"
+    t.string "work_exp_start_date_1"
+    t.string "work_exp_end_date_1"
+    t.string "work_exp_name_2"
+    t.text "work_exp_content_2"
+    t.string "work_exp_start_date_2"
+    t.string "work_exp_end_date_2"
+    t.string "education_name_1"
+    t.string "education_start_date_1"
+    t.string "education_end_date_1"
+    t.string "education_name_2"
+    t.string "education_start_date_2"
+    t.string "education_end_date_2"
+    t.jsonb "languages"
+    t.bigint "profile_id", null: false
+    t.index ["component_name"], name: "index_resumes_on_component_name", unique: true
     t.index ["profile_id"], name: "index_resumes_on_profile_id"
+    t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
   create_table "skills", force: :cascade do |t|
     t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "social_links", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_social_links_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -211,22 +246,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.string "votable_type"
-    t.bigint "votable_id"
-    t.string "voter_type"
-    t.bigint "voter_id"
-    t.boolean "vote_flag"
-    t.string "vote_scope"
-    t.integer "vote_weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable"
-    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter"
   end
 
   create_table "work_experiences", force: :cascade do |t|
@@ -255,8 +274,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_132358) do
   add_foreign_key "profile_skills", "profiles"
   add_foreign_key "profile_skills", "skills"
   add_foreign_key "profiles", "users"
-  add_foreign_key "projects", "profiles"
+  add_foreign_key "resume_skills", "resumes"
+  add_foreign_key "resume_skills", "skills"
   add_foreign_key "resumes", "profiles"
   add_foreign_key "resumes", "users"
+  add_foreign_key "social_links", "profiles"
   add_foreign_key "work_experiences", "profiles"
 end
