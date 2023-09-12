@@ -121,7 +121,11 @@
       <div>
         <div class="flex flex-col items-center justify-center ">
           <div class="flex items-center justify-center">
-            <%= image_tag "defaultuser.png", class: "w-32 h-32 rounded-full" %>
+            <% if @resume.profile.avatar.attached? %>
+              <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
+            <% else %>
+              <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+            <% end %>
           </div>
           <p class="px-2 py-1 font-bold text-center border-0 border-white rounded-md"><%= @resume.full_name %></p>
           <p class="px-2 py-1 my-1 text-center border-0 border-white rounded-md"><%= @resume.job_hunting %></p>
