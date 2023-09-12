@@ -1,16 +1,15 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-
   
-  updatePublish() {
-    var result = confirm("確定要發佈嗎");
+  unPublish() {
+    var result = confirm("確定要取消發佈嗎");
 
       if (result) {
         const { account, serial } = this.element.dataset;
         const token = document.querySelector("meta[name=csrf-token]").content;
         const url = `/@${account}/resumes/${serial}`;
-
+      
         fetch(url, {
           method: 'PATCH',
           headers: {
@@ -19,7 +18,7 @@ export default class extends Controller {
           },
           body: JSON.stringify({
             resume: {
-              publish: true
+              publish: false
             }
           })
         })
