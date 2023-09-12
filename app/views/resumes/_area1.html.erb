@@ -39,18 +39,18 @@
           <% end %>
           </div>
         </div>
-        <div class="flex flex-col items-center">
-          <h2 class="font-bold">技能</h2>
+        <div class="flex flex-col items-center mt-3">
+          <h2 class="font-bold ">技能</h2>
           <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
             <% @resume.profile.skills.each do |skill| %>
-              <li class="inline-block mr-2"><%= skill.tag %></li>
+              <li class="mr-2 text-center"><%= skill.tag %></li>
             <% end %>
           </ul>
         </div>
       </div>
 
       <div class="flex flex-col w-full">
-        <h1 class="font-bold">簡介</h1>
+        <h1 class="pl-2 font-bold">簡介</h1>
         <%= f.text_area :about_me, class: "grow h-96 border-white rounded-md p-2", placeholder: "請輸入簡介內容" %>
       </div>
     </div>
@@ -94,7 +94,7 @@
         <div class="grow">
           <h1 class="px-2 mt-1 text-lg font-bold">語言</h1>
           <% if @resume.profile.languages.present? %>
-            <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+            <ul data-profileInfo-target="languages" class="pl-2 mt-2 text-gray-700">
               <% @resume.profile.languages.each do |language, level| %>
                 <li><%= "#{language} • #{level}" %></li>
               <% end %>
@@ -102,10 +102,10 @@
         <% end %>
         </div>
         <div class="grow">
-          <h1 class="px-2 text-lg font-bold ">技能</h1>
+          <h1 class="text-lg font-bold ">技能</h1>
           <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
             <% @resume.profile.skills.each do |skill| %>
-              <li class="inline-block mr-2"><%= skill.tag %></li>
+              <li class="mr-2 "><%= skill.tag %></li>
             <% end %>
           </ul>
         </div>

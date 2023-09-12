@@ -4,7 +4,7 @@
     <div>
       <div class="mt-2">
 
-        <h1 class="font-bold">教育程度</h1>
+        <h1 class="pl-2 font-bold">教育程度</h1>
         <div class="flex justify-between mt-2">
   
           <% if @resume.education_name_1.present? %>
@@ -16,18 +16,18 @@
               <%= f.text_field :education_name_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "教育程度一" %>
             <% end %>
           <% end %>
-          <div class="flex">
+          <div class="flex items-center">
           
             <% if @resume.education_start_date_1.present? %>
-              <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+              <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
             <% else %>
               <% if @resume.profile.educations.first.present? %>
-                <%= f.text_field :education_start_date_1, value: @resume.profile.educations.first.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+                <%= f.text_field :education_start_date_1, value: @resume.profile.educations.first.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
               <% else %>
-                <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+                <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
               <% end %>
             <% end %>
-  
+            <span>~</span>
             <% if @resume.education_end_date_1.present? %>
               <%= f.text_field :education_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
             <% else %>
@@ -53,17 +53,17 @@
             <% end %>
           <% end %>
           
-          <div class="flex">
+          <div class="flex items-center">
             <% if @resume.education_start_date_2.present? %>
-              <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+              <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
             <% else %>
               <% if @resume.profile.educations.second.present? %>
-                <%= f.text_field :education_start_date_2, value: @resume.profile.educations.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+                <%= f.text_field :education_start_date_2, value: @resume.profile.educations.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
               <% else %>
-                <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+                <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
               <% end %>
             <% end %>
-  
+            <span>~</span>
             <% if @resume.education_end_date_2.present? %>
               <%= f.text_field :education_end_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
             <% else %>
@@ -90,21 +90,21 @@
   <div>
     <div>
       <div>
-        <h1 class="font-bold">教育程度</h1>
+        <h1 class="pl-2 font-bold">教育程度</h1>
       </div>
       <div class="flex">
-        <div class="flex">
+        <div class="flex items-center">
         
           <% if @resume.education_start_date_1.present? %>
-            <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+            <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
           <% else %>
             <% if @resume.profile.educations.first.present? %>
-              <%= f.text_field :education_start_date_1, value: @resume.profile.educations.first.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+              <%= f.text_field :education_start_date_1, value: @resume.profile.educations.first.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
             <% else %>
-              <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+              <%= f.text_field :education_start_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
             <% end %>
           <% end %>
-                  
+          <span>~</span>
           <% if @resume.education_end_date_1.present? %>
             <%= f.text_field :education_end_date_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "結束時間" %>
           <% else %>
@@ -130,12 +130,12 @@
         <div class="flex">
         
           <% if @resume.education_start_date_2.present? %>
-            <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+            <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
           <% else %>
             <% if @resume.profile.educations.second.present? %>
-              <%= f.text_field :education_start_date_2, value: @resume.profile.educations.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+              <%= f.text_field :education_start_date_2, value: @resume.profile.educations.second.start_date,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
             <% else %>
-              <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始時間" %>
+              <%= f.text_field :education_start_date_2,  class: "my-2 p-2 rounded-md resize-y border-0 border-white input_w", placeholder: "開始時間" %>
             <% end %>
           <% end %>
                   
