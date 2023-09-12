@@ -10,11 +10,11 @@
     <% user.resumes.each do |resume| %>
       <% if resume.publish == true %>
         <li class="list-none">
-          <div class="card">
+          <div class="shadow-xl card">
             <div>
               <turbo-frame id="show_resume_<%= resume.id %>">
                 <%= link_to resume_path(resume.id), remote: true do %>
-                  <img class="object-cover w-full h-full" src="https://picsum.photos/id/457/300/320" alt="resume">
+                  <%= image_tag 'index_resume.png', class: 'w-64 h-auto' %>
                 <% end %>
               </turbo-frame>
             </div>
@@ -22,7 +22,6 @@
               <span class="user-name">
                 <%= resume.full_name %>
               </span>
-              <%= image_tag 'messenger.png', class: 'w-5 h-auto' %>
             </div>
           </div>
         </li>
