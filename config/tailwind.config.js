@@ -7,10 +7,6 @@ module.exports = {
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-<<<<<<< HEAD
-
-=======
->>>>>>> a6b73dba733a7528bf0f36b9cf1bfd8ac63ea6cc
   ],
   theme: {
     extend: {
@@ -24,9 +20,5 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-<<<<<<< HEAD
-
-=======
->>>>>>> a6b73dba733a7528bf0f36b9cf1bfd8ac63ea6cc
   ],
 };
