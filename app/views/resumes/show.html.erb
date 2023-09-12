@@ -1,9 +1,13 @@
 <turbo-frame action="replace" id="show_resume_<%= @resume.id%>">
   <div class="modal" data-controller="show-resume-close-btn">
+   <div>
     <%= render partial: "show_area1", locals: { resume: @resume } %>
     <%= render partial: "show_area2", locals: { resume: @resume } %>
     <%= render partial: "show_area3", locals: { resume: @resume } %>
     <%= render partial: "show_area4", locals: { resume: @resume } %>
-    <a href="#" class="save-btn">X</a>
+    <a href="#" class="save-btn">返回履歷列表</a>
+
+   </div>
+
   </div>
 </turbo-frame>
