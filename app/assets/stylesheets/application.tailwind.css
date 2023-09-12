@@ -25,7 +25,7 @@
 }
 
 .nav-btn-signed-in {
-  @apply font-semibold text-gray-500 hover:text-amber-500 mx-1
+  @apply font-semibold text-gray-500 hover:text-amber-500 mx-1;
 }
 
 .show {
@@ -56,7 +56,7 @@
 }
 
 .article-post {
-  @apply  text-2xl;
+  @apply text-2xl;
 }
 
 .field_with_errors input[type='text'],
@@ -119,4 +119,14 @@
 
 .form {
   @apply block w-full px-3 py-2 mx-auto mt-2 sm:w-6/12;
+}
+
+.resume_item {
+  @apply cursor-pointer p-2 border-2 hover:border-amber-500 hover:duration-150;
+}
+.resume_item_bg {
+  @apply flex flex-col items-center p-3 mb-10 bg-white rounded-lg shadow-xl outline-none;
+}
+.edit_resume_btn {
+  @apply inline-block px-5 py-3 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800;
 }
