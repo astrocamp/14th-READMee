@@ -23,8 +23,8 @@
   <turbo-frame id="new_education">
     <% if @profile.present? %>
       <%= link_to '新增', new_education_path, class: "new-btn" %>
-    <% else %>
-      <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
-    <% end %>
+      <% else %>
+        <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
+      <% end %>
   </turbo-frame>
 </turbo-frame>
