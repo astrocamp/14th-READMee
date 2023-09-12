@@ -1,5 +1,5 @@
 <% @job_matchings.each do |matching| %>
-  <div class="w-9/12 m-10 mx-auto"> 
+  <div class="w-9/12 m-10 mx-auto">
     <ul class="justify-between p-5 m-2 leading-6">
       <section>
         <span class="block m-3 text-2xl font-semibold text-black rounded-lg">目前應徵紀錄</span>
@@ -8,16 +8,16 @@
             <% if matching.company.avatar.attached? %>
               <%= image_tag @company.avatar.variant(:thumb), class: "mx-auto" %>
             <% else %>
-            <div class="flex flex-col items-center justify-center">
-              <%= image_tag("defaultuser.png", class: "rounded-full w-20 h-20 mx-auto") %>
-            </div>
+              <div class="flex flex-col items-center justify-center">
+                <%= image_tag("defaultuser.png", class: "rounded-full w-20 h-20 mx-auto") %>
+              </div>
             <% end %>
           </picture>
           <div class="p-2 md:w-2/3">
             <div class="flex mt-2">
               <span class="container w-1 mr-2 rounded-lg bg-amber-400"></span>
-              <div class="flex-grow"> 
-                <%= link_to "#{matching.company.name}", company_show_path(matching.company.id), class: "font-semibold hover:text-gray-400 sm:py-6" %>
+              <div class="flex-grow">
+                <%= link_to "#{matching.company.name}", company_show_path(id: matching.company.id), class: "font-semibold hover:text-gray-400 sm:py-6" %>
                 <%= content_tag :div, matching.created_at.in_time_zone("Taipei").strftime("%Y-%m-%d %I:%M %p"), class: "text-sm" %>
               </div>
             </div>
@@ -42,10 +42,10 @@
           <% if matching.notified == true %>
             <div class="p-5 md:w-2/3">
               <div class="flex mt-2">
-                <div class="flex-grow"> 
+                <div class="flex-grow">
                   <% if matching.present? && matching.interview_date.present? && matching.interview_time.present? %>
                     <p class="text-sm font-semibold leading-6">
-                    面試日期與時間：<%= matching.interview_date %> <%= matching.interview_time.strftime("%I:%M %p") %>
+                      面試日期與時間：<%= matching.interview_date %> <%= matching.interview_time.strftime("%I:%M %p") %>
                     </p>
                   <% else %>
                     <p class="text-sm font-semibold leading-6">請與公司聯繫</p>
@@ -63,6 +63,6 @@
           <% end %>
         </li>
       </section>
-    <hr>
-  </div>
-<% end %>
+      <hr>
+    </div>
+  <% end %>
