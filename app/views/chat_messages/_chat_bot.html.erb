@@ -1,0 +1,8 @@
+<span data-controller="chat">
+  <div data-chat-target="chat_view" class="hidden">
+    <%= render '/chat_messages/index'%>
+  </div>
+  <button data-action="click->chat#toggle" class="bottom-0">
+    <%= image_tag 'chat_bot.png', size:'50x50'%>
+  </button>
+</span>
