@@ -125,35 +125,6 @@
   position: relative !important;
 }
 
-.section-inputs input {
-  border: none;
-}
-
-.section-inputs:hover input {
-  border: 1px solid gray;
-}
-.section-inputs:hover textarea {
-  border: 1px solid gray;
-}
-
-.section-inputs input::placeholder {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.section-inputs textarea::placeholder {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.section-inputs:hover input::placeholder {
-  opacity: 1;
-}
-
-.section-inputs:hover textarea::placeholder {
-  opacity: 1;
-}
-
 .field_with_errors input[type="text"] {
   border: red solid 2px;
 }
