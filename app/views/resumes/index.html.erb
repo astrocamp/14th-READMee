@@ -14,7 +14,7 @@
             <div>
               <turbo-frame id="show_resume_<%= resume.id %>">
                 <%= link_to resume_path(resume.id), remote: true do %>
-                  <%= image_tag 'index_resume.png', class: 'w-64 h-auto' %>
+                  <%= image_tag current_user.profile.avatar, class: 'w-auto h-auto' %>
                 <% end %>
               </turbo-frame>
             </div>
