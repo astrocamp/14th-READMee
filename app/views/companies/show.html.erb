@@ -2,8 +2,8 @@
   <div class="container max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 lg:py-4 mx-auto">
     <div class="flex flex-col-reverse w-full h-full pt-4 transition-all border rounded-lg shadow-md md:flex-row group gap-y-6">
       <picture class="pb-3 md:w-1/4">
-        <% if @company.avatar.attached? %>
-          <%= image_tag @company.avatar.variant(:thumb), class: "mx-auto" %>
+        <% if @company.logo.attached? %>
+          <%= image_tag @company.logo.variant(:thumb), class: "mx-auto" %>
         <% else %>
           <div class="flex flex-col items-center justify-center">
             <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
