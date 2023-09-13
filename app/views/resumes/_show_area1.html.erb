@@ -7,11 +7,7 @@
   <div class="flex min-h-min">
     <div >
       <div class="flex items-center justify-center pb-5 custom-width-250px">
-        <% if @resume.profile.avatar.attached? %>
-          <%= image_tag @resume.profile.avatar.variant(:thumb), class: "w-32 h-32 mx-auto" %>
-        <% else %>
-          <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-        <% end %>
+        <%= display_avatar_base64(@resume.profile) %>
       </div>
       <div class="flex flex-col items-center justify-center inline-block w-60">
 
@@ -66,11 +62,7 @@
     <div>
       <div class="flex">
         <div>
-          <% if @resume.profile.avatar.attached? %>
-            <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
-          <% else %>
-            <%= image_tag("defaultuser.png", class: "rounded-full mx-auto") %>
-          <% end %>
+          <%= display_avatar_base64(@resume.profile) %>
         </div>
         <div>
           <div class="grid w-3/4 grid-cols-3 grow">
@@ -121,11 +113,7 @@
       <div>
         <div class="flex flex-col items-center justify-center ">
           <div class="flex items-center justify-center">
-            <% if @resume.profile.avatar.attached? %>
-              <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
-            <% else %>
-              <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-            <% end %>
+            <%= display_avatar_base64(@resume.profile) %>
           </div>
           <p class="px-2 py-1 font-bold text-center border-0 border-white rounded-md"><%= @resume.full_name %></p>
           <p class="px-2 py-1 my-1 text-center border-0 border-white rounded-md"><%= @resume.job_hunting %></p>
