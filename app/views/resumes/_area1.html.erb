@@ -4,11 +4,7 @@
     <div class="flex min-h-min">
       <div >
         <div class="flex items-center justify-center pb-5 custom-width-250px">
-          <% if @resume.profile.avatar.attached? %>
-            <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
-          <% else %>
-            <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-          <% end %>
+          <%= display_avatar_base64(@resume.profile) %>
         </div>
         <div class="flex flex-col items-center justify-center inline-block w-60">
           <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入名字" %>
@@ -64,11 +60,7 @@
         <div>
           <div class="flex flex-col items-center justify-center ">
             <div class="flex items-center justify-center">
-              <% if @resume.profile.avatar.attached? %>
-                <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
-              <% else %>
-                <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-              <% end %>
+              <%= display_avatar_base64(@resume.profile) %>
             </div>
             <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入名字" %>
             <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center", placeholder: "請輸入想要的職位" %>
