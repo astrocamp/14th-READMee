@@ -18,12 +18,12 @@
     <div data-navbar-target="tinylink" id="navbar-collapse-with-animation" class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block">
       <div class="flex flex-col mt-5 gap-y-4 lg:gap-x-7 md:gap-x-7 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-2 sm:mt-0 sm:pl-7">
         <% if current_user %>
-          <%= link_to '履歷列表', resumes_path, class: 'nav-btn-signed-in' %>
-          <%= link_to '工作職缺', jobs_list_path, class: 'nav-btn-signed-in' %>
-          <%= link_to '文章社群', articles_path, class: 'nav-btn-signed-in' %>
+          <%= link_to '履歷列表', resumes_path, class: 'nav-btn' %>
+          <%= link_to '工作職缺', jobs_list_path, class: 'nav-btn' %>
+          <%= link_to '文章社群', articles_path, class: 'nav-btn' %>
           <% if current_user.role === 'employer'%>
             <% if current_user.company.present? %>
-              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn-signed-in' %>
+              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn' %>
             <% end %>
           <% end %>
         <% else %>
@@ -39,6 +39,7 @@
           <% if current_user %>
             <div class='flex gap-3' data-controller="switchRole">
               <%= link_based_on_role(current_user) %>
+              <%= display_application_records_button(current_user) %>
               <%= link_to '切換身分', toggle_role_path, data: { turbo_method: :post }, class: 'nav-btn-signed-in' %>
               <button  data-action="click->toggle-dark-mode#toggleDarkMode">
                 <%= image_tag "sun-and-moon.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
@@ -53,7 +54,7 @@
               <%= link_to new_user_registration_path do%>
                 <p class= 'nav-btn-register'>註冊</p>
               <% end %>
-            <% end %>
+          <% end %>
           </div>
         </div>
       </div>

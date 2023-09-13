@@ -21,9 +21,9 @@ class ResumesController < ApplicationController
 
   def update
     if @resume.update(resume_params)
-      redirect_to edit_resume_path(account: current_user.account, id: @resume.id)
+      redirect_to edit_resume_path(account: current_user.account, id: @resume.id), notice: '成功！'
     else
-      flash.now[:notice] = "不能超過輸入框的字數"
+      flash.now[:alert] = "不能超過輸入框的字數"
       render :edit
     end
   end
