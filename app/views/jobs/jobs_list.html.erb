@@ -68,10 +68,12 @@
               <%= form_with(model: job, url: job_seeker_list_path, method: :post) do |f| %>
                 <%= hidden_field_tag :job, job.id %>
                 <%= hidden_field_tag :company, job.company_id %>
-                <% if current_user.role == "job_seeker" && current_user.job_matchings.any? { |matching| matching.job_id == job.id } %>
-                  <p class="inline-block px-4 py-2 mx-auto mt-2 text-center text-white bg-gray-500 rounded-lg top-4 right-80">已應徵</p>
-                <% else %>
-                  <%= f.submit "馬上應徵", data: { confirm: "確定要應徵這份工作嗎？" }, class: "mt-2 top-4 right-80 inline-block px-4 py-2 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600"%>
+                <% unless current_user.employer? %>
+                  <% if current_user.role == "job_seeker" && current_user.job_matchings.any? { |matching| matching.job_id == job.id } %>
+                    <p class="inline-block px-4 py-2 mx-auto mt-2 text-center text-white bg-gray-500 rounded-lg top-4 right-80">已應徵</p>
+                  <% else %>
+                    <%= f.submit "馬上應徵", data: { confirm: "確定要應徵這份工作嗎？" }, class: "mt-2 top-4 right-80 inline-block px-4 py-2 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600"%>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>
