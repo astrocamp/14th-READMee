@@ -7,11 +7,7 @@
   <div class="flex min-h-min">
     <div >
       <div class="flex items-center justify-center pb-5 custom-width-250px">
-        <% if @resume.profile.avatar.attached? %>
-          <%= image_tag @resume.profile.avatar.variant(:thumb), class: "w-32 h-32 mx-auto" %>
-        <% else %>
-          <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-        <% end %>
+      <%= display_avatar_base64(@resume.profile) %>
       </div>
       <div class="flex flex-col items-center justify-center inline-block w-60">
 
@@ -73,11 +69,7 @@
       <div>
         <div class="flex flex-col items-center justify-center gap-2 ">
           <div class="flex items-center justify-center">
-            <% if @resume.profile.avatar.attached? %>
-              <%= image_tag @resume.profile.avatar.variant(:thumb), class: "mx-auto" %>
-            <% else %>
-              <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
-            <% end %>
+            <%= display_avatar_base64(@resume.profile) %>
           </div>
           <p class="font-bold text-center "><%= @resume.full_name %></p>
           <p class="text-center "><%= @resume.job_hunting %></p>
