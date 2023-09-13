@@ -37,15 +37,15 @@
 
       <div class="flex flex-col w-full">
         <h1 class="pl-2 font-bold">簡介</h1>
-        <%= f.text_area :about_me, class: "grow border-white rounded-md p-2", placeholder: "請輸入簡介內容" %>
+        <%= f.text_area :about_me, class: "about-me grow border-white rounded-md p-2", placeholder: "請輸入簡介內容" %>
         <div>
           <% if @resume.social_links.present? %>
-            <%= f.text_field :social_links, class: " px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+            <%= f.text_field :social_links, class: " px-2 py-1 my-1 border-white rounded-md w-96 grow", placeholder: "請輸入社群連結" %>
           <% else %>
             <% if @resume.profile.social_links.first.present? %>
-              <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: " px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: " px-2 py-1 w-96 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
             <% else %>
-              <%= f.text_field :social_links, class: " px-2 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, class: " px-2 py-1 my-1 border-white rounded-md grow w-96", placeholder: "請輸入社群連結" %>
             <% end %>
           <% end %>
         </div>
@@ -69,19 +69,19 @@
             <%= f.text_field :address, class: "px-2 py-1 w-96 my-1 border-white rounded-md text-center", placeholder: "請輸入地址" %>
 
             <% if @resume.social_links.present? %>
-              <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+              <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
             <% else %>
               <% if @resume.profile.social_links.first.present? %>
-                <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+                <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
               <% else %>
-                <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入連結" %>
+                <%= f.text_field :social_links, class: "text-center px-2 w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
               <% end %>
             <% end %>
           </div>
         </div>
       </div>
       <div class="flex flex-col w-full">
-        <%= f.text_area :about_me, class: "px-3 grow h-64 border border-0 border-white rounded-md", placeholder: "請輸入簡介內容" %>
+        <%= f.text_area :about_me, class: "px-3 grow h-72 border border-0 border-white rounded-md", placeholder: "請輸入簡介內容" %>
       </div>
       <div class="flex">
         <div class="w-1/2">

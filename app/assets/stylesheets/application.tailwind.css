@@ -104,7 +104,7 @@
 
 @layer components {
   .card {
-    @apply relative bg-white text-gray-700 w-72 h-[20rem] shadow-lg rounded-md overflow-hidden;
+    @apply bg-white text-gray-700 w-72 h-[20rem] shadow-lg rounded-md overflow-hidden;
   }
 
   .badge {
@@ -112,7 +112,7 @@
   }
 
   .user-name {
-    @apply absolute bottom-0 m-2 text-xl font-bold;
+    @apply bottom-0 m-2 text-xl font-bold;
   }
 }
 
