@@ -125,11 +125,14 @@
   position: relative !important;
 }
 
+.input_w {
+  width: 100px;
+}
+
 .field_with_errors input[type="text"] {
   border: red solid 2px;
 }
 
 .field_with_errors textarea {
-  border: red solid 2px
+  border: red solid 2px;
 }
-
