@@ -46,11 +46,12 @@
               <%= link_to '登出', destroy_user_session_path, data: { turbo_method: :delete }, class: 'nav-btn-signed-in' %>
             </div>
           <% else %>
-            <div class="flex gap-3">
-              <%= link_to '登入', new_user_session_path , class: 'nav-btn-signed-in' %>
-              <%= link_to '註冊', new_user_registration_path, class: 'nav-btn-signed-in' %>
-              <%- Devise.omniauth_providers.each do |provider| %>
-                <%= button_to "GOOGLE登入", omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class: 'nav-btn-signed-in'  %>
+            <div class="flex gap-2">
+              <div class="nav-btn-signed-in">
+                <%= link_to '登入', new_user_session_path%>
+              </div>
+              <%= link_to new_user_registration_path do%>
+                <p class= 'nav-btn-register'>註冊</p>
               <% end %>
             <% end %>
           </div>

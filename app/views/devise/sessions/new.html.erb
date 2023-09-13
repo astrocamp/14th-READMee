@@ -1,31 +1,51 @@
 <section class= 'flex justify-center pt-28'>
   <div class="block w-1/3 px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none">
+    <div class="flex justify-center py-3">
+      <%= image_tag "favicon.ico", size:"30x30"%>
+      <p class="flex text-xl items-end justify_center">
+        To know me, just READMee
+      </p>
+    </div>
+    <div>
+      <%- Devise.omniauth_providers.each do |provider| %>
+        <%= button_to omniauth_authorize_path(:user, provider), data: { method: :post, turbo: false },class: 'nav-btn-signed-in w-full border' do%>
+          <%= image_tag "google-btn", size:"30x30"%>
+          <p>使用 google 登入</p>
+        <% end %>
+      <% end %>
+      <hr class="my-5">
+    </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="mt-2">
-        <%= f.label :email, '信箱', class:'font-bold text-xl' %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
+      <div class="mt-2 flex">
+        <div class="flex items-center mx-2">
+          <%= image_tag "mail.png", size:"20x20"%>
+        </div>
+        <%= f.email_field :email, autofocus: true, class:"input", autocomplete: "email", placeholder:"信箱"%>
       </div>
-
-      <div class="mt-2">
-        <%= f.label :password, '密碼', class:'font-bold text-xl' %><br />
-        <%= f.password_field :password, autocomplete: "current-password",class:'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
+      <div class="mt-2 flex">
+        <div class="flex items-center mx-2">
+          <%= image_tag "password.png", size:"20x20"%>
+        </div>
+        <%= f.password_field :password, autocomplete: "current-password",class:'input', placeholder:"密碼" %>
       </div>
-
       <% if devise_mapping.rememberable? %>
         <div class="mt-2">
           <div class="flex justify-between">
             <div class="items-center align-middle">
-              <%= f.check_box :remember_me%>          
-              <%= f.label :remember_me , '記住我', class:'text-xl align-middle' %>          
+              <%= f.check_box :remember_me%>
+              <%= f.label :remember_me , '記住我', class:'text-md align-middle' %>
             </div>
             <%= link_to "忘記密碼？", new_password_path(resource_name), class:'text-md align-middle' %>
-          </div>       
+          </div>
         </div>
       <% end %>
-
       <div class="mt-2">
-        <%= f.submit "登入",data:{turbo: false}, class:'text-xl save-btn my-1' %> <br />
+        <%= f.submit "登入",data:{turbo: false}, class:'text-xl save-btn my-1 w-full' %> <br />
       </div>
     <% end %>
+    <div class="flex justify-center items-center my-3">
+      <p>還沒有帳號嗎?</p>
+      <%= link_to "註冊", new_user_registration_path, class:"flex items-center font-semibold text-amber-500 mx-3 h-10"%>
+    </div>
   </div>
 </section>
