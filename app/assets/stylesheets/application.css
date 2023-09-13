@@ -129,10 +129,37 @@
   position: relative !important;
 }
 
+.input_w {
+  width: 100px;
+}
+
 .field_with_errors input[type='text'] {
   border: red solid 2px;
 }
 
 .field_with_errors textarea {
   border: red solid 2px;
+  width: 100%;
+}
+
+.field_with_errors textarea.about-me {
+  border: red solid 2px;
+  width: 100%;
+  height: 350px;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.input:focus {
+  outline: none !important;
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 5px #719ece;
 }

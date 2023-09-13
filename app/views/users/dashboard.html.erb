@@ -15,8 +15,8 @@
     <%= render 'work_experiences/show' %>
   </div>
   <% if current_user.resumes.present? %>
-    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids)%>
+    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids), class: "save-btn m-2" %>
   <% else %>
-    <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}%>
+    <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}, class: "save-btn m-2"%>
   <% end %>
 </div>

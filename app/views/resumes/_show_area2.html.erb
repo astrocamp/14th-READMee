@@ -1,166 +1,168 @@
 <div class="area2">
   <% if @resume.area_2 == 1 %>
     <div class="flex flex-col mt-8">
-      <h1 class="font-bold">工作經驗</h1>
-      <div class="flex">
-        <div class="flex">
+      <h1 class="mb-5 text-xl font-bold text-left">工作經驗</h1>
+      <div class="sm:flex">
+        <div class="flex items-center gap-2 mr-16">
           <% if @resume.work_exp_start_date_1.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_1 %></p>
+            <p class="text-left"><%= @resume.work_exp_start_date_1 %></p>
           <% else %>
             <% if @resume.profile.work_experiences.first.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_1 %></p>
+              <p class="text-left "><%= @resume.work_exp_start_date_1 %></p>
             <% else %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_1 %></p>
+              <p class="text-left "><%= @resume.work_exp_start_date_1 %></p>
             <% end %>
           <% end %>
           <span>~</span>
           <% if @resume.work_exp_end_date_1.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_1 %></p>
+            <p class=""><%= @resume.work_exp_end_date_1 %></p>
           <% else %>
             <% if @resume.profile.work_experiences.first.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_1 %></p>
+              <p class=""><%= @resume.work_exp_end_date_1 %></p>
             <% else %>
-              <p class="p-2 my-2 mr-5 border-0 border-white rounded-md resize-y"><%= @resume.work_exp_start_date_1 %></p>
+              <p class=""><%= @resume.work_exp_end_date_1 %></p>
             <% end %>
           <% end %>
         </div>
-        <% if @resume.work_exp_name_1.present? %>
-          <p class="w-9/12 p-2 font-semibold border-white rounded-md resize-y"><%= @resume.work_exp_name_1 %></p>
-        <% else %>
-          <% if @resume.profile.work_experiences.first.present? %>
-            <p class="w-9/12 p-2 font-semibold border-white rounded-md resize-y"><%= @resume.work_exp_name_1 %></p>
-          <% else %>
-            <p class="w-9/12 p-2 font-semibold border-white rounded-md resize-y"><%= @resume.work_exp_name_1 %></p>
-          <% end %>
-        <% end %>
       </div>
-      <p class="w-full h-32 p-2 my-1 text-justify border-white rounded-md resize-y"><%= @resume.work_exp_content_1 %></p>
-      <div class="flex">
-        <div class="flex">
+
+      <% if @resume.work_exp_name_1.present? %>
+        <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
+      <% else %>
+        <% if @resume.profile.work_experiences.first.present? %>
+          <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
+        <% else %>
+          <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
+        <% end %>
+      <% end %>
+
+      <p class="mt-3 text-justify min-h-min "><%= @resume.work_exp_content_1 %></p>
+      <div class="mt-3 sm:flex">
+        <div class="flex items-center gap-2 mr-16">
           <% if @resume.work_exp_start_date_2.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_2 %></p>
+            <p class="text-left "><%= @resume.work_exp_start_date_2 %></p>
           <% else %>
             <% if @resume.profile.work_experiences.second.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_2 %></p>
+              <p class="text-left "><%= @resume.work_exp_start_date_2 %></p>
             <% else %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_2 %></p>
+              <p class="text-left "><%= @resume.work_exp_start_date_2 %></p>
             <% end %>
           <% end %>
           <span>~</span>
           <% if @resume.work_exp_end_date_2.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_2 %></p>
+            <p class=""><%= @resume.work_exp_end_date_2 %></p>
           <% else %>
             <% if @resume.profile.work_experiences.second.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_2 %></p>
+              <p class=""><%= @resume.work_exp_end_date_2 %></p>
             <% else %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_2 %></p>
+              <p class=""><%= @resume.work_exp_end_date_2 %></p>
             <% end %>
           <% end %>
         </div>
-        <% if @resume.work_exp_name_2.present? %>
-          <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_2 %></p>
+      </div>
+
+      <% if @resume.work_exp_name_2.present? %>
+        <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
+      <% else %>
+        <% if @resume.profile.work_experiences.second.present? %>
+          <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
         <% else %>
-          <% if @resume.profile.work_experiences.second.present? %>
-            <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_2 %></p>
-          <% else %>
-            <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_2 %></p>
-          <% end %>
+          <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
         <% end %>
-      </div>
-      <p class="h-32 p-2 mb-1 text-justify border-white rounded-md resize-y grow"><%= @resume.work_exp_content_2 %></p>
+      <% end %>
+
+      <p class="mt-3 text-justify min-h-min"><%= @resume.work_exp_content_2 %></p>
     </div>
-  <% elsif @resume.area_2 == 2 %>
-    <div>
-      <div>
-        <h1 class="text-xl font-bold">工作經驗</h1>
-      </div>
-      <div class="flex">
-        <div class="w-1/4">
-          <% if @resume.work_exp_start_date_1.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_1 %></p>
-          <% else %>
-            <% if @resume.profile.work_experiences.first.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_1 %></p>
-            <% else %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_1 %></p>
-            <% end %>
-          <% end %>
-          <span>~</span>
-          <% if @resume.work_exp_end_date_1.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_1 %></p>
-          <% else %>
-            <% if @resume.profile.work_experiences.first.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_1 %></p>
-            <% else %>
-              <p class="p-2 my-2 mr-5 border-0 border-white rounded-md resize-y"><%= @resume.work_exp_start_date_1 %></p>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="flex flex-col grow">
-          <% if @resume.work_exp_name_1.present? %>
-            <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_1 %></p>
-          <% else %>
-            <% if @resume.profile.work_experiences.first.present? %>
-              <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_1 %></p>
-            <% else %>
-              <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_1 %></p>
-            <% end %>
-          <% end %>
-          <p class="h-32 p-2 mb-1 text-justify border-white rounded-md resize-y grow"><%= @resume.work_exp_content_1 %></p>
-        </div>
-      </div>
-      <div class="flex">
-        <div class="w-1/4">
-          <% if @resume.work_exp_start_date_2.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_2 %></p>
-          <% else %>
-            <% if @resume.profile.work_experiences.second.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_2 %></p>
-            <% else %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_start_date_2 %></p>
-            <% end %>
-          <% end %>
-          <span>~</span>
-          <% if @resume.work_exp_end_date_2.present? %>
-            <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_2 %></p>
-          <% else %>
-            <% if @resume.profile.work_experiences.second.present? %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_2 %></p>
-            <% else %>
-              <p class="px-2 border-white rounded-md resize-y w-28"><%= @resume.work_exp_end_date_2 %></p>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="flex flex-col grow">
-          <% if @resume.work_exp_name_2.present? %>
-            <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_2 %></p>
-          <% else %>
-            <% if @resume.profile.work_experiences.second.present? %>
-              <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_2 %></p>
-            <% else %>
-              <p class="w-full p-2 mb-1 font-semibold border-white rounded-md resize-y grow"><%= @resume.work_exp_name_2 %></p>
-            <% end %>
-          <% end %>
-          <p class="h-32 p-2 mb-1 text-justify border-white rounded-md resize-y grow"><%= @resume.work_exp_content_2 %></p>
-        </div>
-      </div>
-    </div>
-  <% elsif @resume.area_2 == 3 %>
+
+  <% else @resume.area_2 == 3 %>
     <div>
       <div class="flex flex-col mt-8">
-        <h1 class="font-bold">工作經驗</h1>
+        <h1 class="my-3 text-xl font-black text-left">工作經驗</h1>
         <div class="flex justify-between">
           <% if @resume.work_exp_name_1.present? %>
-            <p class="h-32 p-2 mb-1 border-white rounded-md resize-y grow"><%= @resume.work_exp_name_1 %></p>
+            <p class="font-bold"><%= @resume.work_exp_name_1 %></p>
           <% else %>
             <% if @resume.profile.work_experiences.first.present? %>
-              <p class="h-32 p-2 mb-1 border-white rounded-md resize-y grow"><%= @resume.work_exp_name_1 %></p>
+              <p class="font-bold"><%= @resume.work_exp_name_1 %></p>
             <% else %>
-              <p class="h-32 p-2 mb-1 border-white rounded-md resize-y grow"><%= @resume.work_exp_name_1 %></p>
+              <p class="font-bold"><%= @resume.work_exp_name_1 %></p>
             <% end %>
           <% end %>
+
+          <div class="flex items-center gap-2">
+            <% if @resume.work_exp_start_date_1.present? %>
+              <p class=""><%= @resume.work_exp_start_date_1 %></p>
+            <% else %>
+              <% if @resume.profile.work_experiences.first.present? %>
+                <p class=""><%= @resume.work_exp_start_date_1 %></p>
+              <% else %>
+                <p class=""><%= @resume.work_exp_start_date_1 %></p>
+              <% end %>
+            <% end %>
+
+            <span>~</span>
+
+            <% if @resume.work_exp_end_date_1.present? %>
+              <p class=""><%= @resume.work_exp_end_date_1 %></p>
+            <% else %>
+              <% if @resume.profile.work_experiences.first.present? %>
+                <p class=""><%= @resume.work_exp_end_date_1 %></p>
+              <% else %>
+                <p class=""><%= @resume.work_exp_end_date_1 %></p>
+              <% end %>
+            <% end %>
+          </div>
         </div>
+        <p class="mt-3 text-justify min-h-min"><%= @resume.work_exp_content_1 %></p>
       </div>
+
+
+      <div class="flex flex-col my-4">
+        <div class="flex justify-between">
+          <% if @resume.work_exp_name_2.present? %>
+            <p class="font-bold"><%= @resume.work_exp_name_2 %></p>
+          <% else %>
+            <% if @resume.profile.work_experiences.second.present? %>
+              <p class="font-bold"><%= @resume.work_exp_name_2 %></p>
+            <% else %>
+              <p class="font-bold"><%= @resume.work_exp_name_2 %></p>
+            <% end %>
+          <% end %>
+
+          <div class="flex items-center gap-2">
+            <% if @resume.work_exp_start_date_2.present? %>
+              <p class=""><%= @resume.work_exp_start_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.work_experiences.second.present? %>
+                <p class=""><%= @resume.work_exp_start_date_2 %></p>
+              <% else %>
+                <p class=""><%= @resume.work_exp_start_date_2%></p>
+              <% end %>
+            <% end %>
+
+            <span>~</span>
+
+            <% if @resume.work_exp_end_date_2.present? %>
+              <p class=""><%= @resume.work_exp_end_date_2 %></p>
+            <% else %>
+              <% if @resume.profile.work_experiences.second.present? %>
+                <p class=""><%= @resume.work_exp_end_date_2 %></p>
+              <% else %>
+                <p class=""><%= @resume.work_exp_end_date_2 %></p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <p class="mt-3 text-justify min-h-min"><%= @resume.work_exp_content_2 %></p>
+      </div>
+
+
     </div>
+
+
+
+
+
+
   <% end %>
 </div>

@@ -1,18 +1,29 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['html', 'dark_mode_img'];
+  static targets = ['html'];
+  darkModeEnabled = false;
+
+  connect() {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode === 'true') {
+      this.darkModeEnabled = true;
+      this.applyDarkMode();
+    }
+  }
 
   toggleDarkMode() {
+    this.darkModeEnabled = !this.darkModeEnabled;
+    this.applyDarkMode();
+    localStorage.setItem('darkMode', this.darkModeEnabled);
+  }
+
+  applyDarkMode() {
     const htmlTag = this.htmlTarget;
-    const img = this.dark_mode_imgTarget;
-    console.log(img);
-    if (htmlTag.classList.contains('dark')) {
-      this.dark_mode_imgTarget.src = '/assets/night-mode.png';
-      htmlTag.classList.remove('dark');
-    } else {
-      this.dark_mode_imgTarget.src = '/assets/light-mode.png';
+    if (this.darkModeEnabled) {
       htmlTag.classList.add('dark');
+    } else {
+      htmlTag.classList.remove('dark');
     }
   }
 }
