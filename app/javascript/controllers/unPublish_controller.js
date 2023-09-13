@@ -23,7 +23,7 @@ export default class extends Controller {
           })
         })
         .then(data => {
-          window.location.href = `/@${account}/resumes/${serial}/edit`;
+          window.location.href = `/resumes`;
         })
         .catch(error => {
           console.error('Error:', error);

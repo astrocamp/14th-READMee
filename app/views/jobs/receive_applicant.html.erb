@@ -16,7 +16,7 @@
               <% if record.notified == false %>
                 <%= link_to "發起面試通知", edit_job_matching_path(record.id), class: "save-btn" %>
               <% else %>
-                <div class="inline-block px-5 py-3 text-white rounded-lg bg-slate-300">已發送面試通知</div>
+                <div class="inline-block px-5 text-white rounded-lg bg-slate-300">已發送面試通知</div>
               <% end %>
             </div>
           </li>

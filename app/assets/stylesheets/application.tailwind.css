@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .save-btn {
-  @apply inline-block px-5 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600 h-8;
+  @apply inline-block px-5 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
 }
 .new-btn {
   @apply px-5 py-1 text-white rounded-lg bg-amber-500 hover:bg-amber-600;
@@ -25,11 +25,11 @@
 }
 
 .nav-btn-signed-in {
-  @apply flex font-semibold text-gray-500 items-center justify-center hover:text-amber-500 mx-1 h-10;
+  @apply flex items-center justify-center h-10 mx-1 font-semibold text-gray-500 hover:text-amber-500;
 }
 
 .nav-btn-register {
-  @apply bg-amber-500 hover:bg-amber-600 text-white rounded w-12 h-10 flex items-center justify-center;
+  @apply flex items-center justify-center w-12 h-10 text-white rounded bg-amber-500 hover:bg-amber-600;
 }
 .show {
   @apply block;

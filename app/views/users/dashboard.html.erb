@@ -15,9 +15,9 @@
     <%= render 'work_experiences/show' %>
   </div>
   <% if current_user.resumes.present? %>
-    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids), class: "save-btn m-2" %>
+    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids), class: "block text-center bg-yellow-300 hover:bg-amber-500 p-2 rounded-lg m-2 font-semibold text-lg" %>
   <% else %>
-    <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}, class: "save-btn m-2"%>
+    <%= link_to "創建履歷", create_resume_path, data: { turbo_method: :post }, class: "block text-center bg-yellow-300 hover:bg-amber-500 p-2 rounded-lg m-2 font-semibold text-lg"%>
   <% end %>
   <div class="fixed right-10 bottom-10">
     <%= render 'chat_messages/chat_bot'%>

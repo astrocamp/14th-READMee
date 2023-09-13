@@ -8,7 +8,7 @@ class JobMatchingsController < ApplicationController
 
   def update
     if @job_matching.update(job_matching_params)
-      redirect_to receive_applicant_path(current_user.company), notice: '已發送面試通知！'
+      redirect_to company_jobs_path(current_user.account), notice: '已發送面試通知！'
     else
       render :edit
     end
