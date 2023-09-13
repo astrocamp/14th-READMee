@@ -12,4 +12,10 @@ module ApplicationHelper
       end
     end
   end
+
+  def display_application_records_button(user)
+    if user.role == 'job_seeker' && user.job_matchings.any?
+      link_to "應徵紀錄", apply_job_path(account: user.account), class: "nav-btn-signed-in"
+    end
+  end
 end

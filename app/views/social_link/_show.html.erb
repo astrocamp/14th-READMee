@@ -7,8 +7,14 @@
             <%= link_to "#{social.title}", social.link%>
           </div>
           <div>
-            <%= link_to '編輯', edit_social_link_path(id: social.id), class:"new-btn"%>
-            <%= link_to '刪除', social_link_path(id: social.id), class:"new-btn", data:{turbo_method: :delete, turbo_confirm: "確定要刪除?"}%>
+            <div class="flex">
+            <%= link_to edit_social_link_path(id: social.id) do %>
+              <%= image_tag("edit.png", class: "img_resize mx-1") %>
+            <% end %>
+            <%= link_to social_link_path(id: social.id), data:{turbo_method: :delete, turbo_confirm: "確定要刪除?"} do %>
+              <%= image_tag("delete_img", class: "delete_img mx-1 mt-0.5")%>
+            <% end %>
+            </div>
           </div>
         </div>   
       <% end %>
