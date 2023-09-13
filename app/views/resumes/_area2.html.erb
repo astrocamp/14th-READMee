@@ -2,7 +2,7 @@
   <% if @resume.area_2 == 1 %>
 
   <div class="flex flex-col mt-8">
-    <h1 class="font-bold">工作經驗</h1>
+    <h1 class="pl-2 font-bold">工作經驗</h1>
     <div>
       <div class="flex">
 
@@ -39,7 +39,7 @@
       <% end %>
 
     </div>
-    <%= f.text_area :work_exp_content_1, class: "w-full h-32 my-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+    <%= f.text_area :work_exp_content_1, class: "w-full h-18 my-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
 
     <div>
       <div class="flex" >
@@ -75,14 +75,14 @@
         <% end %>
       <% end %>
     </div>
-    <%= f.text_area :work_exp_content_2,  class: "grow h-32 mb-1 p-2 rounded-md resize-y  border-white ", placeholder: "工作內容" %>
+    <%= f.text_area :work_exp_content_2,  class: "h-18 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "工作內容" %>
   </div>
 
   <% else @resume.area_2 == 3 %>
 
     <div>
       <div class="flex flex-col mt-8">
-        <h1 class="font-bold">工作經驗</h1>
+        <h1 class="pl-2 font-bold">工作經驗</h1>
         <div class="flex justify-between">
 
           <% if @resume.work_exp_name_1.present? %>
@@ -118,7 +118,7 @@
 
           </div>
         </div>
-        <%= f.text_area :work_exp_content_1,  class: "my-2 p-2 rounded-md resize-y border-0 border-white  ", placeholder: "開始日期從work拿資料" %>
+        <%= f.text_area :work_exp_content_1,  class: "h-18 my-2 p-2 rounded-md resize-y border-0 border-white", placeholder: "開始日期從work拿資料" %>
       </div>
       <div class="flex flex-col">
         <div class="flex justify-between">
@@ -156,7 +156,7 @@
 
           </div>
         </div>
-        <%= f.text_area :work_exp_content_2, class: "w-full h-32 my-2 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+        <%= f.text_area :work_exp_content_2, class: "w-full h-18 my-2 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
       </div>
     </div>
   <% end %>
