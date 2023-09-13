@@ -135,4 +135,5 @@
 
 .field_with_errors textarea {
   border: red solid 2px;
+  width: 100%;
 }

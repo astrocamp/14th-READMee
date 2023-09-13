@@ -1,7 +1,7 @@
 <section class="flex justify-center w-full">
-  <div class="max-w-screen-lg p-16 mt-20 bg-white shadow-2xl">
+  <div data-controller="pdfGenerate" data-pdfGenerate-target="pdfContent" class="max-w-screen-lg p-16 mt-20 bg-white shadow-2xl">
     <div class="flex items-end min-h-min">
-      <div class="flex flex-col text-center">
+      <div class="flex flex-col">
 <% if @resume.area_1 == 1 %>
 
   <div class="flex min-h-min">
@@ -33,7 +33,7 @@
       </div>
       <div class="flex flex-col items-center">
         <h2 class="font-bold">技能</h2>
-        <ul data-profileInfo-target="skills" class="text-gray-700 ">
+        <ul data-profileInfo-target="skills" class="text-center text-gray-700">
           <% @resume.profile.skills.each do |skill| %>
             <li class="block"><%= skill.tag %></li>
           <% end %>
@@ -43,7 +43,7 @@
 
     <div>
       <h1 class="mb-5 text-xl font-black">簡介</h1>
-      <p class="text-justify min-h-min"><%= @resume.about_me %></p>
+      <p class="min-h-min"><%= @resume.about_me %></p>
       <div class="mt-3">
         <% if @resume.social_links.present? %>
           <p ><%= @resume.social_links %></p>
@@ -90,9 +90,9 @@
     <div class="flex flex-col w-full">
       <p class="px-3 text-justify min-h-min"><%= @resume.about_me %></p>
     </div>
-    <div class="flex justify-between">
-      <div class="grow">
-        <h1 class="text-lg font-bold">語言</h1>
+    <div class="flex">
+      <div class="w-1/2">
+        <h3 class="text-lg font-bold">語言</h3>
         <% if @resume.profile.languages.present? %>
           <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
             <% @resume.profile.languages.each do |language, level| %>
@@ -101,8 +101,9 @@
           </ul>
       <% end %>
       </div>
-      <div class="grow">
-        <h1 class="text-lg font-bold ">技能</h1>
+      <div class="w-1/2">
+        <div class="grow"></div>
+        <h3 class="text-lg font-bold ">技能</h3>
         <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
           <% @resume.profile.skills.each do |skill| %>
             <li class="block mr-2"><%= skill.tag %></li>

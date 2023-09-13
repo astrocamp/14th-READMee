@@ -24,16 +24,18 @@
             <% end %>
           <% end %>
         </div>
-        <% if @resume.work_exp_name_1.present? %>
+      </div>
+
+      <% if @resume.work_exp_name_1.present? %>
+        <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
+      <% else %>
+        <% if @resume.profile.work_experiences.first.present? %>
           <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
         <% else %>
-          <% if @resume.profile.work_experiences.first.present? %>
-            <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
-          <% else %>
-            <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
-          <% end %>
+          <p class="font-semibold text-left"><%= @resume.work_exp_name_1 %></p>
         <% end %>
-      </div>
+      <% end %>
+
       <p class="mt-3 text-justify min-h-min "><%= @resume.work_exp_content_1 %></p>
       <div class="mt-3 sm:flex">
         <div class="flex items-center gap-2 mr-16">
@@ -57,16 +59,18 @@
             <% end %>
           <% end %>
         </div>
-        <% if @resume.work_exp_name_2.present? %>
+      </div>
+
+      <% if @resume.work_exp_name_2.present? %>
+        <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
+      <% else %>
+        <% if @resume.profile.work_experiences.second.present? %>
           <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
         <% else %>
-          <% if @resume.profile.work_experiences.second.present? %>
-            <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
-          <% else %>
-            <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
-          <% end %>
+          <p class="font-semibold text-left"><%= @resume.work_exp_name_2 %></p>
         <% end %>
-      </div>
+      <% end %>
+
       <p class="mt-3 text-justify min-h-min"><%= @resume.work_exp_content_2 %></p>
     </div>
 
@@ -151,12 +155,6 @@
         </div>
         <p class="mt-3 text-justify min-h-min"><%= @resume.work_exp_content_2 %></p>
       </div>
-
-
-
-
-
-
 
 
     </div>
