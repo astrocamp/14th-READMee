@@ -19,4 +19,7 @@
   <% else %>
     <%= link_to "創建履歷", create_resume_path, data:{turbo_method: :post}, class: "save-btn m-2"%>
   <% end %>
+  <div class="fixed right-10 bottom-10">
+    <%= render 'chat_messages/chat_bot'%>
+  </div>
 </div>
