@@ -55,7 +55,12 @@
     </div>
   </turbo-frame>
 <% else %>
-  <div class="mr-0">
+  <div class="my-2">
     <%= link_to '新增個人資料', new_profile_path, class:"save-btn"%>
   </div>
 <% end %>
+<span class="my-2">
+  <% if current_user.job_matchings.any? %>
+    <%= link_to "應徵紀錄", apply_job_path(id: current_user), class: "new-btn" %>
+  <% end %>
+</span>
