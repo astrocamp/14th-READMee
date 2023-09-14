@@ -17,7 +17,7 @@ class JobMatchingsController < ApplicationController
   private
 
   def find_matched_jobs
-    @job_matching = current_user.job_matchings.find(params[:id])
+    @job_matching = JobMatching.find(params[:id])
   end
 
   def job_matching_params
