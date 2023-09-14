@@ -129,8 +129,13 @@
   width: 100px;
 }
 
-.field_with_errors input[type='text'] {
+.field_with_errors input[type='text'],
+.field_with_errors input[type='tel'] {
   border: red solid 2px;
+}
+
+.required-field:invalid {
+  border: 2px solid red;
 }
 
 .field_with_errors textarea {
