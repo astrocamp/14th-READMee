@@ -1,5 +1,5 @@
 <turbo-frame id="show_social">
-  <turbo-frame id="edit_social">
+  <turbo-frame id="edit_social" class="mb-5">
     <% if @social_link.present?%>
       <% @social_link.each do |social|%>
         <div class="flex justify-between py-2">
@@ -21,10 +21,12 @@
     <% end %>  
   </turbo-frame>
   <turbo-frame id="new_social">
-    <% if @profile.present? %>
+    <div class="mt-5">
+      <% if @profile.present? %>
       <%= link_to '新增', new_social_link_path, class:"new-btn"%>
-    <% else %>
-      <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
-    <% end %>
+      <% else %>
+        <button class="disabled-btn" data-controller="button-click" data-action="click->button-click#show_alert">新增</button>
+      <% end %>
+    </div>
   </turbo-frame>
 </turbo-frame>

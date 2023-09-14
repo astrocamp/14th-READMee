@@ -5,7 +5,7 @@
   </div>
   <%= paginate @articles %>
   <section class= "flex justify-between">
-    <ul class="w-1/2">
+    <ul class="w-full mr-2 md:w-1/2">
       <% @articles.each do |article| %>
         <li class="pb-3 mt-12 border-b-2 border-amber-400">
           <%= link_to article.title.truncate(15), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium font-semibold" %>
@@ -31,8 +31,8 @@
         </li>
       <% end %>
     </ul>
-    <div class="img-container">
-      <%= image_tag 'network.jpg',class:"article-img" %>
+    <div class="hidden img-container md:block">
+      <%= image_tag 'network.png',class:"article-img" %>
     </div>
   </section>
 </div>

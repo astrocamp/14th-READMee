@@ -1,6 +1,6 @@
-<span class="flex justify-center m-3 text-2xl font-semibold text-black rounded-lg">應徵紀錄</span>
+<span class="flex justify-center m-3 text-2xl font-semibold text-black rounded-lg dark:text-white">應徵紀錄</span>
 <% if current_user.job_matchings.empty? %>
-  <p class="flex justify-center m-3 text-xl font-semibold text-black rounded-lg">尚無應徵紀錄，快去應徵吧!</p>
+  <p class="flex justify-center m-3 text-xl font-semibold text-black rounded-lg dark:text-white">尚無應徵紀錄，快去應徵吧!</p>
 <% else %>
   <% @job_matchings.each do |matching| %>
     <div class="w-9/12 m-10 mx-auto">
@@ -40,18 +40,18 @@
           </li>
         </section>
         <section class="mt-2">
-          <span class="p-2 text-lg font-semibold text-black rounded-md">面試通知</span>
+          <span class="p-2 text-lg font-semibold text-black rounded-md dark:text-white">面試通知</span>
           <li class="border shadow-lg md:flex">
             <% if matching.notified == true %>
               <div class="p-5 md:w-2/3">
                 <div class="flex mt-2">
                   <div class="flex-grow">
                     <% if matching.present? && matching.interview_date.present? && matching.interview_time.present? %>
-                      <p class="text-sm font-semibold leading-6">
+                      <p class="text-sm font-semibold leading-6 dark:text-white">
                         面試日期與時間：<%= matching.interview_date %> <%= matching.interview_time.strftime("%I:%M %p") %>
                       </p>
                     <% else %>
-                      <p class="text-sm font-semibold leading-6">請與公司聯繫</p>
+                      <p class="text-sm font-semibold leading-6 dark:text-white">請與公司聯繫</p>
                     <% end %>
                     <p class="mt-1 text-sm leading-5"><%= matching.interview_message %></p>
                   </div>
@@ -62,7 +62,7 @@
                 <p class="mt-1 text-sm leading-5">地址: <%= matching.company.address %></p>
               </div>
             <% else %>
-              <p class="m-2 font-semibold">目前沒有任何面試通知。</p>
+              <p class="m-2 font-semibold dark:text-white">目前沒有任何面試通知。</p>
             <% end %>
           </li>
         </section>

@@ -22,7 +22,7 @@
   <%= form_with(model: @comment, url: article_comments_path(@article)) do |f| %>
     <div>
       <%= f.label :content, '留言內容', class:"block" %>
-      <%= f.text_area :content, class: "input mb-5" %>
+      <%= f.text_area :content, class: "input mb-5 input dark:bg-gray-800 dark:text-gray-300" %>
     </div>
     <%= f.submit '新增留言', class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>
   <% end %>

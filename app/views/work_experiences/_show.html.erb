@@ -23,7 +23,7 @@
     </turbo-frame>
   <% end %>
   <turbo-frame id="new_workexp">
-    <div>
+    <div class="mt-5">
       <% if @profile.present? %>
         <%= link_to "新增", new_work_experience_path, class: "new-btn" %>
       <% else %>
