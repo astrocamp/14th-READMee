@@ -31,7 +31,7 @@
 - **ChatGPT 小幫手**: OpenAI
 - **部署**：Heroku, CloudFlare
 
-## 履歷米團隊
+## READMee Team
 - 張芷寧  
   https://github.com/viiining
 - 陳冠霖  
