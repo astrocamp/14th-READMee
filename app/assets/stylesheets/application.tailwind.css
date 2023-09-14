@@ -123,3 +123,11 @@
 .form {
   @apply block w-full px-3 py-2 mx-auto mt-2 sm:w-6/12;
 }
+
+.apply_btn {
+  @apply mt-2 top-4 right-80 inline-block px-4 py-2 mx-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
+}
+
+.applied-btn {
+  @apply mt-2 top-4 right-80 inline-block px-4 py-2 mx-auto text-center text-white rounded-lg bg-gray-500;
+}
