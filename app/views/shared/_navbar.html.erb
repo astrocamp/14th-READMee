@@ -17,14 +17,14 @@
     </div>
     <div data-navbar-target="tinylink" id="navbar-collapse-with-animation" class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block">
       <div class="flex flex-col mt-5 gap-y-4 lg:gap-x-7 md:gap-x-7 sm:flex-row sm:items-center sm:justify-end sm:gap-y-0 sm:gap-x-2 sm:mt-0 sm:pl-7">
-        <% if current_user %>
+        <% if current_user && current_user.role.present?%>
           <%= link_to '履歷列表', resumes_path, class: 'nav-btn' %>
           <%= link_to '工作職缺', jobs_list_path, class: 'nav-btn' %>
           <%= link_to '文章社群', articles_path, class: 'nav-btn' %>
-          <% if current_user.role === 'employer'%>
-            <% if current_user.company.present? %>
-              <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn' %>
-            <% end %>
+          <% if current_user.role === 'employer' && current_user.company.present?%>
+            <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn' %>
+          <% else %>
+            <%= link_to '雇主專區', new_company_path(account: current_user.account), class: 'nav-btn' %>
           <% end %>
         <% else %>
           <%= link_to '履歷列表', user_session_path, class: 'nav-btn' %>

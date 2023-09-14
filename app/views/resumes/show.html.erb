@@ -2,7 +2,7 @@
   <div class="modal" data-controller="show-resume-close-btn">
   <%= link_to "返回履歷列表", resumes_path, class:"inline-block px-5 py-3 mt-5 text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" %>
   <% if current_user.id == @resume.user_id %>
-    <a id="generatePdfBtn" class="inline-block px-5 py-3 mt-5 mr-auto text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800" data-action="pdfGenerate#generate">下載 PDF</a>
+    <a id="generatePdfBtn" class="hidden px-5 py-3 mt-5 mr-auto text-center text-white rounded-lg cursor-pointer lg:inline-block bg-amber-500 hover:bg-amber-800" data-action="pdfGenerate#generate">下載 PDF</a>
   <% end %>
     <div>
       <%= render partial: "show_area1", locals: { resume: @resume } %>

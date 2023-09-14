@@ -49,6 +49,10 @@
   background-color: rgba(211, 211, 211, 0.401);
 }
 
+.chat {
+  width: 300px;
+  background-color: white;
+}
 .codex-editor__redactor {
   padding-bottom: 0 !important;
 }
@@ -129,8 +133,13 @@
   width: 100px;
 }
 
-.field_with_errors input[type='text'] {
+.field_with_errors input[type='text'],
+.field_with_errors input[type='tel'] {
   border: red solid 2px;
+}
+
+.required-field:invalid {
+  border: 2px solid red;
 }
 
 .field_with_errors textarea {
@@ -158,4 +167,24 @@ hr {
   outline: none !important;
   border: 2px solid #f59e0b;
   box-shadow: 0 0 5px #719ece;
+}
+
+@media (max-width: 1199px) {
+  .max-w-screen-lg {
+    width: 100%;
+  }
+
+  .about-me{
+    height: 420px;
+  }
+}
+
+@media (max-width: 379px) {
+  .date-education{
+    order: 1;
+  }
+
+  .about-me{
+    height: 600px;
+  }
 }
