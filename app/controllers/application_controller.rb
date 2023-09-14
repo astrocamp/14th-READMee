@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  # rescue_from ActiveRecord::RecordNotFound, with: :not_found
   before_action :set_locale
   include Pundit::Authorization
 
   def set_locale
     I18n.locale = :'zh-TW'
   end
+
+  
 
   private
 
@@ -25,4 +27,8 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end  
+
+  def call_chatgpt
+    @response = ChatgptService.call(params[:message])
+  end
 end

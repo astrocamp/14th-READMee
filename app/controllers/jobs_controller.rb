@@ -16,6 +16,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @job_match = current_user.job_matchings
   end
 
   def create

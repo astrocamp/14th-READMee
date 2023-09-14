@@ -115,6 +115,9 @@ GEM
       activesupport (>= 5.0)
     hashie (5.0.0)
     htmlbeautifier (1.4.2)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -326,6 +329,7 @@ DEPENDENCIES
   devise (~> 4.9)
   dotenv-rails
   htmlbeautifier (~> 1.4)
+  httparty (~> 0.21.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
