@@ -51,10 +51,13 @@
               <div class="nav-btn-signed-in">
                 <%= link_to '登入', new_user_session_path%>
               </div>
+              <button  data-action="click->toggle-dark-mode#toggleDarkMode">
+                <%= image_tag "sun-and-moon.png", size: "20x20", data: { "toggle-dark-mode-target" => "dark_mode_img" } %>
+              </button>
               <%= link_to new_user_registration_path do%>
                 <p class= 'nav-btn-register'>註冊</p>
               <% end %>
-          <% end %>
+            <% end %>
           </div>
         </div>
       </div>
