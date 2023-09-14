@@ -1,17 +1,17 @@
-<%= form_with(model: @profile, url:profile_path, class:"dashboard_basic") do |form|%>
+<%= form_with(model: @profile, url:profile_path) do |form|%>
   <%= render "avatar_preview", form: form, profile: @profile %>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     <div class="lg:my-5">
       <%= form.label :full_name, '全名', class: "font-semibold"%>
-      <%= form.text_field :full_name, class:"input"%>
+      <%= form.text_field :full_name, class:"input required-field"%>
     </div>
-    <div class="lg:my-5">
+    <div class="profile lg:my-5">
       <%= form.label :phone, '電話', class: "font-semibold"%>
-      <%= form.phone_field :phone, class: "input", placeholder: "0900 123123" %>
+      <%= form.phone_field :phone, class: "input required-field", placeholder: "0900 123123" %>
     </div>
     <div class="lg:my-5">
       <%= form.label :address, '居住區域', class: "font-semibold" %>
-      <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇" }, class: "input" %>
+      <%= form.select :address, options_for_select(Profile.address_options), { prompt: "請選擇" }, class: "input required-field" %>
     </div>
   </div>
   <div class="my-5">

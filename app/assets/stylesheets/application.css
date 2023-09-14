@@ -134,6 +134,10 @@
   border: red solid 2px;
 }
 
+.required-field:invalid {
+  border: 2px solid red;
+}
+
 .field_with_errors textarea {
   border: red solid 2px;
   width: 100%;
