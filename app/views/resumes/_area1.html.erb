@@ -7,17 +7,18 @@
           <%= display_avatar_base64(@resume.profile) %>
         </div>
         <div class="flex flex-col items-center justify-center md:w-60">
-          <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入名字" %>
-          <%= f.text_field :job_hunting, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入想要應徵的工作" %>
-          <%= f.text_field :phone, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入電話" %>
+          <h2 class="text-lg font-bold text-center "><%= @resume.profile.full_name %></h2>
+          <span class="text-center "><%= @resume.profile.job_hunting %> </span>
+          <span class="text-center "><%= @resume.profile.phone %> </span>
+          <span class="text-center "><%= @resume.profile.address %>  </span>
         </div>
 
         <div class="text-center">
-          <h1 class="mt-1 text-lg font-bold">語言</h1>
+          <h1 class="mt-1 font-bold">語言</h1>
           <div class="flex flex-col">
 
           <% if @resume.profile.languages.present? %>
-            <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+            <ul data-profileInfo-target="languages" class="text-gray-700">
               <% @resume.profile.languages.each do |language, level| %>
                 <li><%= "#{language} • #{level}" %></li>
               <% end %>
@@ -25,11 +26,11 @@
           <% end %>
           </div>
         </div>
-        <div class="flex flex-col items-center mt-3">
-          <h2 class="font-bold ">技能</h2>
-          <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+        <div class="flex flex-col items-center">
+          <h2 class="font-bold text-center">技能</h2>
+          <ul data-profileInfo-target="skills" class="text-gray-700">
             <% @resume.profile.skills.each do |skill| %>
-              <li class="mr-2 text-center"><%= skill.tag %></li>
+              <li class="text-center"><%= skill.tag %></li>
             <% end %>
           </ul>
         </div>
@@ -63,25 +64,25 @@
             <div class="flex items-center justify-center">
               <%= display_avatar_base64(@resume.profile) %>
             </div>
-            <%= f.text_field :full_name, class: "px-2 py-1 border-0 border-white font-bold rounded-md text-center", placeholder: "請輸入名字" %>
-            <%= f.text_field :job_hunting, class: "px-2 py-1 my-1 border-0 border-white rounded-md text-center", placeholder: "請輸入想要的職位" %>
-            <%= f.text_field :phone, class: "px-2 py-1 my-1 border-0 border-white border-0 border-white rounded-md text-center", placeholder: "請輸入電話" %>
-            <%= f.text_field :address, class: "px-2 py-1 md:w-96 my-1 border-white rounded-md text-center", placeholder: "請輸入地址" %>
+            <h2 class="text-lg font-bold"><%= @resume.profile.full_name %> </h2>
+            <span> <%= @resume.profile.job_hunting %> </span>
+            <span> <%= @resume.profile.phone %> </span>
+            <span> <%= @resume.profile.address %> </span>
 
             <% if @resume.social_links.present? %>
-              <%= f.text_field :social_links, class: "text-center px-2 md:w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+              <%= f.text_field :social_links, class: "text-center md:w-96 py-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
             <% else %>
               <% if @resume.profile.social_links.first.present? %>
-                <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: "text-center px-2 md:w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+                <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: "text-center md:w-96 py-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
               <% else %>
-                <%= f.text_field :social_links, class: "text-center px-2 md:w-96 py-1 my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+                <%= f.text_field :social_links, class: "text-center md:w-96 py-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
               <% end %>
             <% end %>
           </div>
         </div>
       </div>
       <div class="flex flex-col w-full">
-        <%= f.text_area :about_me, class: "px-3 grow h-72 border border-0 border-white rounded-md", placeholder: "請輸入簡介內容" %>
+        <%= f.text_area :about_me, class: "px-3 grow h-72 border-white rounded-md", placeholder: "請輸入簡介內容" %>
       </div>
       <div class="flex">
         <div class="w-1/2">
