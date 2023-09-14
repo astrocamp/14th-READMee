@@ -4,16 +4,16 @@
       <div class="flex flex-col">
 <% if @resume.area_1 == 1 %>
 
-  <div class="flex min-h-min">
+  <div class="lg:flex min-h-min ">
     <div >
       <div class="flex items-center justify-center pb-5 custom-width-250px">
       <%= display_avatar_base64(@resume.profile) %>
       </div>
-      <div class="flex flex-col items-center justify-center inline-block w-60">
+      <div class="items-center justify-center md:inline-block md:flex md:flex-col lg:w-60">
 
-        <p class="px-2 py-1 font-bold text-center "><%= @resume.full_name%></p>
-        <p class="px-2 py-1 font-bold text-center "><%= @resume.job_hunting %></p>
-        <p class="px-2 py-1 font-bold text-center "><%= @resume.phone %></p>
+        <p class="px-2 py-1 font-bold text-center "><%= @resume.profile.full_name%></p>
+        <p class="px-2 py-1 font-bold text-center "><%= @resume.profile.job_hunting %></p>
+        <p class="px-2 py-1 font-bold text-center "><%= @resume.profile.phone %></p>
 
 
       </div>
@@ -46,13 +46,13 @@
       <p class="min-h-min"><%= @resume.about_me %></p>
       <div class="mt-3">
         <% if @resume.social_links.present? %>
-          <p ><%= @resume.social_links %></p>
+          <span ><%= @resume.social_links %></span>
         <% else %>
           <% if @resume.profile.social_links.first.present? %>
-            <p ><%= @resume.social_links %></p>
-            <p ><%= @resume.social_links %></p>
+            <span ><%= @resume.social_links %></span>
+            <span ><%= @resume.social_links %></span>
           <% else %>
-            <p ><%= @resume.social_links %></p>
+            <span ><%= @resume.social_links %></span>
           <% end %>
         <% end %>
       </div>
@@ -67,21 +67,21 @@
   <div>
     <div class="mx-auto min-h-min">
       <div>
-        <div class="flex flex-col items-center justify-center gap-2 ">
+        <div class="flex flex-col items-center justify-center gap-1 ">
           <div class="flex items-center justify-center">
             <%= display_avatar_base64(@resume.profile) %>
           </div>
-          <p class="font-bold text-center "><%= @resume.full_name %></p>
-          <p class="text-center "><%= @resume.job_hunting %></p>
-          <p class="text-center "><%= @resume.phone %></p>
-          <p class="text-center "><%= @resume.address %></p>
+          <p class="font-bold text-center"><%= @resume.profile.full_name %></p>
+          <p class="text-center "><%= @resume.profile.job_hunting %></p>
+          <p class="text-center "><%= @resume.profile.phone %></p>
+          <p class="text-center "><%= @resume.profile.address %></p>
           <% if @resume.social_links.present? %>
-            <p class=""><%= @resume.social_links %></p>
+            <span class="mb-2"><%= @resume.social_links %></span>
           <% else %>
             <% if @resume.profile.social_links.first.present? %>
-            <p class=""><%= @resume.social_links %></p>
+            <span class="mb-2"><%= @resume.social_links %></span>
             <% else %>
-            <p class=""><%= @resume.social_links %></p>
+            <span class="mb-2"><%= @resume.social_links %></span>
             <% end %>
           <% end %>
         </div>
@@ -90,8 +90,11 @@
     <div class="flex flex-col w-full">
       <p class="px-3 text-justify min-h-min"><%= @resume.about_me %></p>
     </div>
+
+
+
     <div class="flex">
-      <div class="w-1/2">
+      <div class="w-1/2 text-center">
         <h3 class="text-lg font-bold">語言</h3>
         <% if @resume.profile.languages.present? %>
           <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
@@ -101,8 +104,7 @@
           </ul>
       <% end %>
       </div>
-      <div class="w-1/2">
-        <div class="grow"></div>
+      <div class="w-1/2 text-center">
         <h3 class="text-lg font-bold ">技能</h3>
         <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
           <% @resume.profile.skills.each do |skill| %>
@@ -112,4 +114,4 @@
       </div>
     </div>
   </div>
- <% end %>
+<% end %>
