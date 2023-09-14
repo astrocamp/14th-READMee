@@ -163,3 +163,23 @@ hr {
   border: 2px solid #f59e0b;
   box-shadow: 0 0 5px #719ece;
 }
+
+@media (max-width: 1199px) {
+  .max-w-screen-lg {
+    width: 100%;
+  }
+
+  .about-me{
+    height: 420px;
+  }
+}
+
+@media (max-width: 379px) {
+  .date-education{
+    order: 1;
+  }
+
+  .about-me{
+    height: 600px;
+  }
+}
