@@ -15,8 +15,8 @@
     <%= render 'work_experiences/show' %>
   </div>
   <% if current_user.resumes.present? %>
-    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids), class: "block text-center bg-yellow-500 hover:bg-amber-500 p-2 rounded-lg m-2 font-semibold text-lg dark:text-white" %>
+    <%= link_to "編輯履歷", edit_resume_path(id: current_user.resumes.ids), class: "block text-center bg-amber-500 hover:bg-amber-600 p-2 rounded-lg m-2 font-semibold text-lg dark:text-white" %>
   <% else %>
-    <%= link_to "創建履歷", create_resume_path, data: { turbo_method: :post }, class: "block text-center bg-yellow-500 hover:bg-amber-500 p-2 rounded-lg m-2 font-semibold text-lg dark:text-white"%>
+    <%= link_to "創建履歷", create_resume_path, data: { turbo_method: :post }, class: "block text-center bg-amber-500 hover:bg-amber-600 p-2 rounded-lg m-2 font-semibold text-lg dark:text-white"%>
   <% end %>
 </div>
