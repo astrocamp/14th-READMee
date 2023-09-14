@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
   validates :name, :address, :phone, :about, :population, presence: true
+  validates_format_of :phone, with: /\A\d{8}\z/
   has_many :jobs
   belongs_to :user
 
