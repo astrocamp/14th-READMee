@@ -24,7 +24,7 @@ class CompaniesController < ApplicationController
     if @company.save
       redirect_to company_show_path(@company), notice: '公司建立成功!'
     else
-      flash.now[:alert] = @company.errors.full_messages.join(', ')
+      flash.now[:alert] = I18n.t('activerecord.errors')
       render :new
     end
   end
