@@ -10,7 +10,7 @@
           </div>
         <% end %>
       </picture>
-      <div class="md:w-3/4">
+      <div class="md:w-3/4 pl-2">
         <h3 class="block text-2xl font-bold text-gray-800 dark:text-white"><%= @company.name %></h3>
         <div>
           <button>
@@ -27,9 +27,8 @@
       </div>
     </div>
   </div>
-  
   <div class="max-w-[85rem] px-4 py-5 sm:px-6 lg:px-8 mx-auto ">
-  <span class="py-3 text-xl font-bold border-b-4 border-amber-500">關於:</span>
+    <span class="py-3 text-xl font-bold border-b-4 border-amber-500">關於:</span>
     <div class="grid gap-2 md:grid-cols-1 lg:grid-cols-3">
       <div class="col-span-2 ">
         <p class="text-black break-words whitespace-pre-line dark:text-gray-300">
@@ -54,9 +53,7 @@
           </div>
         </div>
         <div class="flex">
-          
-            <%= image_tag "jobs_show_people.png", class: "w-6 h-6 mr-2" %>
-          
+          <%= image_tag "jobs_show_people.png", class: "w-6 h-6 mr-2" %>
           <div class="ml-5">
             <h3 class="text-base font-semibold text-gray-800 sm:text-lg dark:text-gray-200">
               人數規模: <%= @company.population %>
