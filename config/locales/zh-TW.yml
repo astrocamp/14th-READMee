@@ -33,13 +33,30 @@ zh-TW:
     sessions:
       signed_in: '您已成功登入。'
       signed_out: '您已成功登出。'
+  errors:
+    format: "%{message}"
+    attributes:
+      phone:
+        blank: "電話不能為空"
   activerecord:
     errors:
+      messages:
+        blank: "不能為空"
       models:
-        company:            
+        company:  
+          blank: "公司不能為空"          
           attributes:
+            population:
+              blank: "公司人數不能為空"
+            about:
+              blank: "公司介紹不能為空"
+            address:
+              blank: "公司地址不能為空"
+            name:
+              blank: "公司名稱不能為空"
             phone:
-              invalid: "無效的電話號碼"
+              blank: "電話不能為空"
+              invalid: "電話格式為8碼"
             user:
               required: '需要提供用戶'
         user:
