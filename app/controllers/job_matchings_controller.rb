@@ -24,9 +24,9 @@ class JobMatchingsController < ApplicationController
     params.require(:job_matching)
           .permit(:job_id,
                   :company_id,
+                  :notified,
                   :interview_date,
                   :interview_time,
                   :interview_message)
-          .merge({ user_id: current_user.id, notified: true })
   end
 end
