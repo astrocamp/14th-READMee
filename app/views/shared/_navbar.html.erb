@@ -21,8 +21,9 @@
           <%= link_to '履歷列表', resumes_path, class: 'nav-btn' %>
           <%= link_to '工作職缺', jobs_list_path, class: 'nav-btn' %>
           <%= link_to '文章社群', articles_path, class: 'nav-btn' %>
-          <% if current_user.role === 'employer' && current_user.company.present?%>
+          <% if current_user.employer? && current_user.company.present?%>
             <%= link_to '雇主專區', company_show_path(id: current_user.company.id), class: 'nav-btn' %>
+          <% elsif current_user.job_seeker?%>
           <% else %>
             <%= link_to '雇主專區', new_company_path(account: current_user.account), class: 'nav-btn' %>
           <% end %>
