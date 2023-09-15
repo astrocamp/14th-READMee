@@ -11,7 +11,7 @@
 </div>
 <div class="my-5">
   <%= f.label :公司電話 %>
-  <%= f.text_field :phone, class: "input dark:bg-gray-800 dark:text-gray-300" %>
+  <%= f.text_field :phone, class: "input dark:bg-gray-800 dark:text-gray-300", placeholder: "28221234" %>
 </div>
 <div class="my-5">
   <%= f.label :關於我們 %>
@@ -19,6 +19,6 @@
 </div>
 <div class="my-5">
   <%= f.label :人數規模 %>
-  <%= f.text_field :population, class: "input dark:bg-gray-800 dark:text-gray-300" %>
+  <%= f.select :population, options_for_select(["1 ~ 5 人", "5 ~ 10 人" , "10人以上", "30 人以上", "50 人以上"]), { prompt: "請選擇" }, class: "input dark:bg-gray-800 dark:text-gray-300" %>
 </div>
 <%= f.submit "確定", class: "px-5 py-2 my-2 text-white rounded-lg bg-amber-500 hover:bg-amber-600 cursor-pointer"%>
