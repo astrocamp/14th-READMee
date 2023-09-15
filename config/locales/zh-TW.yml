@@ -39,38 +39,19 @@ zh-TW:
       phone:
         blank: "電話不能為空"
   activerecord:
-    errors:
-      messages:
-        blank: "不能為空"
-      models:
-        company:  
-          blank: "公司不能為空"          
-          attributes:
-            population:
-              blank: "公司人數不能為空"
-            about:
-              blank: "公司介紹不能為空"
-            address:
-              blank: "公司地址不能為空"
-            name:
-              blank: "公司名稱不能為空"
-            phone:
-              blank: "電話不能為空"
-              invalid: "電話格式為8碼"
-            user:
-              required: '需要提供用戶'
-        user:
-          attributes:
-            reset_password_token:
-              invalid: '重設密碼連結無效。請確保您使用的是正確的連結。'
-            email:
-              blank: '是必填項目！'
-              taken: '此電子郵件已被使用，請使用其他電子郵件。'
-            password:
-              blank: '是必填項目！'
-              too_short: '密碼太短！至少 6 個字元。'
-            password_confirmation:
-              confirmation: '密碼確認不符，請重新輸入確認密碼。'
+    errors: "請檢查必填欄位！"
+    user:
+      attributes:
+        reset_password_token:
+          invalid: '重設密碼連結無效。請確保您使用的是正確的連結。'
+        email:
+          blank: '是必填項目！'
+          taken: '此電子郵件已被使用，請使用其他電子郵件。'
+        password:
+          blank: '是必填項目！'
+          too_short: '密碼太短！至少 6 個字元。'
+        password_confirmation:
+          confirmation: '密碼確認不符，請重新輸入確認密碼。'
   views:
     pagination:
       first: "&laquo; 第一頁"
