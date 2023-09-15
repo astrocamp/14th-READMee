@@ -7,8 +7,8 @@
   <article class="p-3 border shadow-md">
     <p class="text-lg break-words whitespace-pre-line"><%= @article.content %></p>
   </article>
-  <div data-controller="like" 
-       data-liked="<%= current_user.liked?(@article) %>" 
+  <div data-controller="like"
+       data-liked="<%= current_user.liked?(@article) %>"
        data-id="<%= @article.id %>" class="mt-3">
     <div class="flex">
       <span data-like-target="count" class="flex">
@@ -24,7 +24,7 @@
       <%= f.label :content, '留言內容', class:"block" %>
       <%= f.text_area :content, class: "input mb-5 input dark:bg-gray-800 dark:text-gray-300" %>
     </div>
-    <%= f.submit '新增留言', class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>
+    <%= f.submit '新增留言', class:"rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600 cursor-pointer" %>
   <% end %>
   <ul>
     <% @comments.each do |comment| %>
@@ -38,7 +38,7 @@
           留言於: <%= comment.created_at.in_time_zone("Taipei").strftime("%Y-%m-%d %I:%M %p") %>
         </span>
         <% if comment.user == current_user %>
-          <%= link_to '删除', 
+          <%= link_to '删除',
             comment_path(comment),
             class:"rounded-lg py-1 px-3 text-white bg-amber-500 hover:bg-amber-600 text-xs",
             data: {
