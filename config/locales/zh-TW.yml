@@ -36,8 +36,10 @@ zh-TW:
   activerecord:
     errors:
       models:
-        company:
+        company:            
           attributes:
+            phone:
+              invalid: "無效的電話號碼"
             user:
               required: '需要提供用戶'
         user:
