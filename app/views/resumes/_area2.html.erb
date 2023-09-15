@@ -43,7 +43,7 @@
       <% end %>
 
     </div>
-    <%= f.text_area :work_exp_content_1, class: "w-full h-18 my-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+    <%= f.text_area :work_exp_content_1, class: "w-full h-18 my-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容，内容不能超過120個字" %>
 
     <div>
       <div class="flex items-center" >
@@ -79,7 +79,7 @@
         <% end %>
       <% end %>
     </div>
-    <%= f.text_area :work_exp_content_2,  class: "grow h-18 mb-1 p-2 rounded-md resize-y  border-white ", placeholder: "工作內容" %>
+    <%= f.text_area :work_exp_content_2,  class: "grow h-18 mb-1 p-2 rounded-md resize-y  border-white ", placeholder: "工作內容，内容不能超過120個字" %>
   </div>
 
   <% else @resume.area_2 == 3 %>
@@ -90,12 +90,12 @@
         <div class="justify-between md:flex">
 
           <% if @resume.work_exp_name_1.present? %>
-            <%= f.text_field :work_exp_name_1,  class: "grow mb-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+            <%= f.text_field :work_exp_name_1,  class: "grow mb-1 p-2 rounded-md resize-y  border-white", placeholder: "工作經驗一" %>
           <% else %>
             <% if @resume.profile.work_experiences.first.present? %>
-              <%= f.text_field :work_exp_name_1, value: @resume.profile.work_experiences.first.title,  class: "grow mb-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+              <%= f.text_field :work_exp_name_1, value: @resume.profile.work_experiences.first.title,  class: "grow mb-1 p-2 rounded-md resize-y  border-white", placeholder: "工作經驗一" %>
             <% else %>
-              <%= f.text_field :work_exp_name_1,  class: "grow mb-1 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+              <%= f.text_field :work_exp_name_1,  class: "grow mb-1 p-2 rounded-md resize-y  border-white", placeholder: "工作經驗一" %>
             <% end %>
           <% end %>
           <div class="flex items-center" >
@@ -122,7 +122,7 @@
 
           </div>
         </div>
-        <%= f.text_area :work_exp_content_1,  class: "my-2 p-2 h-18 rounded-md resize-y border-0 border-white", placeholder: "工作內容" %>
+        <%= f.text_area :work_exp_content_1,  class: "my-2 p-2 h-18 rounded-md resize-y border-0 border-white", placeholder: "工作內容，内容不能超過120個字" %>
       </div>
       <div class="flex flex-col">
         <div class="justify-between md:flex">
@@ -160,7 +160,7 @@
 
           </div>
         </div>
-        <%= f.text_area :work_exp_content_2, class: "w-full h-18 my-2 p-2 rounded-md resize-y  border-white", placeholder: "工作內容" %>
+        <%= f.text_area :work_exp_content_2, class: "w-full h-18 my-2 p-2 rounded-md resize-y  border-white", placeholder: "工作內容，内容不能超過120個字" %>
       </div>
     </div>
   <% end %>

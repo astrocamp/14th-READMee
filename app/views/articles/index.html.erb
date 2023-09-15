@@ -7,28 +7,32 @@
   <section class= "flex justify-between">
     <ul class="w-full mr-2 md:w-1/2">
       <% @articles.each do |article| %>
-        <li class="pb-3 mt-12 border-b-2 border-amber-400">
-          <%= link_to article.title.truncate(15), article_path(article.id), class:"hover:border-b-4 hover:ease-in hover:duration-100 border-amber-400 text-xl font-medium font-semibold" %>
-          <div class="break-words whitespace-pre-line">
-            作者: <%= article.user.account%>
-            <%= truncate(article.content, length: 100) %>
-          </div>
-          <span data-like-target="count" class="flex block mt-2 font-semibold">
-            有 <%= @liked_counts[article.id] || 0 %> 人喜歡這篇文章 
-          </span>
-          <div class="flex gap-4 mt-1">
-            <% if current_user.id == article.user.id %>
-              <%= link_to "更新", edit_article_path(article.id), class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600"%>
-            <% end %>
-            <% if current_user.id == article.user.id %>
-              <%= link_to "刪除", article_path(article.id), 
-                                        data: {
-                                          turbo_method: "delete",
-                                          turbo_confirm: "確定要刪除?"
-                                        }, class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>
-            <% end %>
-          </div>
-        </li>
+        <%= link_to article_path(article.id) do %>
+          <li class="pb-3 mt-12 border-b-2 border-amber-400 hover:translate-x-[-10px] transition-transform">
+            <div class="text-xl font-semibold">
+              <%= article.title.truncate(15) %>
+            </div>
+            <div class="break-words whitespace-pre-line">
+              作者: <%= article.user.account%>
+              <%= truncate(article.content, length: 100) %>
+            </div>
+            <span data-like-target="count" class="flex block mt-2 font-semibold">
+              有 <%= @liked_counts[article.id] || 0 %> 人喜歡這篇文章 
+            </span>
+            <div class="flex gap-4 mt-1">
+              <% if current_user.id == article.user.id %>
+                <%= link_to "更新", edit_article_path(article.id), class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600"%>
+              <% end %>
+              <% if current_user.id == article.user.id %>
+                <%= link_to "刪除", article_path(article.id), 
+                                          data: {
+                                            turbo_method: "delete",
+                                            turbo_confirm: "確定要刪除?"
+                                          }, class: "rounded-lg py-1 px-5 text-white bg-amber-500 hover:bg-amber-600" %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
       <% end %>
     </ul>
     <div class="hidden img-container md:block">

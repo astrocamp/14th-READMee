@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = current_user.build_company(params_company)
+    @company = Company.new(params_company.merge(user_id: current_user.id))
     if @company.save
       redirect_to company_show_path(@company), notice: '公司建立成功!'
     else
