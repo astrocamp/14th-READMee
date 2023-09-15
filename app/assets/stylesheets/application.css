@@ -187,4 +187,16 @@ hr {
   .about-me{
     height: 600px;
   }
+
+  .resume-card{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .resume-card{
+    flex-direction: column;
+    align-items: center;
+  }
 }
