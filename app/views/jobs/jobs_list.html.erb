@@ -24,62 +24,66 @@
     </div>
   </div>
   <div>
-    <% @jobs_list.each do |job| %>
-      <ul class="justify-between p-5 m-2 leading-6 ">
-        <div>
-          <li class="border rounded-lg shadow-lg md:flex">
-            <picture class="p-6 md:w-1/4">
-              <% if job.company.logo.attached? %>
-                <%= image_tag job.company.logo.variant(:thumb), class: "mx-auto" %>
-              <% else %>
-                <div class="flex flex-col items-center justify-center">
-                  <%= image_tag("defaultuser.png", class: "rounded-full w-20 h-20 mx-auto") %>
-                </div>
-              <% end %>
-            </picture>
-            <div class="p-6 md:w-5/6 ">
-              <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
-              <div class="mt-2 ">
-                <%= link_to "#{job.company.name}", company_show_path(job.company.id) %>
-              </div>
-              <div class="mt-2">
-                <%= link_to job_show_path(job.id) do %>
-                  <%= truncate(job.content, length: 200) %>
+    <% if @jobs_list.present? %>
+      <% @jobs_list.each do |job| %>
+        <ul class="justify-between p-5 m-2 leading-6 ">
+          <div>
+            <li class="border rounded-lg shadow-lg md:flex">
+              <picture class="p-6 md:w-1/4">
+                <% if job.company.logo.attached? %>
+                  <%= image_tag job.company.logo.variant(:thumb), class: "mx-auto" %>
+                <% else %>
+                  <div class="flex flex-col items-center justify-center">
+                    <%= image_tag("defaultuser.png", class: "rounded-full w-20 h-20 mx-auto") %>
+                  </div>
                 <% end %>
+              </picture>
+              <div class="p-6 md:w-5/6 ">
+                <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
+                <div class="mt-2 ">
+                  <%= link_to "#{job.company.name}", company_show_path(job.company.id) %>
+                </div>
+                <div class="mt-2">
+                  <%= link_to job_show_path(job.id) do %>
+                    <%= truncate(job.content, length: 200) %>
+                  <% end %>
+                </div>
               </div>
-            </div>
-            <div class="p-6 md:w-1/2">
-              <div class="flex py-1">
-                <%= image_tag "jobs_show_people.png", class: "w-6 h-6 mr-2" %>
-                需求人數: <%= job.num_of_people %>
-              </div>
-              <div class="flex py-1">
-                <%= image_tag "jobs_show_seniority.png", class: "w-6 h-6 mr-2" %>
-                年資: <%= job.seniority %>
-              </div>
-              <div class="flex py-1">
-                <%= image_tag "jobs_show_salary.png", class: "w-6 h-6 mr-2" %>
-                薪水: <%= job.salary %>
-              </div>
-              <div class="flex py-1">
-                <%= image_tag "jobs_show_address.png", class: "w-6 h-6 mr-2" %>
-                地址: <%= job.company.address %>
-              </div>
-              <%= form_with(model: job, url: job_seeker_list_path, method: :post) do |f| %>
-                <%= hidden_field_tag :job, job.id %>
-                <%= hidden_field_tag :company, job.company_id %>
-                <% unless current_user.employer? %>
-                  <% if current_user.role == "job_seeker" && current_user.job_matchings.any? { |matching| matching.job_id == job.id } %>
-                    <p class="applied-btn">已應徵</p>
-                  <% else %>
-                    <%= f.submit "馬上應徵", data: { confirm: "確定要應徵這份工作嗎？" }, class: "apply_btn"%>
+              <div class="p-6 md:w-1/2">
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_people.png", class: "w-6 h-6 mr-2" %>
+                  需求人數: <%= job.num_of_people %>
+                </div>
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_seniority.png", class: "w-6 h-6 mr-2" %>
+                  年資: <%= job.seniority %>
+                </div>
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_salary.png", class: "w-6 h-6 mr-2" %>
+                  薪水: <%= job.salary %>
+                </div>
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_address.png", class: "w-6 h-6 mr-2" %>
+                  地址: <%= job.company.address %>
+                </div>
+                <%= form_with(model: job, url: job_seeker_list_path, method: :post) do |f| %>
+                  <%= hidden_field_tag :job, job.id %>
+                  <%= hidden_field_tag :company, job.company_id %>
+                  <% unless current_user.employer? %>
+                    <% if current_user.role == "job_seeker" && current_user.job_matchings.any? { |matching| matching.job_id == job.id } %>
+                      <p class="applied-btn">已應徵</p>
+                    <% else %>
+                      <%= f.submit "馬上應徵", data: { confirm: "確定要應徵這份工作嗎？" }, class: "apply_btn"%>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
-            </div>
-          </li>
-        </div>
-      </ul>
+              </div>
+            </li>
+          </div>
+        </ul>
+      <% end %>
+    <% else %>
+      <p class="text-center text-gray-500">抱歉，沒有找到符合條件的工作。</p>
     <% end %>
   </div>
 </div>

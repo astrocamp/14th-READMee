@@ -200,3 +200,7 @@ hr {
     align-items: center;
   }
 }
+
+.liked {
+  background-color: blue;
+}
