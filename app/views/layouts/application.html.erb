@@ -1,19 +1,27 @@
+<% I18n.locale = :'zh-TW' %>
 <!DOCTYPE html>
-<html>
+<html data-controller="toggle-dark-mode" data-toggle-dark-mode-target="html">
   <head>
     <title>READMee</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
+    <%= stylesheet_link_tag "https://unpkg.com/slim-select@latest/dist/slimselect.css", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
-
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="relative dark:bg-gray-700 dark:text-gray-300">
+    <%= render "shared/navbar", class:"relative"%>
+    <main class="container min-h-screen mx-auto">
+      <div id="custom-target"
+          data-controller="notification"
+          data-notification-notice="<%= notice %>"
+          data-notification-alert="<%= alert %>">
+      </div>
       <%= yield %>
     </main>
+    <footer class="w-full px-2 py-1 text-gray-500 bg-white mt-46 "></footer>
   </body>
 </html>

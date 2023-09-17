@@ -1,0 +1,61 @@
+<% if current_user.profile.present?%>
+  <turbo-frame id="edit_profile">
+    <picture class="p-5 md:w-1/4">
+      <% if @profile.avatar.attached? %>
+        <%= image_tag @profile.avatar.variant(:thumb), class: "mx-auto" %>
+      <% else %>
+        <%= image_tag("defaultuser.png", class: "rounded-full w-32 h-32 mx-auto") %>
+      <% end %>
+    </picture>
+    <div class="mt-4 profile_name_block">
+      <div class="pt-3 text-lg font-semibold border-b-4 profile_name border-amber-500">
+        <%= @profile.full_name %>
+      </div>
+      <div class="mx-2">
+        <div class="flex items-center mx-1">
+          <%= image_tag("address.png", class:"profile_img m-2")%>
+          <%= @profile.address %>
+        </div>
+        <div class="flex items-center mx-1">
+          <%= image_tag("phone.png", class:"profile_img m-2")%>
+          <%= @profile.phone %>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4">
+      <h2 class="mb-5 text-lg font-semibold">自我介紹</h2>
+      <%= @profile.about_me %>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold">技能</h2>
+      <ul data-profileInfo-target="skills" class="mt-2 text-gray-700">
+        <% @profile.skills.each do |skill| %>
+          <li class="inline-block bg-amber-100 text-amber-600 rounded p-0.5 mb-1"><%= skill.tag %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold">語言</h2>
+      <% if @profile.languages.present? %>
+        <ul data-profileInfo-target="languages" class="mt-2 text-gray-700">
+          <% @profile.languages.each do |language, level| %>
+            <li><%= "#{language} • #{level}" %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold">求職偏好</h2>
+      <%= @profile.job_hunting %>
+    </div>
+    <div class="profile_edit_img">
+      <%= link_to edit_profile_path do%>
+        <%= image_tag "edit.png"%>
+      <% end %>
+    </div>
+  </turbo-frame>
+<% else %>
+  <div class="my-2">
+    <%= link_to '新增個人資料', new_profile_path, class:"save-btn"%>
+  </div>
+<% end %>

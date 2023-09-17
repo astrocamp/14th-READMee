@@ -1,0 +1,33 @@
+<div class="area3">
+  <% if @resume.area_3 == 1 %>
+    <div>
+      <div>
+        <h1 class="my-2 text-xl font-black text-left">專案</h1>
+        <div>
+          <p class="font-bold text-left resize-y">   <%= @resume.project_name_1 %> </p>
+          <p class="text-justify resize-y min-h-min">  <%= @resume.project_content_1 %></p>
+        </div>
+        <div class="my-2">
+          <p class="font-bold text-left resize-y">   <%= @resume.project_name_2 %></p>
+          <p class="text-justify resize-y min-h-min "> <%= @resume.project_content_2 %></p>
+        </div>
+      </div>
+    </div>
+  <% else @resume.area_3 == 2 %>
+    <div>
+      <div id="area_3">
+        <h2 class="mt-5 text-xl font-black text-left">專案經驗</h2>
+        <div class="gap-3 mt-3 md:flex">
+          <div class="md:w-1/2 min-h-min">
+            <p class="font-bold text-left resize-y">   <%= @resume.project_name_1 %></p>
+            <p class="py-1 mt-1 text-justify resize-y ">   <%= @resume.project_content_1 %></p>
+          </div>
+          <div class="md:w-1/2 min-h-min">
+            <p class="font-bold text-left resize-y">   <%= @resume.project_name_2 %></p>
+            <p class="py-1 mt-1 text-justify resize-y ">   <%= @resume.project_content_2 %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

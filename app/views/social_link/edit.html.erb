@@ -1,0 +1,13 @@
+<turbo-frame id="edit_social">
+  <%= form_with(model: @social_link, url: social_link_path , data:{turbo_method: :patch}) do |form| %>
+    <div>
+      <%= form.label :title, '名稱' %>
+      <%= form.text_field :title, name:"social_link[title]", class:"input dark:bg-gray-800 dark:text-gray-300" %>
+    </div>
+    <div class="pb-2">
+      <%= form.label :link, '連結' %>
+      <%= form.text_field :link, name:"social_link[link]", class:"input dark:bg-gray-800 dark:text-gray-300"%>
+    </div>
+    <%= form.submit '提交', class:"save-btn"%>
+  <% end %>
+</turbo-frame>

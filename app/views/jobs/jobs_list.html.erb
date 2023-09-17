@@ -1,0 +1,89 @@
+<div>
+  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-10">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold text-gray-800 sm:text-5xl dark:text-white">
+        READMee 找工作
+      </h1>
+      <p class="mt-3 text-gray-600 dark:text-white">
+        為自己找一份好工作
+      </p>
+      <div class="relative max-w-xl mx-auto mt-7 sm:mt-12">
+        <form>
+          <div class="relative z-10 flex space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-900/[.2]">
+            <%= search_form_for @choose, url: jobs_list_path do |f| %>
+              <div class="flex-[1_0_0%]">
+                <%= f.search_field :title_or_company_name_cont, class: "block w-full p-3 border-transparent rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-300", placeholder: "職缺名稱、公司名稱" %>
+              </div>
+              <div class="flex-[0_0_auto]">
+                <%= f.submit class:"inline-flex items-center justify-center gap-2 p-3 text-sm font-semibold text-white transition-all bg-amber-500 border border-transparent rounded-md hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 cursor-pointer" %>
+              </div>
+            <% end %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div>
+    <% if @jobs_list.present? %>
+      <% @jobs_list.each do |job| %>
+        <ul class="justify-between p-5 m-2 leading-6 ">
+          <div>
+            <li class="border rounded-lg shadow-lg md:flex">
+              <picture class="p-6 md:w-1/4">
+                <% if job.company.logo.attached? %>
+                  <%= image_tag job.company.logo.variant(:thumb), class: "mx-auto" %>
+                <% else %>
+                  <div class="flex flex-col items-center justify-center">
+                    <%= image_tag("defaultuser.png", class: "rounded-full w-20 h-20 mx-auto") %>
+                  </div>
+                <% end %>
+              </picture>
+              <div class="p-6 md:w-5/6 ">
+                <%= link_to job.title, job_show_path(id: job.id), class: "text-2xl text-amber-500" %>
+                <div class="mt-2 ">
+                  <%= link_to "#{job.company.name}", company_show_path(job.company.id) %>
+                </div>
+                <div class="mt-2">
+                  <%= link_to job_show_path(job.id) do %>
+                    <%= truncate(job.content, length: 200) %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="p-6 md:w-1/2">
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_people.png", class: "w-6 h-6 mr-2" %>
+                  需求人數: <%= job.num_of_people %>
+                </div>
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_seniority.png", class: "w-6 h-6 mr-2" %>
+                  年資: <%= job.seniority %>
+                </div>
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_salary.png", class: "w-6 h-6 mr-2" %>
+                  薪水: <%= job.salary %>
+                </div>
+                <div class="flex py-1">
+                  <%= image_tag "jobs_show_address.png", class: "w-6 h-6 mr-2" %>
+                  地址: <%= job.company.address %>
+                </div>
+                <%= form_with(model: job, url: job_seeker_list_path, method: :post) do |f| %>
+                  <%= hidden_field_tag :job, job.id %>
+                  <%= hidden_field_tag :company, job.company_id %>
+                  <% unless current_user.employer? %>
+                    <% if current_user.role == "job_seeker" && current_user.job_matchings.any? { |matching| matching.job_id == job.id } %>
+                      <p class="applied-btn">已應徵</p>
+                    <% else %>
+                      <%= f.submit "馬上應徵", data: { confirm: "確定要應徵這份工作嗎？" }, class: "apply_btn"%>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </li>
+          </div>
+        </ul>
+      <% end %>
+    <% else %>
+      <p class="text-center text-gray-500">抱歉，沒有找到符合條件的工作。</p>
+    <% end %>
+  </div>
+</div>

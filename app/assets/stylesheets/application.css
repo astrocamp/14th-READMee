@@ -1,15 +1,206 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.skill {
+  box-sizing: border-box;
+  margin-right: -64px;
+  margin-left: -64px;
+}
+.top-68px {
+  top: 68px;
+}
+.custom-width-190px {
+  width: 190px;
+}
+.max-w-screen-lg {
+  width: 1024px;
+}
+
+.min-h-1000 {
+  min-height: 1000px;
+}
+
+.img-container {
+  width: calc(100% / 1.5);
+  margin-top: 3rem;
+}
+
+.modal {
+  position: absolute;
+  z-index: 50;
+  overflow: auto;
+  background-color: rgba(28, 28, 28, 0.401);
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.close-btn {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  padding: 8px 10px;
+  border: none;
+  float: right;
+  text-decoration: none;
+}
+
+.close-btn:hover {
+  border-radius: 6px;
+  background-color: rgba(211, 211, 211, 0.401);
+}
+
+.chat {
+  width: 300px;
+  background-color: white;
+}
+.codex-editor__redactor {
+  padding-bottom: 0 !important;
+}
+
+.ce-block__content {
+  border: 1px solid grey;
+}
+
+.ce-header {
+  font-weight: 700;
+  font-size: 1rem;
+}
+.profile_name {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.profile_name_block {
+  display: flex;
+  justify-content: space-between;
+}
+.profile_img {
+  width: 15px;
+  height: 15px;
+}
+.profile_edit_img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.delete_img {
+  display: inline;
+  width: 25px;
+  height: 25px;
+}
+.img_resize {
+  width: 30px;
+  height: 30px;
+}
+
+.colored-toast.swal2-icon-success {
+  color: black !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
+.colored-toast.swal2-icon-success {
+  color: black !important;
+}
+
+#custom-target {
+  position: absolute;
+  right: 0;
+}
+
+.position-absolute {
+  position: relative !important;
+}
+
+.input_w {
+  width: 100px;
+}
+
+.field_with_errors input[type='text'],
+.field_with_errors input[type='tel'] {
+  border: red solid 2px;
+}
+
+.required-field:invalid {
+  border: 2px solid red;
+}
+
+.field_with_errors textarea {
+  border: red solid 2px;
+  width: 100%;
+}
+
+.field_with_errors textarea.about-me {
+  border: red solid 2px;
+  width: 100%;
+  height: 350px;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.input:focus {
+  outline: none !important;
+  border: 2px solid #f59e0b;
+  box-shadow: 0 0 5px #719ece;
+}
+
+@media (max-width: 1199px) {
+  .max-w-screen-lg {
+    width: 100%;
+  }
+
+  .about-me{
+    height: 420px;
+  }
+}
+
+@media (max-width: 379px) {
+  .date-education{
+    order: 1;
+  }
+
+  .about-me{
+    height: 600px;
+  }
+
+  .resume-card{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .resume-card{
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.liked {
+  background-color: blue;
+}

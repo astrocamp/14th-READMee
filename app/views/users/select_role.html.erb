@@ -1,0 +1,16 @@
+<section class="flex flex-col justify-center mt-20 place-items-center">
+  <div class="font-bold text-center text-gray-800 ">
+    <p class="text-xl lg:text-2xl">Hello，歡迎加入<span class="text-amber-500">READMee</span>!</p>
+    <p class="mt-2 text-lg text-gray-500 lg:text-xl">請選擇您的身分</p>
+  </div>
+  <div class="items-center justify-center mt-5 rounded-lg shadow-2xl sm:flex">
+    <div class="p-3">
+      <%= image_tag "company.svg", class: "w-32 mx-auto"%>
+      <%= link_to "我是雇主，尋找專業的人才!", employer_path, data: { turbo_method: "post" }, class: "text-center block px-5 py-3 text-white rounded-lg bg-amber-500 hover:bg-amber-600 mb-2"%>
+    </div>
+    <div class="p-3">
+      <%= image_tag "job_seeker.svg", class: "w-32 mx-auto"%>
+      <%= link_to "我是求職者，投遞理想的工作!", job_seeker_path,data: { turbo_method: "post" }, class: "text-center block px-5 py-3 text-white rounded-lg  bg-amber-500 hover:bg-amber-600 mb-2"%>
+    </div>
+  </div>
+</section>

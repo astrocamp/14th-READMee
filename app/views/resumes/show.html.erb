@@ -1,0 +1,14 @@
+<turbo-frame action="replace" id="show_resume_<%= @resume.id%>">
+  <div class="modal" data-controller="show-resume-close-btn">
+  <a href="#" class="inline-block px-5 py-3 mt-5 ml-32 text-lg font-bold text-center text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-800">X</a>
+  <% if current_user.id == @resume.user_id %>
+    <a id="generatePdfBtn" class="hidden px-5 py-4 mt-5 mr-auto text-center text-white rounded-lg cursor-pointer lg:inline-block bg-amber-500 hover:bg-amber-800" data-action="pdfGenerate#generate">下載 PDF</a>
+  <% end %>
+    <div>
+      <%= render partial: "show_area1", locals: { resume: @resume } %>
+      <%= render partial: "show_area2", locals: { resume: @resume } %>
+      <%= render partial: "show_area3", locals: { resume: @resume } %>
+      <%= render partial: "show_area4", locals: { resume: @resume } %>
+    </div>
+  </div>
+</turbo-frame>

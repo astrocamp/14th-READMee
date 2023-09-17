@@ -1,0 +1,11 @@
+<turbo-frame id="new_workexp">
+  <%= form_with(model: @works, url: work_experiences_path) do |form| %>
+    <%= form.label :title, "公司名稱/職業" %>
+    <%= form.text_field :title, class: "input dark:bg-gray-800 dark:text-gray-300", placeholder: "遊戲橘子/前端工程師"%>
+    <%= form.label :start_date, "開始日期" %>
+    <%= form.date_field :start_date, class: "input dark:bg-gray-800 dark:text-gray-300" %>
+    <%= form.label :end_date, "結束日期" %>
+    <%= form.date_field :end_date, class: "input dark:bg-gray-800 dark:text-gray-300" %>
+    <%= form.submit "確定", class: "save-btn" %>
+  <% end %>
+</turbo-frame>

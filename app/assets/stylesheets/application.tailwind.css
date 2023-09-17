@@ -2,12 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+.save-btn {
+  @apply inline-block px-5 text-white rounded-lg cursor-pointer bg-amber-500 hover:bg-amber-600;
+}
+.new-btn {
+  @apply px-5 py-1 text-white rounded-lg bg-amber-500 hover:bg-amber-600;
+}
+.disabled-btn {
+  @apply inline-block px-5 py-3 text-white rounded-lg cursor-pointer bg-slate-600;
+}
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+.input {
+  @apply w-full px-3 py-2 my-2 border border-gray-200 rounded-md shadow outline-none;
+}
+
+.language-css {
+  @apply block px-2 mb-2 border-l-4 border-solid border-amber-500 w-fit;
+}
+
+.nav-btn {
+  @apply font-semibold text-gray-500 hover:text-amber-500 sm:py-6;
+}
+
+.nav-btn-signed-in {
+  @apply flex items-center justify-center h-10 mx-1 font-semibold text-gray-500 hover:text-amber-500;
+}
+
+.nav-btn-register {
+  @apply flex items-center justify-center w-12 h-10 text-white rounded bg-amber-500 hover:bg-amber-600;
+}
+.show {
+  @apply block;
+}
+
+:root {
+  --ss-primary-color: #f59e0b !important;
+  --ss-main-height: 40px !important;
+  --ss-font-color: #888686 !important;
+  --ss-spacing-m: 10px !important;
+}
+
+.ss-values .ss-value {
+  @apply p-2 mr-1 font-semibold rounded !important;
+}
+
+.ss-main {
+  @apply block w-full px-3 py-2 mt-2 border border-gray-200 rounded-md shadow outline-none;
+}
+
+.ss-arrow path {
+  @apply mr-2 !important;
+}
+
+.article-title-link {
+  @apply inline-block mt-10 text-2xl font-bold hover:ease-in hover:duration-200 hover:text-amber-600;
+}
+
+.article-post {
+  @apply text-2xl;
+}
+
+.field_with_errors input[type='text'],
+.field_with_errors input[type='date'],
+.field_with_errors select,
+.field_with_errors textarea {
+  @apply border-2 border-red-600;
+}
+
+.article-img {
+  @apply object-cover aspect-w-11 aspect-h-7 rounded-2xl;
+}
+
+.pagination {
+  @apply mt-10;
+}
+
+.pagination span {
+  @apply my-2;
+}
+
+.first,
+.last {
+  @apply hidden;
+}
+
+.prev,
+.next,
+.page > a {
+  @apply mx-1 text-2xl hover:bg-amber-500 hover:text-white;
+}
+
+.page {
+  @apply mx-1 text-2xl;
+}
+
+@layer base {
+  body {
+    font-family: 'Readex Pro', sans-serif;
   }
 }
 
-*/
+@layer components {
+  .card {
+    @apply bg-white text-gray-700 w-72 h-[20rem] shadow-lg rounded-md overflow-hidden;
+  }
+
+  .badge {
+    @apply px-2 py-1 text-xs border-2 border-gray-300 border-solid rounded-sm;
+  }
+
+  .user-name {
+    @apply bottom-0 m-2 text-xl font-bold;
+  }
+}
+
+.turbo-frame-error {
+  @apply hidden;
+}
+
+.form {
+  @apply w-full px-3 py-2 mx-auto mt-2 sm:w-6/12;
+}
+
+.apply_btn {
+  @apply inline-block px-4 py-2 mx-auto mt-2 text-center text-white rounded-lg cursor-pointer top-4 right-80 bg-amber-500 hover:bg-amber-600;
+}
+
+.applied-btn {
+  @apply inline-block px-4 py-2 mx-auto mt-2 text-center text-white bg-gray-500 rounded-lg top-4 right-80;
+}

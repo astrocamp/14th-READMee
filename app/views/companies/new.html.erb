@@ -1,0 +1,6 @@
+<div class="container w-2/3 p-3 mx-auto text-left">
+  <%= form_with(model: @company, url: company_path, data:{ turbo:false }, method: "post") do |f| %>
+    <h1 class="text-5xl text-center">建立公司資訊</h1>
+    <%= render 'form', f: f %>
+  <% end %>
+</div>

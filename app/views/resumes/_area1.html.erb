@@ -1,0 +1,111 @@
+<div class="area1">
+  <% if @resume.area_1 == 1 %>
+
+    <div class="md:flex min-h-min">
+      <div class="">
+        <div class="flex items-center justify-center pb-5 custom-width-250px">
+          <%= display_avatar_base64(@resume.profile) %>
+        </div>
+        <div class="flex flex-col items-center justify-center md:w-60">
+          <h2 class="text-lg font-bold text-center "><%= @resume.profile.full_name %></h2>
+          <span class="text-center "><%= @resume.profile.job_hunting %> </span>
+          <span class="text-center "><%= @resume.profile.phone %> </span>
+          <span class="text-center "><%= @resume.profile.address %>  </span>
+        </div>
+
+        <div class="text-center">
+          <h1 class="mt-1 font-bold">語言</h1>
+          <div class="flex flex-col">
+
+          <% if @resume.profile.languages.present? %>
+            <ul data-profileInfo-target="languages" class="text-gray-700">
+              <% @resume.profile.languages.each do |language, level| %>
+                <li><%= "#{language} • #{level}" %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <h2 class="font-bold text-center">技能</h2>
+          <ul data-profileInfo-target="skills" class="text-gray-700">
+            <% @resume.profile.skills.each do |skill| %>
+              <li class="text-center"><%= skill.tag %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col w-full">
+        <h1 class="pl-2 font-bold">簡介</h1>
+        <%= f.text_area :about_me, class: "about-me grow border-white rounded-md p-2", placeholder: "請輸入簡介內容，内容不能超過620個字" %>
+        <div>
+          <% if @resume.social_links.present? %>
+            <%= f.text_field :social_links, class: "px-2 py-1 my-1 border-white rounded-md w-full grow", placeholder: "請輸入社群連結" %>
+          <% else %>
+            <% if @resume.profile.social_links.first.present? %>
+              <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: " px-2 py-1 w-full my-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+            <% else %>
+              <%= f.text_field :social_links, class: "px-2 py-1 my-1 border-white rounded-md grow w-full", placeholder: "請輸入社群連結" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
+  <% else @resume.area_1 == 3 %>
+
+    <div>
+      <div class="w-9/12 mx-auto min-h-min">
+        <div>
+          <div class="flex flex-col items-center justify-center ">
+            <div class="flex items-center justify-center">
+              <%= display_avatar_base64(@resume.profile) %>
+            </div>
+            <h2 class="text-lg font-bold"><%= @resume.profile.full_name %> </h2>
+            <span> <%= @resume.profile.job_hunting %> </span>
+            <span> <%= @resume.profile.phone %> </span>
+            <span> <%= @resume.profile.address %> </span>
+
+            <% if @resume.social_links.present? %>
+              <%= f.text_field :social_links, class: "text-center md:w-96 py-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+            <% else %>
+              <% if @resume.profile.social_links.first.present? %>
+                <%= f.text_field :social_links, value: @resume.profile.social_links.first.link, class: "text-center md:w-96 py-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+              <% else %>
+                <%= f.text_field :social_links, class: "text-center md:w-96 py-1 border-white rounded-md grow", placeholder: "請輸入社群連結" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col w-full">
+        <%= f.text_area :about_me, class: "px-3 grow h-72 border-white rounded-md", placeholder: "請輸入簡介內容，内容不能超過620個字" %>
+      </div>
+      <div class="flex">
+        <div class="w-1/2">
+          <h3 class="text-lg font-bold text-center">語言</h3>
+          <% if @resume.profile.languages.present? %>
+            <ul data-profileInfo-target="languages" class="mt-2 text-center text-gray-700">
+              <% @resume.profile.languages.each do |language, level| %>
+                <li><%= "#{language} • #{level}" %></li>
+              <% end %>
+            </ul>
+        <% end %>
+        </div>
+        <div class="w-1/2">
+          <div class="grow"></div>
+          <h3 class="text-lg font-bold text-center">技能</h3>
+          <ul data-profileInfo-target="skills" class="mt-2 text-center text-gray-700">
+            <% @resume.profile.skills.each do |skill| %>
+              <li class="block mr-2"><%= skill.tag %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

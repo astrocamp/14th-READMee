@@ -1,0 +1,8 @@
+<turbo-frame id="edit_education">
+  <%= form_with(model: @education, url: education_path, data:{turbo_method: :patch}) do |form| %>
+    <%= form.text_field :title, class:"input dark:bg-gray-800 dark:text-gray-300" %>
+    <%= form.date_field :start_date, class:"input dark:bg-gray-800 dark:text-gray-300"%>
+    <%= form.date_field :end_date, class:"input dark:bg-gray-800 dark:text-gray-300"%>
+    <%= form.submit '提交', class:"save-btn my-2" %>
+  <% end %>
+</turbo-frame>

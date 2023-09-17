@@ -1,0 +1,41 @@
+<section class="m-10 ">
+  <h1 class="mb-10 text-2xl font-semibold">面試通知</h1>
+  <%= form_with(model: @job_matching, data: { turbo: false }) do |f| %>
+    <div class="my-5">
+      <div class="grid grid-cols-4 gap-2">
+        <%= f.hidden_field :job_id %>
+        <%= f.hidden_field :company_id %>
+        <%= f.hidden_field :notified, value:"true" %>
+        <div>
+          <%= f.label :interview_date, "面試日期", class: "font-semibold" %>
+          <%= f.date_field :interview_date, class: "input" %>
+        </div>
+        <div>
+          <%= f.label :interview_time, "面試時間", class: "font-semibold" %>
+          <%= f.time_field :interview_time, class: "input" %>
+        </div>
+      </div>
+    </div>
+    <div class="my-5">
+      <%= f.label :interview_message, '面試通知', class: "font-semibold" %>
+      <%= f.text_area :interview_message,class: "input", value: '您好！因爲在 READMee 網站上看到您的履歷，並對您豐富的開發經驗感到十分印象深刻。在與技術部門的主管討論後，想邀請您來參加第一階段的面試！' %>
+    </div>
+    <section class="input bg-amber-100">
+      <div class="my-5">
+        <%= f.label '公司名稱', class: "font-semibold" %>
+        <%= current_user.company.name %>
+      </div>
+      <div class="my-5">
+        <%= f.label '聯絡電話', class: "font-semibold" %>
+        <%= current_user.company.phone %>
+      </div>
+      <div class="my-5">
+        <%= f.label '面試地點', class: "font-semibold" %>
+        <%= current_user.company.address %>
+      </div>
+    </section>
+    <div class="my-5">
+      <%= f.submit '發送', class: 'save-btn' %>
+    </div>
+  <% end %>
+</section>

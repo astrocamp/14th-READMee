@@ -1,0 +1,70 @@
+zh-TW:
+  user_roles:
+    job_seeker: '求職者'
+    employer: '雇主'
+    admin: '管理員'
+  errors:
+    messages:
+      not_saved: '錯誤！請查看以下訊息：'
+  devise:
+    omniauth_callbacks:
+      success: '%{kind} 驗證成功！歡迎回來。'
+      fail: '登入失敗，請重新嘗試。'
+      user:
+        failure: 'Google 登入失敗。'
+    confirmations:
+      user:
+        confirmed: '帳號認證成功！請重新登入。'
+    passwords:
+      user:
+        send_instructions: '信件已寄出，請至信箱查看。'
+        updated: '密碼更新成功！您已登入。'
+    failure:
+      user:
+        invalid: '請確認帳號密碼是否正確!'
+        not_found_in_database: '請確認帳號密碼是否正確!'
+        already_authenticated: '您已經登入囉!'
+        unconfirmed: '請至信箱確認信件'
+        unauthenticated: '尚未認證，請重新登入'
+    registrations:
+      signed_up: '您已成功註冊。'
+      user:
+        signed_up_but_unconfirmed: '請至信箱確認信件。'
+    sessions:
+      signed_in: '您已成功登入。'
+      signed_out: '您已成功登出。'
+  errors:
+    format: "%{message}"
+    attributes:
+      phone:
+        blank: "電話不能為空"
+  activerecord:
+    errors: "請檢查必填欄位！"
+    user:
+      attributes:
+        reset_password_token:
+          invalid: '重設密碼連結無效。請確保您使用的是正確的連結。'
+        email:
+          blank: '是必填項目！'
+          taken: '此電子郵件已被使用，請使用其他電子郵件。'
+        password:
+          blank: '是必填項目！'
+          too_short: '密碼太短！至少 6 個字元。'
+        password_confirmation:
+          confirmation: '密碼確認不符，請重新輸入確認密碼。'
+  views:
+    pagination:
+      first: "&laquo; 第一頁"
+      last: "最尾頁 &raquo;"
+      previous: "&lsaquo; 前頁"
+      next: "後頁 &rsaquo;"
+      truncate: "&hellip;"
+  helpers:
+    page_entries_info:
+      one_page:
+        display_entries:
+          zero: "No %{entry_name} found"
+          one: "Displaying <b>1</b> %{entry_name}"
+          other: "Displaying <b>all %{count}</b> %{entry_name}"
+      more_pages:
+        display_entries: "Displaying %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> of <b>%{total}</b> in total"          
