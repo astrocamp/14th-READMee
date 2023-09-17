@@ -1,13 +1,10 @@
-# READMee 履歷米
-**To know me, just READMee!**<br>
-**生活如此愜意，履歷如此恣意** 
+# READMee
+<img width="1304" alt="Screenshot 2023-09-17 at 12 18 57 PM" src="https://github.com/astrocamp/14th-READMee/assets/130339657/e178329b-724f-480c-99a6-00ca0ce77742">
 
-在職業生涯的大海中，我們如同強而有力的風帆，解決您在寫履歷過程中的種種困擾。<br/>
-結構和內容不再是痛點，讓您輕鬆駕馭求職之旅。<br/>
-我們提供填空式的導引，引領您輕鬆地編排履歷內容。<br/>
+### Demo Day 精彩回顧 ☟
+#### https://www.youtube.com/watch?v=PkmWUlXYpfk
 
-您只需簡易編輯基本個人資訊、工作經歷和教育背景，<br/>
-讓我們一同蓄勢待發，航向成功的職業未來。
+---
 
 ## 專案特點
 本專案旨在讓求職者能夠輕鬆創建出色履歷，同時提供給公司人才招聘團隊一個便捷的途徑，找到合適的人才。
