@@ -1,4 +1,7 @@
 # READMee
+#### 點擊進入網站 ☟
+**https://readmee.org/**
+
 <img width="1304" alt="Screenshot 2023-09-17 at 12 18 57 PM" src="https://github.com/astrocamp/14th-READMee/assets/130339657/e178329b-724f-480c-99a6-00ca0ce77742">
 
 ### Demo Day 精彩回顧 ☟
