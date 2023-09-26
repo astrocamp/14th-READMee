@@ -37,7 +37,7 @@
 - 陳冠霖  
   https://github.com/DOJO004
 - 黃子禔  
-  https://github.com/q2379685
+  https://github.com/dawn-huang621
 - 吳昆鋒  
   https://github.com/thekuen
 - 張哲維  
